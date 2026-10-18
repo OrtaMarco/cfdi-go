@@ -1,0 +1,136 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "A",
+    "folio": "123456",
+    "fecha": "2020-09-29T22:40:38",
+    "forma_pago": "99",
+    "no_certificado": "30001000000400002311",
+    "sub_total": "2056.00",
+    "descuento": "1755.83",
+    "moneda": "MXN",
+    "total": "300.17",
+    "tipo_de_comprobante": "N",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "56820",
+    "emisor": {
+      "rfc": "XIQB891116QE4",
+      "nombre": "BERENICE XIMO QUEZADA",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "KIJ0906199R1",
+      "nombre": "KIJ, S.A DE C.V.",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111505",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago de nómina",
+        "valor_unitario": "2056.00",
+        "importe": "2056.00",
+        "descuento": "1755.83"
+      }
+    ],
+    "nomina": [
+      {
+        "version": "1.2",
+        "tipo_nomina": "O",
+        "fecha_pago": "2020-01-30",
+        "fecha_inicial_pago": "2020-01-16",
+        "fecha_final_pago": "2020-01-31",
+        "num_dias_pagados": "16.000",
+        "total_percepciones": "1600.00",
+        "total_deducciones": "1755.83",
+        "total_otros_pagos": "456.00",
+        "emisor": {
+          "registro_patronal": "Z1234567890"
+        },
+        "receptor": {
+          "curp": "XIQB891116MCHZRL72",
+          "num_seguridad_social": "987654321",
+          "fecha_inicio_rel_laboral": "2020-01-01",
+          "antiguedad": "P96W",
+          "tipo_contrato": "01",
+          "sindicalizado": "No",
+          "tipo_jornada": "01",
+          "tipo_regimen": "02",
+          "num_empleado": "12345678",
+          "departamento": "Departamento del Trabajo",
+          "puesto": "Trabajador",
+          "riesgo_puesto": "2",
+          "periodicidad_pago": "04",
+          "cuenta_bancaria": "0001000200030004",
+          "salario_diario_integrado": "100.01",
+          "clave_ent_fed": "MOR"
+        },
+        "percepciones": {
+          "total_sueldos": "1600.00",
+          "total_gravado": "1200.00",
+          "total_exento": "400.00",
+          "percepcion": [
+            {
+              "tipo_percepcion": "001",
+              "clave": "001",
+              "concepto": "SUELDO",
+              "importe_gravado": "1200.00",
+              "importe_exento": "400.00"
+            }
+          ]
+        },
+        "deducciones": {
+          "total_otras_deducciones": "521.10",
+          "total_impuestos_retenidos": "1234.73",
+          "deduccion": [
+            {
+              "tipo_deduccion": "002",
+              "clave": "300",
+              "concepto": "ISR A CARGO",
+              "importe": "1234.73"
+            },
+            {
+              "tipo_deduccion": "004",
+              "clave": "204",
+              "concepto": "FONDO DE AHORRO EMPLEADOS",
+              "importe": "521.10"
+            }
+          ]
+        },
+        "otros_pagos": [
+          {
+            "tipo_otro_pago": "999",
+            "clave": "046",
+            "concepto": "REEMBOLSO DE GASTOS",
+            "importe": "456.00"
+          },
+          {
+            "tipo_otro_pago": "002",
+            "clave": "002",
+            "concepto": "SUBSIDIO EMPLEO",
+            "importe": "0.00",
+            "subsidio_al_empleo": {
+              "subsidio_causado": "0.00"
+            }
+          }
+        ],
+        "incapacidades": [
+          {
+            "dias_incapacidad": "2",
+            "tipo_incapacidad": "02",
+            "importe_monetario": "1000.00"
+          }
+        ]
+      }
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:pago10="http://www.sat.gob.mx/Pagos" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="3.3" Serie="P" Folio="3" Fecha="2021-08-02T11:00:00" Sello="U0VMTE8gREUgUFJVRUJB" NoCertificado="30001000000400002495" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="P" LugarExpedicion="06000">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" UsoCFDI="P01"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="84111506" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago" ValorUnitario="0" Importe="0"/>
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <pago10:Pagos Version="1.0">
+      <pago10:Pago FechaPago="2021-08-01T12:00:00" FormaDePagoP="03" MonedaP="USD" TipoCambioP="20.1234" RfcEmisorCtaOrd="XEXX010101000" NomBancoOrdExt="BANCO DE PRUEBA" CtaOrdenante="1234567890" CertPago="Q0VSVElGSUNBRE8gREUgUFJVRUJB" CadPago="Q0FERU5BIERFIFBSVUVCQQ==" SelloPago="U0VMTE8gREUgUFJVRUJB" TipoCadPago="01">
+        <pago10:DoctoRelacionado IdDocumento="11111111-2222-3333-4444-555555555555" Serie="B" Folio="77" MonedaDR="USD" MetodoDePagoDR="PPD" NumParcialidad="1" ImpSaldoAnt="157.57" ImpPagado="150.00" ImpSaldoInsoluto="7.57"/>
+      </pago10:Pago>
+      <pago10:Pago FechaPago="2021-08-02T09:30:00" FormaDePagoP="03" MonedaP="MXN" Monto="152.16">
+        <pago10:DoctoRelacionado IdDocumento="11111111-2222-3333-4444-555555555555" MonedaDR="USD" TipoCambioDR="20.1" MetodoDePagoDR="PPD" NumParcialidad="2" ImpSaldoAnt="7.57" ImpPagado="7.57" ImpSaldoInsoluto="0.00"/>
+      </pago10:Pago>
+    </pago10:Pagos>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="77777777-8888-9999-AAAA-BBBBBBBBBBBB" FechaTimbrado="2021-08-02T11:01:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000400002495" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

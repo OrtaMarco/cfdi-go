@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 15,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[1]/cfdi:ComplementoConcepto/iedu:instEducativas",
+   "mensaje": "Element '{http://www.sat.gob.mx/iedu}instEducativas', attribute 'nivelEducativo': [facet 'enumeration'] The value 'Universidad' is not an element of the set {'Preescolar', 'Primaria', 'Secundaria', 'Profesional técnico', 'Bachillerato o su equivalente'}."
+  }
+ ]
+}

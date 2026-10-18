@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 3.2 sintético con EstadoDeCuentaCombustible sin versión (namespace .../ecc) y acreditamientoIEPS en un concepto:
+     la hoja de 3.2 es la única que lo lleva a la cadena. Sellos de relleno, RFC de prueba. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:spei="http://www.sat.gob.mx/spei" xmlns:aieps="http://www.sat.gob.mx/acreditamiento" version="3.2" serie="ECC" folio="32"
+    fecha="2016-06-01T12:00:00" sello="" formaDePago="PAGO EN UNA SOLA EXHIBICION" noCertificado="30001000000500003416"
+    certificado="" subTotal="1000.00" Moneda="MXN" total="1160.00" tipoDeComprobante="ingreso"
+    metodoDePago="03" LugarExpedicion="PACHUCA, HIDALGO">
+  <cfdi:Emisor rfc="EKU9003173C9" nombre="ESCUELA KEMPER URGATE">
+    <cfdi:DomicilioFiscal calle="AV. HIDALGO" noExterior="77" municipio="PACHUCA" estado="HIDALGO" pais="MEXICO" codigoPostal="42000"/>
+    <cfdi:RegimenFiscal Regimen="REGIMEN GENERAL"/>
+  </cfdi:Emisor>
+  <cfdi:Receptor rfc="XOJI740919U48" nombre="RECEPTOR DE PRUEBA">
+    <cfdi:Domicilio pais="MEXICO"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto cantidad="1" unidad="LITRO" descripcion="Combustible de prueba" valorUnitario="1000.00" importe="1000.00">
+      <cfdi:ComplementoConcepto>
+        <aieps:acreditamientoIEPS Version="1.0" TAR="619"/>
+      </cfdi:ComplementoConcepto>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosTrasladados="160.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado impuesto="IVA" tasa="16.00" importe="160.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <ecc:EstadoDeCuentaCombustible xmlns:ecc="http://www.sat.gob.mx/ecc" tipoOperacion="Tarjeta" numeroDeCuenta="0123456789" subTotal="100.00" total="116.00">
+      <ecc:Conceptos>
+        <ecc:ConceptoEstadoDeCuentaCombustible identificador="T-1" fecha="2016-06-01T08:00:00" rfc="eku9003173c9" claveEstacion="E-1" cantidad="7.5" nombreCombustible="MAGNA" folioOperacion="F-1" valorUnitario="13.333333" importe="100.00">
+          <ecc:Traslados>
+            <ecc:Traslado impuesto="IVA" tasa="16.00" importe="16.00"/>
+          </ecc:Traslados>
+        </ecc:ConceptoEstadoDeCuentaCombustible>
+      </ecc:Conceptos>
+    </ecc:EstadoDeCuentaCombustible>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" version="1.0" UUID="12345678-1234-4234-8234-123456782005" FechaTimbrado="2016-06-01T12:01:00" selloCFD="" noCertificadoSAT="00001000000300000000" selloSAT=""/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

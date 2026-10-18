@@ -1,0 +1,25 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'NoCertificado': [facet 'length'] The value '' has a length of '0'; this differs from the allowed length of '20'."
+  },
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'NoCertificado': [facet 'pattern'] The value '' is not accepted by the pattern '[0-9]{20}'."
+  },
+  {
+   "linea": 6,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Concepto', attribute 'ValorUnitario': [facet 'fractionDigits'] The value '15390.29999999999927240423858165740966796875' has more fractional digits than are allowed ('6')."
+  },
+  {
+   "linea": 6,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Concepto', attribute 'ValorUnitario': [facet 'pattern'] The value '15390.29999999999927240423858165740966796875' is not accepted by the pattern '[0-9]{1,18}(.[0-9]{1,6})?'."
+  }
+ ]
+}

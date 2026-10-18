@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 4,
+   "ruta": "/cfdi:Comprobante/cfdi:Emisor[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Emisor': This element is not expected. Expected is ( {http://www.sat.gob.mx/cfd/4}Receptor )."
+  }
+ ]
+}

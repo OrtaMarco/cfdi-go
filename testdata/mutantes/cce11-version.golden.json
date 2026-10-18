@@ -1,0 +1,147 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "EX",
+    "folio": "20",
+    "fecha": "2026-05-11T10:00:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "1250.50",
+    "moneda": "USD",
+    "tipo_cambio": "18.5000",
+    "total": "1250.50",
+    "tipo_de_comprobante": "I",
+    "exportacion": "02",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XEXX010101000",
+      "nombre": "CLIENTE EXTRANJERO DE PRUEBA",
+      "domicilio_fiscal_receptor": "42501",
+      "residencia_fiscal": "USA",
+      "num_reg_id_trib": "121585958",
+      "regimen_fiscal_receptor": "616",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "43211500",
+        "no_identificacion": "EXP-001",
+        "cantidad": "2",
+        "clave_unidad": "H87",
+        "descripcion": "Equipo de prueba",
+        "valor_unitario": "500.00",
+        "importe": "1000.00",
+        "objeto_imp": "01"
+      },
+      {
+        "clave_prod_serv": "56101500",
+        "no_identificacion": "EXP-002",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "descripcion": "Mueble de prueba",
+        "valor_unitario": "250.50",
+        "importe": "250.50",
+        "objeto_imp": "01"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555555504",
+      "fecha_timbrado": "2026-05-11T10:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "comercio_exterior": {
+      "version": "2.0",
+      "tipo_operacion": "2",
+      "clave_de_pedimento": "A1",
+      "certificado_origen": "0",
+      "incoterm": "FCA",
+      "observaciones": "Exportación de prueba",
+      "tipo_cambio_usd": "18.5000",
+      "total_usd": "1250.50",
+      "emisor": {
+        "domicilio": {
+          "calle": "Avenida de prueba",
+          "numero_exterior": "10",
+          "colonia": "0001",
+          "localidad": "01",
+          "municipio": "048",
+          "estado": "HID",
+          "pais": "MEX",
+          "codigo_postal": "42501"
+        }
+      },
+      "receptor": {
+        "num_reg_id_trib": "121585958",
+        "domicilio": {
+          "calle": "Main St",
+          "numero_exterior": "500",
+          "estado": "TX",
+          "pais": "USA",
+          "codigo_postal": "78040"
+        }
+      },
+      "destinatario": [
+        {
+          "num_reg_id_trib": "987654321",
+          "nombre": "DESTINATARIO DE PRUEBA",
+          "domicilio": [
+            {
+              "calle": "Warehouse Rd",
+              "estado": "TX",
+              "pais": "USA",
+              "codigo_postal": "78041"
+            },
+            {
+              "calle": "Second Rd",
+              "estado": "CA",
+              "pais": "USA",
+              "codigo_postal": "90001"
+            }
+          ]
+        }
+      ],
+      "mercancias": [
+        {
+          "no_identificacion": "EXP-001",
+          "fraccion_arancelaria": "9403600100",
+          "cantidad_aduana": "2",
+          "unidad_aduana": "06",
+          "valor_unitario_aduana": "500.00",
+          "valor_dolares": "1000.00",
+          "descripciones_especificas": [
+            {
+              "marca": "MARCA",
+              "modelo": "MODELO-1",
+              "numero_serie": "SERIE-0001"
+            }
+          ]
+        },
+        {
+          "no_identificacion": "EXP-002",
+          "fraccion_arancelaria": "9403600100",
+          "cantidad_aduana": "1",
+          "unidad_aduana": "06",
+          "valor_unitario_aduana": "250.50",
+          "valor_dolares": "250.50"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "COMPLEMENTO_VERSION",
+      "ruta": "/Comprobante/Complemento/ComercioExterior/@Version",
+      "mensaje": "versión \"2.0\" no esperada para {http://www.sat.gob.mx/ComercioExterior11}ComercioExterior",
+      "atributo": "Version"
+    }
+  ]
+}

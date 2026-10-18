@@ -1,0 +1,99 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "T",
+    "folio": "1000",
+    "fecha": "2024-06-12T02:20:01",
+    "forma_pago": "99",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "1250.30",
+    "moneda": "MXN",
+    "total": "1191.95",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "27200",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "IIA040805DZ4",
+      "nombre": "INDISTRIA ILUMINADORA DE ALMACENES",
+      "domicilio_fiscal_receptor": "33826",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1.00",
+        "clave_unidad": "E48",
+        "descripcion": "SERVICIOS DE FACTURACION",
+        "valor_unitario": "1250.30",
+        "importe": "1250.30",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1250.30",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "200.05"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "1250.30",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.100000",
+              "importe": "125.03"
+            },
+            {
+              "base": "1250.30",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.106667",
+              "importe": "133.37"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "258.40",
+      "total_impuestos_trasladados": "200.05",
+      "retenciones": [
+        {
+          "impuesto": "001",
+          "importe": "125.03"
+        },
+        {
+          "impuesto": "002",
+          "importe": "133.37"
+        }
+      ],
+      "traslados": [
+        {
+          "base": "1250.30",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "200.05"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "1E5A6E1B-9C1B-5319-BFED-123BD143A310",
+      "fecha_timbrado": "2024-06-12T02:20:02",
+      "rfc_prov_certif": "CVD110412TF6",
+      "no_certificado_sat": "30001000000500003456"
+    }
+  },
+  "advertencias": []
+}

@@ -1,0 +1,248 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "CP",
+    "folio": "31",
+    "fecha": "2026-04-06T07:00:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "5000.00",
+    "moneda": "MXN",
+    "total": "5800.00",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "domicilio_fiscal_receptor": "76028",
+      "regimen_fiscal_receptor": "605",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "78101802",
+        "cantidad": "1",
+        "clave_unidad": "E48",
+        "descripcion": "Flete de prueba",
+        "valor_unitario": "5000.00",
+        "importe": "5000.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "5000.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "800.00"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "800.00",
+      "traslados": [
+        {
+          "base": "5000.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "800.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555555503",
+      "fecha_timbrado": "2026-04-06T07:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "carta_porte": {
+      "version": "3.1",
+      "id_ccp": "CCC00001-0000-4000-8000-000000000031",
+      "transp_internac": "Sí",
+      "entrada_salida_merc": "Salida",
+      "pais_origen_destino": "USA",
+      "via_entrada_salida": "01",
+      "total_dist_rec": "230.75",
+      "registro_istmo": "Sí",
+      "ubicacion_polo_origen": "01",
+      "ubicacion_polo_destino": "02",
+      "regimenes_aduaneros": [
+        {
+          "regimen_aduanero": "EXD"
+        },
+        {
+          "regimen_aduanero": "ITR"
+        }
+      ],
+      "ubicaciones": [
+        {
+          "tipo_ubicacion": "Origen",
+          "id_ubicacion": "OR000001",
+          "rfc_remitente_destinatario": "EKU9003173C9",
+          "fecha_hora_salida_llegada": "2026-04-06T08:00:00",
+          "domicilio": {
+            "calle": "Calle de prueba",
+            "numero_exterior": "1",
+            "colonia": "0001",
+            "municipio": "048",
+            "estado": "HID",
+            "pais": "MEX",
+            "codigo_postal": "42501"
+          }
+        },
+        {
+          "tipo_ubicacion": "Destino",
+          "id_ubicacion": "DE000002",
+          "rfc_remitente_destinatario": "XOJI740919U48",
+          "fecha_hora_salida_llegada": "2026-04-06T11:00:00",
+          "distancia_recorrida": "150.50",
+          "domicilio": {
+            "estado": "QUE",
+            "pais": "MEX",
+            "codigo_postal": "76028"
+          }
+        },
+        {
+          "tipo_ubicacion": "Destino",
+          "id_ubicacion": "DE000003",
+          "rfc_remitente_destinatario": "XEXX010101000",
+          "nombre_remitente_destinatario": "DESTINATARIO EXTRANJERO DE PRUEBA",
+          "num_reg_id_trib": "987654321",
+          "residencia_fiscal": "USA",
+          "fecha_hora_salida_llegada": "2026-04-06T13:00:00",
+          "distancia_recorrida": "80.25",
+          "domicilio": {
+            "estado": "TX",
+            "pais": "USA",
+            "codigo_postal": "78040"
+          }
+        }
+      ],
+      "mercancias": {
+        "peso_bruto_total": "3000.000",
+        "unidad_peso": "KGM",
+        "num_total_mercancias": "2",
+        "mercancia": [
+          {
+            "bienes_transp": "31181701",
+            "descripcion": "Piezas de prueba",
+            "cantidad": "100",
+            "clave_unidad": "H87",
+            "peso_en_kg": "2000.000",
+            "valor_mercancia": "4000.00",
+            "moneda": "MXN",
+            "fraccion_arancelaria": "8708999999",
+            "documentacion_aduanera": [
+              {
+                "tipo_documento": "01",
+                "num_pedimento": "26  47  3807  6000031",
+                "rfc_impo": "EKU9003173C9"
+              }
+            ],
+            "cantidad_transporta": [
+              {
+                "cantidad": "60",
+                "id_origen": "OR000001",
+                "id_destino": "DE000002"
+              },
+              {
+                "cantidad": "40",
+                "id_origen": "OR000001",
+                "id_destino": "DE000003"
+              }
+            ]
+          },
+          {
+            "bienes_transp": "24112700",
+            "descripcion": "Tarimas de prueba",
+            "cantidad": "10",
+            "clave_unidad": "XPX",
+            "peso_en_kg": "1000.000",
+            "documentacion_aduanera": [
+              {
+                "tipo_documento": "02",
+                "ident_doc_aduanero": "DOC-0031"
+              }
+            ]
+          }
+        ],
+        "autotransporte": {
+          "perm_sct": "TPAF01",
+          "num_permiso_sct": "PERMISO31",
+          "identificacion_vehicular": {
+            "config_vehicular": "Z9",
+            "peso_bruto_vehicular": "12.00",
+            "placa_vm": "XYZ987",
+            "anio_modelo_vm": "2025"
+          },
+          "seguros": {
+            "asegura_resp_civil": "ASEGURADORA DE PRUEBA",
+            "poliza_resp_civil": "POL-31"
+          }
+        },
+        "transporte_maritimo": {
+          "tipo_embarcacion": "B01",
+          "matricula": "MAT0031",
+          "numero_omi": "IMO7654321",
+          "nacionalidad_embarc": "MEX",
+          "unidades_de_arq_bruto": "200.000",
+          "tipo_carga": "CGC",
+          "nombre_agente_naviero": "AGENTE DE PRUEBA",
+          "num_autorizacion_naviero": "SCT418/020/2016",
+          "contenedor": [
+            {
+              "matricula_contenedor": "XYZU7654321",
+              "tipo_contenedor": "CM002",
+              "remolques_ccp": [
+                {
+                  "sub_tipo_rem_ccp": "CTR004",
+                  "placa_ccp": "RCCP31"
+                },
+                {
+                  "sub_tipo_rem_ccp": "CTR005",
+                  "placa_ccp": "RCCP32"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "figura_transporte": [
+        {
+          "tipo_figura": "01",
+          "rfc_figura": "CACX7605101P8",
+          "num_licencia": "LIC000031",
+          "nombre_figura": "OPERADOR DE PRUEBA"
+        },
+        {
+          "tipo_figura": "02",
+          "rfc_figura": "XIQB891116QE4",
+          "nombre_figura": "PROPIETARIO DE PRUEBA",
+          "partes_transporte": [
+            {
+              "parte_transporte": "PT01"
+            }
+          ],
+          "domicilio": {
+            "estado": "HID",
+            "pais": "MEX",
+            "codigo_postal": "42501"
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

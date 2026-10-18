@@ -1,0 +1,87 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "fecha": "2021-07-10T14:23:05",
+    "forma_pago": "28",
+    "no_certificado": "00001000000123456789",
+    "sub_total": "810.33",
+    "moneda": "MXN",
+    "total": "939.98",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "72420",
+    "emisor": {
+      "rfc": "ABC123456ABC",
+      "nombre": "EMISOR DE PRUEBA",
+      "regimen_fiscal": "612"
+    },
+    "receptor": {
+      "rfc": "DES123456ABC",
+      "nombre": "DESARROLLOS",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "60106400",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "descripcion": "MALLA PARA DESOLDAR",
+        "valor_unitario": "24.13",
+        "importe": "24.13",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "24.13",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "3.86"
+            }
+          ]
+        }
+      },
+      {
+        "clave_prod_serv": "60106400",
+        "cantidad": "4",
+        "clave_unidad": "H87",
+        "descripcion": "ARDUINO PRO MICRO ATMEGA32U4",
+        "valor_unitario": "196.55",
+        "importe": "786.20",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "786.20",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "125.79"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "129.65",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "129.65"
+        }
+      ]
+    },
+    "cfdi_registro_fiscal": {
+      "version": "1.0",
+      "folio": "2107200000004798"
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

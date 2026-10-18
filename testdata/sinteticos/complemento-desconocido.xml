@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:Comprobante xmlns:x="http://www.sat.gob.mx/cfd/4" xmlns:ec="urn:ejemplo:concepto" xmlns:eg="urn:ejemplo:comprobante" Version="4.0" Folio="300" Fecha="2026-05-05T13:00:00" FormaPago="01" NoCertificado="30001000000500003416" SubTotal="2000.00" Moneda="MXN" Total="2000.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="42501">
+  <x:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <x:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" DomicilioFiscalReceptor="76028" RegimenFiscalReceptor="605" UsoCFDI="D10"/>
+  <x:Conceptos>
+    <x:Concepto ClaveProdServ="86121500" Cantidad="1" ClaveUnidad="E48" Descripcion="Colegiatura de prueba" ValorUnitario="2000.00" Importe="2000.00" ObjetoImp="02">
+      <x:Impuestos>
+        <x:Traslados>
+          <x:Traslado Base="2000.00" Impuesto="002" TipoFactor="Exento"/>
+        </x:Traslados>
+      </x:Impuestos>
+      <x:ComplementoConcepto>
+        <ec:DeConcepto Version="1.0" Dato="ALUMNO DE PRUEBA"/>
+      </x:ComplementoConcepto>
+    </x:Concepto>
+  </x:Conceptos>
+  <x:Impuestos>
+    <x:Traslados>
+      <x:Traslado Base="2000.00" Impuesto="002" TipoFactor="Exento"/>
+    </x:Traslados>
+  </x:Impuestos>
+  <x:Complemento>
+    <eg:DeComprobante Version="1.0" Dato="Leyenda de prueba"/>
+    <t:TimbreFiscalDigital xmlns:t="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" FechaTimbrado="2026-05-05T13:01:00" RfcProvCertif="AAA010101AAA" NoCertificadoSAT="30001000000500003456"/>
+  </x:Complemento>
+</x:Comprobante>

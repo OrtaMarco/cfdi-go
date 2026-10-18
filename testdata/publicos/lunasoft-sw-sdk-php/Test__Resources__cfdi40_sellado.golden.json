@@ -1,0 +1,76 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "Serie",
+    "folio": "eee4bd70-5fd0-4af5-9d24-93cea7b661b4",
+    "fecha": "2023-10-26T16:04:24",
+    "forma_pago": "99",
+    "no_certificado": "30001000000500003416",
+    "condiciones_de_pago": "CondicionesDePago",
+    "sub_total": "200",
+    "descuento": "1",
+    "moneda": "MXN",
+    "tipo_cambio": "1",
+    "total": "199.16",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "20000",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "URE180429TM6",
+      "nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+      "domicilio_fiscal_receptor": "86991",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "G01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "50211503",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "unidad": "Pieza",
+        "descripcion": "Producto",
+        "valor_unitario": "200.00",
+        "importe": "200.00",
+        "descuento": "1",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "0.16"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "0.16",
+      "traslados": [
+        {
+          "base": "1",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "0.16"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

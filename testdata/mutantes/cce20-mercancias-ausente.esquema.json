@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 10,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cce20:ComercioExterior",
+   "mensaje": "Element '{http://www.sat.gob.mx/ComercioExterior20}ComercioExterior': Missing child element(s). Expected is one of ( {http://www.sat.gob.mx/ComercioExterior20}Destinatario, {http://www.sat.gob.mx/ComercioExterior20}Mercancias )."
+  }
+ ]
+}

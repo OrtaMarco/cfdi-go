@@ -1,0 +1,49 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "2.0",
+    "no_certificado": "30001000000500003416",
+    "fecha_exp": "2026-02-01T09:00:00",
+    "lugar_exp_retenc": "42501",
+    "cve_retenc": "21",
+    "emisor": {
+      "rfc_e": "EKU9003173C9",
+      "nom_den_raz_soc_e": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal_e": "601"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional",
+      "nacional": {
+        "rfc_r": "XAXX010101000",
+        "nom_den_raz_soc_r": "PUBLICO EN GENERAL",
+        "domicilio_fiscal_r": "42501"
+      }
+    },
+    "periodo": {
+      "mes_ini": "01",
+      "mes_fin": "12",
+      "ejercicio": "2025"
+    },
+    "totales": {
+      "monto_tot_operacion": "500.00",
+      "monto_tot_grav": "0",
+      "monto_tot_exent": "500.00",
+      "monto_tot_ret": "0"
+    },
+    "planesderetiro": {
+      "version": "1.0",
+      "sistema_financ": "SI",
+      "mont_int_reales_deveng_anioo_inm_ant": "5.00",
+      "hubo_retiros_anio_inm_ant_per": "NO",
+      "hubo_retiros_anio_inm_ant": "NO"
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Retenciones/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

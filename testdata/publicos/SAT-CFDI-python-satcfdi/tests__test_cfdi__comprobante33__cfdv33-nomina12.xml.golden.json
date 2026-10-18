@@ -1,0 +1,221 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "fecha": "2017-05-01T01:23:59",
+    "forma_pago": "02",
+    "no_certificado": "40001000000300000337",
+    "sub_total": "1000",
+    "moneda": "MXN",
+    "total": "1500",
+    "tipo_de_comprobante": "I",
+    "lugar_expedicion": "45079",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1.5",
+        "clave_unidad": "C81",
+        "descripcion": "ACERO",
+        "valor_unitario": "1500000",
+        "importe": "2250000"
+      }
+    ],
+    "impuestos": {},
+    "nomina": [
+      {
+        "version": "1.2",
+        "tipo_nomina": "O",
+        "fecha_pago": "2016-10-15",
+        "fecha_inicial_pago": "2016-10-01",
+        "fecha_final_pago": "2016-10-15",
+        "num_dias_pagados": "15",
+        "total_percepciones": "123.45",
+        "total_deducciones": "123.45",
+        "total_otros_pagos": "123.45",
+        "emisor": {
+          "curp": "VADA800927HSRSRL05",
+          "registro_patronal": "E23-12345-12-1",
+          "rfc_patron_origen": "AAA010101AAA",
+          "entidad_sncf": {
+            "origen_recurso": "IP",
+            "monto_recurso_propio": "123.45"
+          }
+        },
+        "receptor": {
+          "curp": "VADA800927HSRSRL05",
+          "num_seguridad_social": "123456789012345",
+          "fecha_inicio_rel_laboral": "2013-04-11",
+          "antiguedad": "P3Y2M23D",
+          "tipo_contrato": "01",
+          "sindicalizado": "Sí",
+          "tipo_jornada": "02",
+          "tipo_regimen": "03",
+          "num_empleado": "001",
+          "departamento": "001",
+          "puesto": "Programador",
+          "riesgo_puesto": "3",
+          "periodicidad_pago": "04",
+          "banco": "002",
+          "cuenta_bancaria": "1234567890",
+          "salario_base_cot_apor": "123.45",
+          "salario_diario_integrado": "123.45",
+          "clave_ent_fed": "AGU",
+          "sub_contratacion": [
+            {
+              "rfc_labora": "AAA010101AAA",
+              "porcentaje_tiempo": "23.45"
+            },
+            {
+              "rfc_labora": "BBB010101AAA",
+              "porcentaje_tiempo": "13.45"
+            }
+          ]
+        },
+        "percepciones": {
+          "total_sueldos": "123.45",
+          "total_separacion_indemnizacion": "123.45",
+          "total_jubilacion_pension_retiro": "123.45",
+          "total_gravado": "123.45",
+          "total_exento": "123.45",
+          "percepcion": [
+            {
+              "tipo_percepcion": "001",
+              "clave": "AAA",
+              "concepto": "Sueldo Regular",
+              "importe_gravado": "89.00",
+              "importe_exento": "90.00",
+              "acciones_o_titulos": {
+                "valor_mercado": "12345.67",
+                "precio_al_otorgarse": "123.45"
+              },
+              "horas_extra": [
+                {
+                  "dias": "2",
+                  "tipo_horas": "01",
+                  "horas_extra": "8",
+                  "importe_pagado": "228.45"
+                },
+                {
+                  "dias": "2",
+                  "tipo_horas": "02",
+                  "horas_extra": "8",
+                  "importe_pagado": "228.45"
+                }
+              ]
+            },
+            {
+              "tipo_percepcion": "005",
+              "clave": "BBB",
+              "concepto": "Sueldo Regular",
+              "importe_gravado": "89.00",
+              "importe_exento": "90.00",
+              "horas_extra": [
+                {
+                  "dias": "2",
+                  "tipo_horas": "01",
+                  "horas_extra": "8",
+                  "importe_pagado": "288.45"
+                },
+                {
+                  "dias": "2",
+                  "tipo_horas": "03",
+                  "horas_extra": "8",
+                  "importe_pagado": "288.45"
+                }
+              ]
+            }
+          ],
+          "jubilacion_pension_retiro": {
+            "total_una_exhibicion": "223.45",
+            "total_parcialidad": "223.45",
+            "monto_diario": "223.45",
+            "ingreso_acumulable": "223.45",
+            "ingreso_no_acumulable": "223.45"
+          },
+          "separacion_indemnizacion": {
+            "total_pagado": "323.45",
+            "num_anios_servicio": "7",
+            "ultimo_sueldo_mens_ord": "323.45",
+            "ingreso_acumulable": "323.45",
+            "ingreso_no_acumulable": "323.45"
+          }
+        },
+        "deducciones": {
+          "total_otras_deducciones": "123.45",
+          "total_impuestos_retenidos": "123.45",
+          "deduccion": [
+            {
+              "tipo_deduccion": "001",
+              "clave": "XXX",
+              "concepto": "Deduccion Semanal",
+              "importe": "10.00"
+            },
+            {
+              "tipo_deduccion": "100",
+              "clave": "YYY",
+              "concepto": "Deduccion Semanal",
+              "importe": "10.00"
+            }
+          ]
+        },
+        "otros_pagos": [
+          {
+            "tipo_otro_pago": "001",
+            "clave": "003",
+            "concepto": "Otro pago 111",
+            "importe": "1234.56",
+            "subsidio_al_empleo": {
+              "subsidio_causado": "1234.56"
+            },
+            "compensacion_saldos_a_favor": {
+              "saldo_a_favor": "12345.67",
+              "anio": "2016",
+              "remanente_sal_fav": "1234.56"
+            }
+          },
+          {
+            "tipo_otro_pago": "002",
+            "clave": "003",
+            "concepto": "Otro pago 222",
+            "importe": "1234.56",
+            "subsidio_al_empleo": {
+              "subsidio_causado": "1234.56"
+            },
+            "compensacion_saldos_a_favor": {
+              "saldo_a_favor": "123.45",
+              "anio": "2016",
+              "remanente_sal_fav": "123.45"
+            }
+          }
+        ],
+        "incapacidades": [
+          {
+            "dias_incapacidad": "1",
+            "tipo_incapacidad": "01",
+            "importe_monetario": "22.45"
+          },
+          {
+            "dias_incapacidad": "2",
+            "tipo_incapacidad": "02",
+            "importe_monetario": "22.45"
+          }
+        ]
+      }
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

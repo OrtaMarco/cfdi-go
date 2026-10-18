@@ -1,0 +1,208 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "CP",
+    "folio": "30",
+    "fecha": "2026-03-02T08:00:00",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "T",
+    "exportacion": "01",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "domicilio_fiscal_receptor": "42501",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "31181701",
+        "cantidad": "10",
+        "clave_unidad": "H87",
+        "descripcion": "Mercancía de prueba",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555555502",
+      "fecha_timbrado": "2026-03-02T08:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "carta_porte": {
+      "version": "3.0",
+      "id_ccp": "CCC00001-0000-4000-8000-000000000030",
+      "transp_internac": "Sí",
+      "regimen_aduanero": "IMD",
+      "entrada_salida_merc": "Entrada",
+      "pais_origen_destino": "USA",
+      "via_entrada_salida": "01",
+      "total_dist_rec": "310.40",
+      "ubicaciones": [
+        {
+          "tipo_ubicacion": "Origen",
+          "id_ubicacion": "OR000001",
+          "rfc_remitente_destinatario": "XEXX010101000",
+          "nombre_remitente_destinatario": "REMITENTE EXTRANJERO DE PRUEBA",
+          "num_reg_id_trib": "123456789",
+          "residencia_fiscal": "USA",
+          "fecha_hora_salida_llegada": "2026-03-02T09:00:00",
+          "domicilio": {
+            "calle": "Calle de prueba",
+            "numero_exterior": "100",
+            "estado": "TX",
+            "pais": "USA",
+            "codigo_postal": "78040"
+          }
+        },
+        {
+          "tipo_ubicacion": "Destino",
+          "id_ubicacion": "DE000002",
+          "rfc_remitente_destinatario": "EKU9003173C9",
+          "fecha_hora_salida_llegada": "2026-03-02T15:30:00",
+          "distancia_recorrida": "310.40",
+          "domicilio": {
+            "calle": "Avenida de prueba",
+            "municipio": "048",
+            "estado": "HID",
+            "pais": "MEX",
+            "codigo_postal": "42501"
+          }
+        }
+      ],
+      "mercancias": {
+        "peso_bruto_total": "1250.500",
+        "unidad_peso": "KGM",
+        "peso_neto_total": "1200.000",
+        "num_total_mercancias": "1",
+        "logistica_inversa_recoleccion_devolucion": "Sí",
+        "mercancia": [
+          {
+            "bienes_transp": "51101500",
+            "descripcion": "Medicamento de prueba",
+            "cantidad": "10",
+            "clave_unidad": "H87",
+            "material_peligroso": "No",
+            "sector_cofepris": "01",
+            "nombre_ingrediente_activo": "INGREDIENTE DE PRUEBA",
+            "denominacion_generica_prod": "GENERICO",
+            "denominacion_distintiva_prod": "DISTINTIVO",
+            "fabricante": "FABRICANTE DE PRUEBA",
+            "fecha_caducidad": "2027-12-31",
+            "lote_medicamento": "LOTE01",
+            "forma_farmaceutica": "01",
+            "condiciones_esp_transp": "01",
+            "registro_sanitario_folio_autorizacion": "REG0001",
+            "peso_en_kg": "1250.500",
+            "valor_mercancia": "98765.43",
+            "moneda": "USD",
+            "fraccion_arancelaria": "3004909999",
+            "uuid_comercio_ext": "11111111-2222-4333-8444-555555555530",
+            "tipo_materia": "05",
+            "descripcion_materia": "Producto terminado",
+            "documentacion_aduanera": [
+              {
+                "tipo_documento": "01",
+                "num_pedimento": "26  47  3807  6000030",
+                "rfc_impo": "EKU9003173C9"
+              }
+            ],
+            "guias_identificacion": [
+              {
+                "numero_guia_identificacion": "GUIA000030",
+                "descrip_guia_identificacion": "Guía de prueba",
+                "peso_guia_identificacion": "1250.500"
+              }
+            ],
+            "cantidad_transporta": [
+              {
+                "cantidad": "10",
+                "id_origen": "OR000001",
+                "id_destino": "DE000002",
+                "cves_transporte": "01"
+              }
+            ],
+            "detalle_mercancia": {
+              "unidad_peso_merc": "KGM",
+              "peso_bruto": "1250.500",
+              "peso_neto": "1200.000",
+              "peso_tara": "50.500",
+              "num_piezas": "10"
+            }
+          }
+        ],
+        "autotransporte": {
+          "perm_sct": "TPAF01",
+          "num_permiso_sct": "PERMISO30",
+          "identificacion_vehicular": {
+            "config_vehicular": "Z9",
+            "peso_bruto_vehicular": "40.50",
+            "placa_vm": "ABC1234",
+            "anio_modelo_vm": "2024"
+          },
+          "seguros": {
+            "asegura_resp_civil": "ASEGURADORA DE PRUEBA",
+            "poliza_resp_civil": "POL-30",
+            "prima_seguro": "1500.00"
+          },
+          "remolques": [
+            {
+              "sub_tipo_rem": "CTR004",
+              "placa": "REM0030"
+            }
+          ]
+        },
+        "transporte_maritimo": {
+          "tipo_embarcacion": "B01",
+          "matricula": "MAT0030",
+          "numero_omi": "IMO1234567",
+          "nacionalidad_embarc": "MEX",
+          "unidades_de_arq_bruto": "100.000",
+          "tipo_carga": "CGS",
+          "puntal": "5.25",
+          "nombre_agente_naviero": "AGENTE DE PRUEBA",
+          "num_autorizacion_naviero": "SCT418/020/2016",
+          "permiso_temp_navegacion": "PTN0030",
+          "contenedor": [
+            {
+              "matricula_contenedor": "ABCU1234567",
+              "tipo_contenedor": "CM001",
+              "num_precinto": "PREC30",
+              "id_ccp_relacionado": "CCC00001-0000-4000-8000-000000000031",
+              "placa_vmccp": "CCP3001",
+              "fecha_certificacion_ccp": "2026-03-01T12:00:00"
+            }
+          ],
+          "remolques_ccp": [
+            {
+              "sub_tipo_rem_ccp": "CTR004",
+              "placa_ccp": "RCCP30"
+            }
+          ]
+        }
+      },
+      "figura_transporte": [
+        {
+          "tipo_figura": "01",
+          "rfc_figura": "CACX7605101P8",
+          "num_licencia": "LIC000030",
+          "nombre_figura": "OPERADOR DE PRUEBA"
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

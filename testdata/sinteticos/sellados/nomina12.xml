@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:nomina12="http://www.sat.gob.mx/nomina12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="4.0" Serie="N" Folio="2026-01" Fecha="2026-01-15T08:00:00" Sello="sqnSMpLfH/uh4s1LyqRUmRoG3sVyh80axA4rfoQXczXf5YJJT4o16d6+3yhFKqLJESwAi0UUdSKVBJdHhP4hDdn5JKNnNkAtVtOyfT9klYkKtmoajFEgBmfcNaaTbMJg7BkzE4V5Mdv/D73ZPNwZnQff9kydW6qzjG4fH93KyuXDdM7wt+s5+iciEZZUCDZzdGhVef+EsMvo4Yx/zh0yCPacH4yKs0jP0b6leDPMnc4dK3fxdu+f7C+M1j01no4ByC5ozJTNJcNI32j7IcQ7laU9N/WS7SK82x/H4SEPSnjYNgKTB7mGg61CkzEIfdEShTvhwVZ0btwWeWsOVygI6Q==" NoCertificado="30001000000500003416" Certificado="MIIFsDCCA5igAwIBAgIUMzAwMDEwMDAwMDA1MDAwMDM0MTYwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWxpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMjMwNTE4MTE0MzUxWhcNMjcwNTE4MTE0MzUxWjCB1zEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gVkFEQTgwMDkyN0RKMzEeMBwGA1UEBRMVIC8gVkFEQTgwMDkyN0hTUlNSTDA1MRMwEQYDVQQLEwpTdWN1cnNhbCAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtmecO6n2GS0zL025gbHGQVxznPDICoXzR2uUngz4DqxVUC/w9cE6FxSiXm2ap8Gcjg7wmcZfm85EBaxCx/0J2u5CqnhzIoGCdhBPuhWQnIh5TLgj/X6uNquwZkKChbNe9aeFirU/JbyN7Egia9oKH9KZUsodiM/pWAH00PCtoKJ9OBcSHMq8Rqa3KKoBcfkg1ZrgueffwRLws9yOcRWLb02sDOPzGIm/jEFicVYt2Hw1qdRE5xmTZ7AGG0UHs+unkGjpCVeJ+BEBn0JPLWVvDKHZAQMj6s5Bku35+d/MyATkpOPsGT/VTnsouxekDfikJD1f7A1ZpJbqDpkJnss3vQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAFaUgj5PqgvJigNMgtrdXZnbPfVBbukAbW4OGnUhNrA7SRAAfv2BSGk16PI0nBOr7qF2mItmBnjgEwk+DTv8Zr7w5qp7vleC6dIsZFNJoa6ZndrE/f7KO1CYruLXr5gwEkIyGfJ9NwyIagvHHMszzyHiSZIA850fWtbqtythpAliJ2jF35M5pNS+YTkRB+T6L/c6m00ymN3q9lT1rB03YywxrLreRSFZOSrbwWfg34EJbHfbFXpCSVYdJRfiVdvHnewN0r5fUlPtR9stQHyuqewzdkyb5jTTw02D2cUfL57vlPStBj7SEi3uOWvLrsiDnnCIxRMYJ2UA2ktDKHk+zWnsDmaeleSzonv2CHW42yXYPCvWi88oE1DJNYLNkIjua7MxAnkNZbScNw01A6zbLsZ3y8G6eEYnxSTRfwjd8EP4kdiHNJftm7Z4iRU7HOVh79/lRWB+gd171s3d/mI9kte3MRy6V8MMEMCAnMboGpaooYwgAmwclI2XZCczNWXfhaWe0ZS5PmytD/GDpXzkX0oEgY9K/uYo5V77NdZbGAjmyi8cE2B2ogvyaN2XfIInrZPgEffJ4AB7kFA2mwesdLOCh0BLD9itmCve3A1FGR4+stO2ANUoiI3w3Tv2yQSg4bjeDlJ08lXaaFCLW2peEXMXjQUk7fmpb5MNuOUTW6BE=" SubTotal="5610.00" Descuento="575.50" Moneda="MXN" Total="5034.50" TipoDeComprobante="N" Exportacion="01" MetodoPago="PUE" LugarExpedicion="76000">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" DomicilioFiscalReceptor="76028" RegimenFiscalReceptor="605" UsoCFDI="CN01"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="84111505" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago de nómina" ValorUnitario="5610.00" Importe="5610.00" Descuento="575.50" ObjetoImp="01"/>
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <nomina12:Nomina Version="1.2" TipoNomina="O" FechaPago="2026-01-15" FechaInicialPago="2026-01-01" FechaFinalPago="2026-01-15" NumDiasPagados="15.000" TotalPercepciones="5600.00" TotalDeducciones="575.50" TotalOtrosPagos="10.00">
+      <nomina12:Emisor RegistroPatronal="Z0000001234"/>
+      <nomina12:Receptor Curp="XEXX010101HNEXXXA4" NumSeguridadSocial="00000000000" FechaInicioRelLaboral="2020-01-01" Antigüedad="P315W" TipoContrato="01" Sindicalizado="No" TipoJornada="01" TipoRegimen="02" NumEmpleado="E-001" Departamento="Pruebas" Puesto="Analista" RiesgoPuesto="1" PeriodicidadPago="04" SalarioBaseCotApor="400.00" SalarioDiarioIntegrado="380.50" ClaveEntFed="QUE"/>
+      <nomina12:Percepciones TotalSueldos="5600.00" TotalGravado="5300.00" TotalExento="300.00">
+        <nomina12:Percepcion TipoPercepcion="001" Clave="P001" Concepto="Sueldo" ImporteGravado="5000.00" ImporteExento="0.00"/>
+        <nomina12:Percepcion TipoPercepcion="019" Clave="P019" Concepto="Horas extra" ImporteGravado="300.00" ImporteExento="300.00">
+          <nomina12:HorasExtra Dias="2" TipoHoras="01" HorasExtra="4" ImportePagado="600.00"/>
+        </nomina12:Percepcion>
+      </nomina12:Percepciones>
+      <nomina12:Deducciones TotalOtrasDeducciones="125.50" TotalImpuestosRetenidos="450.00">
+        <nomina12:Deduccion TipoDeduccion="002" Clave="D002" Concepto="ISR" Importe="450.00"/>
+        <nomina12:Deduccion TipoDeduccion="001" Clave="D001" Concepto="Seguridad social" Importe="125.50"/>
+      </nomina12:Deducciones>
+      <nomina12:OtrosPagos>
+        <nomina12:OtroPago TipoOtroPago="002" Clave="O002" Concepto="Subsidio para el empleo" Importe="10.00">
+          <nomina12:SubsidioAlEmpleo SubsidioCausado="10.00"/>
+        </nomina12:OtroPago>
+      </nomina12:OtrosPagos>
+      <nomina12:Incapacidades>
+        <nomina12:Incapacidad DiasIncapacidad="1" TipoIncapacidad="02"/>
+      </nomina12:Incapacidades>
+    </nomina12:Nomina>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="88888888-9999-AAAA-BBBB-CCCCCCCCCCCC" FechaTimbrado="2026-01-15T08:01:00" RfcProvCertif="AAA010101AAA" SelloCFD="sqnSMpLfH/uh4s1LyqRUmRoG3sVyh80axA4rfoQXczXf5YJJT4o16d6+3yhFKqLJESwAi0UUdSKVBJdHhP4hDdn5JKNnNkAtVtOyfT9klYkKtmoajFEgBmfcNaaTbMJg7BkzE4V5Mdv/D73ZPNwZnQff9kydW6qzjG4fH93KyuXDdM7wt+s5+iciEZZUCDZzdGhVef+EsMvo4Yx/zh0yCPacH4yKs0jP0b6leDPMnc4dK3fxdu+f7C+M1j01no4ByC5ozJTNJcNI32j7IcQ7laU9N/WS7SK82x/H4SEPSnjYNgKTB7mGg61CkzEIfdEShTvhwVZ0btwWeWsOVygI6Q==" NoCertificadoSAT="30001000000300023708" SelloSAT="Xyo2Yf3imzae9DrlQIzuiJ8qaVIf8dn8v5KdeHEqCmDN1QlyYpOegC69JpDfA7yY58hELruBUdV6fyiQyBZD+Cu/XfHZlgZrXN81Ep7Fl9i5EYLBue2YbZjTEn2cYaXRgsVShs+OWlSYzTypCDSbrMI74QBUguOawy1b5Tt4ULuRSm24YSXH53SwvVQ4JaJJKRjWZ1ialcuKoLrDMeebzfJz4n7uU++f4iPShmN6EagCCTQZgZRPsH8eETiW6BS9bJux6P55fprAU4u0cZLTNY8M3if3uqQ6/LLbtjgNhdpYgnnOqDDja9PLyZ2Nb2tQZDQInDZl0EeumEF77YiAHA=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

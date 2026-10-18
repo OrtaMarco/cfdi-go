@@ -1,0 +1,15 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'NoCertificado': [facet 'length'] The value '3000100000050000341' has a length of '19'; this differs from the allowed length of '20'."
+  },
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'NoCertificado': [facet 'pattern'] The value '3000100000050000341' is not accepted by the pattern '[0-9]{20}'."
+  }
+ ]
+}

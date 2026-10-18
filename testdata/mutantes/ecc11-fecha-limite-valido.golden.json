@@ -1,0 +1,116 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "EC",
+    "folio": "11",
+    "fecha": "2018-06-30T23:00:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000400002495",
+    "sub_total": "25.00",
+    "moneda": "MXN",
+    "total": "29.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84141602",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Comisión por servicio de monedero",
+        "valor_unitario": "25.00",
+        "importe": "25.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "25.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "4.00"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "4.00",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "4.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555551011",
+      "fecha_timbrado": "2018-06-30T23:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000400002495"
+    },
+    "estado_de_cuenta_combustible": {
+      "version": "1.1",
+      "tipo_operacion": "Tarjeta",
+      "numero_de_cuenta": "CUENTA-0011",
+      "sub_total": "1010.00",
+      "total": "1171.60",
+      "conceptos": [
+        {
+          "identificador": "TX-0001",
+          "fecha": "2015-01-01T00:00:00",
+          "rfc": "XIQB891116QE4",
+          "clave_estacion": "EST0001",
+          "tar": "617",
+          "cantidad": "40.000",
+          "no_identificacion": "32011",
+          "unidad": "Litro",
+          "nombre_combustible": "Gasolina de prueba",
+          "folio_operacion": "F-0001",
+          "valor_unitario": "20.000",
+          "importe": "800.00",
+          "traslados": [
+            {
+              "impuesto": "IVA",
+              "tasa_o_cuota": "0.160000",
+              "importe": "128.00"
+            }
+          ]
+        },
+        {
+          "identificador": "TX-0002",
+          "fecha": "2018-06-17T18:40:00",
+          "rfc": "XIQB891116QE4",
+          "clave_estacion": "EST0002",
+          "cantidad": "10.500",
+          "no_identificacion": "34006",
+          "nombre_combustible": "Diésel de prueba",
+          "folio_operacion": "F-0002",
+          "valor_unitario": "20.000",
+          "importe": "210.00",
+          "traslados": [
+            {
+              "impuesto": "IVA",
+              "tasa_o_cuota": "0.160000",
+              "importe": "33.60"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

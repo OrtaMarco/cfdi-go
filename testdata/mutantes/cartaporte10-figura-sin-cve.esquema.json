@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 44,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cartaporte:CartaPorte/cartaporte:FiguraTransporte",
+   "mensaje": "Element '{http://www.sat.gob.mx/CartaPorte}FiguraTransporte': The attribute 'CveTransporte' is required but missing."
+  }
+ ]
+}

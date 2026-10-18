@@ -1,0 +1,144 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "2026",
+    "folio": "1",
+    "fecha": "2026-01-21T16:42:35",
+    "no_certificado": "00001000000000000000",
+    "sub_total": "15263.63",
+    "descuento": "2689.23",
+    "moneda": "MXN",
+    "total": "12574.40",
+    "tipo_de_comprobante": "N",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "06700",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "EMPRESA DEMO PRUEBAS",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "nombre": "EMPLEADO DEMO PRUEBAS",
+      "domicilio_fiscal_receptor": "06240",
+      "regimen_fiscal_receptor": "605",
+      "uso_cfdi": "CN01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111505",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago de nómina",
+        "valor_unitario": "15263.63",
+        "importe": "15263.63",
+        "descuento": "2689.23",
+        "objeto_imp": "01"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "22222222-2222-2222-2222-222222222222",
+      "fecha_timbrado": "2026-01-21T16:42:49",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "00001000000000000000"
+    },
+    "nomina": [
+      {
+        "version": "1.2",
+        "tipo_nomina": "O",
+        "fecha_pago": "2026-01-14",
+        "fecha_inicial_pago": "2026-01-01",
+        "fecha_final_pago": "2026-01-15",
+        "num_dias_pagados": "15.000",
+        "total_percepciones": "15000.00",
+        "total_deducciones": "2689.23",
+        "total_otros_pagos": "263.63",
+        "emisor": {
+          "registro_patronal": "A0000000000"
+        },
+        "receptor": {
+          "curp": "XAXX010101HDFXXX01",
+          "num_seguridad_social": "00000000000",
+          "fecha_inicio_rel_laboral": "2024-10-28",
+          "antiguedad": "P63W",
+          "tipo_contrato": "01",
+          "sindicalizado": "No",
+          "tipo_jornada": "01",
+          "tipo_regimen": "02",
+          "num_empleado": "0001",
+          "departamento": "Ninguno",
+          "puesto": "Ninguno",
+          "riesgo_puesto": "1",
+          "periodicidad_pago": "04",
+          "salario_base_cot_apor": "1050.68",
+          "salario_diario_integrado": "1000.00",
+          "clave_ent_fed": "CMX"
+        },
+        "percepciones": {
+          "total_sueldos": "15000.00",
+          "total_gravado": "15000.00",
+          "total_exento": "0.00",
+          "percepcion": [
+            {
+              "tipo_percepcion": "001",
+              "clave": "001",
+              "concepto": "Sueldo",
+              "importe_gravado": "15000.00",
+              "importe_exento": "0.00"
+            }
+          ]
+        },
+        "deducciones": {
+          "total_otras_deducciones": "416.98",
+          "total_impuestos_retenidos": "2272.25",
+          "deduccion": [
+            {
+              "tipo_deduccion": "001",
+              "clave": "052",
+              "concepto": "I.M.S.S.",
+              "importe": "416.98"
+            },
+            {
+              "tipo_deduccion": "002",
+              "clave": "045",
+              "concepto": "I.S.R. mes",
+              "importe": "2272.25"
+            }
+          ]
+        },
+        "otros_pagos": [
+          {
+            "tipo_otro_pago": "999",
+            "clave": "099",
+            "concepto": "Ajuste al neto",
+            "importe": "0.13"
+          },
+          {
+            "tipo_otro_pago": "002",
+            "clave": "035",
+            "concepto": "Subs al Empleo mes",
+            "importe": "0.00",
+            "subsidio_al_empleo": {
+              "subsidio_causado": "0.00"
+            }
+          },
+          {
+            "tipo_otro_pago": "004",
+            "clave": "055",
+            "concepto": "I.S.R. a compensar",
+            "importe": "263.50",
+            "compensacion_saldos_a_favor": {
+              "saldo_a_favor": "263.50",
+              "anio": "2025",
+              "remanente_sal_fav": "0.00"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "advertencias": []
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 3,
+   "ruta": "/cfdi:Comprobante/cfdi:Emisor",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Emisor', attribute 'Nombre': [facet 'pattern'] The value 'ESCUELA | URGATE' is not accepted by the pattern '[^|]{1,300}'."
+  }
+ ]
+}

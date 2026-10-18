@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 33,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cartaporte:CartaPorte/cartaporte:Mercancias/cartaporte:Mercancia",
+   "mensaje": "Element '{http://www.sat.gob.mx/CartaPorte}Mercancia': The attribute 'PesoEnKg' is required but missing."
+  }
+ ]
+}

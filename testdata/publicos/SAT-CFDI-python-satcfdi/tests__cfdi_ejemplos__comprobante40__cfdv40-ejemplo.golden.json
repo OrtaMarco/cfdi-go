@@ -1,0 +1,210 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "A",
+    "folio": "123ABC",
+    "fecha": "2021-12-07T23:59:59",
+    "forma_pago": "99",
+    "no_certificado": "30001000000300023708",
+    "condiciones_de_pago": "CONDICIONES",
+    "sub_total": "1000",
+    "descuento": "0.00",
+    "moneda": "MXN",
+    "tipo_cambio": "1.0",
+    "total": "1500",
+    "tipo_de_comprobante": "P",
+    "exportacion": "03",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "99999",
+    "confirmacion": "A1234",
+    "informacion_global": {
+      "periodicidad": "05",
+      "meses": "18",
+      "anio": "2021"
+    },
+    "cfdi_relacionados": [
+      {
+        "tipo_relacion": "09",
+        "cfdi_relacionado": [
+          {
+            "uuid": "ED1752FE-E865-4FF2-BFE1-0F552E770DC9"
+          }
+        ]
+      }
+    ],
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "Esta es una demostración",
+      "regimen_fiscal": "630",
+      "fac_atr_adquirente": "0123456789"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "nombre": "Juanito Bananas De la Sierra",
+      "domicilio_fiscal_receptor": "99999",
+      "residencia_fiscal": "MEX",
+      "num_reg_id_trib": "0000000000000",
+      "regimen_fiscal_receptor": "630",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "no_identificacion": "00001",
+        "cantidad": "1.5",
+        "clave_unidad": "C81",
+        "unidad": "TONELADA",
+        "descripcion": "ACERO",
+        "valor_unitario": "1500000",
+        "importe": "2250000",
+        "objeto_imp": "01",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "2250000",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "1.600000",
+              "importe": "360000"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "2250000",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.300000",
+              "importe": "247500"
+            }
+          ]
+        },
+        "cuenta_predial": [
+          {
+            "numero": "51888"
+          }
+        ]
+      },
+      {
+        "clave_prod_serv": "95141904",
+        "no_identificacion": "00002",
+        "cantidad": "1.6",
+        "clave_unidad": "WEE",
+        "unidad": "TONELADA",
+        "descripcion": "ALUMINIO",
+        "valor_unitario": "1500",
+        "importe": "2400",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "2400",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "1.600000",
+              "importe": "384"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "2400",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.300000",
+              "importe": "264"
+            }
+          ]
+        },
+        "a_cuenta_terceros": {
+          "rfc_a_cuenta_terceros": "AAA010101AAA",
+          "nombre_a_cuenta_terceros": "NombreACuentaTerceros",
+          "regimen_fiscal_a_cuenta_terceros": "630",
+          "domicilio_fiscal_a_cuenta_terceros": "99999"
+        },
+        "informacion_aduanera": [
+          {
+            "numero_pedimento": "15  48  4567  6001234"
+          }
+        ]
+      },
+      {
+        "clave_prod_serv": "84101604",
+        "no_identificacion": "00003",
+        "cantidad": "1.7",
+        "clave_unidad": "G66",
+        "unidad": "TONELADA",
+        "descripcion": "ZAMAC",
+        "valor_unitario": "10000",
+        "importe": "17000",
+        "descuento": "0",
+        "objeto_imp": "03",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "17000",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "1.600000",
+              "importe": "2720"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "17000",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.300000",
+              "importe": "1870"
+            }
+          ]
+        },
+        "parte": [
+          {
+            "clave_prod_serv": "25201513",
+            "no_identificacion": "055155",
+            "cantidad": "1.0",
+            "unidad": "UNIDAD",
+            "descripcion": "PARTE EJEMPLO",
+            "valor_unitario": "1.00",
+            "importe": "1.00",
+            "informacion_aduanera": [
+              {
+                "numero_pedimento": "15  48  4567  6001235"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "247500",
+      "total_impuestos_trasladados": "360000",
+      "retenciones": [
+        {
+          "impuesto": "001",
+          "importe": "247000"
+        },
+        {
+          "impuesto": "003",
+          "importe": "500"
+        }
+      ],
+      "traslados": [
+        {
+          "base": "1.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "1.600000",
+          "importe": "360000"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

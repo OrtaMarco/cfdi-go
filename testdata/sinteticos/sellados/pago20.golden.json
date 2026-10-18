@@ -1,0 +1,129 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "P",
+    "folio": "12",
+    "fecha": "2026-03-10T12:00:00",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "01",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "domicilio_fiscal_receptor": "76028",
+      "regimen_fiscal_receptor": "612",
+      "uso_cfdi": "CP01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "66666666-7777-8888-9999-AAAAAAAAAAAA",
+      "fecha_timbrado": "2026-03-10T12:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000300023708"
+    },
+    "pagos": {
+      "version": "2.0",
+      "totales": {
+        "total_traslados_base_iva16": "1000.00",
+        "total_traslados_impuesto_iva16": "160.00",
+        "total_traslados_base_iva_exento": "500.00",
+        "monto_total_pagos": "1660.00"
+      },
+      "pago": [
+        {
+          "fecha_pago": "2026-03-09T00:00:00",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "tipo_cambio_p": "1",
+          "monto": "1660.00",
+          "num_operacion": "OP-0001",
+          "docto_relacionado": [
+            {
+              "id_documento": "ABCDEF01-2345-4678-9ABC-DEF012345678",
+              "serie": "A",
+              "folio": "1001",
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1160.00",
+              "imp_pagado": "1160.00",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "1000.00",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "160.00"
+                  }
+                ]
+              }
+            },
+            {
+              "id_documento": "55555555-6666-7777-8888-99999999999F",
+              "id_documento_original": "55555555-6666-7777-8888-99999999999f",
+              "serie": "A",
+              "folio": "1002",
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "2",
+              "imp_saldo_ant": "800.00",
+              "imp_pagado": "500.00",
+              "imp_saldo_insoluto": "300.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "500.00",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Exento"
+                  }
+                ]
+              }
+            }
+          ],
+          "impuestos_p": {
+            "traslados_p": [
+              {
+                "base_p": "1000.00",
+                "impuesto_p": "002",
+                "tipo_factor_p": "Tasa",
+                "tasa_o_cuota_p": "0.160000",
+                "importe_p": "160.00"
+              },
+              {
+                "base_p": "500.00",
+                "impuesto_p": "002",
+                "tipo_factor_p": "Exento"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

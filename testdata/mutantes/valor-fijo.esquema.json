@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'Version': The value '4.1' does not match the fixed value constraint '4.0'."
+  }
+ ]
+}

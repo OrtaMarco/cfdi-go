@@ -1,0 +1,105 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "T",
+    "folio": "1000",
+    "fecha": "2022-09-28T22:40:38",
+    "forma_pago": "99",
+    "no_certificado": "30001000000400002436",
+    "sub_total": "0.10",
+    "moneda": "MXN",
+    "total": "0.10",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "27200",
+    "emisor": {
+      "rfc": "JES900109Q90",
+      "nombre": "JIMENEZ ESTRADA SALAS A A",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "JES900109Q90",
+      "nombre": "JIMENEZ ESTRADA SALAS A A",
+      "domicilio_fiscal_receptor": "01030",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "G01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "10101702",
+        "cantidad": "0.10",
+        "clave_unidad": "E48",
+        "descripcion": "SERVICIOS DE RENTA",
+        "valor_unitario": "1.00",
+        "importe": "0.10",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "0.10",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "0.02"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "0.10",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.100000",
+              "importe": "0.01"
+            },
+            {
+              "base": "0.10",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.106667",
+              "importe": "0.01"
+            }
+          ]
+        },
+        "cuenta_predial": [
+          {
+            "numero": "1234567890"
+          }
+        ]
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "0.02",
+      "total_impuestos_trasladados": "0.02",
+      "retenciones": [
+        {
+          "impuesto": "001",
+          "importe": "0.01"
+        },
+        {
+          "impuesto": "002",
+          "importe": "0.01"
+        }
+      ],
+      "traslados": [
+        {
+          "base": "0.10",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "0.02"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "96F342F4-A28A-487A-907F-7D00F388A8CE",
+      "uuid_original": "96f342f4-a28a-487a-907f-7d00f388a8ce",
+      "fecha_timbrado": "2023-03-21T10:56:26",
+      "rfc_prov_certif": "SAT970701NN3",
+      "no_certificado_sat": "30001000000400002495"
+    }
+  },
+  "advertencias": []
+}

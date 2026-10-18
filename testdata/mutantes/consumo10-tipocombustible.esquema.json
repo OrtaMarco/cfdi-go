@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 23,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/consumodecombustibles:ConsumoDeCombustibles/consumodecombustibles:Conceptos/consumodecombustibles:ConceptoConsumoDeCombustibles",
+   "mensaje": "Element '{http://www.sat.gob.mx/consumodecombustibles}ConceptoConsumoDeCombustibles', attribute 'tipoCombustible': The attribute 'tipoCombustible' is not allowed."
+  }
+ ]
+}

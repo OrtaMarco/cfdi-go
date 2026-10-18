@@ -1,0 +1,20 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 6,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/3}Comprobante': The attribute 'Sello' is required but missing."
+  },
+  {
+   "linea": 6,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/3}Comprobante': The attribute 'Certificado' is required but missing."
+  },
+  {
+   "linea": 15,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}Pago': Missing child element(s). Expected is ( {http://www.sat.gob.mx/Pagos20}DoctoRelacionado )."
+  }
+ ]
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "fecha": "2020-03-01T10:00:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "200000.00",
+    "moneda": "MXN",
+    "total": "232000.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "uso_cfdi": "G01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "25101503",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "descripcion": "Auto 1",
+        "valor_unitario": "100000.00",
+        "importe": "100000.00",
+        "venta_vehiculos": {
+          "version": "1.0",
+          "clave_vehicular": "0012345",
+          "niv": "NO DEBE SALIR",
+          "informacion_aduanera": [
+            {
+              "numero": "26 47 3807 6000001",
+              "fecha": "2020-01-01",
+              "aduana": "PACHUCA"
+            }
+          ],
+          "parte": [
+            {
+              "cantidad": "1",
+              "descripcion": "Llanta",
+              "informacion_aduanera": [
+                {
+                  "numero": "26 47 3807 6000002",
+                  "fecha": "2020-01-02"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "clave_prod_serv": "25101503",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "descripcion": "Auto 2",
+        "valor_unitario": "100000.00",
+        "importe": "100000.00",
+        "venta_vehiculos": {
+          "version": "1.1",
+          "clave_vehicular": "0067890",
+          "niv": "3VWFE21C04M000001"
+        }
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "22222222-3333-4444-8555-666666666666",
+      "fecha_timbrado": "2020-03-01T10:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    }
+  },
+  "advertencias": []
+}

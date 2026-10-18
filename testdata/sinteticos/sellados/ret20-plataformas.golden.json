@@ -1,0 +1,117 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "2.0",
+    "folio_int": "R100",
+    "no_certificado": "30001000000500003416",
+    "fecha_exp": "2026-01-15T10:30:00",
+    "lugar_exp_retenc": "42501",
+    "cve_retenc": "26",
+    "desc_retenc": "Plataformas tecnológicas",
+    "cfdi_reten_relacionados": {
+      "tipo_relacion": "04",
+      "uuid": "ABCDEF01-2345-4789-8ABC-DEF012345678",
+      "uuid_original": "abcdef01-2345-4789-8abc-def012345678"
+    },
+    "emisor": {
+      "rfc_e": "EKU9003173C9",
+      "nom_den_raz_soc_e": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal_e": "601"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional",
+      "nacional": {
+        "rfc_r": "XAXX010101000",
+        "nom_den_raz_soc_r": "PUBLICO EN GENERAL",
+        "domicilio_fiscal_r": "42501"
+      }
+    },
+    "periodo": {
+      "mes_ini": "12",
+      "mes_fin": "12",
+      "ejercicio": "2025"
+    },
+    "totales": {
+      "monto_tot_operacion": "1000.00",
+      "monto_tot_grav": "1000.00",
+      "monto_tot_exent": "0.00",
+      "monto_tot_ret": "100.00",
+      "imp_retenidos": [
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "001",
+          "monto_ret": "20.00",
+          "tipo_pago_ret": "01"
+        },
+        {
+          "base_ret": "160.00",
+          "impuesto_ret": "002",
+          "monto_ret": "80.00",
+          "tipo_pago_ret": "01"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "0F1E2D3C-4B5A-4978-8695-A4B3C2D1E0F9",
+      "fecha_timbrado": "2026-01-15T10:31:12",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000300023708"
+    },
+    "servicios_plataformas_tecnologicas": {
+      "version": "1.0",
+      "periodicidad": "03",
+      "num_serv": "2",
+      "mon_tot_serv_siva": "1000.00",
+      "total_iva_trasladado": "160.00",
+      "total_iva_retenido": "80.00",
+      "total_isr_retenido": "20.00",
+      "dif_iva_entregado_prest_serv": "80.00",
+      "mon_totalpor_uso_plataforma": "50.00",
+      "mon_total_contribucion_gubernamental": "10.00",
+      "servicios": [
+        {
+          "forma_pago_serv": "03",
+          "tipo_de_serv": "01",
+          "sub_tip_serv": "01",
+          "fecha_serv": "2025-12-10",
+          "precio_serv_sin_iva": "600.00",
+          "impuestos_trasladadosdel_servicio": {
+            "base": "600.00",
+            "impuesto": "02",
+            "tipo_factor": "Tasa",
+            "tasa_cuota": "0.160000",
+            "importe": "96.00"
+          },
+          "contribucion_gubernamental": {
+            "imp_contrib": "10.00",
+            "entidad_donde_paga_la_contribucion": "13"
+          },
+          "comision_del_servicio": {
+            "base": "600.00",
+            "porcentaje": "0.05",
+            "importe": "30.00"
+          }
+        },
+        {
+          "forma_pago_serv": "04",
+          "tipo_de_serv": "03",
+          "fecha_serv": "2025-12-20",
+          "precio_serv_sin_iva": "400.00",
+          "impuestos_trasladadosdel_servicio": {
+            "base": "400.00",
+            "impuesto": "02",
+            "tipo_factor": "Tasa",
+            "tasa_cuota": "0.16",
+            "importe": "64.00"
+          },
+          "comision_del_servicio": {
+            "importe": "20.00"
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

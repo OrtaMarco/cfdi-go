@@ -1,0 +1,73 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "folio_int": "E7",
+    "no_certificado": "30001000000500003416",
+    "fecha_exp": "2020-06-30T18:00:00-06:00",
+    "cve_retenc": "18",
+    "desc_retenc": "Pagos a extranjeros",
+    "emisor": {
+      "rfc_e": "EKU9003173C9",
+      "nom_den_raz_soc_e": "ESCUELA KEMPER URGATE"
+    },
+    "receptor": {
+      "nacionalidad_r": "Extranjero",
+      "extranjero": {
+        "num_reg_id_trib_r": "998877665544",
+        "nom_den_raz_soc_r": "EMPRESA DEL EXTRANJERO DE PRUEBA"
+      }
+    },
+    "periodo": {
+      "mes_ini": "1",
+      "mes_fin": "6",
+      "ejercicio": "2020"
+    },
+    "totales": {
+      "monto_tot_operacion": "25000.00",
+      "monto_tot_grav": "25000.00",
+      "monto_tot_exent": "0.00",
+      "monto_tot_ret": "6250.000000",
+      "imp_retenidos": [
+        {
+          "base_ret": "25000.00",
+          "impuesto_ret": "01",
+          "monto_ret": "6250.000000",
+          "tipo_pago_ret": "Pago definitivo"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "1A2B3C4D-5E6F-4A7B-8C9D-0E1F2A3B4C5D",
+      "fecha_timbrado": "2020-06-30T18:01:00",
+      "no_certificado_sat": "30001000000300023708"
+    },
+    "pagosaextranjeros": {
+      "version": "1.0",
+      "es_benef_efect_del_cobro": "NO",
+      "no_beneficiario": {
+        "pais_de_resid_para_efec_fisc": "US",
+        "concepto_pago": "2",
+        "descripcion_concepto": "Regalías de prueba"
+      }
+    },
+    "planesderetiro": {
+      "version": "1.1",
+      "sistema_financ": "SI",
+      "mont_int_reales_deveng_anioo_inm_ant": "120.50",
+      "hubo_retiros_anio_inm_ant_per": "NO",
+      "hubo_retiros_anio_inm_ant": "NO",
+      "num_referencia": "REF1",
+      "aportaciones_o_depositos": [
+        {
+          "tipo_aportacion_o_deposito": "a",
+          "mont_aport_o_dep": "1000.00",
+          "rfc_fiduciaria": "AAA010101AAA"
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

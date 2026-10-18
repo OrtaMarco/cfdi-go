@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "fecha": "2021-12-08T23:59:59",
+    "forma_pago": "02",
+    "no_certificado": "30001000000300023708",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "03",
+    "lugar_expedicion": "99999",
+    "cfdi_relacionados": [
+      {
+        "tipo_relacion": "09",
+        "cfdi_relacionado": [
+          {
+            "uuid": "F4F09AEF-57F2-4BE0-A828-87D1A80ED61C"
+          }
+        ]
+      }
+    ],
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "Esta es una demostración",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "nombre": "Juanito Bananas De la Sierra",
+      "domicilio_fiscal_receptor": "99999",
+      "regimen_fiscal_receptor": "630",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Descripcion",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "notarios_publicos": {
+      "version": "1.0",
+      "desc_inmuebles": [
+        {
+          "tipo_inmueble": "01",
+          "calle": "Humboldt",
+          "no_exterior": "1119",
+          "no_interior": "D",
+          "colonia": "Mirador",
+          "localidad": "Monterrey",
+          "referencia": "2do. piso",
+          "municipio": "Monterrey",
+          "estado": "19",
+          "pais": "MEX",
+          "codigo_postal": "45781"
+        }
+      ],
+      "datos_operacion": {
+        "num_instrumento_notarial": "999999",
+        "fecha_inst_notarial": "2014-05-02",
+        "monto_operacion": "100",
+        "subtotal": "110",
+        "iva": "10"
+      },
+      "datos_notario": {
+        "curp": "XOJI740919MQTDMN02",
+        "num_notaria": "777",
+        "entidad_federativa": "19",
+        "adscripcion": "Prueba"
+      },
+      "datos_enajenante": {
+        "copro_soc_conyugal_e": "No",
+        "datos_un_enajenante": {
+          "nombre": "Ingrid",
+          "apellido_paterno": "Xodar",
+          "apellido_materno": "Jiménez",
+          "rfc": "XOJI740919U48",
+          "curp": "XOJI740919MQTDMN02"
+        }
+      },
+      "datos_adquiriente": {
+        "copro_soc_conyugal_e": "No",
+        "datos_un_adquiriente": {
+          "nombre": "Berenice",
+          "apellido_paterno": "Ximo",
+          "apellido_materno": "Quezada",
+          "rfc": "XOJI740919U48",
+          "curp": "XOJI740919MQTDMN02"
+        }
+      }
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

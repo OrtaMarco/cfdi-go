@@ -1,0 +1,103 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "CP",
+    "folio": "30",
+    "fecha": "2026-03-02T08:00:00",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "T",
+    "exportacion": "01",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "domicilio_fiscal_receptor": "42501",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "31181701",
+        "cantidad": "10",
+        "clave_unidad": "H87",
+        "descripcion": "Mercancía de prueba",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555555502",
+      "fecha_timbrado": "2026-03-02T08:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "carta_porte": {
+      "version": "3.0",
+      "id_ccp": "CCC00001-0000-4000-8000-000000000030",
+      "transp_internac": "Sí",
+      "regimen_aduanero": "IMD",
+      "entrada_salida_merc": "Entrada",
+      "pais_origen_destino": "USA",
+      "via_entrada_salida": "01",
+      "total_dist_rec": "310.40",
+      "ubicaciones": [
+        {
+          "tipo_ubicacion": "Origen",
+          "id_ubicacion": "OR000001",
+          "rfc_remitente_destinatario": "XEXX010101000",
+          "nombre_remitente_destinatario": "REMITENTE EXTRANJERO DE PRUEBA",
+          "num_reg_id_trib": "123456789",
+          "residencia_fiscal": "USA",
+          "fecha_hora_salida_llegada": "2026-03-02T09:00:00",
+          "domicilio": {
+            "calle": "Calle de prueba",
+            "numero_exterior": "100",
+            "estado": "TX",
+            "pais": "USA",
+            "codigo_postal": "78040"
+          }
+        },
+        {
+          "tipo_ubicacion": "Destino",
+          "id_ubicacion": "DE000002",
+          "rfc_remitente_destinatario": "EKU9003173C9",
+          "fecha_hora_salida_llegada": "2026-03-02T15:30:00",
+          "distancia_recorrida": "310.40",
+          "domicilio": {
+            "calle": "Avenida de prueba",
+            "municipio": "048",
+            "estado": "HID",
+            "pais": "MEX",
+            "codigo_postal": "42501"
+          }
+        }
+      ],
+      "figura_transporte": [
+        {
+          "tipo_figura": "01",
+          "rfc_figura": "CACX7605101P8",
+          "num_licencia": "LIC000030",
+          "nombre_figura": "OPERADOR DE PRUEBA"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/CartaPorte/Mercancias",
+      "mensaje": "CartaPorte sin Mercancias"
+    }
+  ]
+}

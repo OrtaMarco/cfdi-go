@@ -1,0 +1,74 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "folio": "404",
+    "fecha": "2026-06-01T10:00:00",
+    "forma_pago": "01",
+    "sub_total": "10.00",
+    "moneda": "MXN",
+    "total": "11.60",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "informacion_global": {
+      "periodicidad": "04",
+      "meses": "06",
+      "anio": "2026"
+    },
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "nombre": "PUBLICO EN GENERAL",
+      "domicilio_fiscal_receptor": "42501",
+      "regimen_fiscal_receptor": "616",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Venta",
+        "valor_unitario": "10.00",
+        "importe": "10.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "10.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "1.60"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "1.60",
+      "traslados": [
+        {
+          "base": "10.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "1.60"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

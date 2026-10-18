@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cartaporte20:CartaPorte/cartaporte20:Mercancias",
+   "mensaje": "Element '{http://www.sat.gob.mx/CartaPorte20}Mercancias': This element is not expected. Expected is ( {http://www.sat.gob.mx/CartaPorte20}Ubicaciones )."
+  }
+ ]
+}

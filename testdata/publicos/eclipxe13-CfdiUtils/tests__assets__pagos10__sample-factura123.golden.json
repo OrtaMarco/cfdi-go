@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "P",
+    "folio": "66",
+    "fecha": "2017-07-08T15:46:12",
+    "no_certificado": "30001000000300023701",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "lugar_expedicion": "85689",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "ACCEM SERVICIOS EMPRESARIALES SC",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "URE180429TM6",
+      "nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0"
+      }
+    ],
+    "pagos": {
+      "version": "1.0",
+      "pago": [
+        {
+          "fecha_pago": "2017-07-08T15:46:10",
+          "forma_de_pago_p": "01",
+          "moneda_p": "MXN",
+          "monto": "1866.12",
+          "docto_relacionado": [
+            {
+              "id_documento": "FC37A176-BD91-4DE4-9A97-5E835E5134B8",
+              "serie": "A",
+              "folio": "407",
+              "moneda_dr": "MXN",
+              "metodo_de_pago_dr": "PUE",
+              "imp_saldo_ant": "1866.12",
+              "imp_pagado": "1866.12",
+              "imp_saldo_insoluto": "0"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/donat:Donatarias",
+   "mensaje": "Element '{http://www.sat.gob.mx/donat}Donatarias', attribute 'version': The value '2.0' does not match the fixed value constraint '1.1'."
+  }
+ ]
+}

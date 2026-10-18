@@ -1,0 +1,69 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "PA",
+    "folio": "5",
+    "fecha": "2017-07-14T16:33:27",
+    "no_certificado": "30001000000300023701",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "lugar_expedicion": "67100",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "ACCEM SERVICIOS EMPRESARIALES SC",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "CACX7605101P8",
+      "nombre": "XOCHILT CASAS CHAVEZ",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0"
+      }
+    ],
+    "pagos": {
+      "version": "1.0",
+      "pago": [
+        {
+          "fecha_pago": "2017-07-14T16:33:27",
+          "forma_de_pago_p": "02",
+          "moneda_p": "USD",
+          "tipo_cambio_p": "18.57",
+          "monto": "100.00",
+          "num_operacion": "4343",
+          "rfc_emisor_cta_ord": "XIA190128J61",
+          "cta_ordenante": "12345678901",
+          "rfc_emisor_cta_ben": "URE180429TM6",
+          "cta_beneficiario": "123456789012345678",
+          "docto_relacionado": [
+            {
+              "id_documento": "A6F92B41-7FE7-49A5-AA9F-D9AF01625C8D",
+              "moneda_dr": "USD",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "100.00",
+              "imp_saldo_insoluto": "0.00"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

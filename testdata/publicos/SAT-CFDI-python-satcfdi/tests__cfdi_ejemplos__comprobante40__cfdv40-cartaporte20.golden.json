@@ -1,0 +1,293 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "fecha": "2021-12-08T23:59:59",
+    "forma_pago": "02",
+    "no_certificado": "30001000000300023708",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "03",
+    "lugar_expedicion": "99999",
+    "cfdi_relacionados": [
+      {
+        "tipo_relacion": "09",
+        "cfdi_relacionado": [
+          {
+            "uuid": "F4F09AEF-57F2-4BE0-A828-87D1A80ED61C"
+          }
+        ]
+      }
+    ],
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "Esta es una demostración",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "nombre": "Juanito Bananas De la Sierra",
+      "domicilio_fiscal_receptor": "99999",
+      "regimen_fiscal_receptor": "630",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Descripcion",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "carta_porte": {
+      "version": "2.0",
+      "transp_internac": "Sí",
+      "entrada_salida_merc": "Salida",
+      "pais_origen_destino": "ZZZ",
+      "via_entrada_salida": "05",
+      "total_dist_rec": "123.9",
+      "ubicaciones": [
+        {
+          "tipo_ubicacion": "Origen",
+          "id_ubicacion": "OR123456",
+          "rfc_remitente_destinatario": "AAA010101AAA",
+          "nombre_remitente_destinatario": "NombreRemitenteDestinatario",
+          "num_reg_id_trib": "123456",
+          "residencia_fiscal": "ZZZ",
+          "num_estacion": "EF001",
+          "nombre_estacion": "NombreEstacion",
+          "navegacion_trafico": "Cabotaje",
+          "fecha_hora_salida_llegada": "2021-11-01T01:23:59",
+          "tipo_estacion": "03",
+          "distancia_recorrida": "123.45",
+          "domicilio": {
+            "calle": "Calle",
+            "numero_exterior": "2",
+            "numero_interior": "1",
+            "colonia": "Colonia",
+            "localidad": "Localidad",
+            "referencia": "Referencia",
+            "municipio": "Municipio",
+            "estado": "Mexico City",
+            "pais": "MEX",
+            "codigo_postal": "11850"
+          }
+        },
+        {
+          "tipo_ubicacion": "Destino",
+          "id_ubicacion": "DE234567",
+          "rfc_remitente_destinatario": "BASJ600902KL9",
+          "nombre_remitente_destinatario": "NombreRemitenteDestinatario",
+          "num_reg_id_trib": "012345",
+          "residencia_fiscal": "ZZZ",
+          "num_estacion": "EF001",
+          "nombre_estacion": "NombreEstacion",
+          "navegacion_trafico": "Cabotaje",
+          "fecha_hora_salida_llegada": "2021-11-01T01:23:59",
+          "tipo_estacion": "03",
+          "distancia_recorrida": "123.45",
+          "domicilio": {
+            "calle": "Calle",
+            "numero_exterior": "2",
+            "numero_interior": "1",
+            "colonia": "Colonia",
+            "localidad": "Localidad",
+            "referencia": "Referencia",
+            "municipio": "Municipio",
+            "estado": "Estado",
+            "pais": "ZZZ",
+            "codigo_postal": "123456"
+          }
+        }
+      ],
+      "mercancias": {
+        "peso_bruto_total": "100.123",
+        "unidad_peso": "SM3",
+        "peso_neto_total": "101.234",
+        "num_total_mercancias": "1",
+        "cargo_por_tasacion": "10.123456",
+        "mercancia": [
+          {
+            "bienes_transp": "60141405",
+            "clave_stcc": "1234567",
+            "descripcion": "Descripcion",
+            "cantidad": "1.000001",
+            "clave_unidad": "ZZ",
+            "unidad": "Unidad",
+            "dimensiones": "30/40/30cm",
+            "material_peligroso": "No",
+            "cve_material_peligroso": "M0005",
+            "embalaje": "Z01",
+            "descrip_embalaje": "DescripEmbalaje",
+            "peso_en_kg": "1.123",
+            "valor_mercancia": "10.123456",
+            "moneda": "ZWL",
+            "fraccion_arancelaria": "9807000100",
+            "uuid_comercio_ext": "c09b4f17-601c-40a1-b446-addb087e7e2b",
+            "pedimentos": [
+              {
+                "pedimento": "12  34  5678  1234567"
+              }
+            ],
+            "guias_identificacion": [
+              {
+                "numero_guia_identificacion": "1234567890",
+                "descrip_guia_identificacion": "DescripGuiaIdentificacion",
+                "peso_guia_identificacion": "1.234"
+              }
+            ],
+            "cantidad_transporta": [
+              {
+                "cantidad": "1.000001",
+                "id_origen": "OR123456",
+                "id_destino": "DE654321",
+                "cves_transporte": "05"
+              }
+            ],
+            "detalle_mercancia": {
+              "unidad_peso_merc": "SM3",
+              "peso_bruto": "11.000",
+              "peso_neto": "9.00",
+              "peso_tara": "9.123",
+              "num_piezas": "42"
+            }
+          }
+        ],
+        "autotransporte": {
+          "perm_sct": "TPAF01",
+          "num_permiso_sct": "6789",
+          "identificacion_vehicular": {
+            "config_vehicular": "C2",
+            "placa_vm": "123ABC",
+            "anio_modelo_vm": "2021"
+          },
+          "seguros": {
+            "asegura_resp_civil": "AseguraRespCivil",
+            "poliza_resp_civil": "PolizaRespCivil",
+            "asegura_med_ambiente": "AseguraMedAmbiente",
+            "poliza_med_ambiente": "PolizaMedAmbiente",
+            "asegura_carga": "AseguraCarga",
+            "poliza_carga": "PolizaCarga",
+            "prima_seguro": "12.123456"
+          },
+          "remolques": [
+            {
+              "sub_tipo_rem": "CTR032",
+              "placa": "Placa"
+            }
+          ]
+        },
+        "transporte_maritimo": {
+          "perm_sct": "TPAF03",
+          "num_permiso_sct": "567",
+          "nombre_aseg": "2367",
+          "num_poliza_seguro": "631",
+          "tipo_embarcacion": "B15",
+          "matricula": "ABC3456",
+          "numero_omi": "IMO1234567",
+          "anio_embarcacion": "2021",
+          "nombre_embarc": "789",
+          "nacionalidad_embarc": "ZZZ",
+          "unidades_de_arq_bruto": "23.456",
+          "tipo_carga": "PYD",
+          "num_cert_itc": "NumCertITC",
+          "eslora": "678",
+          "manga": "12",
+          "calado": "876",
+          "linea_naviera": "LineaNaviera",
+          "nombre_agente_naviero": "NombreAgenteNaviero",
+          "num_autorizacion_naviero": "SCT418/021/2021",
+          "num_viaje": "78",
+          "num_conoc_embarc": "789",
+          "contenedor": [
+            {
+              "matricula_contenedor": "ABC45678901",
+              "tipo_contenedor": "CM009",
+              "num_precinto": "123456"
+            }
+          ]
+        },
+        "transporte_aereo": {
+          "perm_sct": "TPTA04",
+          "num_permiso_sct": "NumPermisoSCT",
+          "matricula_aeronave": "A123456",
+          "nombre_aseg": "NombreAseg",
+          "num_poliza_seguro": "345",
+          "numero_guia": "12345678901234",
+          "lugar_contrato": "LugarContrato",
+          "codigo_transportista": "CA156",
+          "rfc_embarcador": "AAA010101AAA",
+          "num_reg_id_trib_embarc": "NumRegIdTribEmbarc",
+          "residencia_fiscal_embarc": "ZZZ",
+          "nombre_embarcador": "NombreEmbarcador"
+        },
+        "transporte_ferroviario": {
+          "tipo_de_servicio": "TS04",
+          "tipo_de_trafico": "TT04",
+          "nombre_aseg": "NombreAseg",
+          "num_poliza_seguro": "NumPolizaSeguro",
+          "derechos_de_paso": [
+            {
+              "tipo_derecho_de_paso": "CDP119",
+              "kilometraje_pagado": "12.3"
+            }
+          ],
+          "carro": [
+            {
+              "tipo_carro": "TC05",
+              "matricula_carro": "MatriculaCarro",
+              "guia_carro": "GuiaCarro",
+              "toneladas_netas_carro": "12.001",
+              "contenedor": [
+                {
+                  "tipo_contenedor": "TC05",
+                  "peso_contenedor_vacio": "9.998",
+                  "peso_neto_mercancia": "10.001"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "figura_transporte": [
+        {
+          "tipo_figura": "04",
+          "rfc_figura": "BASJ600902KL9",
+          "num_licencia": "12345678",
+          "nombre_figura": "3456",
+          "num_reg_id_trib_figura": "123456",
+          "residencia_fiscal_figura": "ZZZ",
+          "partes_transporte": [
+            {
+              "parte_transporte": "PT12"
+            }
+          ],
+          "domicilio": {
+            "calle": "Calle",
+            "numero_exterior": "2",
+            "numero_interior": "1",
+            "colonia": "Colonia",
+            "localidad": "Localidad",
+            "referencia": "Referencia",
+            "municipio": "Municipio",
+            "estado": "Estado",
+            "pais": "ZZZ",
+            "codigo_postal": "123456"
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

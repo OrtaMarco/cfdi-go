@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 24,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Extra",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Extra': This element is not expected. Expected is ( {http://www.sat.gob.mx/cfd/4}Concepto )."
+  }
+ ]
+}

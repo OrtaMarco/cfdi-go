@@ -1,0 +1,112 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.2",
+    "serie": "CE",
+    "folio": "32",
+    "fecha": "2016-06-01T12:00:00",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "5000.00",
+    "moneda": "MXN",
+    "total": "5000.00",
+    "tipo_de_comprobante": "ingreso",
+    "lugar_expedicion": "PACHUCA, HIDALGO",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE"
+    },
+    "receptor": {
+      "rfc": "XEXX010101000",
+      "nombre": "CLIENTE EXTRANJERO DE PRUEBA"
+    },
+    "conceptos": [
+      {
+        "no_identificacion": "CE-01",
+        "cantidad": "2",
+        "unidad": "PIEZA",
+        "descripcion": "Equipo de prueba",
+        "valor_unitario": "2500.00",
+        "importe": "5000.00"
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "0.00",
+      "traslados": [
+        {
+          "impuesto": "IVA",
+          "importe": "0.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "12345678-1234-4234-8234-123456781002",
+      "fecha_timbrado": "2016-06-01T12:01:00",
+      "no_certificado_sat": "00001000000300000000"
+    },
+    "comercio_exterior": {
+      "version": "1.0",
+      "tipo_operacion": "2",
+      "clave_de_pedimento": "A1",
+      "certificado_origen": "1",
+      "num_certificado_origen": "CO-0001",
+      "incoterm": "FOB",
+      "subdivision": "0",
+      "observaciones": "  Observación   de prueba ",
+      "tipo_cambio_usd": "18.50",
+      "total_usd": "250.00",
+      "emisor": {
+        "curp": "XEXX010101HNEXXXA4"
+      },
+      "receptor": {
+        "curp": "XEXX010101HNEXXXA4",
+        "num_reg_id_trib": "123456789"
+      },
+      "destinatario": [
+        {
+          "num_reg_id_trib": "987654321",
+          "rfc": "XEXX010101000",
+          "nombre": "DESTINATARIO DE PRUEBA",
+          "domicilio": [
+            {
+              "calle": "Main Street",
+              "numero_exterior": "100",
+              "municipio": "LAREDO",
+              "estado": "TX",
+              "pais": "USA",
+              "codigo_postal": "78040"
+            }
+          ]
+        }
+      ],
+      "mercancias": [
+        {
+          "no_identificacion": "CE-01",
+          "fraccion_arancelaria": "84713001",
+          "cantidad_aduana": "2",
+          "unidad_aduana": "6",
+          "valor_unitario_aduana": "125.00",
+          "valor_dolares": "250.00",
+          "descripciones_especificas": [
+            {
+              "marca": "MARCA DE PRUEBA",
+              "modelo": "M1",
+              "numero_serie": "SERIE-01"
+            },
+            {
+              "marca": "OTRA MARCA"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "VERSION_ANTIGUA",
+      "ruta": "/Comprobante/@Version",
+      "mensaje": "CFDI 3.2: lectura parcial, solo los campos que coinciden con 3.3",
+      "atributo": "Version"
+    }
+  ]
+}

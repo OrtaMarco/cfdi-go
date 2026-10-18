@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 3.2 sintético con ComercioExterior 1.0: la hoja de 3.2 es la única que lo lleva a la
+     cadena. RFC y NumRegIdTrib de prueba. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:cce="http://www.sat.gob.mx/ComercioExterior" version="3.2" serie="CE" folio="32"
+    fecha="2016-06-01T12:00:00" sello="" formaDePago="PAGO EN UNA SOLA EXHIBICION" noCertificado="30001000000500003416"
+    certificado="" subTotal="5000.00" Moneda="MXN" total="5000.00" tipoDeComprobante="ingreso"
+    metodoDePago="03" LugarExpedicion="PACHUCA, HIDALGO">
+  <cfdi:Emisor rfc="EKU9003173C9" nombre="ESCUELA KEMPER URGATE">
+    <cfdi:DomicilioFiscal calle="AV. HIDALGO" noExterior="77" municipio="PACHUCA" estado="HIDALGO" pais="MEXICO" codigoPostal="42000"/>
+    <cfdi:RegimenFiscal Regimen="REGIMEN GENERAL"/>
+  </cfdi:Emisor>
+  <cfdi:Receptor rfc="XEXX010101000" nombre="CLIENTE EXTRANJERO DE PRUEBA">
+    <cfdi:Domicilio pais="ESTADOS UNIDOS"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto cantidad="2" unidad="PIEZA" noIdentificacion="CE-01" descripcion="Equipo de prueba" valorUnitario="2500.00" importe="5000.00"/>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosTrasladados="0.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado impuesto="IVA" tasa="0.00" importe="0.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <cce:ComercioExterior Version="1.0" TipoOperacion="2" ClaveDePedimento="A1" CertificadoOrigen="1" NumCertificadoOrigen="CO-0001" Incoterm="FOB" Subdivision="0" Observaciones="  Observación   de prueba " TipoCambioUSD="18.50" TotalUSD="250.00">
+      <cce:Emisor Curp="XEXX010101HNEXXXA4"/>
+      <cce:Receptor Curp="XEXX010101HNEXXXA4" NumRegIdTrib="123456789"/>
+      <cce:Destinatario NumRegIdTrib="987654321" Rfc="XEXX010101000" Nombre="DESTINATARIO DE PRUEBA">
+        <cce:Domicilio Calle="Main Street" NumeroExterior="100" Municipio="LAREDO" Estado="TX" Pais="USA" CodigoPostal="78040"/>
+      </cce:Destinatario>
+      <cce:Mercancias>
+        <cce:Mercancia NoIdentificacion="CE-01" FraccionArancelaria="84713001" CantidadAduana="2" UnidadAduana="6" ValorUnitarioAduana="125.00" ValorDolares="250.00">
+          <cce:DescripcionesEspecificas Marca="MARCA DE PRUEBA" Modelo="M1" NumeroSerie="SERIE-01"/>
+          <cce:DescripcionesEspecificas Marca="OTRA MARCA"/>
+        </cce:Mercancia>
+      </cce:Mercancias>
+    </cce:ComercioExterior>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" version="1.0" UUID="12345678-1234-4234-8234-123456781002" FechaTimbrado="2016-06-01T12:01:00" selloCFD="" noCertificadoSAT="00001000000300000000" selloSAT=""/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

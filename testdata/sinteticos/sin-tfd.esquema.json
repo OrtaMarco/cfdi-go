@@ -1,0 +1,25 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/*",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'Sello' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/*",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'NoCertificado' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/*",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'Certificado' is required but missing."
+  },
+  {
+   "linea": 5,
+   "ruta": "/*/*[3]",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}InformacionGlobal': This element is not expected. Expected is ( {http://www.sat.gob.mx/cfd/4}Conceptos )."
+  }
+ ]
+}

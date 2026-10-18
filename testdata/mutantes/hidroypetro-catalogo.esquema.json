@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 23,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[2]/cfdi:ComplementoConcepto/hyp:HidroYPetro",
+   "mensaje": "Element '{http://www.sat.gob.mx/hidrocarburospetroliferos}HidroYPetro', attribute 'TipoPermiso': [facet 'enumeration'] The value 'PER99' is not an element of the set {'PER01', 'PER02', 'PER03', 'PER04', 'PER05', 'PER06', 'PER07', 'PER08', 'PER09', 'PER10', 'PER11'}."
+  }
+ ]
+}

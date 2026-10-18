@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 9,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/nomina12:Nomina",
+   "mensaje": "Element '{http://www.sat.gob.mx/nomina12}Nomina', attribute 'TipoNomina': [facet 'enumeration'] The value 'X' is not an element of the set {'O', 'E'}."
+  }
+ ]
+}

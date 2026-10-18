@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/tpe:TuristaPasajeroExtranjero",
+   "mensaje": "Element '{http://www.sat.gob.mx/TuristaPasajeroExtranjero}TuristaPasajeroExtranjero': The attribute 'tipoTransito' is required but missing."
+  }
+ ]
+}

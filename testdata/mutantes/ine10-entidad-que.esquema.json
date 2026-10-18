@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 26,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ine:INE/ine:Entidad[1]",
+   "mensaje": "Element '{http://www.sat.gob.mx/ine}Entidad', attribute 'ClaveEntidad': [facet 'enumeration'] The value 'QUE' is not an element of the set {'AGU', 'BCN', 'BCS', 'CAM', 'CHP', 'CHH', 'COA', 'COL', 'DIF', 'DUR', 'GUA', 'GRO', 'HID', 'JAL', 'MEX', 'MIC', 'MOR', 'NAY', 'NLE', 'OAX', 'PUE', 'QTO', 'ROO', 'SLP', 'SIN', 'SON', 'TAB', 'TAM', 'TLA', 'VER', 'YUC', 'ZAC'}."
+  }
+ ]
+}

@@ -1,0 +1,1171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/OrtaMarco/cfdi-go/schema/retenciones.v1.schema.json",
+  "title": "CFDI de Retenciones e información de pagos normalizado, schema_version 1",
+  "description": "Salida JSON de github.com/OrtaMarco/cfdi-go para Retenciones 1.0 y 2.0 (ParseRetenciones). Mismas convenciones que cfdi.v1.schema.json: claves en snake_case de los nombres del SAT (los de 2.0), vacías omitidas, montos como string con el texto original.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tipo_documento",
+    "schema_version",
+    "retenciones",
+    "advertencias"
+  ],
+  "properties": {
+    "origen": {
+      "type": "string",
+      "description": "De dónde salió el documento; lo llena el modo lote (ruta[!entrada.zip])."
+    },
+    "tipo_documento": {
+      "const": "retenciones",
+      "description": "Distingue esta línea de la de un CFDI en la salida de cfdi lote."
+    },
+    "schema_version": {
+      "const": "1"
+    },
+    "retenciones": {
+      "$ref": "#/$defs/retenciones"
+    },
+    "advertencias": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/advertencia"
+      }
+    },
+    "verificacion_sello": {
+      "$ref": "#/$defs/resultado_sello"
+    },
+    "verificacion_tfd": {
+      "$ref": "#/$defs/resultado_sello"
+    },
+    "validacion": {
+      "$ref": "#/$defs/validacion"
+    }
+  },
+  "$defs": {
+    "validacion": {
+      "type": "object",
+      "description": "Validación contra los XSD del SAT y las reglas aritméticas; solo está si se pidió (cfdi lote -validar).",
+      "additionalProperties": false,
+      "required": [
+        "estado",
+        "esquema"
+      ],
+      "properties": {
+        "estado": {
+          "$ref": "#/$defs/estado_validacion"
+        },
+        "esquema": {
+          "$ref": "#/$defs/resultado_validacion"
+        },
+        "reglas": {
+          "$ref": "#/$defs/resultado_validacion"
+        }
+      }
+    },
+    "estado_validacion": {
+      "type": "string",
+      "enum": [
+        "valido",
+        "invalido",
+        "incompleto"
+      ]
+    },
+    "resultado_validacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "estado",
+        "hallazgos"
+      ],
+      "properties": {
+        "estado": {
+          "$ref": "#/$defs/estado_validacion"
+        },
+        "hallazgos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hallazgo"
+          }
+        }
+      }
+    },
+    "hallazgo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "codigo",
+        "nivel",
+        "regla"
+      ],
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "enum": [
+            "ESQUEMA_XML_ILEGIBLE",
+            "ESQUEMA_NO_SOPORTADO",
+            "ESQUEMA_ELEMENTO_NO_PERMITIDO",
+            "ESQUEMA_ELEMENTO_FALTANTE",
+            "ESQUEMA_ELEMENTO_EXCEDENTE",
+            "ESQUEMA_ORDEN",
+            "ESQUEMA_CONTENIDO",
+            "ESQUEMA_ATRIBUTO_FALTANTE",
+            "ESQUEMA_ATRIBUTO_NO_PERMITIDO",
+            "ESQUEMA_TIPO",
+            "ESQUEMA_PATRON",
+            "ESQUEMA_CATALOGO",
+            "ESQUEMA_RANGO",
+            "ESQUEMA_DIGITOS",
+            "ESQUEMA_LONGITUD",
+            "ESQUEMA_VALOR_FIJO",
+            "REGLA_VERSION_NO_SOPORTADA",
+            "REGLA_IMPORTE_CONCEPTO",
+            "REGLA_DESCUENTO_CONCEPTO",
+            "REGLA_IMPORTE_IMPUESTO",
+            "REGLA_EXENTO_CON_IMPORTE",
+            "REGLA_TASA_SIN_IMPORTE",
+            "REGLA_RETENCION_EXENTA",
+            "REGLA_OBJETO_IMP",
+            "REGLA_SUBTOTAL",
+            "REGLA_DESCUENTO",
+            "REGLA_DESCUENTO_MAYOR_SUBTOTAL",
+            "REGLA_TOTAL",
+            "REGLA_TOTAL_TRASLADOS",
+            "REGLA_TOTAL_RETENCIONES",
+            "REGLA_IMPUESTOS_SIN_TOTAL",
+            "REGLA_TRASLADO_SUMA",
+            "REGLA_TRASLADO_FALTANTE",
+            "REGLA_TRASLADO_SOBRANTE",
+            "REGLA_RETENCION_SUMA",
+            "REGLA_RETENCION_FALTANTE",
+            "REGLA_RETENCION_SOBRANTE",
+            "REGLA_IMPLOCAL_TOTALES",
+            "REGLA_DECIMALES_MONEDA",
+            "REGLA_DECIMALES_IMPUESTO",
+            "REGLA_DECIMALES_IMPUESTO_33",
+            "REGLA_TIPOCAMBIO_MXN",
+            "REGLA_TIPOCAMBIO_XXX",
+            "REGLA_TIPOCAMBIO_REQUERIDO",
+            "REGLA_TIPOCOMP_CONDICIONES",
+            "REGLA_TIPOCOMP_IMPUESTOS",
+            "REGLA_TIPOCOMP_FORMAPAGO",
+            "REGLA_TIPOCOMP_METODOPAGO",
+            "REGLA_TIPOCOMP_DESCUENTO",
+            "REGLA_TIPOCOMP_SUBTOTAL_CERO",
+            "REGLA_TIPOCOMP_TOTAL_CERO",
+            "REGLA_TIPOCOMP_VALOR_UNITARIO",
+            "REGLA_TIPOCOMP_MONEDA_NOMINA",
+            "REGLA_PAGO_COMPROBANTE",
+            "REGLA_PAGO_SALDO_INSOLUTO",
+            "REGLA_PAGO_EQUIVALENCIA",
+            "REGLA_PAGO_TIPOCAMBIODR",
+            "REGLA_PAGO_MONTO",
+            "REGLA_PAGO_TIPOCAMBIO",
+            "REGLA_PAGOS_TOTALES",
+            "REGLA_PAGO_MONEDA_XXX",
+            "REGLA_PAGO_MAYOR_CERO",
+            "REGLA_PAGO_DECIMALES",
+            "REGLA_PAGO_FORMAPAGO",
+            "REGLA_PAGO_CUENTAS",
+            "REGLA_PAGO_CADENA",
+            "REGLA_PAGO10_PARCIALIDADES",
+            "REGLA_PAGO10_IMPUESTOS",
+            "REGLA_PAGO_OBJETO_IMP_DR",
+            "REGLA_PAGO_IMPUESTO_DR",
+            "REGLA_PAGO_IMPORTE_DR",
+            "REGLA_PAGO_IMPUESTOS_P",
+            "REGLA_PAGO_IMPUESTOS_P_SUMA",
+            "REGLA_CCE_TIPOCOMPROBANTE",
+            "REGLA_CCE_CERTIFICADO",
+            "REGLA_CCE_TOTALUSD",
+            "REGLA_CCE_NOIDENTIFICACION",
+            "REGLA_CCE_DATOS_ADUANA",
+            "REGLA_CCE_VALOR_DOLARES",
+            "REGLA_NOMINA_TOTALES",
+            "REGLA_NOMINA_PERCEPCIONES",
+            "REGLA_NOMINA_DEDUCCIONES",
+            "REGLA_NOMINA_IMPORTES",
+            "REGLA_NOMINA_CONCEPTO",
+            "REGLA_NOMINA_FECHAS",
+            "REGLA_NOMINA_SUBCONTRATACION",
+            "REGLA_NOMINA_OTROS_PAGOS",
+            "REGLA_CCE_EXPORTACION",
+            "REGLA_CCE_NODOS_CFDI",
+            "REGLA_CCE_MOTIVO_TRASLADO",
+            "REGLA_CCE_TRASLADO",
+            "REGLA_CCE_EMISOR",
+            "REGLA_CCE_NUMREGIDTRIB",
+            "REGLA_CCE_FRACCION",
+            "REGLA_CCE_VALOR_IMPORTE",
+            "REGLA_CCE_MUESTRAS",
+            "REGLA_NOMINA_COMPROBANTE",
+            "REGLA_NOMINA_PERIODICIDAD",
+            "REGLA_NOMINA_REGISTRO_PATRONAL",
+            "REGLA_NOMINA_ENTIDAD_SNCF",
+            "REGLA_NOMINA_ANTIGUEDAD",
+            "REGLA_NOMINA_TIPO_REGIMEN",
+            "REGLA_NOMINA_CUENTA_BANCARIA",
+            "REGLA_NOMINA_NODOS_PERCEPCION",
+            "REGLA_NOMINA_INCAPACIDADES",
+            "REGLA_NOMINA_COMPENSACION_SALDO"
+          ]
+        },
+        "nivel": {
+          "type": "string",
+          "enum": [
+            "error",
+            "advertencia",
+            "aviso"
+          ],
+          "description": "error: incumple (el estado es invalido); advertencia: incumple una regla sin fundamento en un documento oficial del SAT, o que el SAT pide no aplicar (no cambia el estado); aviso: una parte no se pudo validar (estado incompleto)."
+        },
+        "ruta": {
+          "type": "string",
+          "description": "Mismo formato que en advertencia."
+        },
+        "atributo": {
+          "type": "string"
+        },
+        "valor": {
+          "type": "string",
+          "description": "Texto original del atributo."
+        },
+        "regla": {
+          "type": "string",
+          "description": "Faceta o restricción XSD (pattern, enumeration, minOccurs, orden…) o referencia de la regla aritmética."
+        },
+        "mensaje": {
+          "type": "string"
+        }
+      }
+    },
+    "resultado_sello": {
+      "type": "object",
+      "description": "Verificación de un sello: el del emisor (cfdi lote -sello o -verificar) o el SelloSAT del timbre (cfdi lote -certs-sat).",
+      "additionalProperties": false,
+      "required": [
+        "estado"
+      ],
+      "properties": {
+        "estado": {
+          "type": "string",
+          "enum": [
+            "valido",
+            "invalido",
+            "no_verificable"
+          ]
+        },
+        "motivo": {
+          "type": "string",
+          "enum": [
+            "XML_ILEGIBLE",
+            "NO_ES_COMPROBANTE",
+            "NO_ES_RETENCIONES",
+            "VERSION_NO_SOPORTADA",
+            "COMPLEMENTO_SIN_CADENA",
+            "SIN_TIMBRE",
+            "SIN_SELLO",
+            "SELLO_ILEGIBLE",
+            "SELLO_NO_COINCIDE",
+            "NOCERTIFICADO_DISTINTO",
+            "SELLO_CFD_DISTINTO",
+            "SIN_CERTIFICADO",
+            "CERTIFICADO_ILEGIBLE",
+            "LLAVE_NO_RSA",
+            "CERTIFICADO_SAT_NO_DISPONIBLE",
+            "NOCERTIFICADO_SAT_DISTINTO"
+          ]
+        },
+        "mensaje": {
+          "type": "string"
+        },
+        "algoritmo": {
+          "type": "string",
+          "enum": [
+            "SHA256withRSA",
+            "SHA1withRSA"
+          ]
+        },
+        "no_certificado": {
+          "type": "string"
+        }
+      }
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)$",
+      "description": "xs:decimal como texto, tal como venía en el XML (\"1160.00\", \"0.160000\"). Sin exponente."
+    },
+    "fecha": {
+      "type": "string",
+      "description": "Texto original. Normalmente AAAA-MM-DDThh:mm:ss, hora civil del lugar de expedición sin zona; AAAA-MM-DD en las fechas de nómina. Si no es legible hay una advertencia FECHA_INVALIDA."
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID normalizado: sin espacios y en mayúsculas."
+    },
+    "advertencia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "codigo"
+      ],
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "enum": [
+            "ENCODING_CORREGIDO",
+            "ENCODING_DESCONOCIDO",
+            "CARACTER_INVALIDO",
+            "XML_NO_ESTRICTO",
+            "CONTENIDO_TRAS_RAIZ",
+            "VERSION_NO_SOPORTADA",
+            "VERSION_ANTIGUA",
+            "VERSION_NAMESPACE",
+            "NAMESPACE_INESPERADO",
+            "NODO_FALTANTE",
+            "NODO_DUPLICADO",
+            "ATRIBUTO_FALTANTE",
+            "SIN_TIMBRE",
+            "COMPLEMENTO_NO_SOPORTADO",
+            "COMPLEMENTO_VERSION",
+            "DECIMAL_INVALIDO",
+            "FECHA_INVALIDA",
+            "FECHA_FORMATO",
+            "UUID_INVALIDO",
+            "EXENTO_CON_IMPORTE"
+          ]
+        },
+        "ruta": {
+          "type": "string",
+          "description": "Nodo o atributo, p. ej. /Comprobante/Conceptos/Concepto[2]/@Importe"
+        },
+        "mensaje": {
+          "type": "string"
+        },
+        "atributo": {
+          "type": "string",
+          "description": "Nombre del atributo si la ruta termina en /@Nombre"
+        },
+        "valor": {
+          "type": "string",
+          "description": "Texto original del atributo en DECIMAL_INVALIDO, FECHA_INVALIDA, FECHA_FORMATO y UUID_INVALIDO; se omite si es vacío"
+        }
+      }
+    },
+    "timbre_fiscal_digital": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "uuid": {
+          "$ref": "#/$defs/uuid"
+        },
+        "uuid_original": {
+          "type": "string",
+          "description": "Solo si difiere de uuid."
+        },
+        "fecha_timbrado": {
+          "$ref": "#/$defs/fecha"
+        },
+        "rfc_prov_certif": {
+          "type": "string"
+        },
+        "leyenda": {
+          "type": "string"
+        },
+        "sello_cfd": {
+          "type": "string",
+          "description": "Solo con la opción IncluirSello."
+        },
+        "no_certificado_sat": {
+          "type": "string"
+        },
+        "sello_sat": {
+          "type": "string",
+          "description": "Solo con la opción IncluirSello."
+        }
+      }
+    },
+    "retenciones": {
+      "type": "object",
+      "description": "Retenciones 1.0 y 2.0 en un solo modelo con los nombres de la 2.0 (ver la documentación de Retenciones en Go).",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "\"1.0\" o \"2.0\"."
+        },
+        "folio_int": {
+          "type": "string"
+        },
+        "sello": {
+          "type": "string",
+          "description": "Solo con la opción IncluirSello."
+        },
+        "no_certificado": {
+          "type": "string",
+          "description": "NoCertificado en 2.0, NumCert en 1.0."
+        },
+        "certificado": {
+          "type": "string",
+          "description": "Certificado en 2.0, Cert en 1.0. Solo con la opción IncluirSello."
+        },
+        "fecha_exp": {
+          "$ref": "#/$defs/fecha",
+          "description": "En 2.0, hora civil sin zona (AAAA-MM-DDThh:mm:ss); en 1.0 con la zona (AAAA-MM-DDThh:mm:ss-06:00)."
+        },
+        "lugar_exp_retenc": {
+          "type": "string",
+          "description": "Solo 2.0."
+        },
+        "cve_retenc": {
+          "type": "string"
+        },
+        "desc_retenc": {
+          "type": "string"
+        },
+        "cfdi_reten_relacionados": {
+          "$ref": "#/$defs/cfdi_reten_relacionados"
+        },
+        "emisor": {
+          "$ref": "#/$defs/emisor_retenciones"
+        },
+        "receptor": {
+          "$ref": "#/$defs/receptor_retenciones"
+        },
+        "periodo": {
+          "$ref": "#/$defs/periodo_retenciones"
+        },
+        "totales": {
+          "$ref": "#/$defs/totales_retenciones"
+        },
+        "timbre_fiscal_digital": {
+          "$ref": "#/$defs/timbre_fiscal_digital"
+        },
+        "servicios_plataformas_tecnologicas": {
+          "$ref": "#/$defs/servicios_plataformas_tecnologicas"
+        },
+        "intereses": {
+          "$ref": "#/$defs/intereses"
+        },
+        "pagosaextranjeros": {
+          "$ref": "#/$defs/pagosaextranjeros"
+        },
+        "dividendos": {
+          "$ref": "#/$defs/dividendos"
+        },
+        "enajenacionde_acciones": {
+          "$ref": "#/$defs/enajenacionde_acciones"
+        },
+        "arrendamientoenfideicomiso": {
+          "$ref": "#/$defs/arrendamientoenfideicomiso"
+        },
+        "operacionesconderivados": {
+          "$ref": "#/$defs/operacionesconderivados"
+        },
+        "intereseshipotecarios": {
+          "$ref": "#/$defs/intereseshipotecarios"
+        },
+        "fideicomisonoempresarial": {
+          "$ref": "#/$defs/fideicomisonoempresarial"
+        },
+        "planesderetiro": {
+          "$ref": "#/$defs/planesderetiro"
+        },
+        "premios": {
+          "$ref": "#/$defs/premios"
+        },
+        "sector_financiero": {
+          "$ref": "#/$defs/sector_financiero"
+        },
+        "complementos_no_soportados": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Nodos de Complemento que no se leen, como {namespace}NombreLocal."
+        }
+      }
+    },
+    "cfdi_reten_relacionados": {
+      "type": "object",
+      "description": "Solo 2.0.",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_relacion": {
+          "type": "string"
+        },
+        "uuid": {
+          "$ref": "#/$defs/uuid"
+        },
+        "uuid_original": {
+          "type": "string",
+          "description": "Solo si difiere de uuid."
+        }
+      }
+    },
+    "emisor_retenciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc_e": {
+          "type": "string",
+          "description": "RfcE en 2.0, RFCEmisor en 1.0."
+        },
+        "nom_den_raz_soc_e": {
+          "type": "string"
+        },
+        "regimen_fiscal_e": {
+          "type": "string",
+          "description": "Solo 2.0."
+        },
+        "curp_e": {
+          "type": "string",
+          "description": "CURPE, solo 1.0."
+        }
+      }
+    },
+    "receptor_retenciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nacionalidad_r": {
+          "type": "string",
+          "description": "NacionalidadR en 2.0, Nacionalidad en 1.0."
+        },
+        "nacional": {
+          "$ref": "#/$defs/receptor_nacional_retenciones"
+        },
+        "extranjero": {
+          "$ref": "#/$defs/receptor_extranjero_retenciones"
+        }
+      }
+    },
+    "receptor_nacional_retenciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc_r": {
+          "type": "string",
+          "description": "RfcR en 2.0, RFCRecep en 1.0."
+        },
+        "nom_den_raz_soc_r": {
+          "type": "string"
+        },
+        "curp_r": {
+          "type": "string",
+          "description": "CurpR en 2.0, CURPR en 1.0."
+        },
+        "domicilio_fiscal_r": {
+          "type": "string",
+          "description": "Solo 2.0."
+        }
+      }
+    },
+    "receptor_extranjero_retenciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "num_reg_id_trib_r": {
+          "type": "string",
+          "description": "NumRegIdTribR en 2.0, NumRegIdTrib en 1.0."
+        },
+        "nom_den_raz_soc_r": {
+          "type": "string"
+        }
+      }
+    },
+    "periodo_retenciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mes_ini": {
+          "type": "string"
+        },
+        "mes_fin": {
+          "type": "string"
+        },
+        "ejercicio": {
+          "type": "string",
+          "description": "Ejercicio en 2.0, Ejerc en 1.0."
+        }
+      }
+    },
+    "totales_retenciones": {
+      "type": "object",
+      "description": "En 1.0 los montos se llaman montoTot*.",
+      "additionalProperties": false,
+      "properties": {
+        "monto_tot_operacion": {
+          "$ref": "#/$defs/decimal"
+        },
+        "monto_tot_grav": {
+          "$ref": "#/$defs/decimal"
+        },
+        "monto_tot_exent": {
+          "$ref": "#/$defs/decimal"
+        },
+        "monto_tot_ret": {
+          "$ref": "#/$defs/decimal"
+        },
+        "utilidad_bimestral": {
+          "$ref": "#/$defs/decimal",
+          "description": "Solo 2.0."
+        },
+        "isr_correspondiente": {
+          "$ref": "#/$defs/decimal",
+          "description": "Solo 2.0."
+        },
+        "imp_retenidos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/imp_retenidos"
+          }
+        }
+      }
+    },
+    "imp_retenidos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base_ret": {
+          "$ref": "#/$defs/decimal"
+        },
+        "impuesto_ret": {
+          "type": "string",
+          "description": "ImpuestoRet en 2.0, Impuesto en 1.0."
+        },
+        "monto_ret": {
+          "$ref": "#/$defs/decimal",
+          "description": "MontoRet en 2.0, montoRet en 1.0."
+        },
+        "tipo_pago_ret": {
+          "type": "string"
+        }
+      }
+    },
+    "servicios_plataformas_tecnologicas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "periodicidad": {
+          "type": "string"
+        },
+        "num_serv": {
+          "type": "string"
+        },
+        "mon_tot_serv_siva": {
+          "$ref": "#/$defs/decimal"
+        },
+        "total_iva_trasladado": {
+          "$ref": "#/$defs/decimal"
+        },
+        "total_iva_retenido": {
+          "$ref": "#/$defs/decimal"
+        },
+        "total_isr_retenido": {
+          "$ref": "#/$defs/decimal"
+        },
+        "dif_iva_entregado_prest_serv": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mon_totalpor_uso_plataforma": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mon_total_contribucion_gubernamental": {
+          "$ref": "#/$defs/decimal"
+        },
+        "servicios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/detalles_del_servicio"
+          },
+          "description": "Servicios/DetallesDelServicio."
+        }
+      }
+    },
+    "detalles_del_servicio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "forma_pago_serv": {
+          "type": "string"
+        },
+        "tipo_de_serv": {
+          "type": "string"
+        },
+        "sub_tip_serv": {
+          "type": "string"
+        },
+        "rfc_tercero_autorizado": {
+          "type": "string"
+        },
+        "fecha_serv": {
+          "$ref": "#/$defs/fecha"
+        },
+        "precio_serv_sin_iva": {
+          "$ref": "#/$defs/decimal"
+        },
+        "impuestos_trasladadosdel_servicio": {
+          "$ref": "#/$defs/impuestos_trasladadosdel_servicio"
+        },
+        "contribucion_gubernamental": {
+          "$ref": "#/$defs/contribucion_gubernamental"
+        },
+        "comision_del_servicio": {
+          "$ref": "#/$defs/comision_del_servicio"
+        }
+      }
+    },
+    "impuestos_trasladadosdel_servicio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base": {
+          "$ref": "#/$defs/decimal"
+        },
+        "impuesto": {
+          "type": "string"
+        },
+        "tipo_factor": {
+          "type": "string"
+        },
+        "tasa_cuota": {
+          "$ref": "#/$defs/decimal"
+        },
+        "importe": {
+          "$ref": "#/$defs/decimal"
+        }
+      }
+    },
+    "contribucion_gubernamental": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "imp_contrib": {
+          "$ref": "#/$defs/decimal"
+        },
+        "entidad_donde_paga_la_contribucion": {
+          "type": "string"
+        }
+      }
+    },
+    "comision_del_servicio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base": {
+          "$ref": "#/$defs/decimal"
+        },
+        "porcentaje": {
+          "$ref": "#/$defs/decimal"
+        },
+        "importe": {
+          "$ref": "#/$defs/decimal"
+        }
+      }
+    },
+    "intereses": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "sist_financiero": {
+          "type": "string"
+        },
+        "retiro_aores_ret_int": {
+          "type": "string"
+        },
+        "oper_financ_derivad": {
+          "type": "string"
+        },
+        "mont_int_nominal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_int_real": {
+          "$ref": "#/$defs/decimal"
+        },
+        "perdida": {
+          "$ref": "#/$defs/decimal"
+        }
+      }
+    },
+    "pagosaextranjeros": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "es_benef_efect_del_cobro": {
+          "type": "string"
+        },
+        "no_beneficiario": {
+          "$ref": "#/$defs/no_beneficiario_extranjero"
+        },
+        "beneficiario": {
+          "$ref": "#/$defs/beneficiario_extranjero"
+        }
+      }
+    },
+    "no_beneficiario_extranjero": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pais_de_resid_para_efec_fisc": {
+          "type": "string"
+        },
+        "concepto_pago": {
+          "type": "string"
+        },
+        "descripcion_concepto": {
+          "type": "string"
+        }
+      }
+    },
+    "beneficiario_extranjero": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc": {
+          "type": "string"
+        },
+        "curp": {
+          "type": "string"
+        },
+        "nom_den_raz_soc_b": {
+          "type": "string"
+        },
+        "concepto_pago": {
+          "type": "string"
+        },
+        "descripcion_concepto": {
+          "type": "string"
+        }
+      }
+    },
+    "dividendos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "divid_o_util": {
+          "$ref": "#/$defs/divid_o_util"
+        },
+        "remanente": {
+          "$ref": "#/$defs/remanente"
+        }
+      }
+    },
+    "divid_o_util": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cve_tip_div_o_util": {
+          "type": "string"
+        },
+        "mont_isr_acred_ret_mexico": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_isr_acred_ret_extranjero": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_ret_ext_div_ext": {
+          "$ref": "#/$defs/decimal"
+        },
+        "tipo_soc_distr_div": {
+          "type": "string"
+        },
+        "mont_isr_acred_nal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_div_acum_nal": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_div_acum_ext": {
+          "$ref": "#/$defs/decimal"
+        }
+      }
+    },
+    "remanente": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "proporcion_rem": {
+          "$ref": "#/$defs/decimal"
+        }
+      }
+    },
+    "enajenacionde_acciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "contrato_intermediacion": {
+          "type": "string"
+        },
+        "ganancia": {
+          "$ref": "#/$defs/decimal"
+        },
+        "perdida": {
+          "$ref": "#/$defs/decimal"
+        }
+      }
+    },
+    "arrendamientoenfideicomiso": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "pag_prov_efec_por_fiduc": {
+          "$ref": "#/$defs/decimal"
+        },
+        "rendim_fideicom": {
+          "$ref": "#/$defs/decimal"
+        },
+        "deducc_corresp": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_tot_ret": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_res_fisc_dist_fibras": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_otros_concept_distr": {
+          "$ref": "#/$defs/decimal"
+        },
+        "descr_mont_otros_concept_distr": {
+          "type": "string"
+        }
+      }
+    },
+    "operacionesconderivados": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "mont_gan_acum": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_perd_ded": {
+          "$ref": "#/$defs/decimal"
+        }
+      }
+    },
+    "intereseshipotecarios": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "credito_de_inst_financ": {
+          "type": "string"
+        },
+        "saldo_insoluto": {
+          "$ref": "#/$defs/decimal"
+        },
+        "prop_deduc_del_credit": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_tot_int_nominales_dev": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_tot_int_nominales_dev_y_pag": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_tot_int_real_pag_deduc": {
+          "$ref": "#/$defs/decimal"
+        },
+        "num_contrato": {
+          "type": "string"
+        }
+      }
+    },
+    "fideicomisonoempresarial": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "ingresos_o_entradas": {
+          "$ref": "#/$defs/ingresos_o_entradas"
+        },
+        "deducc_o_salidas": {
+          "$ref": "#/$defs/deducc_o_salidas"
+        },
+        "ret_efect_fideicomiso": {
+          "$ref": "#/$defs/ret_efect_fideicomiso"
+        }
+      }
+    },
+    "ingresos_o_entradas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mont_tot_entradas_periodo": {
+          "$ref": "#/$defs/decimal"
+        },
+        "part_prop_acum_del_fideicom": {
+          "$ref": "#/$defs/decimal"
+        },
+        "prop_del_mont_tot": {
+          "$ref": "#/$defs/decimal"
+        },
+        "integrac_ingresos": {
+          "type": "string",
+          "description": "IntegracIngresos/@Concepto."
+        }
+      }
+    },
+    "deducc_o_salidas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mont_tot_egres_periodo": {
+          "$ref": "#/$defs/decimal"
+        },
+        "part_prop_del_fideicom": {
+          "$ref": "#/$defs/decimal"
+        },
+        "prop_del_mont_tot": {
+          "$ref": "#/$defs/decimal"
+        },
+        "integrac_egresos": {
+          "type": "string",
+          "description": "IntegracEgresos/@ConceptoS."
+        }
+      }
+    },
+    "ret_efect_fideicomiso": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mont_ret_rel_pag_fideic": {
+          "$ref": "#/$defs/decimal"
+        },
+        "desc_ret_rel_pag_fideic": {
+          "type": "string"
+        }
+      }
+    },
+    "planesderetiro": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "\"1.0\" o \"1.1\": la 1.1 agrega num_referencia y aportaciones_o_depositos."
+        },
+        "sistema_financ": {
+          "type": "string"
+        },
+        "mont_tot_aport_anio_inm_anterior": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_int_reales_deveng_anioo_inm_ant": {
+          "$ref": "#/$defs/decimal"
+        },
+        "hubo_retiros_anio_inm_ant_per": {
+          "type": "string"
+        },
+        "mont_tot_retirado_anio_inm_ant_per": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_tot_exent_retirado_anio_inm_ant": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_tot_exedente_anio_inm_ant": {
+          "$ref": "#/$defs/decimal"
+        },
+        "hubo_retiros_anio_inm_ant": {
+          "type": "string"
+        },
+        "mont_tot_retirado_anio_inm_ant": {
+          "$ref": "#/$defs/decimal"
+        },
+        "num_referencia": {
+          "type": "string"
+        },
+        "aportaciones_o_depositos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/aportaciones_o_depositos"
+          }
+        }
+      }
+    },
+    "aportaciones_o_depositos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_aportacion_o_deposito": {
+          "type": "string"
+        },
+        "mont_aport_o_dep": {
+          "$ref": "#/$defs/decimal"
+        },
+        "rfc_fiduciaria": {
+          "type": "string"
+        }
+      }
+    },
+    "premios": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "entidad_federativa": {
+          "type": "string"
+        },
+        "mont_tot_pago": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_tot_pago_grav": {
+          "$ref": "#/$defs/decimal"
+        },
+        "mont_tot_pago_exent": {
+          "$ref": "#/$defs/decimal"
+        }
+      }
+    },
+    "sector_financiero": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "id_fideicom": {
+          "type": "string"
+        },
+        "nom_fideicom": {
+          "type": "string"
+        },
+        "descrip_fideicom": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

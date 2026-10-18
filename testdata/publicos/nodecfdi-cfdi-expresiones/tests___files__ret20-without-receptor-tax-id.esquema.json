@@ -1,0 +1,45 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/2}Retenciones': The attribute 'NoCertificado' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/2}Retenciones': The attribute 'Certificado' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/2}Retenciones': The attribute 'FechaExp' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/2}Retenciones': The attribute 'LugarExpRetenc' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/2}Retenciones': The attribute 'CveRetenc' is required but missing."
+  },
+  {
+   "linea": 3,
+   "ruta": "/retenciones:Retenciones/retenciones:Emisor",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/2}Emisor': The attribute 'NomDenRazSocE' is required but missing."
+  },
+  {
+   "linea": 3,
+   "ruta": "/retenciones:Retenciones/retenciones:Emisor",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/2}Emisor': The attribute 'RegimenFiscalE' is required but missing."
+  },
+  {
+   "linea": 4,
+   "ruta": "/retenciones:Retenciones/retenciones:Totales",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/2}Totales': This element is not expected. Expected is ( {http://www.sat.gob.mx/esquemas/retencionpago/2}Receptor )."
+  }
+ ]
+}

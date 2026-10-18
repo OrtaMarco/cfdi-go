@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 38,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[2]/cfdi:ComplementoConcepto/ventavehiculos:VentaVehiculos/ventavehiculos:Parte",
+   "mensaje": "Element '{http://www.sat.gob.mx/ventavehiculos}Parte': This element is not expected. Expected is ( {http://www.sat.gob.mx/ventavehiculos}InformacionAduanera )."
+  }
+ ]
+}

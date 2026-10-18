@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 36,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[2]/cfdi:ComplementoConcepto/ventavehiculos:VentaVehiculos",
+   "mensaje": "Element '{http://www.sat.gob.mx/ventavehiculos}VentaVehiculos', attribute 'version': The value '2.0' does not match the fixed value constraint '1.1'."
+  }
+ ]
+}

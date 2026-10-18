@@ -1,0 +1,68 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "folio_int": "TEST00007",
+    "no_certificado": "20001000000100005867",
+    "fecha_exp": "2015-02-24T11:02:47-06:00",
+    "cve_retenc": "23",
+    "desc_retenc": "Intereses reales deducibles por créditos hipotecarios",
+    "emisor": {
+      "rfc_e": "AAA010101AAA",
+      "nom_den_raz_soc_e": "Empresa DEMO para Rentenciones S de TST",
+      "curp_e": "AAAA010101HNLMNLD2"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional",
+      "nacional": {
+        "rfc_r": "XAXX010101000",
+        "nom_den_raz_soc_r": "PÚBLICO EN GENERAL S DE TST",
+        "curp_r": "VAHE820926HNLLRD02"
+      }
+    },
+    "periodo": {
+      "mes_ini": "6",
+      "mes_fin": "6",
+      "ejercicio": "2014"
+    },
+    "totales": {
+      "monto_tot_operacion": "14000.00",
+      "monto_tot_grav": "13000.00",
+      "monto_tot_exent": "1000.00",
+      "monto_tot_ret": "3500.00",
+      "imp_retenidos": [
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "01",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago definitivo"
+        },
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "02",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago provisional"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "9696C587-D414-4240-9660-F8366204E0AF",
+      "uuid_original": "9696c587-d414-4240-9660-f8366204e0af",
+      "fecha_timbrado": "2015-02-24T11:02:47",
+      "no_certificado_sat": "20001000000300003693"
+    },
+    "intereseshipotecarios": {
+      "version": "1.0",
+      "credito_de_inst_financ": "SI",
+      "saldo_insoluto": "2651.21",
+      "prop_deduc_del_credit": "1.00",
+      "mont_tot_int_nominales_dev": "432.12",
+      "mont_tot_int_nominales_dev_y_pag": "651.21",
+      "mont_tot_int_real_pag_deduc": "1651.21",
+      "num_contrato": "RP98312KJ28123L124551"
+    }
+  },
+  "advertencias": []
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'Fecha': '2026-02-30T10:30:00' is not a valid value of the atomic type '{http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI}t_FechaH'."
+  }
+ ]
+}

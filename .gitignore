@@ -1,0 +1,7 @@
+/corpus-reportes/
+/corpus/
+/cfdi
+*.test
+*.out
+.claude/worktrees/
+__pycache__/

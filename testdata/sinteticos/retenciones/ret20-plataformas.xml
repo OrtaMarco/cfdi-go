@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2" xmlns:plataformasTecnologicas="http://www.sat.gob.mx/esquemas/retencionpago/1/PlataformasTecnologicas10" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/2 http://www.sat.gob.mx/esquemas/retencionpago/2/retencionpagov2.xsd http://www.sat.gob.mx/esquemas/retencionpago/1/PlataformasTecnologicas10 http://www.sat.gob.mx/esquemas/retencionpago/1/PlataformasTecnologicas10/ServiciosPlataformasTecnologicas10.xsd" Version="2.0" FolioInt="R100" Sello="" NoCertificado="30001000000500003416" Certificado="" FechaExp="2026-01-15T10:30:00" LugarExpRetenc="42501" CveRetenc="26" DescRetenc="Plataformas tecnológicas">
+  <retenciones:CfdiRetenRelacionados TipoRelacion="04" UUID="abcdef01-2345-4789-8abc-def012345678"/>
+  <retenciones:Emisor RfcE="EKU9003173C9" NomDenRazSocE="ESCUELA KEMPER URGATE" RegimenFiscalE="601"/>
+  <retenciones:Receptor NacionalidadR="Nacional">
+    <retenciones:Nacional RfcR="XAXX010101000" NomDenRazSocR="PUBLICO EN GENERAL" DomicilioFiscalR="42501"/>
+  </retenciones:Receptor>
+  <retenciones:Periodo MesIni="12" MesFin="12" Ejercicio="2025"/>
+  <retenciones:Totales MontoTotOperacion="1000.00" MontoTotGrav="1000.00" MontoTotExent="0.00" MontoTotRet="100.00">
+    <retenciones:ImpRetenidos BaseRet="1000.00" ImpuestoRet="001" MontoRet="20.00" TipoPagoRet="01"/>
+    <retenciones:ImpRetenidos BaseRet="160.00" ImpuestoRet="002" MontoRet="80.00" TipoPagoRet="01"/>
+  </retenciones:Totales>
+  <retenciones:Complemento>
+    <plataformasTecnologicas:ServiciosPlataformasTecnologicas Version="1.0" Periodicidad="03" NumServ="2" MonTotServSIVA="1000.00" TotalIVATrasladado="160.00" TotalIVARetenido="80.00" TotalISRRetenido="20.00" DifIVAEntregadoPrestServ="80.00" MonTotalporUsoPlataforma="50.00" MonTotalContribucionGubernamental="10.00">
+      <plataformasTecnologicas:Servicios>
+        <plataformasTecnologicas:DetallesDelServicio FormaPagoServ="03" TipoDeServ="01" SubTipServ="01" FechaServ="2025-12-10" PrecioServSinIVA="600.00">
+          <plataformasTecnologicas:ImpuestosTrasladadosdelServicio Base="600.00" Impuesto="02" TipoFactor="Tasa" TasaCuota="0.160000" Importe="96.00"/>
+          <plataformasTecnologicas:ContribucionGubernamental ImpContrib="10.00" EntidadDondePagaLaContribucion="13"/>
+          <plataformasTecnologicas:ComisionDelServicio Base="600.00" Porcentaje="0.05" Importe="30.00"/>
+        </plataformasTecnologicas:DetallesDelServicio>
+        <plataformasTecnologicas:DetallesDelServicio FormaPagoServ="04" TipoDeServ="03" FechaServ="2025-12-20" PrecioServSinIVA="400.00">
+          <plataformasTecnologicas:ImpuestosTrasladadosdelServicio Base="400.00" Impuesto="02" TipoFactor="Tasa" TasaCuota="0.16" Importe="64.00"/>
+          <plataformasTecnologicas:ComisionDelServicio Importe="20.00"/>
+        </plataformasTecnologicas:DetallesDelServicio>
+      </plataformasTecnologicas:Servicios>
+    </plataformasTecnologicas:ServiciosPlataformasTecnologicas>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="0F1E2D3C-4B5A-4978-8695-A4B3C2D1E0F9" FechaTimbrado="2026-01-15T10:31:12" RfcProvCertif="AAA010101AAA" SelloCFD="" NoCertificadoSAT="30001000000300023708" SelloSAT=""/>
+  </retenciones:Complemento>
+</retenciones:Retenciones>

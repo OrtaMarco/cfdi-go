@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 23,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/spei:Complemento_SPEI/spei:SPEI_Tercero",
+   "mensaje": "Element '{http://www.sat.gob.mx/spei}SPEI_Tercero': The attribute 'sello' is required but missing."
+  }
+ ]
+}

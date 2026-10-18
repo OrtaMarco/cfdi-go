@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 69,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/nomina12:Nomina/nomina12:Receptor",
+   "mensaje": "Element '{http://www.sat.gob.mx/nomina12}Receptor', attribute 'CuentaBancaria': [facet 'pattern'] The value '0000000000000000000' is not accepted by the pattern '[0-9]{10,18}'."
+  }
+ ]
+}

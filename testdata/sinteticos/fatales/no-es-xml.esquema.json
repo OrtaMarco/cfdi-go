@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 1,
+   "ruta": "",
+   "mensaje": "XML ilegible: Start tag expected, '<' not found, line 1, column 1 (no-es-xml.xml, line 1)"
+  }
+ ]
+}

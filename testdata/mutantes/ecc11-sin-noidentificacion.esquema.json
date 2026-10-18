@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 28,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ecc11:EstadoDeCuentaCombustible/ecc11:Conceptos/ecc11:ConceptoEstadoDeCuentaCombustible[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/EstadoDeCuentaCombustible}ConceptoEstadoDeCuentaCombustible': The attribute 'NoIdentificacion' is required but missing."
+  }
+ ]
+}

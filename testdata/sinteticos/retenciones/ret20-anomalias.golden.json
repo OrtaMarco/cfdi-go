@@ -1,0 +1,94 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "2.0",
+    "no_certificado": "30001000000500003416",
+    "fecha_exp": "2026-01-15T10:30:00-06:00",
+    "lugar_exp_retenc": "42501",
+    "cve_retenc": "16",
+    "emisor": {
+      "rfc_e": "EKU9003173C9",
+      "nom_den_raz_soc_e": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal_e": "601"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional"
+    },
+    "periodo": {
+      "mes_ini": "01",
+      "mes_fin": "01"
+    },
+    "totales": {
+      "monto_tot_operacion": "1000.00",
+      "monto_tot_exent": "0",
+      "monto_tot_ret": "0",
+      "imp_retenidos": [
+        {
+          "impuesto_ret": "001",
+          "monto_ret": "0"
+        }
+      ]
+    },
+    "intereses": {
+      "version": "1.0",
+      "sist_financiero": "SI",
+      "retiro_aores_ret_int": "NO",
+      "oper_financ_derivad": "NO",
+      "mont_int_nominal": "10.00",
+      "mont_int_real": "8.00",
+      "perdida": "0.00"
+    },
+    "complementos_no_soportados": [
+      "{urn:raro}Raro"
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "FECHA_FORMATO",
+      "ruta": "/Retenciones/@FechaExp",
+      "mensaje": "\"2026-01-15T10:30:00-06:00\" no tiene el formato 2006-01-02T15:04:05",
+      "atributo": "FechaExp",
+      "valor": "2026-01-15T10:30:00-06:00"
+    },
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Retenciones/Receptor/Nacional",
+      "mensaje": "el Receptor no trae Nacional ni Extranjero"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/Periodo/@Ejercicio",
+      "mensaje": "falta el atributo Ejercicio",
+      "atributo": "Ejercicio"
+    },
+    {
+      "codigo": "DECIMAL_INVALIDO",
+      "ruta": "/Retenciones/Totales/@MontoTotGrav",
+      "mensaje": "\"1,000.00\" no es un decimal válido",
+      "atributo": "MontoTotGrav",
+      "valor": "1,000.00"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/Totales/ImpRetenidos[1]/@TipoPagoRet",
+      "mensaje": "falta el atributo TipoPagoRet",
+      "atributo": "TipoPagoRet"
+    },
+    {
+      "codigo": "NODO_DUPLICADO",
+      "ruta": "/Retenciones/Complemento/Intereses",
+      "mensaje": "más de un complemento Intereses; se usa el primero"
+    },
+    {
+      "codigo": "COMPLEMENTO_NO_SOPORTADO",
+      "ruta": "/Retenciones/Complemento/Raro",
+      "mensaje": "complemento no soportado: {urn:raro}Raro"
+    },
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Retenciones/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

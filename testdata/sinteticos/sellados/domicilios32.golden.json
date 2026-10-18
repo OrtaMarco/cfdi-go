@@ -1,0 +1,54 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.2",
+    "serie": "B",
+    "folio": "7",
+    "fecha": "2016-05-10T12:00:00",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "100.00",
+    "moneda": "MXN",
+    "total": "116.00",
+    "tipo_de_comprobante": "ingreso",
+    "lugar_expedicion": "PACHUCA, HIDALGO",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000"
+    },
+    "conceptos": [
+      {
+        "cantidad": "1",
+        "unidad": "SERVICIO",
+        "descripcion": "Servicio de prueba",
+        "valor_unitario": "100.00",
+        "importe": "100.00"
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "16.00",
+      "traslados": [
+        {
+          "impuesto": "IVA",
+          "importe": "16.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "12345678-1234-4234-8234-123456789012",
+      "fecha_timbrado": "2016-05-10T12:01:00",
+      "no_certificado_sat": "30001000000300023708"
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "VERSION_ANTIGUA",
+      "ruta": "/Comprobante/@Version",
+      "mensaje": "CFDI 3.2: lectura parcial, solo los campos que coinciden con 3.3",
+      "atributo": "Version"
+    }
+  ]
+}

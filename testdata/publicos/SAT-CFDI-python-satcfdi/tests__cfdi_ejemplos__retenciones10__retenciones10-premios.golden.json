@@ -1,0 +1,65 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "folio_int": "TEST00011",
+    "no_certificado": "20001000000100005867",
+    "fecha_exp": "2015-02-24T11:02:54-06:00",
+    "cve_retenc": "20",
+    "desc_retenc": "Obtención de Premios",
+    "emisor": {
+      "rfc_e": "AAA010101AAA",
+      "nom_den_raz_soc_e": "Empresa DEMO para Rentenciones S de TST",
+      "curp_e": "AAAA010101HNLMNLD2"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional",
+      "nacional": {
+        "rfc_r": "XAXX010101000",
+        "nom_den_raz_soc_r": "PÚBLICO EN GENERAL S DE TST",
+        "curp_r": "VAHE820926HNLLRD02"
+      }
+    },
+    "periodo": {
+      "mes_ini": "6",
+      "mes_fin": "6",
+      "ejercicio": "2014"
+    },
+    "totales": {
+      "monto_tot_operacion": "14000.00",
+      "monto_tot_grav": "13000.00",
+      "monto_tot_exent": "1000.00",
+      "monto_tot_ret": "3500.00",
+      "imp_retenidos": [
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "01",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago definitivo"
+        },
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "02",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago provisional"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "EB24AB75-10F3-40B4-936D-A0E533693195",
+      "uuid_original": "eb24ab75-10f3-40b4-936d-a0e533693195",
+      "fecha_timbrado": "2015-02-24T11:02:54",
+      "no_certificado_sat": "20001000000300003693"
+    },
+    "premios": {
+      "version": "1.0",
+      "entidad_federativa": "19",
+      "mont_tot_pago": "2882112.9832",
+      "mont_tot_pago_grav": "278120.2141",
+      "mont_tot_pago_exent": "726512.3421"
+    }
+  },
+  "advertencias": []
+}

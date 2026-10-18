@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 10,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}Pago': This element is not expected. Expected is ( {http://www.sat.gob.mx/Pagos20}Totales )."
+  }
+ ]
+}

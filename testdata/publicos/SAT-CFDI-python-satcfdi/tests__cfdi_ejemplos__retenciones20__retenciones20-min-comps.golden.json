@@ -1,0 +1,149 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "2.0",
+    "no_certificado": "30001000000300023708",
+    "fecha_exp": "2021-12-12T12:45:29",
+    "lugar_exp_retenc": "99999",
+    "cve_retenc": "01",
+    "emisor": {
+      "rfc_e": "AAAA010101AAA",
+      "nom_den_raz_soc_e": "PERSONA FÍSICA DE PRUEBA",
+      "regimen_fiscal_e": "630"
+    },
+    "receptor": {
+      "nacionalidad_r": "Extranjero",
+      "extranjero": {
+        "nom_den_raz_soc_r": "PERSONA FISICA NACIONAL DE PRUEBA"
+      }
+    },
+    "periodo": {
+      "mes_ini": "01",
+      "mes_fin": "12",
+      "ejercicio": "2027"
+    },
+    "totales": {
+      "monto_tot_operacion": "1.00",
+      "monto_tot_grav": "1.00",
+      "monto_tot_exent": "1.00",
+      "monto_tot_ret": "1.00",
+      "isr_correspondiente": "11.2",
+      "imp_retenidos": [
+        {
+          "monto_ret": "1.00",
+          "tipo_pago_ret": "02"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "02E3BC7C-BEDA-41BF-8A6B-F74915E9B61F",
+      "uuid_original": "02e3bc7c-beda-41bf-8a6b-f74915e9b61f",
+      "fecha_timbrado": "2021-12-09T16:24:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000300023699"
+    },
+    "intereses": {
+      "version": "1.0",
+      "sist_financiero": "NO",
+      "retiro_aores_ret_int": "NO",
+      "oper_financ_derivad": "NO",
+      "mont_int_nominal": "1.000",
+      "mont_int_real": "2.000",
+      "perdida": "3.000"
+    },
+    "pagosaextranjeros": {
+      "version": "1.0",
+      "es_benef_efect_del_cobro": "SI",
+      "no_beneficiario": {
+        "pais_de_resid_para_efec_fisc": "IT",
+        "concepto_pago": "6",
+        "descripcion_concepto": "ESTA ES LA DESCRIPCION"
+      },
+      "beneficiario": {
+        "rfc": "AAAA010101AA0",
+        "curp": "AAAA010101HJCXXX01",
+        "nom_den_raz_soc_b": "PRUEBA DE PERSONA FISICA",
+        "concepto_pago": "6",
+        "descripcion_concepto": "ESTA ES LA DESCRIPCION"
+      }
+    },
+    "dividendos": {
+      "version": "1.0",
+      "divid_o_util": {
+        "cve_tip_div_o_util": "01",
+        "mont_isr_acred_ret_mexico": "0.00",
+        "mont_isr_acred_ret_extranjero": "0.00",
+        "tipo_soc_distr_div": "Sociedad Nacional"
+      }
+    },
+    "enajenacionde_acciones": {
+      "version": "1.0",
+      "contrato_intermediacion": "NO HAY CONTRATO",
+      "ganancia": "0.00",
+      "perdida": "0.00"
+    },
+    "arrendamientoenfideicomiso": {
+      "version": "1.0",
+      "pag_prov_efec_por_fiduc": "0.00",
+      "rendim_fideicom": "0.00",
+      "deducc_corresp": "0.00"
+    },
+    "operacionesconderivados": {
+      "version": "1.0",
+      "mont_gan_acum": "1.0",
+      "mont_perd_ded": "1.0"
+    },
+    "intereseshipotecarios": {
+      "version": "1.0",
+      "credito_de_inst_financ": "NO",
+      "saldo_insoluto": "0.00"
+    },
+    "fideicomisonoempresarial": {
+      "version": "1.0",
+      "ingresos_o_entradas": {
+        "mont_tot_entradas_periodo": "0.00",
+        "part_prop_acum_del_fideicom": "0.00",
+        "prop_del_mont_tot": "20.815484",
+        "integrac_ingresos": "ESTE ES EL CONCEPTO"
+      },
+      "deducc_o_salidas": {
+        "mont_tot_egres_periodo": "0.00",
+        "part_prop_del_fideicom": "0.00",
+        "prop_del_mont_tot": "20.000000",
+        "integrac_egresos": "Nada"
+      },
+      "ret_efect_fideicomiso": {
+        "mont_ret_rel_pag_fideic": "0.00",
+        "desc_ret_rel_pag_fideic": "Descripción"
+      }
+    },
+    "planesderetiro": {
+      "version": "1.1",
+      "sistema_financ": "NO",
+      "mont_int_reales_deveng_anioo_inm_ant": "0.00",
+      "hubo_retiros_anio_inm_ant_per": "NO",
+      "hubo_retiros_anio_inm_ant": "SI",
+      "aportaciones_o_depositos": [
+        {
+          "tipo_aportacion_o_deposito": "c",
+          "mont_aport_o_dep": "1000000.00"
+        }
+      ]
+    },
+    "premios": {
+      "version": "1.0",
+      "entidad_federativa": "18",
+      "mont_tot_pago": "50000",
+      "mont_tot_pago_grav": "50000",
+      "mont_tot_pago_exent": "0"
+    },
+    "sector_financiero": {
+      "version": "1.0",
+      "id_fideicom": "191216",
+      "descrip_fideicom": "DEScRIPCION DEL FIDEICOM"
+    }
+  },
+  "advertencias": []
+}

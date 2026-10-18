@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 12,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/nomina12:Nomina/nomina12:Percepciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/nomina12}Percepciones': This element is not expected. Expected is ( {http://www.sat.gob.mx/nomina12}Receptor )."
+  }
+ ]
+}

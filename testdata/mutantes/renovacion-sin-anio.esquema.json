@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/decreto:renovacionysustitucionvehiculos/decreto:DecretoRenovVehicular/decreto:VehiculoNuvoSemEnajenadoFabAlPerm",
+   "mensaje": "Element '{http://www.sat.gob.mx/renovacionysustitucionvehiculos}VehiculoNuvoSemEnajenadoFabAlPerm': The attribute 'Año' is required but missing."
+  }
+ ]
+}

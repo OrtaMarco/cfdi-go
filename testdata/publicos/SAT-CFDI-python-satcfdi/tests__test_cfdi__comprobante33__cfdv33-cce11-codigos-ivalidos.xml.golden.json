@@ -1,0 +1,144 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "fecha": "2017-05-01T01:23:59",
+    "forma_pago": "02",
+    "no_certificado": "40001000000300000337",
+    "sub_total": "1000",
+    "moneda": "MXN",
+    "total": "1500",
+    "tipo_de_comprobante": "I",
+    "lugar_expedicion": "45079",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1.5",
+        "clave_unidad": "C81",
+        "descripcion": "ACERO",
+        "valor_unitario": "1500000",
+        "importe": "2250000"
+      }
+    ],
+    "impuestos": {},
+    "comercio_exterior": {
+      "version": "1.1",
+      "motivo_traslado": "99",
+      "tipo_operacion": "2",
+      "clave_de_pedimento": "A1",
+      "certificado_origen": "1",
+      "num_certificado_origen": "DEADBEEF-CAFE-BABE-1234-DECADE012345",
+      "numero_exportador_confiable": "1",
+      "incoterm": "FOB",
+      "subdivision": "1",
+      "observaciones": "obs",
+      "tipo_cambio_usd": "234.5678",
+      "total_usd": "123.45",
+      "emisor": {
+        "curp": "PEPJ800101HDFBCDQ8",
+        "domicilio": {
+          "calle": "c",
+          "numero_exterior": "123X",
+          "numero_interior": "12A",
+          "colonia": "0750",
+          "localidad": "105",
+          "referencia": "r",
+          "municipio": "033",
+          "estado": "ZAC",
+          "pais": "ZZZ",
+          "codigo_postal": "99999"
+        }
+      },
+      "propietario": [
+        {
+          "num_reg_id_trib": "1234567",
+          "residencia_fiscal": "ZZZ"
+        }
+      ],
+      "receptor": {
+        "num_reg_id_trib": "234567890",
+        "domicilio": {
+          "calle": "c",
+          "numero_exterior": "2",
+          "numero_interior": "99",
+          "colonia": "0197",
+          "localidad": "007",
+          "referencia": "r1",
+          "municipio": "039",
+          "estado": "NLE",
+          "pais": "ZZZ",
+          "codigo_postal": "99999"
+        }
+      },
+      "destinatario": [
+        {
+          "num_reg_id_trib": "654321",
+          "nombre": "Nombre",
+          "domicilio": [
+            {
+              "calle": "c3",
+              "numero_exterior": "3A",
+              "numero_interior": "101",
+              "colonia": "0202",
+              "localidad": "007",
+              "referencia": "rd",
+              "municipio": "039",
+              "estado": "BCN",
+              "pais": "ZZZ",
+              "codigo_postal": "64290"
+            }
+          ]
+        }
+      ],
+      "mercancias": [
+        {
+          "no_identificacion": "n100",
+          "fraccion_arancelaria": "99999999",
+          "cantidad_aduana": "0.001",
+          "unidad_aduana": "99",
+          "valor_unitario_aduana": "234.56",
+          "valor_dolares": "123.45",
+          "descripciones_especificas": [
+            {
+              "marca": "Marca",
+              "modelo": "Modelo",
+              "sub_modelo": "SubModelo",
+              "numero_serie": "NumeroSerie"
+            }
+          ]
+        },
+        {
+          "no_identificacion": "n101",
+          "fraccion_arancelaria": "99999999",
+          "cantidad_aduana": "0.001",
+          "unidad_aduana": "99",
+          "valor_unitario_aduana": "234.56",
+          "valor_dolares": "123.45",
+          "descripciones_especificas": [
+            {
+              "marca": "Marca",
+              "modelo": "Modelo",
+              "sub_modelo": "SubModelo",
+              "numero_serie": "NumeroSerie"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

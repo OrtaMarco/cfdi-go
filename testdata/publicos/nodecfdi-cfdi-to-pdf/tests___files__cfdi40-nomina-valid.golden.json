@@ -1,0 +1,138 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "N",
+    "folio": "1",
+    "fecha": "2026-04-28T13:24:40",
+    "no_certificado": "00001000000000000000",
+    "sub_total": "5186.10",
+    "descuento": "741.10",
+    "moneda": "MXN",
+    "total": "4445.00",
+    "tipo_de_comprobante": "N",
+    "exportacion": "01",
+    "lugar_expedicion": "97146",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "EMPRESA DEMO PRUEBAS",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "nombre": "EMPLEADO DEMO PRUEBAS",
+      "domicilio_fiscal_receptor": "97314",
+      "regimen_fiscal_receptor": "605",
+      "uso_cfdi": "CN01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111505",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago de nómina",
+        "valor_unitario": "5186.10",
+        "importe": "5186.10",
+        "descuento": "741.10",
+        "objeto_imp": "01"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "00000000-0000-0000-0000-000000000000",
+      "fecha_timbrado": "2026-04-28T13:25:27",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "00001000000000000000"
+    },
+    "nomina": [
+      {
+        "version": "1.2",
+        "tipo_nomina": "O",
+        "fecha_pago": "2026-04-27",
+        "fecha_inicial_pago": "2026-04-16",
+        "fecha_final_pago": "2026-04-30",
+        "num_dias_pagados": "15.000",
+        "total_percepciones": "5186.10",
+        "total_deducciones": "741.10",
+        "total_otros_pagos": "0.00",
+        "emisor": {
+          "registro_patronal": "A0000000000"
+        },
+        "receptor": {
+          "curp": "XAXX010101HDFXXX01",
+          "num_seguridad_social": "00000000000",
+          "fecha_inicio_rel_laboral": "2024-11-01",
+          "antiguedad": "P78W",
+          "tipo_contrato": "01",
+          "sindicalizado": "No",
+          "tipo_jornada": "08",
+          "tipo_regimen": "02",
+          "num_empleado": "001",
+          "departamento": "Ninguno",
+          "puesto": "ADMINISTRADOR",
+          "riesgo_puesto": "3",
+          "periodicidad_pago": "04",
+          "salario_base_cot_apor": "363.26",
+          "salario_diario_integrado": "345.74",
+          "clave_ent_fed": "YUC"
+        },
+        "percepciones": {
+          "total_sueldos": "5186.10",
+          "total_gravado": "5186.10",
+          "total_exento": "0.00",
+          "percepcion": [
+            {
+              "tipo_percepcion": "001",
+              "clave": "001",
+              "concepto": "Sueldo",
+              "importe_gravado": "5186.10",
+              "importe_exento": "0.00"
+            }
+          ]
+        },
+        "deducciones": {
+          "total_otras_deducciones": "618.28",
+          "total_impuestos_retenidos": "122.82",
+          "deduccion": [
+            {
+              "tipo_deduccion": "099",
+              "clave": "099",
+              "concepto": "Ajuste al neto",
+              "importe": "0.10"
+            },
+            {
+              "tipo_deduccion": "001",
+              "clave": "052",
+              "concepto": "I.M.S.S.",
+              "importe": "130.09"
+            },
+            {
+              "tipo_deduccion": "002",
+              "clave": "045",
+              "concepto": "I.S.R. mes",
+              "importe": "122.82"
+            },
+            {
+              "tipo_deduccion": "009",
+              "clave": "016",
+              "concepto": "Préstamo infonavit CF",
+              "importe": "488.09"
+            }
+          ]
+        },
+        "otros_pagos": [
+          {
+            "tipo_otro_pago": "002",
+            "clave": "035",
+            "concepto": "Subs al Empleo mes",
+            "importe": "0.00",
+            "subsidio_al_empleo": {
+              "subsidio_causado": "264.30"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "advertencias": []
+}

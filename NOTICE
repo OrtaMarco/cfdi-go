@@ -1,0 +1,475 @@
+cfdi — github.com/OrtaMarco/cfdi-go
+Copyright (c) Marco Orta. Licencia MIT (ver LICENSE).
+
+Nombres de nodos y atributos tomados de los esquemas XSD publicados por el SAT (cfdv40, Pagos20,
+nomina12, TimbreFiscalDigitalv11), consultados en la copia que distribuye eclipxe/cfdiutils
+(https://github.com/eclipxe13/CfdiUtils, MIT). No se copió código de esa librería ni de phpcfdi.
+
+Si se agregan fixtures o lógica de otros proyectos, su aviso de copyright y licencia va aquí.
+
+Hojas XSLT de la cadena original (internal/gencadena/xslt/sitio_internet/): publicadas por el SAT en
+http://www.sat.gob.mx/sitio_internet/, copiadas sin cambios de la réplica de phpcfdi/resources-sat-xml
+(https://github.com/phpcfdi/resources-sat-xml, commit be6963fcb22425dc6055634e0b8dfd5cee50021d), que se
+distribuye bajo The Unlicense (dominio público). cadena_reglas.go se genera a partir de ellas.
+
+Esquemas XSD (internal/genxsd/xsd/sitio_internet/): publicados por el SAT en
+http://www.sat.gob.mx/sitio_internet/, copiados sin cambios de la misma réplica de
+phpcfdi/resources-sat-xml (commit be6963fcb22425dc6055634e0b8dfd5cee50021d, The Unlicense).
+esquema_reglas.go y esquema_catalogos.go se generan a partir de ellos.
+
+Hojas XSLT y esquemas XSD del CFDI de Retenciones e información de pagos 1.0 y 2.0 y de sus complementos
+(internal/gencadena/xslt/esquemas/retencionpago/ e internal/genxsd/xsd/esquemas/retencionpago/):
+publicados por el SAT en http://www.sat.gob.mx/esquemas/retencionpago/, copiados sin cambios de la misma
+réplica de phpcfdi/resources-sat-xml (commit be6963fcb22425dc6055634e0b8dfd5cee50021d, The Unlicense).
+
+Decimales del catálogo c_Moneda (monedas.go): extraídos con scripts/extraer_monedas.py de la base de
+catálogos de SAT-CFDI/python-satcfdi (satcfdi/catalogs/catalogs.db, tabla C756_c_Moneda, commit
+c0a9d4ccfc863bd533ea7b8a9e6629c76cf7dbc4), licencia MIT (aviso abajo, con los fixtures de ese proyecto).
+Los datos son los del catálogo público del SAT.
+
+Reglas de ValidarReglas: los códigos y criterios de las validaciones estándar de CFDI 3.3 de
+eclipxe13/CfdiUtils (src/CfdiUtils/Validate/Cfdi33/, MIT) y de nodecfdi/cfdi-validator (MIT) se citan como
+referencia en cfdi.Reglas; el código es propio. reglas_test.go porta, citándolos, los casos de
+ComprobanteTipoCambioTest y ComprobanteDescuentoTest de CfdiUtils (aviso MIT abajo).
+
+testdata/publicos/eclipxe13-CfdiUtils/tests__assets__cfdi33-valid-cadenaorigen.txt es la cadena original
+que publica CfdiUtils para su fixture cfdi33-valid.xml (misma licencia MIT, aviso abajo). En los dos
+se cambió el Receptor (era una persona física) por el RFC de prueba XOJI740919U48 y un nombre de
+prueba, y el Sello del comprobante se volvió a firmar con el CSD de pruebas EKU9003173C9
+(30001000000400002434) que el propio fixture declara. Del TimbreFiscalDigital solo se cambió el
+RfcProvCertif (ver el párrafo siguiente): ya venía sin corresponder al documento (así lo dejó CfdiUtils
+a propósito). Los
+*.cadena.txt / *.cadena-tfd.txt de testdata/ los genera scripts/generar_cadenas.py con libxslt (lxml)
+y esas hojas del SAT.
+
+Datos de prueba en lugar de datos que no eran de prueba (testdata/publicos/): antes de publicar el
+repositorio se sustituyeron, en 42 fixtures de satcfdi, CfdiUtils, nodecfdi, phpcfdi y lunasoft, los
+RFC, CURP y nombres de personas físicas y morales que no son identidades de prueba del SAT (receptores,
+enajenantes y adquirientes de NotariosPublicos, CURP de Nómina, RFC de bancos en Pagos, nombres de
+empresas, el RfcProvCertif de los timbres y un número de certificado con forma de producción) por RFC,
+CURP y nombres de los CSD de prueba del SAT (EKU9003173C9, XIQB891116QE4, XOJI740919U48, CACX7605101P8,
+KAHO641101B39, IIA040805DZ4, URE180429TM6, JES900109Q90, XIA190128J61, SAT970701NN3…). El resto de cada
+archivo quedó igual. Los sellos de eclipxe13-CfdiUtils/tests__assets__cfdi40-valid.xml y de
+nodecfdi-cfdi-validator/tests___files__cfdi40-valid.xml se volvieron a firmar con los CSD de prueba
+EKU9003173C9 que declaran (30001000000500003416 y 30001000000400002434); los demás no se volvieron a
+firmar, así que su sello no verifica (las pruebas no lo esperan). INVENTARIO.json trae el sha256 de los archivos como quedaron.
+Los ejemplos oficiales del SAT de Retenciones 1.0 (firmados con sus CSD de prueba) no se tocaron.
+En los dos cfdv32-instituciones-educativas de satcfdi, el nombreAlumno de iedu pasó a «ALUMNO DE
+PRUEBA».
+
+Certificados y llaves de prueba (testdata/certs/): son los CSD de pruebas que publica el SAT para
+desarrolladores (sin valor fiscal), copiados sin cambios de proyectos MIT:
+  - EKU9003173C9.cer, EKU9003173C9.key.pem y 20001000000300022779.cer: de eclipxe13/CfdiUtils
+    (tests/assets/certs/, commit f2a03dc254348a8fb9e50374ecdbe49e7dd43f9b), aviso MIT abajo.
+  - CSD01_AAA010101AAA.cer y CSD01_AAA010101AAA.key.pem: de nodecfdi/credentials
+    (tests/_files/CSD01_AAA010101AAA/certificate.cer y private_key.key.pem, commit
+    d741d510be6dc60b5834191397ae2de06788e104), aviso MIT abajo.
+Los XML de testdata/sinteticos/sellados/ son fixtures sintéticos de este repo sellados con ellas.
+
+==============================================================================
+testdata/certs/CSD01_AAA010101AAA.* (nodecfdi/credentials)
+Origen: https://github.com/nodecfdi/credentials (commit d741d510be6dc60b5834191397ae2de06788e104)
+Licencia: MIT (archivo LICENSE.md)
+
+The MIT License (MIT)
+
+Copyright (c) 2021-2024 | NodeCfdi and OcelotlStudio https://ocelotlstudio.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Los archivos XML bajo testdata/publicos/<org>-<repo>/ provienen de los siguientes proyectos de software libre.
+Se conservan sin modificaciones. Cada uno se distribuye bajo la licencia de su proyecto de origen:
+
+==============================================================================
+testdata/publicos/SAT-CFDI-python-satcfdi/
+Origen: https://github.com/SAT-CFDI/python-satcfdi (commit c0a9d4ccfc863bd533ea7b8a9e6629c76cf7dbc4)
+Licencia: MIT (archivo license)
+
+MIT License
+
+Copyright (c) 2022
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/eclipxe13-CfdiUtils/
+Origen: https://github.com/eclipxe13/CfdiUtils (commit f2a03dc254348a8fb9e50374ecdbe49e7dd43f9b)
+Licencia: MIT (archivo LICENSE)
+
+The MIT License (MIT)
+
+Copyright (c) 2016 - 2026 Carlos C Soto https://eclipxe.com.mx/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/eclipxe13-buzoncfdi-cfdireader/
+Origen: https://github.com/eclipxe13/buzoncfdi-cfdireader (commit 61daa5acc339ceeaf71cc5db172e264672a37fc0)
+Licencia: MIT (archivo LICENSE)
+
+The MIT License (MIT)
+
+Copyright (c) 2015 - 2017 Carlos C Soto
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/lunasoft-sw-sdk-php/
+Origen: https://github.com/lunasoft/sw-sdk-php (commit 75ff55b1c59783fe497c9525fcac8b1cf2ef205d)
+Licencia: MIT (archivo LICENSE)
+
+MIT License
+
+Copyright (c) 2026 Lunasoft®
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/nodecfdi-cfdi-cleaner/
+Origen: https://github.com/nodecfdi/cfdi-cleaner (commit 38ef69c77923a931332e8672149dd7eb8d958cd1)
+Licencia: MIT (archivo LICENSE.md)
+
+# The MIT License
+
+Copyright (c) 2021-2024 | NodeCfdi and OcelotlStudio https://ocelotlstudio.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/nodecfdi-cfdi-core/
+Origen: https://github.com/nodecfdi/cfdi-core (commit b4bd02518c44d1cf36154648866a028f92c7c596)
+Licencia: MIT (archivo LICENSE.md)
+
+# The MIT License
+
+Copyright (c) 2024 | NodeCfdi and OcelotlStudio https://ocelotlstudio.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/nodecfdi-cfdi-expresiones/
+Origen: https://github.com/nodecfdi/cfdi-expresiones (commit 71159babb551562c1a528a9306b1f9119246c098)
+Licencia: MIT (archivo LICENSE.md)
+
+# The MIT License
+
+Copyright (c) 2021-2024 | NodeCfdi and OcelotlStudio https://ocelotlstudio.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/nodecfdi-cfdi-to-json/
+Origen: https://github.com/nodecfdi/cfdi-to-json (commit 6e09af3be9982b39d2fc743d9c794d00f4b4a8c9)
+Licencia: MIT (archivo LICENSE.md)
+
+The MIT License (MIT)
+
+Copyright (c) 2022-2024 | NodeCfdi and OcelotlStudio https://ocelotlstudio.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/nodecfdi-cfdi-to-pdf/
+Origen: https://github.com/nodecfdi/cfdi-to-pdf (commit 4f4c6461eedef3a3128cd6d052f8b36895322266)
+Licencia: MIT (archivo LICENSE.md)
+
+The MIT License (MIT)
+
+Copyright (c) 2022-2024 | NodeCfdi and OcelotlStudio https://ocelotlstudio.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/nodecfdi-cfdi-validator/
+Origen: https://github.com/nodecfdi/cfdi-validator (commit a470955f8ccbbe2af7c906b0b9f74e0340707279)
+Licencia: MIT (archivo LICENSE)
+
+The MIT License (MIT)
+
+Copyright (c) 2022 - NodeCfdi and OcelotlStudio https://ocelotlstudio.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/nodecfdi-sat-ws-descarga-masiva/
+Origen: https://github.com/nodecfdi/sat-ws-descarga-masiva (commit 0a4d062db3e4f65c1631583c78f7aae63bdaee0c)
+Licencia: MIT (archivo LICENSE)
+
+The MIT License (MIT)
+
+Copyright (c) 2022 - 2025 - NodeCfdi and OcelotlStudio <https://ocelotlstudio.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/phpcfdi-cfdi-expresiones/
+Origen: https://github.com/phpcfdi/cfdi-expresiones (commit 7882e79d585d041b0e0913c298698dd00b198845)
+Licencia: MIT (archivo LICENSE)
+
+The MIT License (MIT)
+
+Copyright (c) 2019 - 2024 PhpCfdi https://www.phpcfdi.com/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/phpcfdi-cfdi-to-json/
+Origen: https://github.com/phpcfdi/cfdi-to-json (commit 71b8fb9c2b22bbb257b72c9447b5edb81116b42f)
+Licencia: MIT (archivo LICENSE)
+
+The MIT License (MIT)
+
+Copyright (c) 2021 - 2025 PhpCfdi https://www.phpcfdi.com/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+testdata/publicos/phpcfdi-sat-ws-descarga-masiva-cli/
+Origen: https://github.com/phpcfdi/sat-ws-descarga-masiva-cli (commit 921d4d281ce892e9170b9cd610861c8cb9707431)
+Licencia: MIT (archivo LICENSE)
+
+The MIT License (MIT)
+
+Copyright (c) 2020 - 2026 PhpCfdi https://www.phpcfdi.com/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

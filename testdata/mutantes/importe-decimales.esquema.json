@@ -1,0 +1,15 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 19,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[2]/cfdi:Impuestos/cfdi:Traslados/cfdi:Traslado",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Traslado', attribute 'Importe': [facet 'fractionDigits'] The value '80.0000001' has more fractional digits than are allowed ('6')."
+  },
+  {
+   "linea": 19,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[2]/cfdi:Impuestos/cfdi:Traslados/cfdi:Traslado",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Traslado', attribute 'Importe': [facet 'pattern'] The value '80.0000001' is not accepted by the pattern '[0-9]{1,18}(.[0-9]{1,6})?'."
+  }
+ ]
+}

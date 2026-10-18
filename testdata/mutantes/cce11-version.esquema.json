@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 10,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cce20:ComercioExterior",
+   "mensaje": "Element '{http://www.sat.gob.mx/ComercioExterior11}ComercioExterior', attribute 'Version': The value '2.0' does not match the fixed value constraint '1.1'."
+  }
+ ]
+}

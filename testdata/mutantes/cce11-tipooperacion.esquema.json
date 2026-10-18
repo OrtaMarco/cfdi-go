@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 10,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cce20:ComercioExterior",
+   "mensaje": "Element '{http://www.sat.gob.mx/ComercioExterior11}ComercioExterior', attribute 'TipoOperacion': [facet 'enumeration'] The value '3' is not an element of the set {'2'}."
+  }
+ ]
+}

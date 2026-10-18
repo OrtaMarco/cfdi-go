@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 46,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cartaporte31:CartaPorte/cartaporte31:Mercancias/cartaporte31:Autotransporte/cartaporte31:IdentificacionVehicular",
+   "mensaje": "Element '{http://www.sat.gob.mx/CartaPorte31}IdentificacionVehicular', attribute 'ConfigVehicular': [facet 'enumeration'] The value 'Z9' is not an element of the set {'C2', 'C3', 'C2R2', 'C3R2', 'C2R3', 'C3R3', 'T2S1', 'T2S2', 'T2S3', 'T3S1', 'T3S2', 'T3S3', 'T2S1R2', 'T2S2R2', 'T2S1R3', 'T3S1R2', 'T3S1R3', 'T3S2R2', 'T3S2R3', 'T3S2R4', 'T2S2S2', 'T3S2S2', 'T3S3S2', 'OTROEV', 'OTROEGP', 'OTROSG', 'VL', 'OTROEVGP', 'GPLUTA', 'GPLUTB', 'GPLUTC', 'GPLUTD', 'GPLATA', 'GPLATB', 'GPLATC', 'GPLATD'}."
+  }
+ ]
+}

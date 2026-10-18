@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ieeh:IngresosHidrocarburos/ieeh:DocumentoRelacionado",
+   "mensaje": "Element '{http://www.sat.gob.mx/IngresosHidrocarburos10}DocumentoRelacionado': The attribute 'Mes' is required but missing."
+  }
+ ]
+}

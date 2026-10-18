@@ -1,0 +1,95 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "emisor": {
+      "rfc_e": "AAA010101AAA"
+    },
+    "receptor": {
+      "nacional": {
+        "rfc_r": "SUL010720JN8"
+      }
+    },
+    "totales": {
+      "monto_tot_operacion": "2000000.00"
+    },
+    "timbre_fiscal_digital": {
+      "uuid": "FC1B47B2-42F3-4CA2-8587-36E0A216C4D5",
+      "uuid_original": "fc1b47b2-42f3-4ca2-8587-36e0a216c4d5"
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/@Sello",
+      "mensaje": "falta el atributo Sello",
+      "atributo": "Sello"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/@NumCert",
+      "mensaje": "falta el atributo NumCert",
+      "atributo": "NumCert"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/@Cert",
+      "mensaje": "falta el atributo Cert",
+      "atributo": "Cert"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/@FechaExp",
+      "mensaje": "falta el atributo FechaExp",
+      "atributo": "FechaExp"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/@CveRetenc",
+      "mensaje": "falta el atributo CveRetenc",
+      "atributo": "CveRetenc"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/Receptor/@Nacionalidad",
+      "mensaje": "falta el atributo Nacionalidad",
+      "atributo": "Nacionalidad"
+    },
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Retenciones/Periodo",
+      "mensaje": "falta el nodo Periodo"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/Totales/@montoTotGrav",
+      "mensaje": "falta el atributo montoTotGrav",
+      "atributo": "montoTotGrav"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/Totales/@montoTotExent",
+      "mensaje": "falta el atributo montoTotExent",
+      "atributo": "montoTotExent"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/Totales/@montoTotRet",
+      "mensaje": "falta el atributo montoTotRet",
+      "atributo": "montoTotRet"
+    },
+    {
+      "codigo": "COMPLEMENTO_VERSION",
+      "ruta": "/Retenciones/Complemento/TimbreFiscalDigital/@Version",
+      "mensaje": "versión \"\" no esperada para {http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital",
+      "atributo": "Version"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Retenciones/Complemento/TimbreFiscalDigital/@FechaTimbrado",
+      "mensaje": "falta el atributo FechaTimbrado",
+      "atributo": "FechaTimbrado"
+    }
+  ]
+}

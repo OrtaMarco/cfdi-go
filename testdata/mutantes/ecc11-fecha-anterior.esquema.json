@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 23,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ecc11:EstadoDeCuentaCombustible/ecc11:Conceptos/ecc11:ConceptoEstadoDeCuentaCombustible[1]",
+   "mensaje": "Element '{http://www.sat.gob.mx/EstadoDeCuentaCombustible}ConceptoEstadoDeCuentaCombustible', attribute 'Fecha': [facet 'minInclusive'] The value '2014-12-31T23:59:59' is less than the minimum value allowed ('2015-01-01T00:00:00')."
+  }
+ ]
+}

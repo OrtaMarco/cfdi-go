@@ -1,0 +1,68 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.2",
+    "serie": "C",
+    "folio": "38",
+    "fecha": "2015-02-18T11:49:20",
+    "no_certificado": "20001000000100005867",
+    "sub_total": "35000.00",
+    "descuento": "0",
+    "moneda": "Pesos",
+    "total": "40600.00",
+    "tipo_de_comprobante": "ingreso",
+    "lugar_expedicion": "Monterrey, Nuevo León",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "ACCEM SERVICIOS EMPRESARIALES SC"
+    },
+    "receptor": {
+      "rfc": "E&Ñ831019M53",
+      "nombre": "Exportadora de Ganado HOLSTEIN S.A."
+    },
+    "conceptos": [
+      {
+        "cantidad": "1",
+        "unidad": "LTE",
+        "descripcion": "Módulo de embarque serie A-6743-Ñ",
+        "valor_unitario": "35000.00",
+        "importe": "35000.01"
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "0.00",
+      "total_impuestos_trasladados": "5600.00",
+      "retenciones": [
+        {
+          "impuesto": "ISR",
+          "importe": "0.00"
+        },
+        {
+          "impuesto": "IVA",
+          "importe": "0.00"
+        }
+      ],
+      "traslados": [
+        {
+          "impuesto": "IVA",
+          "importe": "5600.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "E403F396-6A57-4625-ADB4-BB436B00789F",
+      "uuid_original": "e403f396-6a57-4625-adb4-bb436b00789f",
+      "fecha_timbrado": "2015-02-18T11:49:20",
+      "no_certificado_sat": "20001000000100005761"
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "VERSION_ANTIGUA",
+      "ruta": "/Comprobante/@Version",
+      "mensaje": "CFDI 3.2: lectura parcial, solo los campos que coinciden con 3.3",
+      "atributo": "Version"
+    }
+  ]
+}

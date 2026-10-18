@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 24,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/implocal:ImpuestosLocales/cfdi:Concepto",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Concepto': This element is not expected. Expected is one of ( {http://www.sat.gob.mx/implocal}RetencionesLocales, {http://www.sat.gob.mx/implocal}TrasladosLocales )."
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:hyp="http://www.sat.gob.mx/hidrocarburospetroliferos" Version="4.0" Serie="HP" Folio="10" Fecha="2026-07-20T06:30:00" Sello="U0VMTE8gREUgUFJVRUJB" FormaPago="03" NoCertificado="30001000000500003416" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="4400.00" Moneda="MXN" Total="5104.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" DomicilioFiscalReceptor="76028" RegimenFiscalReceptor="605" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="15101514" Cantidad="100" ClaveUnidad="LTR" Descripcion="Gasolina de prueba" ValorUnitario="22.00" Importe="2200.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="2200.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="352.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+      <cfdi:ComplementoConcepto>
+        <hyp:HidroYPetro TipoPermiso="PER01" NumeroPermiso="PL/00000/EXP/ES/2026" ClaveHYP="15101514" SubProductoHYP="SP16"/>
+      </cfdi:ComplementoConcepto>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="15101505" Cantidad="100" ClaveUnidad="LTR" Descripcion="Diésel de prueba" ValorUnitario="22.00" Importe="2200.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="2200.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="352.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+      <cfdi:ComplementoConcepto>
+        <hyp:HidroYPetro Version="1.0" TipoPermiso="PER01" NumeroPermiso="PL/00000/EXP/ES/2026" ClaveHYP="15101505" SubProductoHYP="SP19"/>
+      </cfdi:ComplementoConcepto>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="704.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="4400.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="704.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555555507" FechaTimbrado="2026-07-20T06:31:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000500003456" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

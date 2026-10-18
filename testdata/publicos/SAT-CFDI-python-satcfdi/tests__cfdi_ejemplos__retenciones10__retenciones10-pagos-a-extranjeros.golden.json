@@ -1,0 +1,66 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "folio_int": "TEST00009",
+    "no_certificado": "20001000000100005867",
+    "fecha_exp": "2015-02-24T11:02:49-06:00",
+    "cve_retenc": "18",
+    "desc_retenc": "Pagos realizados a favor de residentes en el extranjero",
+    "emisor": {
+      "rfc_e": "AAA010101AAA",
+      "nom_den_raz_soc_e": "Empresa DEMO para Rentenciones S de TST",
+      "curp_e": "AAAA010101HNLMNLD2"
+    },
+    "receptor": {
+      "nacionalidad_r": "Extranjero",
+      "extranjero": {
+        "num_reg_id_trib_r": "XEXX010101000",
+        "nom_den_raz_soc_r": "WALLACE & SMITH CO. LTD"
+      }
+    },
+    "periodo": {
+      "mes_ini": "6",
+      "mes_fin": "6",
+      "ejercicio": "2014"
+    },
+    "totales": {
+      "monto_tot_operacion": "14000.00",
+      "monto_tot_grav": "13000.00",
+      "monto_tot_exent": "1000.00",
+      "monto_tot_ret": "3500.00",
+      "imp_retenidos": [
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "01",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago definitivo"
+        },
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "02",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago provisional"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "452CA1F6-C2B8-46D3-BD29-E9E2DBA2DA12",
+      "uuid_original": "452ca1f6-c2b8-46d3-bd29-e9e2dba2da12",
+      "fecha_timbrado": "2015-02-24T11:02:49",
+      "no_certificado_sat": "20001000000300003693"
+    },
+    "pagosaextranjeros": {
+      "version": "1.0",
+      "es_benef_efect_del_cobro": "NO",
+      "no_beneficiario": {
+        "pais_de_resid_para_efec_fisc": "UA",
+        "concepto_pago": "9",
+        "descripcion_concepto": "Componentes químicos para Ingeniería Genética (Aminodesacetoxicefalosporánico)"
+      }
+    }
+  },
+  "advertencias": []
+}

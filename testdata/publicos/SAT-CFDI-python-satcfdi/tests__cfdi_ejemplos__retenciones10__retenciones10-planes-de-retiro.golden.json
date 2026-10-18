@@ -1,0 +1,70 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "folio_int": "TEST00010",
+    "no_certificado": "20001000000100005867",
+    "fecha_exp": "2015-02-24T11:02:50-06:00",
+    "cve_retenc": "22",
+    "desc_retenc": "Planes personales de retiro",
+    "emisor": {
+      "rfc_e": "AAA010101AAA",
+      "nom_den_raz_soc_e": "Empresa DEMO para Rentenciones S de TST",
+      "curp_e": "AAAA010101HNLMNLD2"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional",
+      "nacional": {
+        "rfc_r": "XAXX010101000",
+        "nom_den_raz_soc_r": "PÚBLICO EN GENERAL S DE TST",
+        "curp_r": "VAHE820926HNLLRD02"
+      }
+    },
+    "periodo": {
+      "mes_ini": "6",
+      "mes_fin": "6",
+      "ejercicio": "2014"
+    },
+    "totales": {
+      "monto_tot_operacion": "14000.00",
+      "monto_tot_grav": "13000.00",
+      "monto_tot_exent": "1000.00",
+      "monto_tot_ret": "3500.00",
+      "imp_retenidos": [
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "01",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago definitivo"
+        },
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "02",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago provisional"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "DDD43FD2-07EB-4788-8D88-149755B16BF7",
+      "uuid_original": "ddd43fd2-07eb-4788-8d88-149755b16bf7",
+      "fecha_timbrado": "2015-02-24T11:02:50",
+      "no_certificado_sat": "20001000000300003693"
+    },
+    "planesderetiro": {
+      "version": "1.0",
+      "sistema_financ": "SI",
+      "mont_tot_aport_anio_inm_anterior": "62812.8734",
+      "mont_int_reales_deveng_anioo_inm_ant": "567.21",
+      "hubo_retiros_anio_inm_ant_per": "NO",
+      "mont_tot_retirado_anio_inm_ant_per": "0.00",
+      "mont_tot_exent_retirado_anio_inm_ant": "0.00",
+      "mont_tot_exedente_anio_inm_ant": "0.00",
+      "hubo_retiros_anio_inm_ant": "NO",
+      "mont_tot_retirado_anio_inm_ant": "0.00"
+    }
+  },
+  "advertencias": []
+}

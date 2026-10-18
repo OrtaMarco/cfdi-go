@@ -1,0 +1,91 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.2",
+    "serie": "ECB",
+    "folio": "32",
+    "fecha": "2016-06-01T12:00:00",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "1000.00",
+    "moneda": "MXN",
+    "total": "1160.00",
+    "tipo_de_comprobante": "ingreso",
+    "lugar_expedicion": "PACHUCA, HIDALGO",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA"
+    },
+    "conceptos": [
+      {
+        "cantidad": "1",
+        "unidad": "LITRO",
+        "descripcion": "Combustible de prueba",
+        "valor_unitario": "1000.00",
+        "importe": "1000.00",
+        "acreditamiento_ieps": {
+          "version": "1.0",
+          "tar": "619"
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "160.00",
+      "traslados": [
+        {
+          "impuesto": "IVA",
+          "importe": "160.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "12345678-1234-4234-8234-123456782004",
+      "fecha_timbrado": "2016-06-01T12:01:00",
+      "no_certificado_sat": "00001000000300000000"
+    },
+    "estado_de_cuenta_bancario": {
+      "version": "1.0",
+      "numero_cuenta": "0123456789",
+      "nombre_cliente": "CLIENTE DE PRUEBA",
+      "periodo": "JUNIO 2016",
+      "movimientos": {
+        "movimiento_ecb": [
+          {
+            "fecha": "2016-06-01T09:00:00",
+            "descripcion": "DEPOSITO",
+            "importe": "500.00",
+            "moneda": "MXN"
+          },
+          {
+            "fecha": "2016-06-03T11:00:00",
+            "referencia": "R-2",
+            "descripcion": "RETIRO",
+            "importe": "-100.00",
+            "saldo_inicial": "1000.00",
+            "saldo_al_corte": "1390.00"
+          }
+        ],
+        "movimiento_ecb_fiscal": [
+          {
+            "fecha": "2016-06-02T10:00:00",
+            "descripcion": "COMISION",
+            "rfc_enajenante": "EKU9003173C9",
+            "importe": "10.00"
+          }
+        ]
+      }
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "VERSION_ANTIGUA",
+      "ruta": "/Comprobante/@Version",
+      "mensaje": "CFDI 3.2: lectura parcial, solo los campos que coinciden con 3.3",
+      "atributo": "Version"
+    }
+  ]
+}

@@ -1,0 +1,1062 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "fecha": "2023-06-12T08:12:37",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "01",
+    "lugar_expedicion": "59820",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "PERSONA MORAL SA",
+      "domicilio_fiscal_receptor": "05348",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "CP01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "pagos": {
+      "version": "2.0",
+      "totales": {
+        "total_traslados_base_iva0": "3475821.96",
+        "total_traslados_impuesto_iva0": "0.00",
+        "monto_total_pagos": "3475821.96"
+      },
+      "pago": [
+        {
+          "fecha_pago": "2023-06-01T08:37:37",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "tipo_cambio_p": "1",
+          "monto": "3475821.96",
+          "docto_relacionado": [
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "21058.79",
+              "imp_pagado": "21058.79",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "21058.79",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "151751.13",
+              "imp_pagado": "151751.13",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "151751.13",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "33873.44",
+              "imp_pagado": "33873.44",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "33873.44",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "33181.4",
+              "imp_pagado": "33181.40",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "33181.40",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "138529.15",
+              "imp_pagado": "138529.15",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "138529.15",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "44141.44",
+              "imp_pagado": "44141.44",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "44141.44",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "162910.09",
+              "imp_pagado": "162910.09",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "162910.09",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "81755.94",
+              "imp_pagado": "81755.94",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "81755.94",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "58385.07",
+              "imp_pagado": "58385.07",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "58385.07",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "193512.37",
+              "imp_pagado": "193512.37",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "193512.37",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "45431.63",
+              "imp_pagado": "45431.63",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "45431.63",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "61794.81",
+              "imp_pagado": "61794.81",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "61794.81",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "128107.7",
+              "imp_pagado": "128107.70",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "128107.70",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "149130.12",
+              "imp_pagado": "149130.12",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "149130.12",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "210412.11",
+              "imp_pagado": "210412.11",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "210412.11",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "66269.34",
+              "imp_pagado": "66269.34",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "66269.34",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "83904.32",
+              "imp_pagado": "83904.32",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "83904.32",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "24126.96",
+              "imp_pagado": "24126.96",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "24126.96",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "114982.33",
+              "imp_pagado": "114982.33",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "114982.33",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "20364",
+              "imp_pagado": "20364.00",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "20364.00",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "75536.82",
+              "imp_pagado": "75536.82",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "75536.82",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "276932.63",
+              "imp_pagado": "276932.63",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "276932.63",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "111557.67",
+              "imp_pagado": "111557.67",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "111557.67",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "83756.22",
+              "imp_pagado": "83756.22",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "83756.22",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "16008.3",
+              "imp_pagado": "16008.30",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "16008.30",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "31074.96",
+              "imp_pagado": "31074.96",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "31074.96",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "126223.2",
+              "imp_pagado": "126223.20",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "126223.20",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "112540.9",
+              "imp_pagado": "112540.90",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "112540.90",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "18414.03",
+              "imp_pagado": "18414.03",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "18414.03",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "91360.12",
+              "imp_pagado": "91360.12",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "91360.12",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "83789.45",
+              "imp_pagado": "83789.45",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "83789.45",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "19411.88",
+              "imp_pagado": "19411.88",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "19411.88",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "61992",
+              "imp_pagado": "61992.00",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "61992.00",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "42159.53",
+              "imp_pagado": "42159.53",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "42159.53",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "367618.87",
+              "imp_pagado": "367618.87",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "367618.87",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "48225.8",
+              "imp_pagado": "48225.80",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "48225.80",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "40985.14",
+              "imp_pagado": "40985.14",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "40985.14",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "44612.3",
+              "imp_pagado": "44612.30",
+              "imp_saldo_insoluto": "0",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "44612.30",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.000000",
+                    "importe_dr": "0.00"
+                  }
+                ]
+              }
+            }
+          ],
+          "impuestos_p": {
+            "traslados_p": [
+              {
+                "base_p": "3475821.96",
+                "impuesto_p": "002",
+                "tipo_factor_p": "Tasa",
+                "tasa_o_cuota_p": "0.000000",
+                "importe_p": "0.00"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[1]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[2]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[3]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[4]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[5]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[6]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[7]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[8]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[9]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[10]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[11]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[12]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[13]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[14]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[15]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[16]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[17]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[18]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[19]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[20]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[21]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[22]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[23]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[24]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[25]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[26]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[27]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[28]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[29]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[30]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[31]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[32]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[33]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[34]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[35]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[36]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[37]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[38]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

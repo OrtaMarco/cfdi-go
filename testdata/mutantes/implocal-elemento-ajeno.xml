@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:implocal="http://www.sat.gob.mx/implocal" Version="4.0" Serie="H" Folio="77" Fecha="2026-02-10T09:00:00" Sello="U0VMTE8gREUgUFJVRUJB" FormaPago="03" NoCertificado="30001000000500003416" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="1000.00" Moneda="MXN" Total="1205.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" DomicilioFiscalReceptor="76028" RegimenFiscalReceptor="605" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="90111800" Cantidad="2" ClaveUnidad="E48" Descripcion="Hospedaje de prueba" ValorUnitario="500.00" Importe="1000.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="160.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="160.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="1000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="160.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <implocal:ImpuestosLocales version="1.0" TotaldeRetenciones="5.00" TotaldeTraslados="50.00">
+      <implocal:RetencionesLocales ImpLocRetenido="CINCO AL MILLAR" TasadeRetencion="0.50" Importe="5.00"/>
+      <implocal:TrasladosLocales ImpLocTrasladado="ISH" TasadeTraslado="3.00" Importe="30.00"/>
+      <implocal:TrasladosLocales ImpLocTrasladado="CEDULAR" TasadeTraslado="2.00" Importe="20.00"/>
+      <cfdi:Concepto/>
+    </implocal:ImpuestosLocales>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555555501" FechaTimbrado="2026-02-10T09:01:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000500003456" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

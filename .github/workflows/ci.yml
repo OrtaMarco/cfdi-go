@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    name: Go ${{ matrix.go }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 1.24 es el mínimo que declara go.mod; "stable" es la última versión estable.
+        go: ['1.24', 'stable']
+    env:
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go }}
+
+      - name: gofmt
+        run: |
+          sin_formato=$(gofmt -l .)
+          if [ -n "$sin_formato" ]; then
+            echo "Archivos sin gofmt:"
+            echo "$sin_formato"
+            exit 1
+          fi
+
+      - name: go vet
+        run: go vet ./...
+
+      - name: Archivos generados al día
+        run: |
+          go generate ./...
+          git diff --exit-code
+
+      - name: go test -race con cobertura
+        run: go test -race -count=1 -coverprofile=cobertura.out -covermode=atomic ./...
+
+      - name: Resumen de cobertura
+        run: go tool cover -func=cobertura.out | tail -n 1
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-go-${{ matrix.go }}
+          path: cobertura.out
+
+  vulnerabilidades:
+    name: govulncheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
+      - name: govulncheck
+        run: |
+          go install golang.org/x/vuln/cmd/govulncheck@v1.8.0
+          govulncheck ./...

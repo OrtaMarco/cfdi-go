@@ -1,0 +1,47 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "2.0",
+    "no_certificado": "30001000000300023708",
+    "fecha_exp": "2021-12-12T12:45:29",
+    "lugar_exp_retenc": "99999",
+    "cve_retenc": "01",
+    "emisor": {
+      "rfc_e": "AAAA010101AAA",
+      "nom_den_raz_soc_e": "PERSONA FÍSICA DE PRUEBA",
+      "regimen_fiscal_e": "630"
+    },
+    "receptor": {
+      "nacionalidad_r": "Extranjero",
+      "extranjero": {
+        "nom_den_raz_soc_r": "PERSONA FISICA NACIONAL DE PRUEBA"
+      }
+    },
+    "periodo": {
+      "mes_ini": "01",
+      "mes_fin": "12",
+      "ejercicio": "2027"
+    },
+    "totales": {
+      "monto_tot_operacion": "1.00",
+      "monto_tot_grav": "1.00",
+      "monto_tot_exent": "1.00",
+      "monto_tot_ret": "1.00",
+      "isr_correspondiente": "11.2",
+      "imp_retenidos": [
+        {
+          "monto_ret": "1.00",
+          "tipo_pago_ret": "02"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Retenciones/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

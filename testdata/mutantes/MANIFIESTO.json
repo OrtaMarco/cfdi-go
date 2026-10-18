@@ -1,0 +1,1454 @@
+{
+ "generado_por": "scripts/generar_mutantes.py",
+ "mutantes": [
+  {
+   "id": "base-implocal40",
+   "base": "implocal40.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "base-cartaporte31",
+   "base": "cartaporte31.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "base-ingreso33",
+   "base": "ingreso33.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "atributo-requerido-ausente",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin Comprobante/@Moneda",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "atributo-no-declarado",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Emisor/@Otro",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "atributo-xsi-type",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "xsi:type en Emisor",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "atributo-otro-namespace",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "xml:lang en Emisor",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "valor-fijo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Version 4.1",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "tfd-version-fija",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "TFD Version 1.0",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "tfd-uuid-ausente",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "TFD sin UUID",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "catalogo-moneda",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Moneda fuera de c_Moneda",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "catalogo-claveprodserv",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "ClaveProdServ fuera de c_ClaveProdServ",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "catalogo-codigopostal",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "LugarExpedicion fuera de c_CodigoPostal",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "patron-rfc",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Emisor/@Rfc con el dígito verificador fuera del patrón",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "patron-barra",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Emisor/@Nombre con |",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "patron-anclado",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Emisor/@Rfc con una letra al final: cabe en maxLength 13 y solo pasa el patrón si no se ancla",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "decimales-de-mas",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Concepto/@Cantidad con 7 decimales significativos",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_DIGITOS"
+   ]
+  },
+  {
+   "id": "decimales-ceros-valido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Cantidad con ceros de más: fractionDigits cuenta el valor",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "importe-decimales",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Traslado/@Importe con 7 decimales",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_PATRON",
+    "ESQUEMA_DIGITOS"
+   ]
+  },
+  {
+   "id": "rango-minimo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Cantidad 0 (minInclusive 0.000001)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_RANGO"
+   ]
+  },
+  {
+   "id": "tipo-fecha",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Fecha 30 de febrero",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO"
+   ]
+  },
+  {
+   "id": "tipo-decimal",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Cantidad que no es decimal",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO"
+   ]
+  },
+  {
+   "id": "longitud",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "NoCertificado de 19 dígitos",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_LONGITUD",
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "espacios-colapsan-valido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Moneda y Fecha con espacios: whiteSpace collapse",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "elemento-requerido-ausente",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin Receptor",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "orden-cambiado",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Receptor antes que Emisor",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ORDEN"
+   ]
+  },
+  {
+   "id": "orden-opcional",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "InformacionGlobal después de Emisor",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ORDEN"
+   ]
+  },
+  {
+   "id": "opcional-en-orden-valido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "InformacionGlobal antes de Emisor",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "max-ocurrencias",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Emisor dos veces",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_EXCEDENTE"
+   ]
+  },
+  {
+   "id": "elemento-no-declarado",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "cfdi:Extra dentro de Conceptos",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "hijo-en-vacio",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "un hijo dentro de Emisor",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "espacios-en-vacio",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Emisor con un espacio dentro",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CONTENIDO"
+   ]
+  },
+  {
+   "id": "comentario-en-vacio-valido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Emisor con un comentario dentro",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "texto-entre-elementos",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "texto dentro de Conceptos",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CONTENIDO"
+   ]
+  },
+  {
+   "id": "cfdirelacionados-repetibles-valido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "dos CfdiRelacionados (maxOccurs unbounded)",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "complemento-no-soportado",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "complemento sin esquema en la librería",
+   "veredicto": "incompleto",
+   "codigos": [
+    "ESQUEMA_NO_SOPORTADO"
+   ]
+  },
+  {
+   "id": "addenda-no-soportada",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Addenda con un elemento sin esquema",
+   "veredicto": "incompleto",
+   "codigos": [
+    "ESQUEMA_NO_SOPORTADO"
+   ]
+  },
+  {
+   "id": "no-soportado-y-error",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "complemento sin esquema y un error",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_NO_SOPORTADO",
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "complemento-vacio-40-valido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Complemento vacío (en 4.0 su xs:any es minOccurs=0)",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "xml-mal-formado",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "etiqueta sin cerrar",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_XML_ILEGIBLE"
+   ]
+  },
+  {
+   "id": "prefijo-sin-declarar",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "prefijo zz sin declarar",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_XML_ILEGIBLE"
+   ]
+  },
+  {
+   "id": "atributo-repetido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "atributo repetido",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_XML_ILEGIBLE"
+   ]
+  },
+  {
+   "id": "pagos-atributo-ausente",
+   "base": "pago20.xml",
+   "mutacion": "Pago sin Monto",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "pagos-orden",
+   "base": "pago20.xml",
+   "mutacion": "Totales después de Pago",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ORDEN"
+   ]
+  },
+  {
+   "id": "pagos-catalogo",
+   "base": "pago20.xml",
+   "mutacion": "FormaDePagoP fuera de c_FormaPago",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "pagos-sin-docto",
+   "base": "pago20.xml",
+   "mutacion": "ImpuestosDR vacío",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "nomina-catalogo",
+   "base": "nomina12.xml",
+   "mutacion": "TipoNomina fuera de c_TipoNomina",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "nomina-receptor-ausente",
+   "base": "nomina12.xml",
+   "mutacion": "Nomina sin Receptor",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "nomina-patron-curp",
+   "base": "nomina12.xml",
+   "mutacion": "Curp en minúsculas",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "implocal-secuencia-repetida-valido",
+   "base": "implocal40.xml",
+   "mutacion": "Retención después de los traslados",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "implocal-tipo",
+   "base": "implocal40.xml",
+   "mutacion": "TasadeRetencion que no es decimal",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO"
+   ]
+  },
+  {
+   "id": "implocal-elemento-ajeno",
+   "base": "implocal40.xml",
+   "mutacion": "un elemento de cfd/4 dentro de ImpuestosLocales",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "cartaporte-catalogo",
+   "base": "cartaporte31.xml",
+   "mutacion": "ConfigVehicular fuera de c_ConfigAutotransporte",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "cartaporte-mercancias-ausente",
+   "base": "cartaporte31.xml",
+   "mutacion": "CartaPorte sin Mercancias",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "cartaporte-max",
+   "base": "cartaporte31.xml",
+   "mutacion": "dos Autotransporte",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_EXCEDENTE"
+   ]
+  },
+  {
+   "id": "cfdi33-complemento-vacio-valido",
+   "base": "ingreso33.xml",
+   "mutacion": "Complemento vacío (también en 3.3 su xs:any es minOccurs=0)",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "cfdi33-addenda-vacia",
+   "base": "ingreso33.xml",
+   "mutacion": "Addenda vacía (su xs:any pide al menos un elemento)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "cfdi33-catalogo",
+   "base": "ingreso33.xml",
+   "mutacion": "UsoCFDI fuera de c_UsoCFDI",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "cfdi33-en-namespace-40",
+   "base": "ingreso33.xml",
+   "mutacion": "Receptor de cfd/4 dentro de un 3.3",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_NO_PERMITIDO",
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-pago10",
+   "base": "pago10.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "pago10-monto-ausente",
+   "base": "pago10.xml",
+   "mutacion": "Pago sin Monto",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "pago10-catalogo",
+   "base": "pago10.xml",
+   "mutacion": "MetodoDePagoDR fuera de c_MetodoPago",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "pago10-version",
+   "base": "pago10.xml",
+   "mutacion": "Pagos Version 2.0",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "base-cce20",
+   "base": "cce20.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "cce20-certificado-catalogo",
+   "base": "cce20.xml",
+   "mutacion": "CertificadoOrigen 2 (enumeration de un xs:int)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "cce20-certificado-valor-valido",
+   "base": "cce20.xml",
+   "mutacion": "CertificadoOrigen 00: enumeration de un xs:int compara valores",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "cce20-totalusd-ausente",
+   "base": "cce20.xml",
+   "mutacion": "sin TotalUSD (requerido en 2.0)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "cce20-mercancias-ausente",
+   "base": "cce20.xml",
+   "mutacion": "sin Mercancias",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-cce11",
+   "base": "cce20.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "cce11-tipooperacion",
+   "base": "cce20.xml",
+   "mutacion": "TipoOperacion fuera de catálogo",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "cce11-version",
+   "base": "cce20.xml",
+   "mutacion": "Version 2.0 en el namespace de 1.1",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "base-ecc12",
+   "base": "ecc12.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "ecc12-patron-rfc",
+   "base": "ecc12.xml",
+   "mutacion": "Rfc en minúsculas",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "ecc12-catalogo",
+   "base": "ecc12.xml",
+   "mutacion": "TipoCombustible fuera de c_ClaveTipoCombustible",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "ecc12-traslados-ausente",
+   "base": "ecc12.xml",
+   "mutacion": "Concepto sin Traslados",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-cartaporte30",
+   "base": "cartaporte30.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "cartaporte30-catalogo",
+   "base": "cartaporte30.xml",
+   "mutacion": "ConfigVehicular fuera de c_ConfigAutotransporte",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "cartaporte30-mercancias-ausente",
+   "base": "cartaporte30.xml",
+   "mutacion": "CartaPorte sin Mercancias",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-cartaporte20",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "cartaporte20-catalogo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "TranspInternac fuera de Sí/No",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "cartaporte20-orden",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Mercancias antes que Ubicaciones",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ORDEN"
+   ]
+  },
+  {
+   "id": "base-hidroypetro",
+   "base": "hidroypetro40.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "hidroypetro-catalogo",
+   "base": "hidroypetro40.xml",
+   "mutacion": "TipoPermiso fuera de c_TipoPermiso",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "hidroypetro-version-ausente",
+   "base": "hidroypetro40.xml",
+   "mutacion": "HidroYPetro sin Version",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-registrofiscal",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "registrofiscal-patron",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Folio de 15 dígitos",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "registrofiscal-version",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Version 1.1",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "base-divisas",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "divisas-catalogo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "tipoOperacion con mayúscula",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "divisas-version-ausente",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Divisas sin version",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-donat11",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "donat11-fecha",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "fechaAutorizacion con mes 13",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO"
+   ]
+  },
+  {
+   "id": "donat11-leyenda-ausente",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin leyenda",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-leyendas",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "leyendas-sin-leyenda",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "LeyendasFiscales sin Leyenda",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "leyendas-texto-vacio",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "textoLeyenda vacío",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_LONGITUD"
+   ]
+  },
+  {
+   "id": "base-aerolineas",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "aerolineas-tipo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "TUA que no es decimal",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO"
+   ]
+  },
+  {
+   "id": "aerolineas-sin-cargo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "OtrosCargos sin Cargo",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "aerolineas-longitud",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "CodigoCargo de 9 caracteres",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_LONGITUD"
+   ]
+  },
+  {
+   "id": "base-iedu",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "iedu-catalogo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "nivelEducativo fuera de la enumeración",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "iedu-curp",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "CURP de 17 caracteres",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_LONGITUD",
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "iedu-autrvoe-ausente",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin autRVOE",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "aerolineas-tua-ausente",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin TUA",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-terceros33",
+   "base": "terceros33.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "terceros-choice",
+   "base": "terceros33.xml",
+   "mutacion": "Parte y CuentaPredial juntas (xs:choice)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "terceros-choice-otra-opcion-valido",
+   "base": "terceros33.xml",
+   "mutacion": "CuentaPredial en vez de Parte",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "terceros-choice-vacio-valido",
+   "base": "terceros33.xml",
+   "mutacion": "ninguna opción del xs:choice (todas son minOccurs 0)",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "ventavehiculos-vacio-valido",
+   "base": "terceros33.xml",
+   "mutacion": "VentaVehiculos sin hijos (el xs:choice admite cero)",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "terceros-impuestos-ausente",
+   "base": "terceros33.xml",
+   "mutacion": "PorCuentadeTerceros sin Impuestos",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "terceros-tipo-con-nombre",
+   "base": "terceros33.xml",
+   "mutacion": "InformacionFiscalTercero (extension de t_UbicacionFiscal) sin calle",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "ventavehiculos-choice",
+   "base": "terceros33.xml",
+   "mutacion": "InformacionAduanera y Parte juntas (xs:choice)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "ventavehiculos-aduanas-valido",
+   "base": "terceros33.xml",
+   "mutacion": "dos InformacionAduanera en vez de Parte",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "ventavehiculos-version",
+   "base": "terceros33.xml",
+   "mutacion": "VentaVehiculos version 1.0 con Niv: se valida con el XSD de 1.0, que no lo tiene",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "ventavehiculos-version-otra",
+   "base": "terceros33.xml",
+   "mutacion": "VentaVehiculos version 2.0: ni 1.0 ni 1.1, se valida con 1.1",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "ventavehiculos10-valido",
+   "base": "terceros33.xml",
+   "mutacion": "VentaVehiculos version 1.0 sin Niv",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "donat10-valido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Donatarias version 1.0 con la leyenda fija de su XSD",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "donat10-leyenda-libre",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Donatarias version 1.0 con otra leyenda: se valida con el XSD de 1.0, que la fija",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "donat-version-otra",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Donatarias version 2.0: se valida con 1.1",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "base-cartaporte10",
+   "base": "t10/cartaporte10.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "cartaporte10-sin-pesoenkg",
+   "base": "t10/cartaporte10.xml",
+   "mutacion": "Mercancia sin PesoEnKg",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "cartaporte10-figura-sin-cve",
+   "base": "t10/cartaporte10.xml",
+   "mutacion": "FiguraTransporte sin CveTransporte",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-cce10",
+   "base": "t10/cce10.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "cce10-sin-numregidtrib",
+   "base": "t10/cce10.xml",
+   "mutacion": "Receptor sin NumRegIdTrib (requerido en 1.0)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-ecc11",
+   "base": "t10/ecc11.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "ecc11-sin-noidentificacion",
+   "base": "t10/ecc11.xml",
+   "mutacion": "concepto sin NoIdentificacion",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "ecc11-fecha-anterior",
+   "base": "t10/ecc11.xml",
+   "mutacion": "Fecha antes de 2015 (minInclusive de xs:dateTime sin zona)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_RANGO"
+   ]
+  },
+  {
+   "id": "ecc11-fecha-limite-valido",
+   "base": "t10/ecc11.xml",
+   "mutacion": "Fecha en el límite de 2015",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "base-nomina11",
+   "base": "t10/nomina11.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "nomina11-sin-curp",
+   "base": "t10/nomina11.xml",
+   "mutacion": "Nomina sin CURP",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-vales",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "vales-sin-total",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "ValesDeDespensa sin total",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-ine11",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "ine11-sin-tipoproceso",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "INE sin TipoProceso",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "ine11-entidad-qto",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "ClaveEntidad QTO: solo existe en el catálogo de 1.0",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "base-ine10",
+   "base": "t10/ine10.xml",
+   "mutacion": "base (QTO, catálogo de 1.0)",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "ine10-entidad-que",
+   "base": "t10/ine10.xml",
+   "mutacion": "INE 1.0 con QUE: se valida con el catálogo de 1.0, que no lo tiene",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "base-consumo11",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "consumo11-sin-tipocombustible",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "concepto sin tipoCombustible (requerido en 1.1)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-consumo10",
+   "base": "t10/consumo10.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "consumo10-tipocombustible",
+   "base": "t10/consumo10.xml",
+   "mutacion": "tipoCombustible en 1.0, que no lo tiene",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "base-notarios",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "notarios-sin-curp-notario",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "DatosNotario sin CURP",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-parciales",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "parciales-sin-numperlicoaut",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "parcialesconstruccion sin NumPerLicoAut",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-vehiculousado",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "vehiculousado-sin-valor",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "VehiculoUsado sin valor",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-tpe",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "tpe-sin-tipotransito",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "TuristaPasajeroExtranjero sin tipoTransito",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-pagoenespecie",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "pagoenespecie-sin-cvepic",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "PagoEnEspecie sin CvePIC",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-acreditamiento",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "acreditamiento-sin-tar",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "acreditamientoIEPS sin TAR",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-spei",
+   "base": "t10/spei33.xml",
+   "mutacion": "base",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "spei-orden-libre-valido",
+   "base": "t10/spei33.xml",
+   "mutacion": "Beneficiario antes que Ordenante (xs:all no tiene orden)",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "spei-sin-beneficiario",
+   "base": "t10/spei33.xml",
+   "mutacion": "SPEI_Tercero sin Beneficiario",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "spei-ordenante-doble",
+   "base": "t10/spei33.xml",
+   "mutacion": "dos Ordenante (en xs:all, a lo más uno)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_EXCEDENTE"
+   ]
+  },
+  {
+   "id": "spei-sin-sello",
+   "base": "t10/spei33.xml",
+   "mutacion": "SPEI_Tercero sin sello",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "spei-hora-invalida",
+   "base": "t10/spei33.xml",
+   "mutacion": "Hora 24:30:00 (no es xs:time)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO",
+    "ESQUEMA_PATRON"
+   ]
+  },
+  {
+   "id": "spei-hora-fraccion-valido",
+   "base": "t10/spei33.xml",
+   "mutacion": "Hora con fracción de segundo",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "base-pfic",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "pfic-sin-placa",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin Placa",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-obrasarte",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "obrasarte-sin-tipobien",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin TipoBien",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-destruccion",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "destruccion-sin-vehiculo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin VehiculoDestruido",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-renovacion",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "renovacion-sin-anio",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "vehículo nuevo sin Año",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-gceh",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "gceh-sin-numerocontrato",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin NumeroContrato",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "base-ieeh",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "ieeh-sin-mes",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "DocumentoRelacionado sin Mes",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  }
+ ]
+}

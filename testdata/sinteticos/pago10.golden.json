@@ -1,0 +1,90 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "P",
+    "folio": "3",
+    "fecha": "2021-08-02T11:00:00",
+    "no_certificado": "30001000000400002495",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "lugar_expedicion": "06000",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "77777777-8888-9999-AAAA-BBBBBBBBBBBB",
+      "fecha_timbrado": "2021-08-02T11:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000400002495"
+    },
+    "pagos": {
+      "version": "1.0",
+      "pago": [
+        {
+          "fecha_pago": "2021-08-01T12:00:00",
+          "forma_de_pago_p": "03",
+          "moneda_p": "USD",
+          "tipo_cambio_p": "20.1234",
+          "monto": "150.00",
+          "rfc_emisor_cta_ord": "XEXX010101000",
+          "nom_banco_ord_ext": "BANCO DE PRUEBA",
+          "cta_ordenante": "1234567890",
+          "tipo_cad_pago": "01",
+          "docto_relacionado": [
+            {
+              "id_documento": "11111111-2222-3333-4444-555555555555",
+              "serie": "B",
+              "folio": "77",
+              "moneda_dr": "USD",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "157.57",
+              "imp_pagado": "150.00",
+              "imp_saldo_insoluto": "7.57"
+            }
+          ]
+        },
+        {
+          "fecha_pago": "2021-08-02T09:30:00",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "monto": "152.16",
+          "docto_relacionado": [
+            {
+              "id_documento": "11111111-2222-3333-4444-555555555555",
+              "moneda_dr": "USD",
+              "tipo_cambio_dr": "20.1",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "2",
+              "imp_saldo_ant": "7.57",
+              "imp_pagado": "7.57",
+              "imp_saldo_insoluto": "0.00"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

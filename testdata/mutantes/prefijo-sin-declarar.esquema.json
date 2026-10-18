@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 3,
+   "ruta": "",
+   "mensaje": "XML ilegible: Namespace prefix zz on Emisor is not defined, line 3, column 83 (prefijo-sin-declarar.xml, line 3)"
+  }
+ ]
+}

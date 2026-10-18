@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 3.3 sintético con CartaPorte 1.0 (RFC de prueba del SAT). -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:cartaporte="http://www.sat.gob.mx/CartaPorte" Version="3.3" Serie="CP" Folio="10" Fecha="2021-12-15T07:00:00" Sello="U0VMTE8gREUgUFJVRUJB" FormaPago="03" NoCertificado="30001000000400002495" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="5000.00" Moneda="MXN" Total="5800.00" TipoDeComprobante="I" MetodoPago="PUE" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="78101802" Cantidad="1" ClaveUnidad="E48" Descripcion="Flete de prueba" ValorUnitario="5000.00" Importe="5000.00">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="5000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="800.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="800.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="800.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <cartaporte:CartaPorte Version="1.0" TranspInternac="No" TotalDistRec="150.50">
+      <cartaporte:Ubicaciones>
+        <cartaporte:Ubicacion>
+          <cartaporte:Origen IDOrigen="OR000001" RFCRemitente="EKU9003173C9" NombreRemitente="REMITENTE DE PRUEBA" FechaHoraSalida="2021-12-15T08:00:00"/>
+          <cartaporte:Domicilio Calle="Calle de prueba" NumeroExterior="1" Estado="HID" Pais="MEX" CodigoPostal="42501"/>
+        </cartaporte:Ubicacion>
+        <cartaporte:Ubicacion DistanciaRecorrida="150.50">
+          <cartaporte:Destino IDDestino="DE000002" RFCDestinatario="XOJI740919U48" FechaHoraProgLlegada="2021-12-15T11:00:00"/>
+          <cartaporte:Domicilio Calle="Otra calle" Estado="QUE" Pais="MEX" CodigoPostal="76028"/>
+        </cartaporte:Ubicacion>
+      </cartaporte:Ubicaciones>
+      <cartaporte:Mercancias PesoBrutoTotal="2000.000" UnidadPeso="KGM" NumTotalMercancias="1">
+        <cartaporte:Mercancia BienesTransp="31181701" Descripcion="Piezas de prueba" Cantidad="100" ClaveUnidad="H87" ValorMercancia="4000.00" Moneda="MXN">
+          <cartaporte:CantidadTransporta Cantidad="100" IDOrigen="OR000001" IDDestino="DE000002"/>
+          <cartaporte:DetalleMercancia UnidadPeso="KGM" PesoBruto="2000.000" PesoNeto="1900.000" PesoTara="100.000" NumPiezas="100"/>
+        </cartaporte:Mercancia>
+        <cartaporte:AutotransporteFederal PermSCT="TPAF01" NumPermisoSCT="PERMISO10" NombreAseg="ASEGURADORA DE PRUEBA" NumPolizaSeguro="POL-10">
+          <cartaporte:IdentificacionVehicular ConfigVehicular="C2" PlacaVM="XYZ987" AnioModeloVM="2020"/>
+          <cartaporte:Remolques>
+            <cartaporte:Remolque SubTipoRem="CTR004" Placa="REM010"/>
+          </cartaporte:Remolques>
+        </cartaporte:AutotransporteFederal>
+      </cartaporte:Mercancias>
+      <cartaporte:FiguraTransporte CveTransporte="01">
+        <cartaporte:Operadores>
+          <cartaporte:Operador RFCOperador="CACX7605101P8" NumLicencia="LIC000010" NombreOperador="OPERADOR DE PRUEBA">
+            <cartaporte:Domicilio Calle="Calle del operador" Estado="HID" Pais="MEX" CodigoPostal="42501"/>
+          </cartaporte:Operador>
+        </cartaporte:Operadores>
+        <cartaporte:Propietario RFCPropietario="XIQB891116QE4" NombrePropietario="PROPIETARIO DE PRUEBA"/>
+      </cartaporte:FiguraTransporte>
+    </cartaporte:CartaPorte>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555551001" FechaTimbrado="2021-12-15T07:01:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000400002495" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

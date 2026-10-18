@@ -1,0 +1,79 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "A",
+    "folio": "123456",
+    "fecha": "2020-01-01T22:40:38",
+    "no_certificado": "30001000000400002460",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "lugar_expedicion": "56820",
+    "emisor": {
+      "rfc": "H&E951128469",
+      "nombre": "HERRERIA & ELECTRICOS",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "KIJ0906199R1",
+      "nombre": "KIJ, S.A DE C.V.",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0"
+      }
+    ],
+    "pagos": {
+      "version": "1.0",
+      "pago": [
+        {
+          "fecha_pago": "2020-01-02T22:40:38",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "monto": "35705.50",
+          "docto_relacionado": [
+            {
+              "id_documento": "6D7434A6-E3F2-47AD-9E4C-08849946AFA0",
+              "id_documento_original": "6d7434a6-e3f2-47ad-9e4c-08849946afa0",
+              "serie": "A",
+              "folio": "123456",
+              "moneda_dr": "MXN",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "17852.75",
+              "imp_pagado": "17852.75",
+              "imp_saldo_insoluto": "0.00"
+            },
+            {
+              "id_documento": "6D7434A6-E3F2-47AD-9E4C-08849946AFA0",
+              "id_documento_original": "6d7434a6-e3f2-47ad-9e4c-08849946afa0",
+              "serie": "A",
+              "folio": "123456",
+              "moneda_dr": "MXN",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "17852.75",
+              "imp_pagado": "17852.75",
+              "imp_saldo_insoluto": "0.00"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/spc:parcialesconstruccion",
+   "mensaje": "Element '{http://www.sat.gob.mx/servicioparcialconstruccion}parcialesconstruccion': The attribute 'NumPerLicoAut' is required but missing."
+  }
+ ]
+}

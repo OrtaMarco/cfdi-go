@@ -1,0 +1,68 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "folio_int": "TEST00003",
+    "no_certificado": "20001000000100005867",
+    "fecha_exp": "2015-02-24T11:02:43-06:00",
+    "cve_retenc": "14",
+    "desc_retenc": "Dividendos",
+    "emisor": {
+      "rfc_e": "AAA010101AAA",
+      "nom_den_raz_soc_e": "Empresa DEMO para Rentenciones S de TST",
+      "curp_e": "AAAA010101HNLMNLD2"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional",
+      "nacional": {
+        "rfc_r": "XAXX010101000",
+        "nom_den_raz_soc_r": "PÚBLICO EN GENERAL S DE TST",
+        "curp_r": "VAHE820926HNLLRD02"
+      }
+    },
+    "periodo": {
+      "mes_ini": "6",
+      "mes_fin": "6",
+      "ejercicio": "2014"
+    },
+    "totales": {
+      "monto_tot_operacion": "14000.00",
+      "monto_tot_grav": "13000.00",
+      "monto_tot_exent": "1000.00",
+      "monto_tot_ret": "3500.00",
+      "imp_retenidos": [
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "01",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago definitivo"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "A6D77767-7FA2-4ACD-A8A0-F3126AFF9FBE",
+      "uuid_original": "a6d77767-7fa2-4acd-a8a0-f3126aff9fbe",
+      "fecha_timbrado": "2015-02-24T11:02:43",
+      "no_certificado_sat": "20001000000300003693"
+    },
+    "dividendos": {
+      "version": "1.0",
+      "divid_o_util": {
+        "cve_tip_div_o_util": "01",
+        "mont_isr_acred_ret_mexico": "35.00",
+        "mont_isr_acred_ret_extranjero": "0",
+        "mont_ret_ext_div_ext": "0",
+        "tipo_soc_distr_div": "Sociedad Nacional",
+        "mont_isr_acred_nal": "30.00",
+        "mont_div_acum_nal": "5.00",
+        "mont_div_acum_ext": "0"
+      },
+      "remanente": {
+        "proporcion_rem": "0.00"
+      }
+    }
+  },
+  "advertencias": []
+}

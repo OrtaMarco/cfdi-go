@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 16,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Concepto', attribute 'Cantidad': [facet 'minInclusive'] The value '0' is less than the minimum value allowed ('0.000001')."
+  }
+ ]
+}

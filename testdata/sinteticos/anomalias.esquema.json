@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 22,
+   "ruta": "",
+   "mensaje": "XML ilegible: Extra content at the end of the document, line 22, column 1 (anomalias.xml, line 22)"
+  }
+ ]
+}

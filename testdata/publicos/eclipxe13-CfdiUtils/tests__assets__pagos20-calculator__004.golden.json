@@ -1,0 +1,1192 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "fecha": "2023-06-13T13:39:33",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "01",
+    "lugar_expedicion": "52000",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "EMPRESA MEXICANA SA DE CV",
+      "domicilio_fiscal_receptor": "54900",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "CP01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "pagos": {
+      "version": "2.0",
+      "totales": {
+        "total_traslados_base_iva16": "1089653.48",
+        "total_traslados_impuesto_iva16": "174344.56",
+        "monto_total_pagos": "1263997.83"
+      },
+      "pago": [
+        {
+          "fecha_pago": "2023-05-22T12:00:00",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "tipo_cambio_p": "1",
+          "monto": "1263997.83",
+          "docto_relacionado": [
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "2",
+              "imp_saldo_ant": "663.89",
+              "imp_pagado": "663.89",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "572.321724",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "91.571476"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "2048.24",
+              "imp_pagado": "2048.24",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "1765.720000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "282.515200"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1080.61",
+              "imp_pagado": "1080.61",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "931.560000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "149.049600"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "2505.60",
+              "imp_pagado": "2505.60",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "2160.000000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "345.600000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "196.60",
+              "imp_pagado": "196.60",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "169.480000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "27.116800"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "845.06",
+              "imp_pagado": "845.06",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "728.500000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "116.560000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1063.31",
+              "imp_pagado": "1063.31",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "916.650000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "146.664000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "979.58",
+              "imp_pagado": "979.58",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "844.460000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "135.113600"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "3249.39",
+              "imp_pagado": "3249.39",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "2801.200000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "448.192000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "2771.70",
+              "imp_pagado": "2771.70",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "2389.400000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "382.304000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "165.97",
+              "imp_pagado": "165.97",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "143.080000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "22.892800"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "2139.57",
+              "imp_pagado": "2139.57",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "1844.450000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "295.112000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "950.84",
+              "imp_pagado": "950.84",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "819.690000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "131.150400"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "3176.54",
+              "imp_pagado": "3176.54",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "2738.400000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "438.144000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1153.45",
+              "imp_pagado": "1153.45",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "994.350000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "159.096000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "7200.82",
+              "imp_pagado": "7200.82",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "6207.600000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "993.216000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1867.60",
+              "imp_pagado": "1867.60",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "1610.000000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "257.600000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "471.13",
+              "imp_pagado": "471.13",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "406.150000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "64.984000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "782.07",
+              "imp_pagado": "782.07",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "674.200000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "107.872000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "633.17",
+              "imp_pagado": "633.17",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "545.840000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "87.334400"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1153.45",
+              "imp_pagado": "1153.45",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "994.350000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "159.096000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "474.32",
+              "imp_pagado": "474.32",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "408.900000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "65.424000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "747.27",
+              "imp_pagado": "747.27",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "644.200000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "103.072000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "803.46",
+              "imp_pagado": "803.46",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "692.640000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "110.822400"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1376.82",
+              "imp_pagado": "1376.82",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "1186.920000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "189.907200"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "204.62",
+              "imp_pagado": "204.62",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "176.400000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "28.224000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "163.70",
+              "imp_pagado": "163.70",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "141.120000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "22.579200"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "81.85",
+              "imp_pagado": "81.85",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "70.560000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "11.289600"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "9592.69",
+              "imp_pagado": "9592.69",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "8269.560000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "1323.129600"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "470.64",
+              "imp_pagado": "470.64",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "405.720000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "64.915200"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "81.85",
+              "imp_pagado": "81.85",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "70.560000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "11.289600"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "27.28",
+              "imp_pagado": "27.28",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "23.520000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "3.763200"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "122.77",
+              "imp_pagado": "122.77",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "105.840000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "16.934400"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "932.64",
+              "imp_pagado": "932.64",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "804.000000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "128.640000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "11267.54",
+              "imp_pagado": "11267.54",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "9713.400000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "1554.144000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "3176.54",
+              "imp_pagado": "3176.54",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "2738.400000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "438.144000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "440.22",
+              "imp_pagado": "440.22",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "379.500000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "60.720000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1417.75",
+              "imp_pagado": "1417.75",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "1222.200000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "195.552000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1392.18",
+              "imp_pagado": "1392.18",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "1200.150000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "192.024000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "525.20",
+              "imp_pagado": "525.20",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "452.760000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "72.441600"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "988.67",
+              "imp_pagado": "988.67",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "852.300000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "136.368000"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "356.96",
+              "imp_pagado": "356.96",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "307.720000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "49.235200"
+                  }
+                ]
+              }
+            },
+            {
+              "moneda_dr": "USD",
+              "equivalencia_dr": "0.0563882216",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "1531.03",
+              "imp_pagado": "1531.03",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "1319.850000",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "211.176000"
+                  }
+                ]
+              }
+            }
+          ],
+          "impuestos_p": {
+            "traslados_p": [
+              {
+                "base_p": "1089653.476924",
+                "impuesto_p": "002",
+                "tipo_factor_p": "Tasa",
+                "tasa_o_cuota_p": "0.160000",
+                "importe_p": "174344.556311"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[1]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[2]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[3]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[4]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[5]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[6]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[7]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[8]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[9]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[10]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[11]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[12]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[13]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[14]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[15]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[16]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[17]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[18]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[19]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[20]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[21]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[22]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[23]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[24]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[25]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[26]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[27]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[28]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[29]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[30]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[31]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[32]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[33]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[34]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[35]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[36]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[37]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[38]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[39]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[40]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[41]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[42]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[43]/@IdDocumento",
+      "mensaje": "falta el atributo IdDocumento",
+      "atributo": "IdDocumento"
+    },
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

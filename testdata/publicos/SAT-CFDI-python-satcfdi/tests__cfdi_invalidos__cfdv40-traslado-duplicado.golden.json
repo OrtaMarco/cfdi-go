@@ -1,0 +1,98 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "TEST",
+    "folio": "1",
+    "fecha": "2026-01-01T00:00:00",
+    "forma_pago": "01",
+    "no_certificado": "00000000000000000000",
+    "sub_total": "100.00",
+    "moneda": "MXN",
+    "total": "116.00",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "00000",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "EMISOR DE PRUEBA",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "BBB010101BBB",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "domicilio_fiscal_receptor": "00000",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "descripcion": "A",
+        "valor_unitario": "40.00",
+        "importe": "40.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "40.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "6.40"
+            }
+          ]
+        }
+      },
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "descripcion": "B",
+        "valor_unitario": "60.00",
+        "importe": "60.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "60.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.16",
+              "importe": "9.60"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "16.00",
+      "traslados": [
+        {
+          "base": "40.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "6.40"
+        },
+        {
+          "base": "60.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.16",
+          "importe": "9.60"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

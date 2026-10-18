@@ -1,0 +1,50 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "fecha": "2017-09-14T01:02:03",
+    "no_certificado": "40001000000300000337",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "lugar_expedicion": "45079",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "AAA010101AAA",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0"
+      }
+    ],
+    "pagos": {
+      "version": "1.0",
+      "pago": [
+        {
+          "fecha_pago": "2017-09-13T01:02:59",
+          "forma_de_pago_p": "02",
+          "moneda_p": "ZWL",
+          "tipo_cambio_p": "1",
+          "monto": "10.12"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

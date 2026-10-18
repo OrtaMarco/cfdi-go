@@ -1,0 +1,184 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "2025",
+    "folio": "1",
+    "fecha": "2025-07-11T10:52:46",
+    "no_certificado": "00001000000000000000",
+    "sub_total": "3872.57",
+    "descuento": "1838.57",
+    "moneda": "MXN",
+    "total": "2034.00",
+    "tipo_de_comprobante": "N",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "97170",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "EMPRESA DEMO PRUEBAS",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "nombre": "EMPLEADO DEMO PRUEBAS",
+      "domicilio_fiscal_receptor": "97527",
+      "regimen_fiscal_receptor": "605",
+      "uso_cfdi": "CN01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111505",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago de nómina",
+        "valor_unitario": "3872.57",
+        "importe": "3872.57",
+        "descuento": "1838.57",
+        "objeto_imp": "01"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-1111-1111-1111-111111111111",
+      "fecha_timbrado": "2025-07-11T10:52:59",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "00001000000000000000"
+    },
+    "nomina": [
+      {
+        "version": "1.2",
+        "tipo_nomina": "O",
+        "fecha_pago": "2025-07-10",
+        "fecha_inicial_pago": "2025-07-01",
+        "fecha_final_pago": "2025-07-10",
+        "num_dias_pagados": "10.000",
+        "total_percepciones": "3871.74",
+        "total_deducciones": "1838.57",
+        "total_otros_pagos": "0.83",
+        "emisor": {
+          "registro_patronal": "A0000000000"
+        },
+        "receptor": {
+          "curp": "XAXX010101HDFXXX01",
+          "num_seguridad_social": "00000000000",
+          "fecha_inicio_rel_laboral": "2025-05-01",
+          "antiguedad": "P10W",
+          "tipo_contrato": "01",
+          "sindicalizado": "No",
+          "tipo_jornada": "01",
+          "tipo_regimen": "02",
+          "num_empleado": "227",
+          "departamento": "MACROPLAZA",
+          "puesto": "AUXILIAR DE COCINA",
+          "riesgo_puesto": "2",
+          "periodicidad_pago": "10",
+          "cuenta_bancaria": "0000000000000000000",
+          "salario_base_cot_apor": "292.56",
+          "salario_diario_integrado": "278.81",
+          "clave_ent_fed": "YUC"
+        },
+        "percepciones": {
+          "total_sueldos": "3871.74",
+          "total_gravado": "2788.10",
+          "total_exento": "1083.64",
+          "percepcion": [
+            {
+              "tipo_percepcion": "001",
+              "clave": "001",
+              "concepto": "Sueldo",
+              "importe_gravado": "2788.10",
+              "importe_exento": "0.00"
+            },
+            {
+              "tipo_percepcion": "029",
+              "clave": "032",
+              "concepto": "Despensa",
+              "importe_gravado": "0.00",
+              "importe_exento": "1000.00"
+            },
+            {
+              "tipo_percepcion": "005",
+              "clave": "131",
+              "concepto": "Fondo de ahorro aportación Empresa",
+              "importe_gravado": "0.00",
+              "importe_exento": "83.64"
+            }
+          ]
+        },
+        "deducciones": {
+          "total_otras_deducciones": "1795.78",
+          "total_impuestos_retenidos": "42.79",
+          "deduccion": [
+            {
+              "tipo_deduccion": "001",
+              "clave": "052",
+              "concepto": "I.M.S.S.",
+              "importe": "69.48"
+            },
+            {
+              "tipo_deduccion": "009",
+              "clave": "059",
+              "concepto": "Préstamo infonavit PORC",
+              "importe": "731.40"
+            },
+            {
+              "tipo_deduccion": "011",
+              "clave": "061",
+              "concepto": "Préstamo FONACOT",
+              "importe": "248.93"
+            },
+            {
+              "tipo_deduccion": "004",
+              "clave": "067",
+              "concepto": "Fondo de ahorro trabajador",
+              "importe": "83.64"
+            },
+            {
+              "tipo_deduccion": "002",
+              "clave": "045",
+              "concepto": "I.S.R. mes",
+              "importe": "42.79"
+            },
+            {
+              "tipo_deduccion": "009",
+              "clave": "014",
+              "concepto": "Seguro de vivienda Infonavit",
+              "importe": "15.00"
+            },
+            {
+              "tipo_deduccion": "009",
+              "clave": "178",
+              "concepto": "Ajuste Infonavit",
+              "importe": "563.69"
+            },
+            {
+              "tipo_deduccion": "004",
+              "clave": "179",
+              "concepto": "Fondo de ahorro aportación Empresa D",
+              "importe": "83.64"
+            }
+          ]
+        },
+        "otros_pagos": [
+          {
+            "tipo_otro_pago": "999",
+            "clave": "099",
+            "concepto": "Ajuste al neto",
+            "importe": "0.83"
+          },
+          {
+            "tipo_otro_pago": "002",
+            "clave": "035",
+            "concepto": "Subs al Empleo mes",
+            "importe": "0.00",
+            "subsidio_al_empleo": {
+              "subsidio_causado": "156.25"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "advertencias": []
+}

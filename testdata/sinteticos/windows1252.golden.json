@@ -1,0 +1,66 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "Ñ",
+    "folio": "12",
+    "fecha": "2020-11-11T11:11:11",
+    "forma_pago": "01",
+    "sub_total": "100.00",
+    "moneda": "MXN",
+    "total": "116.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "06000",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "nombre": "PÚBLICO EN GENERAL",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Café “orgánico” — año pingüino €",
+        "valor_unitario": "100.00",
+        "importe": "100.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "100.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "16.00"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "16.00",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "16.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "DDDDDDDD-EEEE-FFFF-0000-111111111111",
+      "fecha_timbrado": "2020-11-11T11:12:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000400002495"
+    }
+  },
+  "advertencias": []
+}

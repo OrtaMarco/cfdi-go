@@ -1,0 +1,149 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "fecha": "2021-12-08T23:59:59",
+    "forma_pago": "02",
+    "no_certificado": "30001000000300023708",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "03",
+    "lugar_expedicion": "99999",
+    "cfdi_relacionados": [
+      {
+        "tipo_relacion": "09",
+        "cfdi_relacionado": [
+          {
+            "uuid": "0BA31311-F675-4E0F-958D-2F3F50F7B88B",
+            "uuid_original": "0ba31311-f675-4e0f-958d-2f3f50f7b88b"
+          }
+        ]
+      }
+    ],
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "Esta es una demostración",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "nombre": "Juanito Bananas De la Sierra",
+      "domicilio_fiscal_receptor": "99999",
+      "regimen_fiscal_receptor": "630",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "pagos": {
+      "version": "2.0",
+      "totales": {
+        "total_retenciones_iva": "0.00",
+        "total_retenciones_isr": "0.00",
+        "total_retenciones_ieps": "0.00",
+        "total_traslados_base_iva16": "0.00",
+        "total_traslados_impuesto_iva16": "0.00",
+        "total_traslados_base_iva8": "0.00",
+        "total_traslados_impuesto_iva8": "0.00",
+        "total_traslados_base_iva0": "0.00",
+        "total_traslados_impuesto_iva0": "0.00",
+        "total_traslados_base_iva_exento": "0.00",
+        "monto_total_pagos": "0.00"
+      },
+      "pago": [
+        {
+          "fecha_pago": "2021-12-03T12:59:00",
+          "forma_de_pago_p": "99",
+          "moneda_p": "ZWL",
+          "tipo_cambio_p": "10.00",
+          "monto": "0.00",
+          "num_operacion": "0.00",
+          "rfc_emisor_cta_ord": "AAA010101AAA",
+          "nom_banco_ord_ext": "0.00",
+          "cta_ordenante": "3456789012",
+          "rfc_emisor_cta_ben": "BAS600902KL9",
+          "cta_beneficiario": "1234567890",
+          "tipo_cad_pago": "01",
+          "docto_relacionado": [
+            {
+              "id_documento": "C1DF8D01-8436-4E7D-BECF-20F31624280D",
+              "serie": "0.00",
+              "folio": "0.00",
+              "moneda_dr": "ZWL",
+              "equivalencia_dr": "0.000001",
+              "num_parcialidad": "109",
+              "imp_saldo_ant": "0.00",
+              "imp_pagado": "1.00",
+              "imp_saldo_insoluto": "1.00",
+              "objeto_imp_dr": "03",
+              "impuestos_dr": {
+                "retenciones_dr": [
+                  {
+                    "base_dr": "2.00",
+                    "impuesto_dr": "003",
+                    "tipo_factor_dr": "Exento",
+                    "tasa_o_cuota_dr": "0.000001",
+                    "importe_dr": "1.00"
+                  }
+                ],
+                "traslados_dr": [
+                  {
+                    "base_dr": "2.00",
+                    "impuesto_dr": "003",
+                    "tipo_factor_dr": "Exento",
+                    "tasa_o_cuota_dr": "0.000001",
+                    "importe_dr": "1.00"
+                  }
+                ]
+              }
+            }
+          ],
+          "impuestos_p": {
+            "retenciones_p": [
+              {
+                "impuesto_p": "003",
+                "importe_p": "0.00"
+              }
+            ],
+            "traslados_p": [
+              {
+                "base_p": "0.00",
+                "impuesto_p": "003",
+                "tipo_factor_p": "Exento",
+                "tasa_o_cuota_p": "0.00",
+                "importe_p": "0.00"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "EXENTO_CON_IMPORTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/DoctoRelacionado[1]/ImpuestosDR/TrasladosDR/TrasladoDR[1]",
+      "mensaje": "traslado Exento con TasaOCuotaDR o ImporteDR"
+    },
+    {
+      "codigo": "EXENTO_CON_IMPORTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/ImpuestosP/TrasladosP/TrasladoP[1]",
+      "mensaje": "traslado Exento con TasaOCuotaP o ImporteP"
+    },
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

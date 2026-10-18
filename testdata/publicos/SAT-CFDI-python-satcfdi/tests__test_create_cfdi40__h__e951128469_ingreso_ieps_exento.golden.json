@@ -1,0 +1,70 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "A",
+    "folio": "123456",
+    "fecha": "2020-01-01T22:40:38",
+    "no_certificado": "30001000000400002460",
+    "sub_total": "15390.30",
+    "moneda": "MXN",
+    "total": "15390.30",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "56820",
+    "emisor": {
+      "rfc": "H&E951128469",
+      "nombre": "HERRERIA & ELECTRICOS",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "KIJ0906199R1",
+      "nombre": "KIJ, S.A DE C.V.",
+      "domicilio_fiscal_receptor": "59820",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "10101702",
+        "cantidad": "1.00",
+        "clave_unidad": "E48",
+        "descripcion": "SERVICIOS DE FACTURACION",
+        "valor_unitario": "15390.30",
+        "importe": "15390.30",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "15390.30",
+              "impuesto": "003",
+              "tipo_factor": "Exento"
+            }
+          ]
+        },
+        "cuenta_predial": [
+          {
+            "numero": "1234567890"
+          }
+        ]
+      }
+    ],
+    "impuestos": {
+      "traslados": [
+        {
+          "base": "15390.30",
+          "impuesto": "003",
+          "tipo_factor": "Exento"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

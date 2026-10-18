@@ -1,0 +1,35 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/x:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'Sello' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/x:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'Certificado' is required but missing."
+  },
+  {
+   "linea": 13,
+   "ruta": "/x:Comprobante/x:Conceptos/x:Concepto/x:ComplementoConcepto/ec:DeConcepto",
+   "mensaje": "Element '{urn:ejemplo:concepto}DeConcepto': No matching global element declaration available, but demanded by the strict wildcard."
+  },
+  {
+   "linea": 23,
+   "ruta": "/x:Comprobante/x:Complemento/eg:DeComprobante",
+   "mensaje": "Element '{urn:ejemplo:comprobante}DeComprobante': No matching global element declaration available, but demanded by the strict wildcard."
+  },
+  {
+   "linea": 24,
+   "ruta": "/x:Comprobante/x:Complemento/t:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital': The attribute 'SelloCFD' is required but missing."
+  },
+  {
+   "linea": 24,
+   "ruta": "/x:Comprobante/x:Complemento/t:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital': The attribute 'SelloSAT' is required but missing."
+  }
+ ]
+}

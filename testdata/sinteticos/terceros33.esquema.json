@@ -1,0 +1,30 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/3}Comprobante': The attribute 'Sello' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/3}Comprobante': The attribute 'Certificado' is required but missing."
+  },
+  {
+   "linea": 18,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[1]/cfdi:ComplementoConcepto/terceros:PorCuentadeTerceros/terceros:CuentaPredial",
+   "mensaje": "Element '{http://www.sat.gob.mx/terceros}CuentaPredial': This element is not expected. Expected is one of ( {http://www.sat.gob.mx/terceros}Parte, {http://www.sat.gob.mx/terceros}Impuestos )."
+  },
+  {
+   "linea": 51,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital': The attribute 'SelloCFD' is required but missing."
+  },
+  {
+   "linea": 51,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital': The attribute 'SelloSAT' is required but missing."
+  }
+ ]
+}

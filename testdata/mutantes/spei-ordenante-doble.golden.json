@@ -1,0 +1,98 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "SP",
+    "folio": "33",
+    "fecha": "2017-06-01T12:00:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000400002495",
+    "sub_total": "1000.00",
+    "moneda": "MXN",
+    "total": "1160.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Servicio de prueba",
+        "valor_unitario": "1000.00",
+        "importe": "1000.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1000.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "160.00"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "160.00",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "160.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555552033",
+      "fecha_timbrado": "2017-06-01T12:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000400002495"
+    },
+    "complemento_spei": [
+      {
+        "fecha_operacion": "2017-06-01",
+        "hora": "11:59:30",
+        "clave_spei": "40012",
+        "numero_certificado": "00000000000000000001",
+        "ordenante": {
+          "banco_emisor": "BANCO DE PRUEBA",
+          "nombre": "ORDENANTE DE PRUEBA",
+          "tipo_cuenta": "40",
+          "cuenta": "002180000000000018",
+          "rfc": "XOJI740919U48"
+        },
+        "beneficiario": {
+          "banco_receptor": "OTRO BANCO",
+          "nombre": "ESCUELA KEMPER URGATE",
+          "tipo_cuenta": "40",
+          "cuenta": "012180000000000016",
+          "rfc": "EKU9003173C9",
+          "concepto": "PAGO DE PRUEBA",
+          "iva": "160.00",
+          "monto_pago": "1160.00"
+        }
+      }
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "NODO_DUPLICADO",
+      "ruta": "/Comprobante/Complemento/Complemento_SPEI/SPEI_Tercero[1]/Ordenante",
+      "mensaje": "2 nodos Ordenante; se usa el primero"
+    }
+  ]
+}

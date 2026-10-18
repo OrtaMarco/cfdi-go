@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 5,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Conceptos': Character content other than whitespace is not allowed because the content type is 'element-only'."
+  }
+ ]
+}

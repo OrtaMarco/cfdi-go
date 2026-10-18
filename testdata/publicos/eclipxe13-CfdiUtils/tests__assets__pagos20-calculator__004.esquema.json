@@ -1,0 +1,230 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'Sello' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'Certificado' is required but missing."
+  },
+  {
+   "linea": 12,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[1]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 19,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 26,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[3]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 33,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[4]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 40,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[5]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 47,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[6]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 54,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[7]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 61,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[8]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 68,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[9]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 75,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[10]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 82,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[11]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 89,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[12]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 96,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[13]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 103,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[14]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 110,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[15]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 117,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[16]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 124,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[17]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 131,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[18]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 138,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[19]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 145,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[20]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 152,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[21]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 159,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[22]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 166,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[23]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 173,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[24]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 180,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[25]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 187,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[26]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 194,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[27]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 201,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[28]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 208,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[29]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 215,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[30]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 222,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[31]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 229,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[32]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 236,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[33]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 243,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[34]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 250,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[35]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 257,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[36]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 264,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[37]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 271,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[38]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 278,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[39]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 285,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[40]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 292,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[41]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 299,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[42]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  },
+  {
+   "linea": 306,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[43]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}DoctoRelacionado': The attribute 'IdDocumento' is required but missing."
+  }
+ ]
+}

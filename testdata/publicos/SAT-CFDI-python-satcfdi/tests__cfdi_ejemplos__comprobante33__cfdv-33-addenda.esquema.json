@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 45,
+   "ruta": "/cfdi:Comprobante/cfdi:Addenda",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/3}Addenda': Missing child element(s). Expected is one of ( {*}*, * )."
+  }
+ ]
+}

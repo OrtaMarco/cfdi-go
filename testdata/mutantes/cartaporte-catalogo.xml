@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:cartaporte31="http://www.sat.gob.mx/CartaPorte31" Version="4.0" Serie="CP" Folio="31" Fecha="2026-04-06T07:00:00" Sello="U0VMTE8gREUgUFJVRUJB" FormaPago="03" NoCertificado="30001000000500003416" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="5000.00" Moneda="MXN" Total="5800.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" DomicilioFiscalReceptor="76028" RegimenFiscalReceptor="605" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="78101802" Cantidad="1" ClaveUnidad="E48" Descripcion="Flete de prueba" ValorUnitario="5000.00" Importe="5000.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="5000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="800.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="800.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="5000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="800.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <cartaporte31:CartaPorte Version="3.1" IdCCP="CCC00001-0000-4000-8000-000000000031" TranspInternac="Sí" EntradaSalidaMerc="Salida" PaisOrigenDestino="USA" ViaEntradaSalida="01" TotalDistRec="230.75" RegistroISTMO="Sí" UbicacionPoloOrigen="01" UbicacionPoloDestino="02">
+      <cartaporte31:RegimenesAduaneros>
+        <cartaporte31:RegimenAduaneroCCP RegimenAduanero="EXD"/>
+        <cartaporte31:RegimenAduaneroCCP RegimenAduanero="ITR"/>
+      </cartaporte31:RegimenesAduaneros>
+      <cartaporte31:Ubicaciones>
+        <cartaporte31:Ubicacion TipoUbicacion="Origen" IDUbicacion="OR000001" RFCRemitenteDestinatario="EKU9003173C9" FechaHoraSalidaLlegada="2026-04-06T08:00:00">
+          <cartaporte31:Domicilio Calle="Calle de prueba" NumeroExterior="1" Colonia="0001" Municipio="048" Estado="HID" Pais="MEX" CodigoPostal="42501"/>
+        </cartaporte31:Ubicacion>
+        <cartaporte31:Ubicacion TipoUbicacion="Destino" IDUbicacion="DE000002" RFCRemitenteDestinatario="XOJI740919U48" FechaHoraSalidaLlegada="2026-04-06T11:00:00" DistanciaRecorrida="150.50">
+          <cartaporte31:Domicilio Estado="QUE" Pais="MEX" CodigoPostal="76028"/>
+        </cartaporte31:Ubicacion>
+        <cartaporte31:Ubicacion TipoUbicacion="Destino" IDUbicacion="DE000003" RFCRemitenteDestinatario="XEXX010101000" NombreRemitenteDestinatario="DESTINATARIO EXTRANJERO DE PRUEBA" NumRegIdTrib="987654321" ResidenciaFiscal="USA" FechaHoraSalidaLlegada="2026-04-06T13:00:00" DistanciaRecorrida="80.25">
+          <cartaporte31:Domicilio Estado="TX" Pais="USA" CodigoPostal="78040"/>
+        </cartaporte31:Ubicacion>
+      </cartaporte31:Ubicaciones>
+      <cartaporte31:Mercancias PesoBrutoTotal="3000.000" UnidadPeso="KGM" NumTotalMercancias="2">
+        <cartaporte31:Mercancia BienesTransp="31181701" Descripcion="Piezas de prueba" Cantidad="100" ClaveUnidad="H87" PesoEnKg="2000.000" ValorMercancia="4000.00" Moneda="MXN" FraccionArancelaria="8708999999">
+          <cartaporte31:DocumentacionAduanera TipoDocumento="01" NumPedimento="26  47  3807  6000031" RFCImpo="EKU9003173C9"/>
+          <cartaporte31:CantidadTransporta Cantidad="60" IDOrigen="OR000001" IDDestino="DE000002"/>
+          <cartaporte31:CantidadTransporta Cantidad="40" IDOrigen="OR000001" IDDestino="DE000003"/>
+        </cartaporte31:Mercancia>
+        <cartaporte31:Mercancia BienesTransp="24112700" Descripcion="Tarimas de prueba" Cantidad="10" ClaveUnidad="XPX" PesoEnKg="1000.000">
+          <cartaporte31:DocumentacionAduanera TipoDocumento="02" IdentDocAduanero="DOC-0031"/>
+        </cartaporte31:Mercancia>
+        <cartaporte31:Autotransporte PermSCT="TPAF01" NumPermisoSCT="PERMISO31">
+          <cartaporte31:IdentificacionVehicular ConfigVehicular="Z9" PesoBrutoVehicular="12.00" PlacaVM="XYZ987" AnioModeloVM="2025"/>
+          <cartaporte31:Seguros AseguraRespCivil="ASEGURADORA DE PRUEBA" PolizaRespCivil="POL-31"/>
+        </cartaporte31:Autotransporte>
+        <cartaporte31:TransporteMaritimo TipoEmbarcacion="B01" Matricula="MAT0031" NumeroOMI="IMO7654321" NacionalidadEmbarc="MEX" UnidadesDeArqBruto="200.000" TipoCarga="CGC" NombreAgenteNaviero="AGENTE DE PRUEBA" NumAutorizacionNaviero="SCT418/020/2016">
+          <cartaporte31:Contenedor TipoContenedor="CM002" MatriculaContenedor="XYZU7654321">
+            <cartaporte31:RemolquesCCP>
+              <cartaporte31:RemolqueCCP SubTipoRemCCP="CTR004" PlacaCCP="RCCP31"/>
+              <cartaporte31:RemolqueCCP SubTipoRemCCP="CTR005" PlacaCCP="RCCP32"/>
+            </cartaporte31:RemolquesCCP>
+          </cartaporte31:Contenedor>
+        </cartaporte31:TransporteMaritimo>
+      </cartaporte31:Mercancias>
+      <cartaporte31:FiguraTransporte>
+        <cartaporte31:TiposFigura TipoFigura="01" RFCFigura="CACX7605101P8" NumLicencia="LIC000031" NombreFigura="OPERADOR DE PRUEBA"/>
+        <cartaporte31:TiposFigura TipoFigura="02" RFCFigura="XIQB891116QE4" NombreFigura="PROPIETARIO DE PRUEBA">
+          <cartaporte31:PartesTransporte ParteTransporte="PT01"/>
+          <cartaporte31:Domicilio Estado="HID" Pais="MEX" CodigoPostal="42501"/>
+        </cartaporte31:TiposFigura>
+      </cartaporte31:FiguraTransporte>
+    </cartaporte31:CartaPorte>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555555503" FechaTimbrado="2026-04-06T07:01:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000500003456" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

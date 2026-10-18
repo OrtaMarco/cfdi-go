@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 18,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[1]/cfdi:ComplementoConcepto/terceros:PorCuentadeTerceros/terceros:CuentaPredial",
+   "mensaje": "Element '{http://www.sat.gob.mx/terceros}CuentaPredial': This element is not expected. Expected is one of ( {http://www.sat.gob.mx/terceros}Parte, {http://www.sat.gob.mx/terceros}Impuestos )."
+  }
+ ]
+}

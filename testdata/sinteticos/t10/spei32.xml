@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 3.2 sintético con Complemento_SPEI (dos SPEI_Tercero) y acreditamientoIEPS en un concepto:
+     la hoja de 3.2 es la única que los lleva a la cadena. Sellos de relleno, RFC de prueba. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:spei="http://www.sat.gob.mx/spei" xmlns:aieps="http://www.sat.gob.mx/acreditamiento" version="3.2" serie="SP" folio="32"
+    fecha="2016-06-01T12:00:00" sello="" formaDePago="PAGO EN UNA SOLA EXHIBICION" noCertificado="30001000000500003416"
+    certificado="" subTotal="1000.00" Moneda="MXN" total="1160.00" tipoDeComprobante="ingreso"
+    metodoDePago="03" LugarExpedicion="PACHUCA, HIDALGO">
+  <cfdi:Emisor rfc="EKU9003173C9" nombre="ESCUELA KEMPER URGATE">
+    <cfdi:DomicilioFiscal calle="AV. HIDALGO" noExterior="77" municipio="PACHUCA" estado="HIDALGO" pais="MEXICO" codigoPostal="42000"/>
+    <cfdi:RegimenFiscal Regimen="REGIMEN GENERAL"/>
+  </cfdi:Emisor>
+  <cfdi:Receptor rfc="XOJI740919U48" nombre="RECEPTOR DE PRUEBA">
+    <cfdi:Domicilio pais="MEXICO"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto cantidad="1" unidad="LITRO" descripcion="Combustible de prueba" valorUnitario="1000.00" importe="1000.00">
+      <cfdi:ComplementoConcepto>
+        <aieps:acreditamientoIEPS Version="1.0" TAR="619"/>
+      </cfdi:ComplementoConcepto>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosTrasladados="160.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado impuesto="IVA" tasa="16.00" importe="160.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <spei:Complemento_SPEI>
+      <spei:SPEI_Tercero FechaOperacion="2016-06-01" Hora="11:59:30" ClaveSPEI="40012" sello="U0VMTE8gREUgUFJVRUJB" numeroCertificado="00000000000000000001" cadenaCDA="||1|01062016|01062016|115930|40012|BANCO DE PRUEBA||">
+        <spei:Ordenante BancoEmisor="BANCO DE PRUEBA" Nombre="ORDENANTE DE PRUEBA" TipoCuenta="40" Cuenta="002180000000000018" RFC="XOJI740919U48"/>
+        <spei:Beneficiario BancoReceptor="OTRO BANCO" Nombre="ESCUELA KEMPER URGATE" TipoCuenta="40" Cuenta="012180000000000016" RFC="EKU9003173C9" Concepto="PAGO DE PRUEBA" IVA="160.00" MontoPago="1160.00"/>
+      </spei:SPEI_Tercero>
+      <spei:SPEI_Tercero FechaOperacion="2016-06-01" Hora="12:00:00.5" ClaveSPEI="40012" sello="U0VMTE8gREUgUFJVRUJB" numeroCertificado="00000000000000000001" cadenaCDA="||2||">
+        <spei:Ordenante BancoEmisor="BANCO DE PRUEBA" Nombre="ORDENANTE DE PRUEBA" TipoCuenta="3" Cuenta="1234" RFC="ND"/>
+        <spei:Beneficiario BancoReceptor="OTRO BANCO" Nombre="ESCUELA KEMPER URGATE" TipoCuenta="40" Cuenta="012180000000000016" RFC="EKU9003173C9" Concepto="SEGUNDO PAGO" MontoPago="1.00"/>
+      </spei:SPEI_Tercero>
+    </spei:Complemento_SPEI>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" version="1.0" UUID="12345678-1234-4234-8234-123456782003" FechaTimbrado="2016-06-01T12:01:00" selloCFD="" noCertificadoSAT="00001000000300000000" selloSAT=""/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

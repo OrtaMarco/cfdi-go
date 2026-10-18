@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 16,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Concepto', attribute 'Cantidad': '2,5' is not a valid value of the local atomic type."
+  }
+ ]
+}

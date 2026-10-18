@@ -1,0 +1,2066 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/OrtaMarco/cfdi-go/schema/cfdi.v1.schema.json",
+  "title": "CFDI normalizado, schema_version 1",
+  "description": "Salida JSON de github.com/OrtaMarco/cfdi-go. Claves en snake_case de los nombres del SAT; las claves vacías se omiten. Montos y cantidades son strings con el texto original del XML (nunca números). Las listas aplanan los contenedores sin atributos (Conceptos, Traslados, OtrosPagos…).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "cfdi", "advertencias"],
+  "properties": {
+    "origen": { "type": "string", "description": "De dónde salió el CFDI; lo llena el modo lote (ruta[!entrada.zip])." },
+    "schema_version": { "const": "1" },
+    "cfdi": { "$ref": "#/$defs/comprobante" },
+    "advertencias": { "type": "array", "items": { "$ref": "#/$defs/advertencia" } },
+    "verificacion_sello": { "$ref": "#/$defs/resultado_sello" },
+    "verificacion_tfd": { "$ref": "#/$defs/resultado_sello" },
+    "validacion": { "$ref": "#/$defs/validacion" }
+  },
+  "$defs": {
+    "validacion": {
+      "type": "object",
+      "description": "Validación contra los XSD del SAT y las reglas aritméticas; solo está si se pidió (cfdi lote -validar).",
+      "additionalProperties": false,
+      "required": ["estado", "esquema"],
+      "properties": {
+        "estado": { "$ref": "#/$defs/estado_validacion" },
+        "esquema": { "$ref": "#/$defs/resultado_validacion" },
+        "reglas": { "$ref": "#/$defs/resultado_validacion" }
+      }
+    },
+    "estado_validacion": { "type": "string", "enum": ["valido", "invalido", "incompleto"] },
+    "resultado_validacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["estado", "hallazgos"],
+      "properties": {
+        "estado": { "$ref": "#/$defs/estado_validacion" },
+        "hallazgos": { "type": "array", "items": { "$ref": "#/$defs/hallazgo" } }
+      }
+    },
+    "hallazgo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["codigo", "nivel", "regla"],
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "enum": [
+            "ESQUEMA_XML_ILEGIBLE", "ESQUEMA_NO_SOPORTADO", "ESQUEMA_ELEMENTO_NO_PERMITIDO", "ESQUEMA_ELEMENTO_FALTANTE",
+            "ESQUEMA_ELEMENTO_EXCEDENTE", "ESQUEMA_ORDEN", "ESQUEMA_CONTENIDO", "ESQUEMA_ATRIBUTO_FALTANTE",
+            "ESQUEMA_ATRIBUTO_NO_PERMITIDO", "ESQUEMA_TIPO", "ESQUEMA_PATRON", "ESQUEMA_CATALOGO", "ESQUEMA_RANGO",
+            "ESQUEMA_DIGITOS", "ESQUEMA_LONGITUD", "ESQUEMA_VALOR_FIJO",
+            "REGLA_VERSION_NO_SOPORTADA", "REGLA_IMPORTE_CONCEPTO", "REGLA_DESCUENTO_CONCEPTO", "REGLA_IMPORTE_IMPUESTO",
+            "REGLA_EXENTO_CON_IMPORTE", "REGLA_TASA_SIN_IMPORTE", "REGLA_RETENCION_EXENTA", "REGLA_OBJETO_IMP",
+            "REGLA_SUBTOTAL", "REGLA_DESCUENTO", "REGLA_DESCUENTO_MAYOR_SUBTOTAL", "REGLA_TOTAL", "REGLA_TOTAL_TRASLADOS",
+            "REGLA_TOTAL_RETENCIONES", "REGLA_IMPUESTOS_SIN_TOTAL", "REGLA_TRASLADO_SUMA", "REGLA_TRASLADO_FALTANTE",
+            "REGLA_TRASLADO_SOBRANTE", "REGLA_RETENCION_SUMA", "REGLA_RETENCION_FALTANTE", "REGLA_RETENCION_SOBRANTE",
+            "REGLA_IMPLOCAL_TOTALES", "REGLA_DECIMALES_MONEDA", "REGLA_DECIMALES_IMPUESTO", "REGLA_DECIMALES_IMPUESTO_33",
+            "REGLA_TIPOCAMBIO_MXN", "REGLA_TIPOCAMBIO_XXX",
+            "REGLA_TIPOCAMBIO_REQUERIDO", "REGLA_TIPOCOMP_CONDICIONES", "REGLA_TIPOCOMP_IMPUESTOS", "REGLA_TIPOCOMP_FORMAPAGO",
+            "REGLA_TIPOCOMP_METODOPAGO", "REGLA_TIPOCOMP_DESCUENTO", "REGLA_TIPOCOMP_SUBTOTAL_CERO", "REGLA_TIPOCOMP_TOTAL_CERO",
+            "REGLA_TIPOCOMP_VALOR_UNITARIO", "REGLA_TIPOCOMP_MONEDA_NOMINA", "REGLA_PAGO_COMPROBANTE", "REGLA_PAGO_SALDO_INSOLUTO",
+            "REGLA_PAGO_EQUIVALENCIA", "REGLA_PAGO_TIPOCAMBIODR", "REGLA_PAGO_MONTO", "REGLA_PAGO_TIPOCAMBIO", "REGLA_PAGOS_TOTALES",
+            "REGLA_PAGO_MONEDA_XXX", "REGLA_PAGO_MAYOR_CERO", "REGLA_PAGO_DECIMALES", "REGLA_PAGO_FORMAPAGO", "REGLA_PAGO_CUENTAS",
+            "REGLA_PAGO_CADENA", "REGLA_PAGO10_PARCIALIDADES", "REGLA_PAGO10_IMPUESTOS",
+            "REGLA_PAGO_OBJETO_IMP_DR", "REGLA_PAGO_IMPUESTO_DR", "REGLA_PAGO_IMPORTE_DR", "REGLA_PAGO_IMPUESTOS_P",
+            "REGLA_PAGO_IMPUESTOS_P_SUMA",
+            "REGLA_CCE_TIPOCOMPROBANTE", "REGLA_CCE_CERTIFICADO", "REGLA_CCE_TOTALUSD", "REGLA_CCE_NOIDENTIFICACION",
+            "REGLA_CCE_DATOS_ADUANA", "REGLA_CCE_VALOR_DOLARES", "REGLA_NOMINA_TOTALES", "REGLA_NOMINA_PERCEPCIONES",
+            "REGLA_NOMINA_DEDUCCIONES", "REGLA_NOMINA_IMPORTES", "REGLA_NOMINA_CONCEPTO", "REGLA_NOMINA_FECHAS",
+            "REGLA_NOMINA_SUBCONTRATACION", "REGLA_NOMINA_OTROS_PAGOS",
+            "REGLA_CCE_EXPORTACION", "REGLA_CCE_NODOS_CFDI", "REGLA_CCE_MOTIVO_TRASLADO", "REGLA_CCE_TRASLADO",
+            "REGLA_CCE_EMISOR", "REGLA_CCE_NUMREGIDTRIB", "REGLA_CCE_FRACCION", "REGLA_CCE_VALOR_IMPORTE",
+            "REGLA_CCE_MUESTRAS",
+            "REGLA_NOMINA_COMPROBANTE", "REGLA_NOMINA_PERIODICIDAD", "REGLA_NOMINA_REGISTRO_PATRONAL",
+            "REGLA_NOMINA_ENTIDAD_SNCF", "REGLA_NOMINA_ANTIGUEDAD", "REGLA_NOMINA_TIPO_REGIMEN",
+            "REGLA_NOMINA_CUENTA_BANCARIA", "REGLA_NOMINA_NODOS_PERCEPCION", "REGLA_NOMINA_INCAPACIDADES",
+            "REGLA_NOMINA_COMPENSACION_SALDO"
+          ]
+        },
+        "nivel": { "type": "string", "enum": ["error", "advertencia", "aviso"], "description": "error: incumple (el estado es invalido); advertencia: incumple una regla sin fundamento en un documento oficial del SAT, o que el SAT pide no aplicar (no cambia el estado); aviso: una parte no se pudo validar (estado incompleto)." },
+        "ruta": { "type": "string", "description": "Mismo formato que en advertencia." },
+        "atributo": { "type": "string" },
+        "valor": { "type": "string", "description": "Texto original del atributo." },
+        "regla": { "type": "string", "description": "Faceta o restricción XSD (pattern, enumeration, minOccurs, orden…) o referencia de la regla aritmética." },
+        "mensaje": { "type": "string" }
+      }
+    },
+    "resultado_sello": {
+      "type": "object",
+      "description": "Verificación de un sello: el del emisor (cfdi lote -sello o -verificar) o el SelloSAT del timbre (cfdi lote -certs-sat).",
+      "additionalProperties": false,
+      "required": ["estado"],
+      "properties": {
+        "estado": { "type": "string", "enum": ["valido", "invalido", "no_verificable"] },
+        "motivo": {
+          "type": "string",
+          "enum": [
+            "XML_ILEGIBLE", "NO_ES_COMPROBANTE", "NO_ES_RETENCIONES", "VERSION_NO_SOPORTADA", "COMPLEMENTO_SIN_CADENA", "SIN_TIMBRE",
+            "SIN_SELLO", "SELLO_ILEGIBLE", "SELLO_NO_COINCIDE", "NOCERTIFICADO_DISTINTO", "SELLO_CFD_DISTINTO",
+            "SIN_CERTIFICADO", "CERTIFICADO_ILEGIBLE", "LLAVE_NO_RSA", "CERTIFICADO_SAT_NO_DISPONIBLE", "NOCERTIFICADO_SAT_DISTINTO"
+          ]
+        },
+        "mensaje": { "type": "string" },
+        "algoritmo": { "type": "string", "enum": ["SHA256withRSA", "SHA1withRSA"] },
+        "no_certificado": { "type": "string" }
+      }
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)$",
+      "description": "xs:decimal como texto, tal como venía en el XML (\"1160.00\", \"0.160000\"). Sin exponente."
+    },
+    "fecha": {
+      "type": "string",
+      "description": "Texto original. Normalmente AAAA-MM-DDThh:mm:ss, hora civil del lugar de expedición sin zona; AAAA-MM-DD en las fechas de nómina. Si no es legible hay una advertencia FECHA_INVALIDA."
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID normalizado: sin espacios y en mayúsculas."
+    },
+    "advertencia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["codigo"],
+      "properties": {
+        "codigo": {
+          "type": "string",
+          "enum": [
+            "ENCODING_CORREGIDO", "ENCODING_DESCONOCIDO", "CARACTER_INVALIDO", "XML_NO_ESTRICTO", "CONTENIDO_TRAS_RAIZ",
+            "VERSION_NO_SOPORTADA", "VERSION_ANTIGUA", "VERSION_NAMESPACE", "NAMESPACE_INESPERADO", "NODO_FALTANTE", "NODO_DUPLICADO",
+            "ATRIBUTO_FALTANTE", "SIN_TIMBRE", "COMPLEMENTO_NO_SOPORTADO", "COMPLEMENTO_VERSION",
+            "DECIMAL_INVALIDO", "FECHA_INVALIDA", "FECHA_FORMATO", "UUID_INVALIDO", "EXENTO_CON_IMPORTE"
+          ]
+        },
+        "ruta": { "type": "string", "description": "Nodo o atributo, p. ej. /Comprobante/Conceptos/Concepto[2]/@Importe" },
+        "mensaje": { "type": "string" },
+        "atributo": { "type": "string", "description": "Nombre del atributo si la ruta termina en /@Nombre" },
+        "valor": { "type": "string", "description": "Texto original del atributo en DECIMAL_INVALIDO, FECHA_INVALIDA, FECHA_FORMATO y UUID_INVALIDO; se omite si es vacío" }
+      }
+    },
+    "comprobante": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "serie": { "type": "string" },
+        "folio": { "type": "string" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "sello": { "type": "string", "description": "Solo con la opción IncluirSello." },
+        "forma_pago": { "type": "string" },
+        "no_certificado": { "type": "string" },
+        "certificado": { "type": "string", "description": "Solo con la opción IncluirSello." },
+        "condiciones_de_pago": { "type": "string" },
+        "sub_total": { "$ref": "#/$defs/decimal" },
+        "descuento": { "$ref": "#/$defs/decimal" },
+        "moneda": { "type": "string" },
+        "tipo_cambio": { "$ref": "#/$defs/decimal" },
+        "total": { "$ref": "#/$defs/decimal" },
+        "tipo_de_comprobante": { "type": "string" },
+        "exportacion": { "type": "string" },
+        "metodo_pago": { "type": "string" },
+        "lugar_expedicion": { "type": "string" },
+        "confirmacion": { "type": "string" },
+        "informacion_global": { "$ref": "#/$defs/informacion_global" },
+        "cfdi_relacionados": { "type": "array", "items": { "$ref": "#/$defs/cfdi_relacionados" } },
+        "emisor": { "$ref": "#/$defs/emisor" },
+        "receptor": { "$ref": "#/$defs/receptor" },
+        "conceptos": { "type": "array", "items": { "$ref": "#/$defs/concepto" } },
+        "impuestos": { "$ref": "#/$defs/impuestos" },
+        "timbre_fiscal_digital": { "$ref": "#/$defs/timbre_fiscal_digital" },
+        "pagos": { "$ref": "#/$defs/pagos" },
+        "nomina": { "type": "array", "items": { "$ref": "#/$defs/nomina" } },
+        "impuestos_locales": { "$ref": "#/$defs/impuestos_locales" },
+        "carta_porte": { "$ref": "#/$defs/carta_porte" },
+        "comercio_exterior": { "$ref": "#/$defs/comercio_exterior" },
+        "divisas": { "$ref": "#/$defs/divisas" },
+        "cfdi_registro_fiscal": { "$ref": "#/$defs/cfdi_registro_fiscal" },
+        "leyendas_fiscales": { "$ref": "#/$defs/leyendas_fiscales" },
+        "estado_de_cuenta_combustible": { "$ref": "#/$defs/estado_de_cuenta_combustible" },
+        "hidro_y_petro": { "type": "array", "items": { "$ref": "#/$defs/hidro_y_petro" }, "description": "HidroYPetro fuera de lugar: el XSD lo define como complemento de concepto (concepto.hidro_y_petro)." },
+        "aerolineas": { "$ref": "#/$defs/aerolineas" },
+        "donatarias": { "$ref": "#/$defs/donatarias" },
+        "ine": { "$ref": "#/$defs/ine" },
+        "vales_de_despensa": { "$ref": "#/$defs/vales_de_despensa" },
+        "consumo_de_combustibles": { "$ref": "#/$defs/consumo_de_combustibles" },
+        "pago_en_especie": { "$ref": "#/$defs/pago_en_especie" },
+        "notarios_publicos": { "$ref": "#/$defs/notarios_publicos" },
+        "parcialesconstruccion": { "$ref": "#/$defs/parcialesconstruccion" },
+        "vehiculo_usado": { "$ref": "#/$defs/vehiculo_usado" },
+        "turista_pasajero_extranjero": { "$ref": "#/$defs/turista_pasajero_extranjero" },
+        "complemento_spei": { "type": "array", "items": { "$ref": "#/$defs/spei_tercero" }, "description": "Complemento_SPEI aplanado: sus SPEI_Tercero." },
+        "renovacionysustitucionvehiculos": { "$ref": "#/$defs/renovacionysustitucionvehiculos" },
+        "certificadodedestruccion": { "$ref": "#/$defs/certificadodedestruccion" },
+        "obrasarteantiguedades": { "$ref": "#/$defs/obrasarteantiguedades" },
+        "pf_integrante_coordinado": { "$ref": "#/$defs/pf_integrante_coordinado" },
+        "gastos_hidrocarburos": { "$ref": "#/$defs/gastos_hidrocarburos" },
+        "ingresos_hidrocarburos": { "$ref": "#/$defs/ingresos_hidrocarburos" },
+        "estado_de_cuenta_bancario": { "$ref": "#/$defs/estado_de_cuenta_bancario" },
+        "complementos_no_soportados": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Complementos (y complementos de concepto) que no se leen, como {namespace}NombreLocal."
+        }
+      }
+    },
+    "informacion_global": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "periodicidad": { "type": "string" },
+        "meses": { "type": "string" },
+        "anio": { "type": "string", "description": "Atributo Año." }
+      }
+    },
+    "cfdi_relacionados": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_relacion": { "type": "string" },
+        "cfdi_relacionado": { "type": "array", "items": { "$ref": "#/$defs/cfdi_relacionado" } }
+      }
+    },
+    "cfdi_relacionado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "uuid": { "$ref": "#/$defs/uuid" },
+        "uuid_original": { "type": "string", "description": "Solo si difiere de uuid." }
+      }
+    },
+    "emisor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc": { "type": "string", "description": "Sin espacios y en mayúsculas." },
+        "nombre": { "type": "string" },
+        "regimen_fiscal": { "type": "string" },
+        "fac_atr_adquirente": { "type": "string" }
+      }
+    },
+    "receptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc": { "type": "string", "description": "Sin espacios y en mayúsculas." },
+        "nombre": { "type": "string" },
+        "domicilio_fiscal_receptor": { "type": "string" },
+        "residencia_fiscal": { "type": "string" },
+        "num_reg_id_trib": { "type": "string" },
+        "regimen_fiscal_receptor": { "type": "string" },
+        "uso_cfdi": { "type": "string" }
+      }
+    },
+    "concepto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "clave_prod_serv": { "type": "string" },
+        "no_identificacion": { "type": "string" },
+        "cantidad": { "$ref": "#/$defs/decimal" },
+        "clave_unidad": { "type": "string" },
+        "unidad": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "valor_unitario": { "$ref": "#/$defs/decimal" },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "descuento": { "$ref": "#/$defs/decimal" },
+        "objeto_imp": { "type": "string" },
+        "impuestos": { "$ref": "#/$defs/impuestos_concepto" },
+        "a_cuenta_terceros": { "$ref": "#/$defs/a_cuenta_terceros" },
+        "informacion_aduanera": { "type": "array", "items": { "$ref": "#/$defs/informacion_aduanera" } },
+        "cuenta_predial": { "type": "array", "items": { "$ref": "#/$defs/cuenta_predial" } },
+        "por_cuentade_terceros": { "$ref": "#/$defs/por_cuentade_terceros" },
+        "venta_vehiculos": { "$ref": "#/$defs/venta_vehiculos" },
+        "hidro_y_petro": { "$ref": "#/$defs/hidro_y_petro" },
+        "inst_educativas": { "$ref": "#/$defs/inst_educativas" },
+        "acreditamiento_ieps": { "$ref": "#/$defs/acreditamiento_ieps" },
+        "parcialesconstruccion": { "$ref": "#/$defs/parcialesconstruccion", "description": "Fuera de lugar: el XSD lo pone en el Complemento del comprobante (cfdi.parcialesconstruccion)." },
+        "complemento_concepto": { "type": "array", "items": { "type": "string" }, "description": "{namespace}NombreLocal de cada complemento del concepto que no se lee." },
+        "parte": { "type": "array", "items": { "$ref": "#/$defs/parte" } }
+      }
+    },
+    "impuestos_concepto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "traslados": { "type": "array", "items": { "$ref": "#/$defs/impuesto" } },
+        "retenciones": { "type": "array", "items": { "$ref": "#/$defs/impuesto" } }
+      }
+    },
+    "impuesto": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Traslado o Retencion. Con tipo_factor Exento no hay tasa_o_cuota ni importe.",
+      "properties": {
+        "base": { "$ref": "#/$defs/decimal" },
+        "impuesto": { "type": "string" },
+        "tipo_factor": { "type": "string" },
+        "tasa_o_cuota": { "$ref": "#/$defs/decimal" },
+        "tasa": { "$ref": "#/$defs/decimal", "description": "Porcentaje; solo en los traslados de EstadoDeCuentaCombustible sin versión (ecc)." },
+        "importe": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "a_cuenta_terceros": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc_a_cuenta_terceros": { "type": "string" },
+        "nombre_a_cuenta_terceros": { "type": "string" },
+        "regimen_fiscal_a_cuenta_terceros": { "type": "string" },
+        "domicilio_fiscal_a_cuenta_terceros": { "type": "string" }
+      }
+    },
+    "informacion_aduanera": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "numero_pedimento": { "type": "string" } }
+    },
+    "cuenta_predial": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "numero": { "type": "string" } }
+    },
+    "parte": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "clave_prod_serv": { "type": "string" },
+        "no_identificacion": { "type": "string" },
+        "cantidad": { "$ref": "#/$defs/decimal" },
+        "unidad": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "valor_unitario": { "$ref": "#/$defs/decimal" },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "informacion_aduanera": { "type": "array", "items": { "$ref": "#/$defs/informacion_aduanera" } }
+      }
+    },
+    "impuestos": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Totales de impuestos del comprobante; también el nodo Impuestos de un Pago 1.0.",
+      "properties": {
+        "total_impuestos_retenidos": { "$ref": "#/$defs/decimal" },
+        "total_impuestos_trasladados": { "$ref": "#/$defs/decimal" },
+        "retenciones": { "type": "array", "items": { "$ref": "#/$defs/impuesto" } },
+        "traslados": { "type": "array", "items": { "$ref": "#/$defs/impuesto" } }
+      }
+    },
+    "timbre_fiscal_digital": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "uuid": { "$ref": "#/$defs/uuid" },
+        "uuid_original": { "type": "string", "description": "Solo si difiere de uuid." },
+        "fecha_timbrado": { "$ref": "#/$defs/fecha" },
+        "rfc_prov_certif": { "type": "string" },
+        "leyenda": { "type": "string" },
+        "sello_cfd": { "type": "string", "description": "Solo con la opción IncluirSello." },
+        "no_certificado_sat": { "type": "string" },
+        "sello_sat": { "type": "string", "description": "Solo con la opción IncluirSello." }
+      }
+    },
+    "pagos": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Complemento de pagos 1.0 o 2.0 normalizado; version dice cuál.",
+      "properties": {
+        "version": { "type": "string" },
+        "totales": { "$ref": "#/$defs/totales_pagos" },
+        "pago": { "type": "array", "items": { "$ref": "#/$defs/pago" } }
+      }
+    },
+    "totales_pagos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total_retenciones_iva": { "$ref": "#/$defs/decimal" },
+        "total_retenciones_isr": { "$ref": "#/$defs/decimal" },
+        "total_retenciones_ieps": { "$ref": "#/$defs/decimal" },
+        "total_traslados_base_iva16": { "$ref": "#/$defs/decimal" },
+        "total_traslados_impuesto_iva16": { "$ref": "#/$defs/decimal" },
+        "total_traslados_base_iva8": { "$ref": "#/$defs/decimal" },
+        "total_traslados_impuesto_iva8": { "$ref": "#/$defs/decimal" },
+        "total_traslados_base_iva0": { "$ref": "#/$defs/decimal" },
+        "total_traslados_impuesto_iva0": { "$ref": "#/$defs/decimal" },
+        "total_traslados_base_iva_exento": { "$ref": "#/$defs/decimal" },
+        "monto_total_pagos": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "pago": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fecha_pago": { "$ref": "#/$defs/fecha" },
+        "forma_de_pago_p": { "type": "string" },
+        "moneda_p": { "type": "string" },
+        "tipo_cambio_p": { "$ref": "#/$defs/decimal" },
+        "monto": { "$ref": "#/$defs/decimal" },
+        "num_operacion": { "type": "string" },
+        "rfc_emisor_cta_ord": { "type": "string" },
+        "nom_banco_ord_ext": { "type": "string" },
+        "cta_ordenante": { "type": "string" },
+        "rfc_emisor_cta_ben": { "type": "string" },
+        "cta_beneficiario": { "type": "string" },
+        "tipo_cad_pago": { "type": "string" },
+        "cert_pago": { "type": "string", "description": "Solo con la opción IncluirSello." },
+        "cad_pago": { "type": "string", "description": "Solo con la opción IncluirSello." },
+        "sello_pago": { "type": "string", "description": "Solo con la opción IncluirSello." },
+        "docto_relacionado": { "type": "array", "items": { "$ref": "#/$defs/docto_relacionado" } },
+        "impuestos_p": { "$ref": "#/$defs/impuestos_p" },
+        "impuestos": { "type": "array", "items": { "$ref": "#/$defs/impuestos" }, "description": "Solo pagos 1.0." }
+      }
+    },
+    "docto_relacionado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id_documento": { "$ref": "#/$defs/uuid" },
+        "id_documento_original": { "type": "string", "description": "Solo si difiere de id_documento." },
+        "serie": { "type": "string" },
+        "folio": { "type": "string" },
+        "moneda_dr": { "type": "string" },
+        "equivalencia_dr": { "$ref": "#/$defs/decimal", "description": "Solo pagos 2.0." },
+        "tipo_cambio_dr": { "$ref": "#/$defs/decimal", "description": "Solo pagos 1.0." },
+        "metodo_de_pago_dr": { "type": "string", "description": "Solo pagos 1.0." },
+        "num_parcialidad": { "type": "string" },
+        "imp_saldo_ant": { "$ref": "#/$defs/decimal" },
+        "imp_pagado": { "$ref": "#/$defs/decimal" },
+        "imp_saldo_insoluto": { "$ref": "#/$defs/decimal" },
+        "objeto_imp_dr": { "type": "string", "description": "Solo pagos 2.0." },
+        "impuestos_dr": { "$ref": "#/$defs/impuestos_dr", "description": "Solo pagos 2.0." }
+      }
+    },
+    "impuestos_dr": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "retenciones_dr": { "type": "array", "items": { "$ref": "#/$defs/impuesto_dr" } },
+        "traslados_dr": { "type": "array", "items": { "$ref": "#/$defs/impuesto_dr" } }
+      }
+    },
+    "impuesto_dr": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base_dr": { "$ref": "#/$defs/decimal" },
+        "impuesto_dr": { "type": "string" },
+        "tipo_factor_dr": { "type": "string" },
+        "tasa_o_cuota_dr": { "$ref": "#/$defs/decimal" },
+        "importe_dr": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "impuestos_p": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "retenciones_p": { "type": "array", "items": { "$ref": "#/$defs/impuesto_p" } },
+        "traslados_p": { "type": "array", "items": { "$ref": "#/$defs/impuesto_p" } }
+      }
+    },
+    "impuesto_p": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base_p": { "$ref": "#/$defs/decimal" },
+        "impuesto_p": { "type": "string" },
+        "tipo_factor_p": { "type": "string" },
+        "tasa_o_cuota_p": { "$ref": "#/$defs/decimal" },
+        "importe_p": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "nomina": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_nomina": { "type": "string" },
+        "registro_patronal": { "type": "string", "description": "Solo 1.1." },
+        "num_empleado": { "type": "string", "description": "Solo 1.1." },
+        "curp": { "type": "string", "description": "Solo 1.1." },
+        "tipo_regimen": { "type": "string", "description": "Solo 1.1." },
+        "num_seguridad_social": { "type": "string", "description": "Solo 1.1." },
+        "fecha_pago": { "$ref": "#/$defs/fecha" },
+        "fecha_inicial_pago": { "$ref": "#/$defs/fecha" },
+        "fecha_final_pago": { "$ref": "#/$defs/fecha" },
+        "num_dias_pagados": { "$ref": "#/$defs/decimal" },
+        "total_percepciones": { "$ref": "#/$defs/decimal" },
+        "total_deducciones": { "$ref": "#/$defs/decimal" },
+        "total_otros_pagos": { "$ref": "#/$defs/decimal" },
+        "departamento": { "type": "string", "description": "Solo 1.1." },
+        "clabe": { "type": "string", "description": "Solo 1.1." },
+        "banco": { "type": "string", "description": "Solo 1.1." },
+        "fecha_inicio_rel_laboral": { "$ref": "#/$defs/fecha", "description": "Solo 1.1." },
+        "antiguedad": { "type": "string", "description": "Solo 1.1: semanas (entero)." },
+        "puesto": { "type": "string", "description": "Solo 1.1." },
+        "tipo_contrato": { "type": "string", "description": "Solo 1.1." },
+        "tipo_jornada": { "type": "string", "description": "Solo 1.1." },
+        "periodicidad_pago": { "type": "string", "description": "Solo 1.1." },
+        "salario_base_cot_apor": { "$ref": "#/$defs/decimal", "description": "Solo 1.1." },
+        "riesgo_puesto": { "type": "string", "description": "Solo 1.1." },
+        "salario_diario_integrado": { "$ref": "#/$defs/decimal", "description": "Solo 1.1." },
+        "emisor": { "$ref": "#/$defs/nomina_emisor" },
+        "receptor": { "$ref": "#/$defs/nomina_receptor" },
+        "percepciones": { "$ref": "#/$defs/percepciones" },
+        "deducciones": { "$ref": "#/$defs/deducciones" },
+        "otros_pagos": { "type": "array", "items": { "$ref": "#/$defs/otro_pago" } },
+        "incapacidades": { "type": "array", "items": { "$ref": "#/$defs/incapacidad" } },
+        "horas_extras": { "type": "array", "items": { "$ref": "#/$defs/horas_extra" }, "description": "Solo 1.1: HorasExtras/HorasExtra." }
+      }
+    },
+    "nomina_emisor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "curp": { "type": "string" },
+        "registro_patronal": { "type": "string" },
+        "rfc_patron_origen": { "type": "string" },
+        "entidad_sncf": { "$ref": "#/$defs/entidad_sncf" }
+      }
+    },
+    "entidad_sncf": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "origen_recurso": { "type": "string" },
+        "monto_recurso_propio": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "nomina_receptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "curp": { "type": "string" },
+        "num_seguridad_social": { "type": "string" },
+        "fecha_inicio_rel_laboral": { "$ref": "#/$defs/fecha" },
+        "antiguedad": { "type": "string", "description": "Atributo Antigüedad (duración ISO 8601)." },
+        "tipo_contrato": { "type": "string" },
+        "sindicalizado": { "type": "string" },
+        "tipo_jornada": { "type": "string" },
+        "tipo_regimen": { "type": "string" },
+        "num_empleado": { "type": "string" },
+        "departamento": { "type": "string" },
+        "puesto": { "type": "string" },
+        "riesgo_puesto": { "type": "string" },
+        "periodicidad_pago": { "type": "string" },
+        "banco": { "type": "string" },
+        "cuenta_bancaria": { "type": "string" },
+        "salario_base_cot_apor": { "$ref": "#/$defs/decimal" },
+        "salario_diario_integrado": { "$ref": "#/$defs/decimal" },
+        "clave_ent_fed": { "type": "string" },
+        "sub_contratacion": { "type": "array", "items": { "$ref": "#/$defs/sub_contratacion" } }
+      }
+    },
+    "sub_contratacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc_labora": { "type": "string" },
+        "porcentaje_tiempo": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "percepciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total_sueldos": { "$ref": "#/$defs/decimal" },
+        "total_separacion_indemnizacion": { "$ref": "#/$defs/decimal" },
+        "total_jubilacion_pension_retiro": { "$ref": "#/$defs/decimal" },
+        "total_gravado": { "$ref": "#/$defs/decimal" },
+        "total_exento": { "$ref": "#/$defs/decimal" },
+        "percepcion": { "type": "array", "items": { "$ref": "#/$defs/percepcion" } },
+        "jubilacion_pension_retiro": { "$ref": "#/$defs/jubilacion_pension_retiro" },
+        "separacion_indemnizacion": { "$ref": "#/$defs/separacion_indemnizacion" }
+      }
+    },
+    "percepcion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_percepcion": { "type": "string" },
+        "clave": { "type": "string" },
+        "concepto": { "type": "string" },
+        "importe_gravado": { "$ref": "#/$defs/decimal" },
+        "importe_exento": { "$ref": "#/$defs/decimal" },
+        "acciones_o_titulos": { "$ref": "#/$defs/acciones_o_titulos" },
+        "horas_extra": { "type": "array", "items": { "$ref": "#/$defs/horas_extra" } }
+      }
+    },
+    "acciones_o_titulos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "valor_mercado": { "$ref": "#/$defs/decimal" },
+        "precio_al_otorgarse": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "horas_extra": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dias": { "type": "string" },
+        "tipo_horas": { "type": "string" },
+        "horas_extra": { "type": "string" },
+        "importe_pagado": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "jubilacion_pension_retiro": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total_una_exhibicion": { "$ref": "#/$defs/decimal" },
+        "total_parcialidad": { "$ref": "#/$defs/decimal" },
+        "monto_diario": { "$ref": "#/$defs/decimal" },
+        "ingreso_acumulable": { "$ref": "#/$defs/decimal" },
+        "ingreso_no_acumulable": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "separacion_indemnizacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total_pagado": { "$ref": "#/$defs/decimal" },
+        "num_anios_servicio": { "type": "string", "description": "Atributo NumAñosServicio." },
+        "ultimo_sueldo_mens_ord": { "$ref": "#/$defs/decimal" },
+        "ingreso_acumulable": { "$ref": "#/$defs/decimal" },
+        "ingreso_no_acumulable": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "deducciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total_otras_deducciones": { "$ref": "#/$defs/decimal" },
+        "total_impuestos_retenidos": { "$ref": "#/$defs/decimal" },
+        "total_gravado": { "$ref": "#/$defs/decimal", "description": "Solo nómina 1.1." },
+        "total_exento": { "$ref": "#/$defs/decimal", "description": "Solo nómina 1.1." },
+        "deduccion": { "type": "array", "items": { "$ref": "#/$defs/deduccion" } }
+      }
+    },
+    "deduccion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_deduccion": { "type": "string" },
+        "clave": { "type": "string" },
+        "concepto": { "type": "string" },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "importe_gravado": { "$ref": "#/$defs/decimal", "description": "Solo nómina 1.1." },
+        "importe_exento": { "$ref": "#/$defs/decimal", "description": "Solo nómina 1.1." }
+      }
+    },
+    "otro_pago": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_otro_pago": { "type": "string" },
+        "clave": { "type": "string" },
+        "concepto": { "type": "string" },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "subsidio_al_empleo": { "$ref": "#/$defs/subsidio_al_empleo" },
+        "compensacion_saldos_a_favor": { "$ref": "#/$defs/compensacion_saldos_a_favor" }
+      }
+    },
+    "subsidio_al_empleo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "subsidio_causado": { "$ref": "#/$defs/decimal" } }
+    },
+    "compensacion_saldos_a_favor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "saldo_a_favor": { "$ref": "#/$defs/decimal" },
+        "anio": { "type": "string", "description": "Atributo Año." },
+        "remanente_sal_fav": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "incapacidad": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dias_incapacidad": { "type": "string" },
+        "tipo_incapacidad": { "type": "string" },
+        "importe_monetario": { "$ref": "#/$defs/decimal" },
+        "descuento": { "$ref": "#/$defs/decimal", "description": "Solo nómina 1.1." }
+      }
+    },
+    "impuestos_locales": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Complemento implocal 1.0. Sus totales no están en impuestos pero sí en el total del comprobante.",
+      "properties": {
+        "version": { "type": "string" },
+        "totalde_retenciones": { "$ref": "#/$defs/decimal" },
+        "totalde_traslados": { "$ref": "#/$defs/decimal" },
+        "retenciones_locales": { "type": "array", "items": { "$ref": "#/$defs/retenciones_locales" } },
+        "traslados_locales": { "type": "array", "items": { "$ref": "#/$defs/traslados_locales" } }
+      }
+    },
+    "retenciones_locales": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "imp_loc_retenido": { "type": "string" },
+        "tasade_retencion": { "$ref": "#/$defs/decimal" },
+        "importe": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "traslados_locales": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "imp_loc_trasladado": { "type": "string" },
+        "tasade_traslado": { "$ref": "#/$defs/decimal" },
+        "importe": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "carta_porte": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "CartaPorte 2.0, 3.0 o 3.1 normalizadas; version dice cuál. Lo exclusivo de una versión queda ausente en las otras.",
+      "properties": {
+        "version": { "type": "string" },
+        "id_ccp": { "type": "string", "description": "3.0 y 3.1." },
+        "transp_internac": { "type": "string" },
+        "regimen_aduanero": { "type": "string", "description": "Solo 3.0; en 3.1 es regimenes_aduaneros." },
+        "entrada_salida_merc": { "type": "string" },
+        "pais_origen_destino": { "type": "string" },
+        "via_entrada_salida": { "type": "string" },
+        "total_dist_rec": { "$ref": "#/$defs/decimal" },
+        "registro_istmo": { "type": "string" },
+        "ubicacion_polo_origen": { "type": "string" },
+        "ubicacion_polo_destino": { "type": "string" },
+        "regimenes_aduaneros": { "type": "array", "items": { "$ref": "#/$defs/regimen_aduanero_ccp" }, "description": "Solo 3.1. Aplana RegimenesAduaneros/RegimenAduaneroCCP." },
+        "ubicaciones": { "type": "array", "items": { "$ref": "#/$defs/ubicacion" }, "description": "Aplana Ubicaciones/Ubicacion." },
+        "mercancias": { "$ref": "#/$defs/carta_porte_mercancias" },
+        "figura_transporte": { "type": "array", "items": { "$ref": "#/$defs/tipos_figura" }, "description": "Aplana FiguraTransporte/TiposFigura." },
+        "figura_transporte10": { "$ref": "#/$defs/carta_porte10_figura_transporte", "description": "Solo 1.0: FiguraTransporte con CveTransporte (en 2.0+ es la lista figura_transporte)." }
+      }
+    },
+    "regimen_aduanero_ccp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "regimen_aduanero": { "type": "string" }
+      }
+    },
+    "ubicacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_ubicacion": { "type": "string" },
+        "id_ubicacion": { "type": "string" },
+        "rfc_remitente_destinatario": { "type": "string" },
+        "nombre_remitente_destinatario": { "type": "string" },
+        "num_reg_id_trib": { "type": "string" },
+        "residencia_fiscal": { "type": "string" },
+        "num_estacion": { "type": "string" },
+        "nombre_estacion": { "type": "string" },
+        "navegacion_trafico": { "type": "string" },
+        "fecha_hora_salida_llegada": { "$ref": "#/$defs/fecha" },
+        "tipo_estacion": { "type": "string" },
+        "distancia_recorrida": { "$ref": "#/$defs/decimal" },
+        "origen": { "$ref": "#/$defs/carta_porte10_origen", "description": "Solo 1.0." },
+        "destino": { "$ref": "#/$defs/carta_porte10_destino", "description": "Solo 1.0." },
+        "domicilio": { "$ref": "#/$defs/domicilio" }
+      }
+    },
+    "domicilio": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Domicilio de carta porte y de comercio exterior.",
+      "properties": {
+        "calle": { "type": "string" },
+        "numero_exterior": { "type": "string" },
+        "numero_interior": { "type": "string" },
+        "colonia": { "type": "string" },
+        "localidad": { "type": "string" },
+        "referencia": { "type": "string" },
+        "municipio": { "type": "string" },
+        "estado": { "type": "string" },
+        "pais": { "type": "string" },
+        "codigo_postal": { "type": "string" }
+      }
+    },
+    "carta_porte_mercancias": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "peso_bruto_total": { "$ref": "#/$defs/decimal" },
+        "unidad_peso": { "type": "string" },
+        "peso_neto_total": { "$ref": "#/$defs/decimal" },
+        "num_total_mercancias": { "type": "string" },
+        "cargo_por_tasacion": { "$ref": "#/$defs/decimal" },
+        "logistica_inversa_recoleccion_devolucion": { "type": "string" },
+        "mercancia": { "type": "array", "items": { "$ref": "#/$defs/carta_porte_mercancia" } },
+        "autotransporte_federal": { "$ref": "#/$defs/autotransporte_federal", "description": "Solo 1.0." },
+        "autotransporte": { "$ref": "#/$defs/autotransporte" },
+        "transporte_maritimo": { "$ref": "#/$defs/transporte_maritimo" },
+        "transporte_aereo": { "$ref": "#/$defs/transporte_aereo" },
+        "transporte_ferroviario": { "$ref": "#/$defs/transporte_ferroviario" }
+      }
+    },
+    "carta_porte_mercancia": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bienes_transp": { "type": "string" },
+        "clave_stcc": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "cantidad": { "$ref": "#/$defs/decimal" },
+        "clave_unidad": { "type": "string" },
+        "unidad": { "type": "string" },
+        "dimensiones": { "type": "string" },
+        "material_peligroso": { "type": "string" },
+        "cve_material_peligroso": { "type": "string" },
+        "embalaje": { "type": "string" },
+        "descrip_embalaje": { "type": "string" },
+        "sector_cofepris": { "type": "string" },
+        "nombre_ingrediente_activo": { "type": "string" },
+        "nom_quimico": { "type": "string" },
+        "denominacion_generica_prod": { "type": "string" },
+        "denominacion_distintiva_prod": { "type": "string" },
+        "fabricante": { "type": "string" },
+        "fecha_caducidad": { "$ref": "#/$defs/fecha" },
+        "lote_medicamento": { "type": "string" },
+        "forma_farmaceutica": { "type": "string" },
+        "condiciones_esp_transp": { "type": "string" },
+        "registro_sanitario_folio_autorizacion": { "type": "string" },
+        "permiso_importacion": { "type": "string" },
+        "folio_impo_vucem": { "type": "string" },
+        "num_cas": { "type": "string" },
+        "razon_social_emp_imp": { "type": "string" },
+        "num_reg_san_plag_cofepris": { "type": "string" },
+        "datos_fabricante": { "type": "string" },
+        "datos_formulador": { "type": "string" },
+        "datos_maquilador": { "type": "string" },
+        "uso_autorizado": { "type": "string" },
+        "peso_en_kg": { "$ref": "#/$defs/decimal" },
+        "valor_mercancia": { "$ref": "#/$defs/decimal" },
+        "moneda": { "type": "string" },
+        "fraccion_arancelaria": { "type": "string" },
+        "uuid_comercio_ext": { "type": "string" },
+        "tipo_materia": { "type": "string" },
+        "descripcion_materia": { "type": "string" },
+        "pedimentos": { "type": "array", "items": { "$ref": "#/$defs/pedimentos" }, "description": "Solo 2.0." },
+        "documentacion_aduanera": { "type": "array", "items": { "$ref": "#/$defs/documentacion_aduanera" }, "description": "3.0 y 3.1." },
+        "guias_identificacion": { "type": "array", "items": { "$ref": "#/$defs/guias_identificacion" } },
+        "cantidad_transporta": { "type": "array", "items": { "$ref": "#/$defs/cantidad_transporta" } },
+        "detalle_mercancia": { "$ref": "#/$defs/detalle_mercancia" }
+      }
+    },
+    "pedimentos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pedimento": { "type": "string" }
+      }
+    },
+    "documentacion_aduanera": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_documento": { "type": "string" },
+        "num_pedimento": { "type": "string" },
+        "ident_doc_aduanero": { "type": "string" },
+        "rfc_impo": { "type": "string" }
+      }
+    },
+    "guias_identificacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "numero_guia_identificacion": { "type": "string" },
+        "descrip_guia_identificacion": { "type": "string" },
+        "peso_guia_identificacion": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "cantidad_transporta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cantidad": { "$ref": "#/$defs/decimal" },
+        "id_origen": { "type": "string" },
+        "id_destino": { "type": "string" },
+        "cves_transporte": { "type": "string" }
+      }
+    },
+    "detalle_mercancia": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "unidad_peso": { "type": "string", "description": "Solo CartaPorte 1.0 (2.0 lo llamó UnidadPesoMerc)." },
+        "unidad_peso_merc": { "type": "string" },
+        "peso_bruto": { "$ref": "#/$defs/decimal" },
+        "peso_neto": { "$ref": "#/$defs/decimal" },
+        "peso_tara": { "$ref": "#/$defs/decimal" },
+        "num_piezas": { "type": "string" }
+      }
+    },
+    "autotransporte": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "perm_sct": { "type": "string" },
+        "num_permiso_sct": { "type": "string" },
+        "identificacion_vehicular": { "$ref": "#/$defs/identificacion_vehicular" },
+        "seguros": { "$ref": "#/$defs/seguros" },
+        "remolques": { "type": "array", "items": { "$ref": "#/$defs/remolque" }, "description": "Aplana Remolques/Remolque." }
+      }
+    },
+    "identificacion_vehicular": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "config_vehicular": { "type": "string" },
+        "peso_bruto_vehicular": { "$ref": "#/$defs/decimal" },
+        "placa_vm": { "type": "string" },
+        "anio_modelo_vm": { "type": "string" }
+      }
+    },
+    "seguros": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "asegura_resp_civil": { "type": "string" },
+        "poliza_resp_civil": { "type": "string" },
+        "asegura_med_ambiente": { "type": "string" },
+        "poliza_med_ambiente": { "type": "string" },
+        "asegura_carga": { "type": "string" },
+        "poliza_carga": { "type": "string" },
+        "prima_seguro": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "remolque": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sub_tipo_rem": { "type": "string" },
+        "placa": { "type": "string" }
+      }
+    },
+    "transporte_maritimo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "perm_sct": { "type": "string" },
+        "num_permiso_sct": { "type": "string" },
+        "nombre_aseg": { "type": "string" },
+        "num_poliza_seguro": { "type": "string" },
+        "tipo_embarcacion": { "type": "string" },
+        "matricula": { "type": "string" },
+        "numero_omi": { "type": "string" },
+        "anio_embarcacion": { "type": "string" },
+        "nombre_embarc": { "type": "string" },
+        "nacionalidad_embarc": { "type": "string" },
+        "unidades_de_arq_bruto": { "$ref": "#/$defs/decimal" },
+        "tipo_carga": { "type": "string" },
+        "num_cert_itc": { "type": "string", "description": "Solo 2.0." },
+        "eslora": { "$ref": "#/$defs/decimal" },
+        "manga": { "$ref": "#/$defs/decimal" },
+        "calado": { "$ref": "#/$defs/decimal" },
+        "puntal": { "$ref": "#/$defs/decimal" },
+        "linea_naviera": { "type": "string" },
+        "nombre_agente_naviero": { "type": "string" },
+        "num_autorizacion_naviero": { "type": "string" },
+        "num_viaje": { "type": "string" },
+        "num_conoc_embarc": { "type": "string" },
+        "permiso_temp_navegacion": { "type": "string" },
+        "contenedor": { "type": "array", "items": { "$ref": "#/$defs/contenedor_maritimo" } },
+        "remolques_ccp": { "type": "array", "items": { "$ref": "#/$defs/remolque_ccp" }, "description": "Solo 3.0; en 3.1 van en cada contenedor." }
+      }
+    },
+    "contenedor_maritimo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "matricula_contenedor": { "type": "string" },
+        "tipo_contenedor": { "type": "string" },
+        "num_precinto": { "type": "string" },
+        "id_ccp_relacionado": { "type": "string" },
+        "placa_vmccp": { "type": "string" },
+        "fecha_certificacion_ccp": { "$ref": "#/$defs/fecha" },
+        "remolques_ccp": { "type": "array", "items": { "$ref": "#/$defs/remolque_ccp" }, "description": "Solo 3.1." }
+      }
+    },
+    "remolque_ccp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sub_tipo_rem_ccp": { "type": "string" },
+        "placa_ccp": { "type": "string" }
+      }
+    },
+    "transporte_aereo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "perm_sct": { "type": "string" },
+        "num_permiso_sct": { "type": "string" },
+        "matricula_aeronave": { "type": "string" },
+        "nombre_aseg": { "type": "string" },
+        "num_poliza_seguro": { "type": "string" },
+        "numero_guia": { "type": "string" },
+        "lugar_contrato": { "type": "string" },
+        "rfc_transportista": { "type": "string", "description": "Solo 1.0." },
+        "codigo_transportista": { "type": "string" },
+        "num_reg_id_trib_transpor": { "type": "string", "description": "Solo 1.0." },
+        "residencia_fiscal_transpor": { "type": "string", "description": "Solo 1.0." },
+        "nombre_transportista": { "type": "string", "description": "Solo 1.0." },
+        "rfc_embarcador": { "type": "string" },
+        "num_reg_id_trib_embarc": { "type": "string" },
+        "residencia_fiscal_embarc": { "type": "string" },
+        "nombre_embarcador": { "type": "string" }
+      }
+    },
+    "transporte_ferroviario": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_de_servicio": { "type": "string" },
+        "tipo_de_trafico": { "type": "string" },
+        "nombre_aseg": { "type": "string" },
+        "num_poliza_seguro": { "type": "string" },
+        "concesionario": { "type": "string", "description": "Solo 1.0." },
+        "derechos_de_paso": { "type": "array", "items": { "$ref": "#/$defs/derechos_de_paso" } },
+        "carro": { "type": "array", "items": { "$ref": "#/$defs/carro" } }
+      }
+    },
+    "derechos_de_paso": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_derecho_de_paso": { "type": "string" },
+        "kilometraje_pagado": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "carro": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_carro": { "type": "string" },
+        "matricula_carro": { "type": "string" },
+        "guia_carro": { "type": "string" },
+        "toneladas_netas_carro": { "$ref": "#/$defs/decimal" },
+        "contenedor": { "type": "array", "items": { "$ref": "#/$defs/contenedor_ferroviario" } }
+      }
+    },
+    "contenedor_ferroviario": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_contenedor": { "type": "string" },
+        "peso_contenedor_vacio": { "$ref": "#/$defs/decimal" },
+        "peso_neto_mercancia": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "tipos_figura": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_figura": { "type": "string" },
+        "rfc_figura": { "type": "string" },
+        "num_licencia": { "type": "string" },
+        "nombre_figura": { "type": "string" },
+        "num_reg_id_trib_figura": { "type": "string" },
+        "residencia_fiscal_figura": { "type": "string" },
+        "partes_transporte": { "type": "array", "items": { "$ref": "#/$defs/partes_transporte" } },
+        "domicilio": { "$ref": "#/$defs/domicilio" }
+      }
+    },
+    "partes_transporte": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "parte_transporte": { "type": "string" }
+      }
+    },
+    "comercio_exterior": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "ComercioExterior 1.1 o 2.0 normalizados; version dice cuál.",
+      "properties": {
+        "version": { "type": "string" },
+        "motivo_traslado": { "type": "string" },
+        "tipo_operacion": { "type": "string", "description": "Solo 1.1." },
+        "clave_de_pedimento": { "type": "string" },
+        "certificado_origen": { "type": "string" },
+        "num_certificado_origen": { "type": "string" },
+        "numero_exportador_confiable": { "type": "string" },
+        "incoterm": { "type": "string" },
+        "subdivision": { "type": "string", "description": "Solo 1.1." },
+        "observaciones": { "type": "string" },
+        "tipo_cambio_usd": { "$ref": "#/$defs/decimal" },
+        "total_usd": { "$ref": "#/$defs/decimal" },
+        "emisor": { "$ref": "#/$defs/comercio_exterior_emisor" },
+        "propietario": { "type": "array", "items": { "$ref": "#/$defs/comercio_exterior_propietario" } },
+        "receptor": { "$ref": "#/$defs/comercio_exterior_receptor" },
+        "destinatario": { "type": "array", "items": { "$ref": "#/$defs/comercio_exterior_destinatario" } },
+        "mercancias": { "type": "array", "items": { "$ref": "#/$defs/comercio_exterior_mercancia" }, "description": "Aplana Mercancias/Mercancia." }
+      }
+    },
+    "comercio_exterior_emisor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "curp": { "type": "string" },
+        "domicilio": { "$ref": "#/$defs/domicilio" }
+      }
+    },
+    "comercio_exterior_propietario": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "num_reg_id_trib": { "type": "string" },
+        "residencia_fiscal": { "type": "string" }
+      }
+    },
+    "comercio_exterior_receptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "num_reg_id_trib": { "type": "string" },
+        "curp": { "type": "string", "description": "Solo 1.0." },
+        "domicilio": { "$ref": "#/$defs/domicilio" }
+      }
+    },
+    "comercio_exterior_destinatario": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "num_reg_id_trib": { "type": "string" },
+        "rfc": { "type": "string", "description": "Solo 1.0." },
+        "curp": { "type": "string", "description": "Solo 1.0." },
+        "nombre": { "type": "string" },
+        "domicilio": { "type": "array", "items": { "$ref": "#/$defs/domicilio" } }
+      }
+    },
+    "comercio_exterior_mercancia": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "no_identificacion": { "type": "string" },
+        "fraccion_arancelaria": { "type": "string" },
+        "cantidad_aduana": { "$ref": "#/$defs/decimal" },
+        "unidad_aduana": { "type": "string" },
+        "valor_unitario_aduana": { "$ref": "#/$defs/decimal" },
+        "valor_dolares": { "$ref": "#/$defs/decimal" },
+        "descripciones_especificas": { "type": "array", "items": { "$ref": "#/$defs/descripciones_especificas" } }
+      }
+    },
+    "descripciones_especificas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "marca": { "type": "string" },
+        "modelo": { "type": "string" },
+        "sub_modelo": { "type": "string" },
+        "numero_serie": { "type": "string" }
+      }
+    },
+    "divisas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_operacion": { "type": "string" }
+      }
+    },
+    "cfdi_registro_fiscal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "folio": { "type": "string" }
+      }
+    },
+    "leyendas_fiscales": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "leyenda": { "type": "array", "items": { "$ref": "#/$defs/leyenda" } }
+      }
+    },
+    "leyenda": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "disposicion_fiscal": { "type": "string" },
+        "norma": { "type": "string" },
+        "texto_leyenda": { "type": "string" }
+      }
+    },
+    "estado_de_cuenta_combustible": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_operacion": { "type": "string" },
+        "numero_de_cuenta": { "type": "string" },
+        "sub_total": { "$ref": "#/$defs/decimal" },
+        "total": { "$ref": "#/$defs/decimal" },
+        "conceptos": { "type": "array", "items": { "$ref": "#/$defs/concepto_estado_de_cuenta_combustible" } }
+      }
+    },
+    "concepto_estado_de_cuenta_combustible": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Conceptos aplana Conceptos/ConceptoEstadoDeCuentaCombustible. En traslados, impuesto es IVA o IEPS (no la clave) y no hay base ni tipo_factor.",
+      "properties": {
+        "identificador": { "type": "string" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "rfc": { "type": "string" },
+        "clave_estacion": { "type": "string" },
+        "tar": { "type": "string", "description": "Solo 1.1." },
+        "cantidad": { "$ref": "#/$defs/decimal" },
+        "tipo_combustible": { "type": "string" },
+        "no_identificacion": { "type": "string", "description": "Solo 1.1." },
+        "unidad": { "type": "string" },
+        "nombre_combustible": { "type": "string" },
+        "folio_operacion": { "type": "string" },
+        "valor_unitario": { "$ref": "#/$defs/decimal" },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "traslados": { "type": "array", "items": { "$ref": "#/$defs/impuesto" } }
+      }
+    },
+    "hidro_y_petro": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_permiso": { "type": "string" },
+        "numero_permiso": { "type": "string" },
+        "clave_hyp": { "type": "string" },
+        "sub_producto_hyp": { "type": "string" }
+      }
+    },
+    "por_cuentade_terceros": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "rfc": { "type": "string" },
+        "nombre": { "type": "string" },
+        "informacion_fiscal_tercero": { "$ref": "#/$defs/ubicacion_fiscal" },
+        "informacion_aduanera": { "$ref": "#/$defs/informacion_aduanera_complemento" },
+        "parte": { "type": "array", "items": { "$ref": "#/$defs/parte_complemento" } },
+        "cuenta_predial": { "$ref": "#/$defs/cuenta_predial" },
+        "impuestos": { "$ref": "#/$defs/impuestos_terceros" }
+      }
+    },
+    "ubicacion_fiscal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "calle": { "type": "string" },
+        "no_exterior": { "type": "string" },
+        "no_interior": { "type": "string" },
+        "colonia": { "type": "string" },
+        "localidad": { "type": "string" },
+        "referencia": { "type": "string" },
+        "municipio": { "type": "string" },
+        "estado": { "type": "string" },
+        "pais": { "type": "string" },
+        "codigo_postal": { "type": "string" }
+      }
+    },
+    "informacion_aduanera_complemento": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "numero": { "type": "string" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "aduana": { "type": "string" }
+      }
+    },
+    "parte_complemento": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cantidad": { "$ref": "#/$defs/decimal" },
+        "unidad": { "type": "string" },
+        "no_identificacion": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "valor_unitario": { "$ref": "#/$defs/decimal" },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "informacion_aduanera": { "type": "array", "items": { "$ref": "#/$defs/informacion_aduanera_complemento" } }
+      }
+    },
+    "impuestos_terceros": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "retenciones": { "type": "array", "items": { "$ref": "#/$defs/impuesto_terceros" } },
+        "traslados": { "type": "array", "items": { "$ref": "#/$defs/impuesto_terceros" } }
+      }
+    },
+    "impuesto_terceros": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "impuesto": { "type": "string" },
+        "tasa": { "$ref": "#/$defs/decimal" },
+        "importe": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "venta_vehiculos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "clave_vehicular": { "type": "string" },
+        "niv": { "type": "string" },
+        "informacion_aduanera": { "type": "array", "items": { "$ref": "#/$defs/informacion_aduanera_complemento" } },
+        "parte": { "type": "array", "items": { "$ref": "#/$defs/parte_complemento" } }
+      }
+    },
+    "inst_educativas": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Complemento de concepto iedu 1.0 (nodo instEducativas).",
+      "properties": {
+        "version": { "type": "string" },
+        "nombre_alumno": { "type": "string" },
+        "curp": { "type": "string" },
+        "nivel_educativo": { "type": "string" },
+        "aut_rvoe": { "type": "string" },
+        "rfc_pago": { "type": "string", "description": "Sin espacios y en mayúsculas." }
+      }
+    },
+    "aerolineas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "tua": { "$ref": "#/$defs/decimal" },
+        "otros_cargos": { "$ref": "#/$defs/aerolineas_otros_cargos" }
+      }
+    },
+    "aerolineas_otros_cargos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total_cargos": { "$ref": "#/$defs/decimal" },
+        "cargo": { "type": "array", "items": { "$ref": "#/$defs/aerolineas_cargo" } }
+      }
+    },
+    "aerolineas_cargo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "codigo_cargo": { "type": "string" },
+        "importe": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "donatarias": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Donatarias 1.1 o 1.0 (mismo namespace y atributos); version dice cuál.",
+      "properties": {
+        "version": { "type": "string" },
+        "no_autorizacion": { "type": "string" },
+        "fecha_autorizacion": { "$ref": "#/$defs/fecha" },
+        "leyenda": { "type": "string" }
+      }
+    },
+    "carta_porte10_origen": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Ubicacion/Origen de CartaPorte 1.0.",
+      "properties": {
+        "id_origen": { "type": "string" },
+        "rfc_remitente": { "type": "string" },
+        "nombre_remitente": { "type": "string" },
+        "num_reg_id_trib": { "type": "string" },
+        "residencia_fiscal": { "type": "string" },
+        "num_estacion": { "type": "string" },
+        "nombre_estacion": { "type": "string" },
+        "navegacion_trafico": { "type": "string" },
+        "fecha_hora_salida": { "$ref": "#/$defs/fecha" }
+      }
+    },
+    "carta_porte10_destino": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Ubicacion/Destino de CartaPorte 1.0.",
+      "properties": {
+        "id_destino": { "type": "string" },
+        "rfc_destinatario": { "type": "string" },
+        "nombre_destinatario": { "type": "string" },
+        "num_reg_id_trib": { "type": "string" },
+        "residencia_fiscal": { "type": "string" },
+        "num_estacion": { "type": "string" },
+        "nombre_estacion": { "type": "string" },
+        "navegacion_trafico": { "type": "string" },
+        "fecha_hora_prog_llegada": { "$ref": "#/$defs/fecha" }
+      }
+    },
+    "autotransporte_federal": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Mercancias/AutotransporteFederal de CartaPorte 1.0.",
+      "properties": {
+        "perm_sct": { "type": "string" },
+        "num_permiso_sct": { "type": "string" },
+        "nombre_aseg": { "type": "string" },
+        "num_poliza_seguro": { "type": "string" },
+        "identificacion_vehicular": { "$ref": "#/$defs/identificacion_vehicular" },
+        "remolques": { "type": "array", "items": { "$ref": "#/$defs/remolque" } }
+      }
+    },
+    "carta_porte10_figura_transporte": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "FiguraTransporte de CartaPorte 1.0. operadores junta los Operador de todos los nodos Operadores, en orden de documento.",
+      "properties": {
+        "cve_transporte": { "type": "string" },
+        "operadores": { "type": "array", "items": { "$ref": "#/$defs/carta_porte10_operador" } },
+        "propietario": { "type": "array", "items": { "$ref": "#/$defs/carta_porte10_propietario" } },
+        "arrendatario": { "type": "array", "items": { "$ref": "#/$defs/carta_porte10_arrendatario" } },
+        "notificado": { "type": "array", "items": { "$ref": "#/$defs/carta_porte10_notificado" } }
+      }
+    },
+    "carta_porte10_operador": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc_operador": { "type": "string" },
+        "num_licencia": { "type": "string" },
+        "nombre_operador": { "type": "string" },
+        "num_reg_id_trib_operador": { "type": "string" },
+        "residencia_fiscal_operador": { "type": "string" },
+        "domicilio": { "$ref": "#/$defs/domicilio" }
+      }
+    },
+    "carta_porte10_propietario": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc_propietario": { "type": "string" },
+        "nombre_propietario": { "type": "string" },
+        "num_reg_id_trib_propietario": { "type": "string" },
+        "residencia_fiscal_propietario": { "type": "string" },
+        "domicilio": { "$ref": "#/$defs/domicilio" }
+      }
+    },
+    "carta_porte10_arrendatario": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc_arrendatario": { "type": "string" },
+        "nombre_arrendatario": { "type": "string" },
+        "num_reg_id_trib_arrendatario": { "type": "string" },
+        "residencia_fiscal_arrendatario": { "type": "string" },
+        "domicilio": { "$ref": "#/$defs/domicilio" }
+      }
+    },
+    "carta_porte10_notificado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rfc_notificado": { "type": "string" },
+        "nombre_notificado": { "type": "string" },
+        "num_reg_id_trib_notificado": { "type": "string" },
+        "residencia_fiscal_notificado": { "type": "string" },
+        "domicilio": { "$ref": "#/$defs/domicilio" }
+      }
+    },
+    "ine": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "INE 1.1 o 1.0 (mismo namespace y nodos).",
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_proceso": { "type": "string" },
+        "tipo_comite": { "type": "string" },
+        "id_contabilidad": { "type": "string" },
+        "entidad": { "type": "array", "items": { "$ref": "#/$defs/ine_entidad" } }
+      }
+    },
+    "ine_entidad": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "clave_entidad": { "type": "string" },
+        "ambito": { "type": "string" },
+        "contabilidad": { "type": "array", "items": { "$ref": "#/$defs/ine_contabilidad" } }
+      }
+    },
+    "ine_contabilidad": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id_contabilidad": { "type": "string" }
+      }
+    },
+    "vales_de_despensa": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_operacion": { "type": "string" },
+        "registro_patronal": { "type": "string" },
+        "numero_de_cuenta": { "type": "string" },
+        "total": { "$ref": "#/$defs/decimal" },
+        "conceptos": { "type": "array", "items": { "$ref": "#/$defs/vales_de_despensa_concepto" } }
+      }
+    },
+    "vales_de_despensa_concepto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "identificador": { "type": "string" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "rfc": { "type": "string" },
+        "curp": { "type": "string" },
+        "nombre": { "type": "string" },
+        "num_seguridad_social": { "type": "string" },
+        "importe": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "consumo_de_combustibles": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "ConsumoDeCombustibles 1.1 o 1.0; version dice cuál.",
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_operacion": { "type": "string" },
+        "numero_de_cuenta": { "type": "string" },
+        "sub_total": { "$ref": "#/$defs/decimal" },
+        "total": { "$ref": "#/$defs/decimal" },
+        "conceptos": { "type": "array", "items": { "$ref": "#/$defs/concepto_consumo_de_combustibles" } }
+      }
+    },
+    "concepto_consumo_de_combustibles": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "identificador": { "type": "string" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "rfc": { "type": "string" },
+        "clave_estacion": { "type": "string" },
+        "tipo_combustible": { "type": "string", "description": "Solo 1.1." },
+        "cantidad": { "$ref": "#/$defs/decimal" },
+        "nombre_combustible": { "type": "string" },
+        "folio_operacion": { "type": "string" },
+        "valor_unitario": { "$ref": "#/$defs/decimal" },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "determinados": { "type": "array", "items": { "$ref": "#/$defs/consumo_de_combustibles_determinado" } }
+      }
+    },
+    "consumo_de_combustibles_determinado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "impuesto": { "type": "string" },
+        "tasa": { "$ref": "#/$defs/decimal", "description": "Solo 1.0." },
+        "tasa_o_cuota": { "$ref": "#/$defs/decimal", "description": "Solo 1.1." },
+        "importe": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "pago_en_especie": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "cve_pic": { "type": "string" },
+        "folio_sol_don": { "type": "string" },
+        "pza_art_nombre": { "type": "string" },
+        "pza_art_tecn": { "type": "string" },
+        "pza_art_a_prod": { "type": "string" },
+        "pza_art_dim": { "type": "string" }
+      }
+    },
+    "notarios_publicos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "desc_inmuebles": { "type": "array", "items": { "$ref": "#/$defs/notarios_publicos_desc_inmueble" } },
+        "datos_operacion": { "$ref": "#/$defs/notarios_publicos_datos_operacion" },
+        "datos_notario": { "$ref": "#/$defs/notarios_publicos_datos_notario" },
+        "datos_enajenante": { "$ref": "#/$defs/notarios_publicos_datos_enajenante" },
+        "datos_adquiriente": { "$ref": "#/$defs/notarios_publicos_datos_adquiriente" }
+      }
+    },
+    "notarios_publicos_desc_inmueble": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_inmueble": { "type": "string" },
+        "calle": { "type": "string" },
+        "no_exterior": { "type": "string" },
+        "no_interior": { "type": "string" },
+        "colonia": { "type": "string" },
+        "localidad": { "type": "string" },
+        "referencia": { "type": "string" },
+        "municipio": { "type": "string" },
+        "estado": { "type": "string" },
+        "pais": { "type": "string" },
+        "codigo_postal": { "type": "string" }
+      }
+    },
+    "notarios_publicos_datos_operacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "num_instrumento_notarial": { "type": "string" },
+        "fecha_inst_notarial": { "$ref": "#/$defs/fecha" },
+        "monto_operacion": { "$ref": "#/$defs/decimal" },
+        "subtotal": { "$ref": "#/$defs/decimal" },
+        "iva": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "notarios_publicos_datos_notario": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "curp": { "type": "string" },
+        "num_notaria": { "type": "string" },
+        "entidad_federativa": { "type": "string" },
+        "adscripcion": { "type": "string" }
+      }
+    },
+    "notarios_publicos_datos_enajenante": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "copro_soc_conyugal_e": { "type": "string" },
+        "datos_un_enajenante": { "$ref": "#/$defs/notarios_publicos_datos_persona" },
+        "datos_enajenantes_cop_sc": { "type": "array", "items": { "$ref": "#/$defs/notarios_publicos_datos_copropietario" } }
+      }
+    },
+    "notarios_publicos_datos_adquiriente": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "copro_soc_conyugal_e": { "type": "string" },
+        "datos_un_adquiriente": { "$ref": "#/$defs/notarios_publicos_datos_persona" },
+        "datos_adquirientes_cop_sc": { "type": "array", "items": { "$ref": "#/$defs/notarios_publicos_datos_copropietario" } }
+      }
+    },
+    "notarios_publicos_datos_persona": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "DatosUnEnajenante o DatosUnAdquiriente.",
+      "properties": {
+        "nombre": { "type": "string" },
+        "apellido_paterno": { "type": "string" },
+        "apellido_materno": { "type": "string" },
+        "rfc": { "type": "string", "description": "Sin espacios y en mayúsculas." },
+        "curp": { "type": "string" }
+      }
+    },
+    "notarios_publicos_datos_copropietario": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "DatosEnajenanteCopSC o DatosAdquirienteCopSC.",
+      "properties": {
+        "nombre": { "type": "string" },
+        "apellido_paterno": { "type": "string" },
+        "apellido_materno": { "type": "string" },
+        "rfc": { "type": "string", "description": "Sin espacios y en mayúsculas." },
+        "curp": { "type": "string" },
+        "porcentaje": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "parcialesconstruccion": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Servicios parciales de construcción 1.0 (nodo parcialesconstruccion).",
+      "properties": {
+        "version": { "type": "string" },
+        "num_per_lico_aut": { "type": "string" },
+        "inmueble": { "$ref": "#/$defs/parcialesconstruccion_inmueble" }
+      }
+    },
+    "parcialesconstruccion_inmueble": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "calle": { "type": "string" },
+        "no_exterior": { "type": "string" },
+        "no_interior": { "type": "string" },
+        "colonia": { "type": "string" },
+        "localidad": { "type": "string" },
+        "referencia": { "type": "string" },
+        "municipio": { "type": "string" },
+        "estado": { "type": "string" },
+        "codigo_postal": { "type": "string" }
+      }
+    },
+    "vehiculo_usado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "monto_adquisicion": { "$ref": "#/$defs/decimal" },
+        "monto_enajenacion": { "$ref": "#/$defs/decimal" },
+        "clave_vehicular": { "type": "string" },
+        "marca": { "type": "string" },
+        "tipo": { "type": "string" },
+        "modelo": { "type": "string" },
+        "numero_motor": { "type": "string" },
+        "numero_serie": { "type": "string" },
+        "niv": { "type": "string" },
+        "valor": { "$ref": "#/$defs/decimal" },
+        "informacion_aduanera": { "type": "array", "items": { "$ref": "#/$defs/informacion_aduanera_complemento" } }
+      }
+    },
+    "turista_pasajero_extranjero": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "fechade_transito": { "$ref": "#/$defs/fecha" },
+        "tipo_transito": { "type": "string" },
+        "datos_transito": { "$ref": "#/$defs/turista_pasajero_extranjero_datos_transito" }
+      }
+    },
+    "turista_pasajero_extranjero_datos_transito": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "via": { "type": "string" },
+        "tipo_id": { "type": "string" },
+        "numero_id": { "type": "string" },
+        "nacionalidad": { "type": "string" },
+        "empresa_transporte": { "type": "string" },
+        "id_transporte": { "type": "string" }
+      }
+    },
+    "acreditamiento_ieps": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Complemento de concepto acreditamientoIEPS 1.0.",
+      "properties": {
+        "version": { "type": "string" },
+        "tar": { "type": "string" }
+      }
+    },
+    "spei_tercero": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "SPEI_Tercero del complemento SPEI (sin versión).",
+      "properties": {
+        "fecha_operacion": { "$ref": "#/$defs/fecha" },
+        "hora": { "type": "string", "description": "xs:time, tal cual." },
+        "clave_spei": { "type": "string" },
+        "sello": { "type": "string", "description": "Solo con la opción IncluirSello." },
+        "numero_certificado": { "type": "string" },
+        "cadena_cda": { "type": "string", "description": "Solo con la opción IncluirSello." },
+        "ordenante": { "$ref": "#/$defs/spei_ordenante" },
+        "beneficiario": { "$ref": "#/$defs/spei_beneficiario" }
+      }
+    },
+    "spei_ordenante": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "banco_emisor": { "type": "string" },
+        "nombre": { "type": "string" },
+        "tipo_cuenta": { "$ref": "#/$defs/decimal" },
+        "cuenta": { "$ref": "#/$defs/decimal" },
+        "rfc": { "type": "string" }
+      }
+    },
+    "spei_beneficiario": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "banco_receptor": { "type": "string" },
+        "nombre": { "type": "string" },
+        "tipo_cuenta": { "$ref": "#/$defs/decimal" },
+        "cuenta": { "$ref": "#/$defs/decimal" },
+        "rfc": { "type": "string" },
+        "concepto": { "type": "string" },
+        "iva": { "$ref": "#/$defs/decimal" },
+        "monto_pago": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "renovacionysustitucionvehiculos": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Decretos de renovación o sustitución vehicular 1.0 (nodo renovacionysustitucionvehiculos).",
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_de_decreto": { "type": "string" },
+        "decreto_renov_vehicular": { "$ref": "#/$defs/renovacion_decreto_renov_vehicular" },
+        "decreto_sustit_vehicular": { "$ref": "#/$defs/renovacion_decreto_sustit_vehicular" }
+      }
+    },
+    "renovacion_decreto_renov_vehicular": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "veh_enaj": { "type": "string" },
+        "vehiculos_usados_enajenado_perm_al_fab": { "type": "array", "items": { "$ref": "#/$defs/renovacion_vehiculo_usado" } },
+        "vehiculo_nuvo_sem_enajenado_fab_al_perm": { "$ref": "#/$defs/renovacion_vehiculo_nuevo" }
+      }
+    },
+    "renovacion_decreto_sustit_vehicular": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "veh_enaj": { "type": "string" },
+        "vehiculo_usado_enajenado_perm_al_fab": { "$ref": "#/$defs/renovacion_vehiculo_usado" },
+        "vehiculo_nuvo_sem_enajenado_fab_al_perm": { "$ref": "#/$defs/renovacion_vehiculo_nuevo" }
+      }
+    },
+    "renovacion_vehiculo_usado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "precio_veh_usado": { "$ref": "#/$defs/decimal" },
+        "tipo_veh": { "type": "string" },
+        "marca": { "type": "string" },
+        "tipoo_clase": { "type": "string" },
+        "anio": { "type": "string", "description": "Atributo Año." },
+        "modelo": { "type": "string" },
+        "niv": { "type": "string" },
+        "num_serie": { "type": "string" },
+        "num_placas": { "type": "string" },
+        "num_motor": { "type": "string" },
+        "num_fol_tarj_cir": { "type": "string" },
+        "num_fol_avisoint": { "type": "string", "description": "Solo en el decreto de sustitución." },
+        "num_ped_im": { "type": "string" },
+        "aduana": { "type": "string" },
+        "fecha_regul_veh": { "$ref": "#/$defs/fecha" },
+        "foliofiscal": { "type": "string" }
+      }
+    },
+    "renovacion_vehiculo_nuevo": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "VehiculoNuvoSemEnajenadoFabAlPerm.",
+      "properties": {
+        "anio": { "type": "string", "description": "Atributo Año." },
+        "modelo": { "type": "string" },
+        "num_placas": { "type": "string" },
+        "rfc": { "type": "string" }
+      }
+    },
+    "certificadodedestruccion": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Certificado de destrucción de vehículos 1.0 (nodo certificadodedestruccion).",
+      "properties": {
+        "version": { "type": "string" },
+        "serie": { "type": "string" },
+        "num_fol_des_veh": { "type": "string" },
+        "vehiculo_destruido": { "$ref": "#/$defs/certificado_destruccion_vehiculo" },
+        "informacion_aduanera": { "$ref": "#/$defs/certificado_destruccion_info_aduanera" }
+      }
+    },
+    "certificado_destruccion_vehiculo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "marca": { "type": "string" },
+        "tipoo_clase": { "type": "string" },
+        "anio": { "type": "string", "description": "Atributo Año." },
+        "modelo": { "type": "string" },
+        "niv": { "type": "string" },
+        "num_serie": { "type": "string" },
+        "num_placas": { "type": "string" },
+        "num_motor": { "type": "string" },
+        "num_fol_tarj_cir": { "type": "string" }
+      }
+    },
+    "certificado_destruccion_info_aduanera": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "num_ped_imp": { "type": "string" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "aduana": { "type": "string" }
+      }
+    },
+    "obrasarteantiguedades": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Obras de artes plásticas y antigüedades 1.0 (nodo obrasarteantiguedades).",
+      "properties": {
+        "version": { "type": "string" },
+        "tipo_bien": { "type": "string" },
+        "otros_tipo_bien": { "type": "string" },
+        "titulo_adquirido": { "type": "string" },
+        "otros_titulo_adquirido": { "type": "string" },
+        "subtotal": { "$ref": "#/$defs/decimal" },
+        "iva": { "$ref": "#/$defs/decimal" },
+        "fecha_adquisicion": { "$ref": "#/$defs/fecha" },
+        "caracteristicas_de_obrao_pieza": { "type": "string", "description": "Atributo CaracterísticasDeObraoPieza." }
+      }
+    },
+    "pf_integrante_coordinado": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "PFintegranteCoordinado 1.0 (pfic).",
+      "properties": {
+        "version": { "type": "string" },
+        "clave_vehicular": { "type": "string" },
+        "placa": { "type": "string" },
+        "rfcpf": { "type": "string" }
+      }
+    },
+    "gastos_hidrocarburos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "numero_contrato": { "type": "string" },
+        "area_contractual": { "type": "string" },
+        "erogacion": { "type": "array", "items": { "$ref": "#/$defs/gastos_hidrocarburos_erogacion" } }
+      }
+    },
+    "gastos_hidrocarburos_erogacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo_erogacion": { "type": "string" },
+        "montocu_erogacion": { "$ref": "#/$defs/decimal" },
+        "porcentaje": { "$ref": "#/$defs/decimal" },
+        "documento_relacionado": { "type": "array", "items": { "$ref": "#/$defs/gastos_hidrocarburos_documento_relacionado" } },
+        "actividades": { "type": "array", "items": { "$ref": "#/$defs/gastos_hidrocarburos_actividades" } },
+        "centro_costos": { "type": "array", "items": { "$ref": "#/$defs/gastos_hidrocarburos_centro_costos" } }
+      }
+    },
+    "gastos_hidrocarburos_documento_relacionado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "origen_erogacion": { "type": "string" },
+        "folio_fiscal_vinculado": { "type": "string" },
+        "rfc_proveedor": { "type": "string" },
+        "monto_total_iva": { "$ref": "#/$defs/decimal" },
+        "monto_retencion_isr": { "$ref": "#/$defs/decimal" },
+        "monto_retencion_iva": { "$ref": "#/$defs/decimal" },
+        "monto_retencion_otros_impuestos": { "$ref": "#/$defs/decimal" },
+        "numero_pedimento_vinculado": { "type": "string" },
+        "clave_pedimento_vinculado": { "type": "string" },
+        "clave_pago_pedimento_vinculado": { "type": "string" },
+        "monto_iva_pedimento": { "$ref": "#/$defs/decimal" },
+        "otros_impuestos_pagados_pedimento": { "$ref": "#/$defs/decimal" },
+        "fecha_folio_fiscal_vinculado": { "$ref": "#/$defs/fecha" },
+        "mes": { "type": "string" },
+        "monto_total_erogaciones": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "gastos_hidrocarburos_actividades": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "actividad_relacionada": { "type": "string" },
+        "sub_actividades": { "type": "array", "items": { "$ref": "#/$defs/gastos_hidrocarburos_sub_actividades" } }
+      }
+    },
+    "gastos_hidrocarburos_sub_actividades": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sub_actividad_relacionada": { "type": "string" },
+        "tareas": { "type": "array", "items": { "$ref": "#/$defs/gastos_hidrocarburos_tareas" } }
+      }
+    },
+    "gastos_hidrocarburos_tareas": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tarea_relacionada": { "type": "string" }
+      }
+    },
+    "gastos_hidrocarburos_centro_costos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "campo": { "type": "string" },
+        "yacimientos": { "type": "array", "items": { "$ref": "#/$defs/gastos_hidrocarburos_yacimientos" } }
+      }
+    },
+    "gastos_hidrocarburos_yacimientos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "yacimiento": { "type": "string" },
+        "pozos": { "type": "array", "items": { "$ref": "#/$defs/gastos_hidrocarburos_pozos" } }
+      }
+    },
+    "gastos_hidrocarburos_pozos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pozo": { "type": "string" }
+      }
+    },
+    "ingresos_hidrocarburos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string" },
+        "numero_contrato": { "type": "string" },
+        "contraprestacion_pagada_operador": { "$ref": "#/$defs/decimal" },
+        "porcentaje": { "$ref": "#/$defs/decimal" },
+        "documento_relacionado": { "type": "array", "items": { "$ref": "#/$defs/ingresos_hidrocarburos_documento_relacionado" } }
+      }
+    },
+    "ingresos_hidrocarburos_documento_relacionado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "folio_fiscal_vinculado": { "type": "string" },
+        "fecha_folio_fiscal_vinculado": { "$ref": "#/$defs/fecha" },
+        "mes": { "type": "string" }
+      }
+    },
+    "estado_de_cuenta_bancario": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "EstadoDeCuentaBancario 1.0 (ecb), de CFDI 3.2.",
+      "properties": {
+        "version": { "type": "string" },
+        "numero_cuenta": { "type": "string" },
+        "nombre_cliente": { "type": "string" },
+        "periodo": { "type": "string" },
+        "sucursal": { "type": "string" },
+        "movimientos": { "$ref": "#/$defs/ecb_movimientos" }
+      }
+    },
+    "ecb_movimientos": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "movimiento_ecb": { "type": "array", "items": { "$ref": "#/$defs/ecb_movimiento" } },
+        "movimiento_ecb_fiscal": { "type": "array", "items": { "$ref": "#/$defs/ecb_movimiento_fiscal" } }
+      }
+    },
+    "ecb_movimiento": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "referencia": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "moneda": { "type": "string" },
+        "saldo_inicial": { "$ref": "#/$defs/decimal" },
+        "saldo_al_corte": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "ecb_movimiento_fiscal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "referencia": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "rfc_enajenante": { "type": "string", "description": "Atributo RFCenajenante." },
+        "importe": { "$ref": "#/$defs/decimal" },
+        "moneda": { "type": "string" },
+        "saldo_inicial": { "$ref": "#/$defs/decimal" },
+        "saldo_al_corte": { "$ref": "#/$defs/decimal" }
+      }
+    }
+  }
+}

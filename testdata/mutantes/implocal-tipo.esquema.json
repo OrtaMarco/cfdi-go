@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 21,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/implocal:ImpuestosLocales/implocal:RetencionesLocales",
+   "mensaje": "Element '{http://www.sat.gob.mx/implocal}RetencionesLocales', attribute 'TasadeRetencion': 'medio' is not a valid value of the local atomic type."
+  }
+ ]
+}

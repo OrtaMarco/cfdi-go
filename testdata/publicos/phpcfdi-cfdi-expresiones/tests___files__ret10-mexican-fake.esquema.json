@@ -1,0 +1,40 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/1}Retenciones': The attribute 'Sello' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/1}Retenciones': The attribute 'NumCert' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/1}Retenciones': The attribute 'Cert' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/1}Retenciones': The attribute 'FechaExp' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/retenciones:Retenciones",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/1}Retenciones': The attribute 'CveRetenc' is required but missing."
+  },
+  {
+   "linea": 4,
+   "ruta": "/retenciones:Retenciones/retenciones:Receptor",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/1}Receptor': The attribute 'Nacionalidad' is required but missing."
+  },
+  {
+   "linea": 7,
+   "ruta": "/retenciones:Retenciones/retenciones:Totales",
+   "mensaje": "Element '{http://www.sat.gob.mx/esquemas/retencionpago/1}Totales': This element is not expected. Expected is ( {http://www.sat.gob.mx/esquemas/retencionpago/1}Periodo )."
+  }
+ ]
+}

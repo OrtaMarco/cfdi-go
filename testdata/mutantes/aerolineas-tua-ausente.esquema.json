@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/aerolineas:Aerolineas",
+   "mensaje": "Element '{http://www.sat.gob.mx/aerolineas}Aerolineas': The attribute 'TUA' is required but missing."
+  }
+ ]
+}

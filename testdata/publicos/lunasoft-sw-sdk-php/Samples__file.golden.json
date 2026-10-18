@@ -1,0 +1,82 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "RogueOne",
+    "folio": "HNFK231",
+    "fecha": "2018-03-14T12:41:44",
+    "forma_pago": "01",
+    "no_certificado": "20001000000300022816",
+    "sub_total": "200.00",
+    "moneda": "MXN",
+    "tipo_cambio": "1",
+    "total": "603.20",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "06300",
+    "emisor": {
+      "rfc": "LAN8507268IA",
+      "nombre": "MB IDEAS DIGITALES SC",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "50211503",
+        "no_identificacion": "UT421511",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "unidad": "Pieza",
+        "descripcion": "Cigarros",
+        "valor_unitario": "200.00",
+        "importe": "200.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "200.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "32.00"
+            },
+            {
+              "base": "232.00",
+              "impuesto": "003",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "1.600000",
+              "importe": "371.20"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "403.20",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "32.00"
+        },
+        {
+          "impuesto": "003",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "1.600000",
+          "importe": "371.20"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

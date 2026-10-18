@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:nomina12="http://www.sat.gob.mx/nomina12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="4.0" Serie="N" Folio="2026-01" Fecha="2026-01-15T08:00:00" Sello="U0VMTE8gREUgUFJVRUJB" NoCertificado="30001000000500003416" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="5610.00" Descuento="575.50" Moneda="MXN" Total="5034.50" TipoDeComprobante="N" Exportacion="01" MetodoPago="PUE" LugarExpedicion="76000">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" DomicilioFiscalReceptor="76028" RegimenFiscalReceptor="605" UsoCFDI="CN01"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="84111505" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago de nómina" ValorUnitario="5610.00" Importe="5610.00" Descuento="575.50" ObjetoImp="01"/>
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <nomina12:Nomina Version="1.2" TipoNomina="X" FechaPago="2026-01-15" FechaInicialPago="2026-01-01" FechaFinalPago="2026-01-15" NumDiasPagados="15.000" TotalPercepciones="5600.00" TotalDeducciones="575.50" TotalOtrosPagos="10.00">
+      <nomina12:Emisor RegistroPatronal="Z0000001234"/>
+      <nomina12:Receptor Curp="XEXX010101HNEXXXA4" NumSeguridadSocial="00000000000" FechaInicioRelLaboral="2020-01-01" Antigüedad="P315W" TipoContrato="01" Sindicalizado="No" TipoJornada="01" TipoRegimen="02" NumEmpleado="E-001" Departamento="Pruebas" Puesto="Analista" RiesgoPuesto="1" PeriodicidadPago="04" SalarioBaseCotApor="400.00" SalarioDiarioIntegrado="380.50" ClaveEntFed="QUE"/>
+      <nomina12:Percepciones TotalSueldos="5600.00" TotalGravado="5300.00" TotalExento="300.00">
+        <nomina12:Percepcion TipoPercepcion="001" Clave="P001" Concepto="Sueldo" ImporteGravado="5000.00" ImporteExento="0.00"/>
+        <nomina12:Percepcion TipoPercepcion="019" Clave="P019" Concepto="Horas extra" ImporteGravado="300.00" ImporteExento="300.00">
+          <nomina12:HorasExtra Dias="2" TipoHoras="01" HorasExtra="4" ImportePagado="600.00"/>
+        </nomina12:Percepcion>
+      </nomina12:Percepciones>
+      <nomina12:Deducciones TotalOtrasDeducciones="125.50" TotalImpuestosRetenidos="450.00">
+        <nomina12:Deduccion TipoDeduccion="002" Clave="D002" Concepto="ISR" Importe="450.00"/>
+        <nomina12:Deduccion TipoDeduccion="001" Clave="D001" Concepto="Seguridad social" Importe="125.50"/>
+      </nomina12:Deducciones>
+      <nomina12:OtrosPagos>
+        <nomina12:OtroPago TipoOtroPago="002" Clave="O002" Concepto="Subsidio para el empleo" Importe="10.00">
+          <nomina12:SubsidioAlEmpleo SubsidioCausado="10.00"/>
+        </nomina12:OtroPago>
+      </nomina12:OtrosPagos>
+      <nomina12:Incapacidades>
+        <nomina12:Incapacidad DiasIncapacidad="1" TipoIncapacidad="02"/>
+      </nomina12:Incapacidades>
+    </nomina12:Nomina>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="88888888-9999-AAAA-BBBB-CCCCCCCCCCCC" FechaTimbrado="2026-01-15T08:01:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000500003456" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

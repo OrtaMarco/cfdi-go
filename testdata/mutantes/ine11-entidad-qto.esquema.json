@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ine:INE/ine:Entidad",
+   "mensaje": "Element '{http://www.sat.gob.mx/ine}Entidad', attribute 'ClaveEntidad': [facet 'enumeration'] The value 'QTO' is not an element of the set {'AGU', 'BCN', 'BCS', 'CAM', 'CHP', 'CHH', 'COA', 'COL', 'CR1', 'CR2', 'CR3', 'CR4', 'CR5', 'DIF', 'DUR', 'GUA', 'GRO', 'HID', 'JAL', 'MEX', 'MIC', 'MOR', 'NAC', 'NAY', 'NLE', 'OAX', 'PUE', 'QUE', 'ROO', 'SLP', 'SIN', 'SON', 'TAB', 'TAM', 'TLA', 'VER', 'YUC', 'ZAC'}."
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "incompleto",
+ "errores": [
+  {
+   "linea": 29,
+   "ruta": "/cfdi:Comprobante/cfdi:Addenda/dvz:diverza",
+   "mensaje": "Element '{http://www.diverza.com/ns/addenda/diverza/1}diverza': No matching global element declaration available, but demanded by the strict wildcard."
+  }
+ ]
+}

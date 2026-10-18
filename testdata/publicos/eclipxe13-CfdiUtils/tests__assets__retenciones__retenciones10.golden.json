@@ -1,0 +1,60 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "no_certificado": "30001000000500003416",
+    "fecha_exp": "2021-01-13T14:15:16-06:00",
+    "cve_retenc": "14",
+    "emisor": {
+      "rfc_e": "EKU9003173C9",
+      "nom_den_raz_soc_e": "ESCUELA KEMPER URGATE SA DE CV"
+    },
+    "receptor": {
+      "nacionalidad_r": "Extranjero",
+      "extranjero": {
+        "num_reg_id_trib_r": "998877665544332211",
+        "nom_den_raz_soc_r": "WORLD WIDE COMPANY INC"
+      }
+    },
+    "periodo": {
+      "mes_ini": "5",
+      "mes_fin": "5",
+      "ejercicio": "2018"
+    },
+    "totales": {
+      "monto_tot_operacion": "55578643",
+      "monto_tot_grav": "0",
+      "monto_tot_exent": "55578643",
+      "monto_tot_ret": "0",
+      "imp_retenidos": [
+        {
+          "base_ret": "0",
+          "impuesto_ret": "01",
+          "monto_ret": "0",
+          "tipo_pago_ret": "Pago provisional"
+        }
+      ]
+    },
+    "dividendos": {
+      "version": "1.0",
+      "divid_o_util": {
+        "cve_tip_div_o_util": "06",
+        "mont_isr_acred_ret_mexico": "0",
+        "mont_isr_acred_ret_extranjero": "0",
+        "mont_ret_ext_div_ext": "0",
+        "tipo_soc_distr_div": "Sociedad Nacional",
+        "mont_isr_acred_nal": "0",
+        "mont_div_acum_nal": "0",
+        "mont_div_acum_ext": "0"
+      }
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Retenciones/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

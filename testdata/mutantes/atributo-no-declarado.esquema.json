@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 3,
+   "ruta": "/cfdi:Comprobante/cfdi:Emisor",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Emisor', attribute 'Otro': The attribute 'Otro' is not allowed."
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 23,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/spei:Complemento_SPEI/spei:SPEI_Tercero",
+   "mensaje": "Element '{http://www.sat.gob.mx/spei}SPEI_Tercero', attribute 'Hora': '24:30:00' is not a valid value of the local atomic type."
+  }
+ ]
+}

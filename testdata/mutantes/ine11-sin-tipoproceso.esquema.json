@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ine:INE",
+   "mensaje": "Element '{http://www.sat.gob.mx/ine}INE': The attribute 'TipoProceso' is required but missing."
+  }
+ ]
+}

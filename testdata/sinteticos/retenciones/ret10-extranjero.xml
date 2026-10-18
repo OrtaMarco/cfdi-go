@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/1" xmlns:pagosaextranjeros="http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros" xmlns:planesderetiro11="http://www.sat.gob.mx/esquemas/retencionpago/1/planesderetiro11" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/1 http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros/pagosaextranjeros.xsd" Version="1.0" FolioInt="E7" Sello="" NumCert="30001000000500003416" Cert="" FechaExp="2020-06-30T18:00:00-06:00" CveRetenc="18" DescRetenc="Pagos a extranjeros">
+  <retenciones:Emisor RFCEmisor="EKU9003173C9" NomDenRazSocE="ESCUELA KEMPER URGATE"/>
+  <retenciones:Receptor Nacionalidad="Extranjero">
+    <retenciones:Extranjero NumRegIdTrib="998877665544" NomDenRazSocR="EMPRESA DEL EXTRANJERO DE PRUEBA"/>
+  </retenciones:Receptor>
+  <retenciones:Periodo MesIni="1" MesFin="6" Ejerc="2020"/>
+  <retenciones:Totales montoTotOperacion="25000.00" montoTotGrav="25000.00" montoTotExent="0.00" montoTotRet="6250.000000">
+    <retenciones:ImpRetenidos BaseRet="25000.00" Impuesto="01" montoRet="6250.000000" TipoPagoRet="Pago definitivo"/>
+  </retenciones:Totales>
+  <retenciones:Complemento>
+    <pagosaextranjeros:Pagosaextranjeros Version="1.0" EsBenefEfectDelCobro="NO">
+      <pagosaextranjeros:NoBeneficiario PaisDeResidParaEfecFisc="US" ConceptoPago="2" DescripcionConcepto="Regalías de prueba"/>
+    </pagosaextranjeros:Pagosaextranjeros>
+    <planesderetiro11:Planesderetiro Version="1.1" SistemaFinanc="SI" MontIntRealesDevengAniooInmAnt="120.50" HuboRetirosAnioInmAntPer="NO" HuboRetirosAnioInmAnt="NO" NumReferencia="REF1">
+      <planesderetiro11:AportacionesODepositos TipoAportacionODeposito="a" MontAportODep="1000.00" RFCFiduciaria="AAA010101AAA"/>
+    </planesderetiro11:Planesderetiro>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" version="1.0" UUID="1A2B3C4D-5E6F-4A7B-8C9D-0E1F2A3B4C5D" FechaTimbrado="2020-06-30T18:01:00" selloCFD="" noCertificadoSAT="30001000000300023708" selloSAT=""/>
+  </retenciones:Complemento>
+</retenciones:Retenciones>

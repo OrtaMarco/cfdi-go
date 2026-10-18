@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/obrasarte:obrasarteantiguedades",
+   "mensaje": "Element '{http://www.sat.gob.mx/arteantiguedades}obrasarteantiguedades': The attribute 'TipoBien' is required but missing."
+  }
+ ]
+}

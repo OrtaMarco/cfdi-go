@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 12,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cce11:ComercioExterior/cce11:Emisor/cce11:Domicilio",
+   "mensaje": "Element '{http://www.sat.gob.mx/ComercioExterior11}Domicilio', attribute 'Localidad': [facet 'enumeration'] The value '105' is not an element of the set {'01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '66', '67', '68', '69'}."
+  }
+ ]
+}

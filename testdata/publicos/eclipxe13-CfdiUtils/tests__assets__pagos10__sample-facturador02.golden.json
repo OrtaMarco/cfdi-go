@@ -1,0 +1,70 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "A",
+    "folio": "60",
+    "fecha": "2017-07-29T12:25:18",
+    "no_certificado": "30001000000300023701",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "lugar_expedicion": "77500",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "ACCEM SERVICIOS EMPRESARIALES SC",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "LAN7008173R5",
+      "nombre": "Otro Cliente 33",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0"
+      }
+    ],
+    "pagos": {
+      "version": "1.0",
+      "pago": [
+        {
+          "fecha_pago": "2017-07-29T00:00:00",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "monto": "380.00",
+          "rfc_emisor_cta_ord": "JES900109Q90",
+          "cta_ordenante": "1234567890",
+          "rfc_emisor_cta_ben": "JES900109Q90",
+          "cta_beneficiario": "1234567890",
+          "docto_relacionado": [
+            {
+              "id_documento": "A6F92B41-7FE7-49A5-AA9F-D9AF01625C8D",
+              "serie": "A",
+              "folio": "59",
+              "moneda_dr": "MXN",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "580.00",
+              "imp_pagado": "380.00",
+              "imp_saldo_insoluto": "200.00"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

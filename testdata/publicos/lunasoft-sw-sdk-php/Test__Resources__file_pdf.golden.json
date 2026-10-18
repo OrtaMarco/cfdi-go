@@ -1,0 +1,105 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "Serie",
+    "folio": "Folio",
+    "fecha": "2022-10-22T00:18:10",
+    "forma_pago": "99",
+    "no_certificado": "30001000000400002434",
+    "condiciones_de_pago": "CondicionesDePago",
+    "sub_total": "200",
+    "descuento": "1",
+    "moneda": "AMD",
+    "tipo_cambio": "1",
+    "total": "198.96",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "20000",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "URE180429TM6",
+      "nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+      "domicilio_fiscal_receptor": "65000",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "G01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "50211503",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "unidad": "Pieza",
+        "descripcion": "Cigarros",
+        "valor_unitario": "200.00",
+        "importe": "200.00",
+        "descuento": "1",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "0.16"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "1",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.100000",
+              "importe": "0.10"
+            },
+            {
+              "base": "1",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.106666",
+              "importe": "0.10"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "0.20",
+      "total_impuestos_trasladados": "0.16",
+      "retenciones": [
+        {
+          "impuesto": "001",
+          "importe": "0.10"
+        },
+        {
+          "impuesto": "002",
+          "importe": "0.10"
+        }
+      ],
+      "traslados": [
+        {
+          "base": "1",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "0.16"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "96B0ED9E-4F1A-43B0-B720-F77663891C68",
+      "uuid_original": "96b0ed9e-4f1a-43b0-b720-f77663891c68",
+      "fecha_timbrado": "2022-10-23T19:35:10",
+      "rfc_prov_certif": "SAT970701NN3",
+      "no_certificado_sat": "30001000000400002495"
+    }
+  },
+  "advertencias": []
+}

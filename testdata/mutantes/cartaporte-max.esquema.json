@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 49,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cartaporte31:CartaPorte/cartaporte31:Mercancias/cartaporte31:Autotransporte[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/CartaPorte31}Autotransporte': This element is not expected. Expected is one of ( {http://www.sat.gob.mx/CartaPorte31}TransporteMaritimo, {http://www.sat.gob.mx/CartaPorte31}TransporteAereo, {http://www.sat.gob.mx/CartaPorte31}TransporteFerroviario )."
+  }
+ ]
+}

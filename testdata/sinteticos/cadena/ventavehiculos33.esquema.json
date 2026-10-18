@@ -1,0 +1,20 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 28,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital': Character content is not allowed, because the content type is empty."
+  },
+  {
+   "linea": 13,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[1]/cfdi:ComplementoConcepto/ventavehiculos:VentaVehiculos",
+   "mensaje": "Element '{http://www.sat.gob.mx/ventavehiculos}VentaVehiculos', attribute 'Niv': The attribute 'Niv' is not allowed."
+  },
+  {
+   "linea": 15,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[1]/cfdi:ComplementoConcepto/ventavehiculos:VentaVehiculos/ventavehiculos:Parte",
+   "mensaje": "Element '{http://www.sat.gob.mx/ventavehiculos}Parte': This element is not expected. Expected is ( {http://www.sat.gob.mx/ventavehiculos}InformacionAduanera )."
+  }
+ ]
+}

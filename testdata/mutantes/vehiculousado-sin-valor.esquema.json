@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/vu:VehiculoUsado",
+   "mensaje": "Element '{http://www.sat.gob.mx/vehiculousado}VehiculoUsado': The attribute 'valor' is required but missing."
+  }
+ ]
+}

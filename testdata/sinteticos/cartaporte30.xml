@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:cartaporte30="http://www.sat.gob.mx/CartaPorte30" Version="4.0" Serie="CP" Folio="30" Fecha="2026-03-02T08:00:00" NoCertificado="30001000000500003416" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="T" Exportacion="01" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" DomicilioFiscalReceptor="42501" RegimenFiscalReceptor="601" UsoCFDI="S01"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="31181701" Cantidad="10" ClaveUnidad="H87" Descripcion="Mercancía de prueba" ValorUnitario="0" Importe="0" ObjetoImp="01"/>
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <cartaporte30:CartaPorte Version="3.0" IdCCP="CCC00001-0000-4000-8000-000000000030" TranspInternac="Sí" RegimenAduanero="IMD" EntradaSalidaMerc="Entrada" PaisOrigenDestino="USA" ViaEntradaSalida="01" TotalDistRec="310.40">
+      <cartaporte30:Ubicaciones>
+        <cartaporte30:Ubicacion TipoUbicacion="Origen" IDUbicacion="OR000001" RFCRemitenteDestinatario="XEXX010101000" NombreRemitenteDestinatario="REMITENTE EXTRANJERO DE PRUEBA" NumRegIdTrib="123456789" ResidenciaFiscal="USA" FechaHoraSalidaLlegada="2026-03-02T09:00:00">
+          <cartaporte30:Domicilio Calle="Calle de prueba" NumeroExterior="100" Estado="TX" Pais="USA" CodigoPostal="78040"/>
+        </cartaporte30:Ubicacion>
+        <cartaporte30:Ubicacion TipoUbicacion="Destino" IDUbicacion="DE000002" RFCRemitenteDestinatario="EKU9003173C9" FechaHoraSalidaLlegada="2026-03-02T15:30:00" DistanciaRecorrida="310.40">
+          <cartaporte30:Domicilio Calle="Avenida de prueba" Municipio="048" Estado="HID" Pais="MEX" CodigoPostal="42501"/>
+        </cartaporte30:Ubicacion>
+      </cartaporte30:Ubicaciones>
+      <cartaporte30:Mercancias PesoBrutoTotal="1250.500" UnidadPeso="KGM" PesoNetoTotal="1200.000" NumTotalMercancias="1" LogisticaInversaRecoleccionDevolucion="Sí">
+        <cartaporte30:Mercancia BienesTransp="51101500" Descripcion="Medicamento de prueba" Cantidad="10" ClaveUnidad="H87" MaterialPeligroso="No" SectorCOFEPRIS="01" NombreIngredienteActivo="INGREDIENTE DE PRUEBA" DenominacionGenericaProd="GENERICO" DenominacionDistintivaProd="DISTINTIVO" Fabricante="FABRICANTE DE PRUEBA" FechaCaducidad="2027-12-31" LoteMedicamento="LOTE01" FormaFarmaceutica="01" CondicionesEspTransp="01" RegistroSanitarioFolioAutorizacion="REG0001" PesoEnKg="1250.500" ValorMercancia="98765.43" Moneda="USD" FraccionArancelaria="3004909999" UUIDComercioExt="11111111-2222-4333-8444-555555555530" TipoMateria="05" DescripcionMateria="Producto terminado">
+          <cartaporte30:DocumentacionAduanera TipoDocumento="01" NumPedimento="26  47  3807  6000030" RFCImpo="EKU9003173C9"/>
+          <cartaporte30:GuiasIdentificacion NumeroGuiaIdentificacion="GUIA000030" DescripGuiaIdentificacion="Guía de prueba" PesoGuiaIdentificacion="1250.500"/>
+          <cartaporte30:CantidadTransporta Cantidad="10" IDOrigen="OR000001" IDDestino="DE000002" CvesTransporte="01"/>
+          <cartaporte30:DetalleMercancia UnidadPesoMerc="KGM" PesoBruto="1250.500" PesoNeto="1200.000" PesoTara="50.500" NumPiezas="10"/>
+        </cartaporte30:Mercancia>
+        <cartaporte30:Autotransporte PermSCT="TPAF01" NumPermisoSCT="PERMISO30">
+          <cartaporte30:IdentificacionVehicular ConfigVehicular="T3S2" PesoBrutoVehicular="40.50" PlacaVM="ABC1234" AnioModeloVM="2024"/>
+          <cartaporte30:Seguros AseguraRespCivil="ASEGURADORA DE PRUEBA" PolizaRespCivil="POL-30" PrimaSeguro="1500.00"/>
+          <cartaporte30:Remolques>
+            <cartaporte30:Remolque SubTipoRem="CTR004" Placa="REM0030"/>
+          </cartaporte30:Remolques>
+        </cartaporte30:Autotransporte>
+        <cartaporte30:TransporteMaritimo TipoEmbarcacion="B01" Matricula="MAT0030" NumeroOMI="IMO1234567" NacionalidadEmbarc="MEX" UnidadesDeArqBruto="100.000" TipoCarga="CGS" Puntal="5.25" NombreAgenteNaviero="AGENTE DE PRUEBA" NumAutorizacionNaviero="SCT418/020/2016" PermisoTempNavegacion="PTN0030">
+          <cartaporte30:Contenedor TipoContenedor="CM001" MatriculaContenedor="ABCU1234567" NumPrecinto="PREC30" IdCCPRelacionado="CCC00001-0000-4000-8000-000000000031" PlacaVMCCP="CCP3001" FechaCertificacionCCP="2026-03-01T12:00:00"/>
+          <cartaporte30:RemolquesCCP>
+            <cartaporte30:RemolqueCCP SubTipoRemCCP="CTR004" PlacaCCP="RCCP30"/>
+          </cartaporte30:RemolquesCCP>
+        </cartaporte30:TransporteMaritimo>
+      </cartaporte30:Mercancias>
+      <cartaporte30:FiguraTransporte>
+        <cartaporte30:TiposFigura TipoFigura="01" RFCFigura="CACX7605101P8" NumLicencia="LIC000030" NombreFigura="OPERADOR DE PRUEBA"/>
+      </cartaporte30:FiguraTransporte>
+    </cartaporte30:CartaPorte>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555555502" FechaTimbrado="2026-03-02T08:01:00" RfcProvCertif="AAA010101AAA" NoCertificadoSAT="30001000000500003456"/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

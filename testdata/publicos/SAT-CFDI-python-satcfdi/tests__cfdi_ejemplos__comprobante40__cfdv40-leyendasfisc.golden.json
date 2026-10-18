@@ -1,0 +1,68 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "fecha": "2021-12-08T23:59:59",
+    "forma_pago": "02",
+    "no_certificado": "30001000000300023708",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "03",
+    "lugar_expedicion": "99999",
+    "cfdi_relacionados": [
+      {
+        "tipo_relacion": "09",
+        "cfdi_relacionado": [
+          {
+            "uuid": "F4F09AEF-57F2-4BE0-A828-87D1A80ED61C"
+          }
+        ]
+      }
+    ],
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "Esta es una demostración",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "nombre": "Juanito Bananas De la Sierra",
+      "domicilio_fiscal_receptor": "99999",
+      "regimen_fiscal_receptor": "630",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Descripcion",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "leyendas_fiscales": {
+      "version": "1.0",
+      "leyenda": [
+        {
+          "disposicion_fiscal": "disposicionFiscal",
+          "norma": "norma",
+          "texto_leyenda": "textoLeyenda"
+        },
+        {
+          "texto_leyenda": "textoLeyendaRequerido"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "IN",
+    "folio": "10",
+    "fecha": "2017-05-01T10:00:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000400002495",
+    "sub_total": "1000.00",
+    "moneda": "MXN",
+    "total": "1160.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "15101514",
+        "cantidad": "1",
+        "clave_unidad": "LTR",
+        "descripcion": "Combustible de prueba",
+        "valor_unitario": "1000.00",
+        "importe": "1000.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1000.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "160.00"
+            }
+          ]
+        },
+        "acreditamiento_ieps": {
+          "version": "1.0",
+          "tar": "617"
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "160.00",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "160.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555552001",
+      "fecha_timbrado": "2017-05-01T10:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000400002495"
+    },
+    "ine": {
+      "version": "1.0",
+      "tipo_proceso": "Campaña",
+      "entidad": [
+        {
+          "clave_entidad": "QTO",
+          "ambito": "Local",
+          "contabilidad": [
+            {
+              "id_contabilidad": "123456"
+            },
+            {
+              "id_contabilidad": "7"
+            }
+          ]
+        },
+        {
+          "clave_entidad": "HID",
+          "ambito": "Federal"
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

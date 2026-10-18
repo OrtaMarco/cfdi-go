@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:ecc12="http://www.sat.gob.mx/EstadoDeCuentaCombustible12" Version="4.0" Serie="EC" Folio="12" Fecha="2026-06-30T23:00:00" FormaPago="03" NoCertificado="30001000000500003416" SubTotal="25.00" Moneda="MXN" Total="29.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" DomicilioFiscalReceptor="76028" RegimenFiscalReceptor="605" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="84141602" Cantidad="1" ClaveUnidad="ACT" Descripcion="Comisión por servicio de monedero" ValorUnitario="25.00" Importe="25.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="25.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="4.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="4.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="25.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="4.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <ecc12:EstadoDeCuentaCombustible Version="1.2" TipoOperacion="Tarjeta" NumeroDeCuenta="CUENTA-0012" SubTotal="1010.00" Total="1171.60">
+      <ecc12:Conceptos>
+        <ecc12:ConceptoEstadoDeCuentaCombustible Identificador="TX-0001" Fecha="2026-06-03T07:15:00" Rfc="xiqb891116qe4" ClaveEstacion="EST0001" Cantidad="40.000" TipoCombustible="1" Unidad="Litro" NombreCombustible="Gasolina de prueba" FolioOperacion="F-0001" ValorUnitario="20.000" Importe="800.00">
+          <ecc12:Traslados>
+            <ecc12:Traslado Impuesto="IVA" TasaOCuota="0.160000" Importe="128.00"/>
+          </ecc12:Traslados>
+        </ecc12:ConceptoEstadoDeCuentaCombustible>
+        <ecc12:ConceptoEstadoDeCuentaCombustible Identificador="TX-0002" Fecha="2026-06-17T18:40:00" Rfc="XIQB891116QE4" ClaveEstacion="EST0002" Cantidad="10.500" TipoCombustible="2" NombreCombustible="Diésel de prueba" FolioOperacion="F-0002" ValorUnitario="20.000" Importe="210.00">
+          <ecc12:Traslados>
+            <ecc12:Traslado Impuesto="IVA" TasaOCuota="0.160000" Importe="33.60"/>
+          </ecc12:Traslados>
+        </ecc12:ConceptoEstadoDeCuentaCombustible>
+      </ecc12:Conceptos>
+    </ecc12:EstadoDeCuentaCombustible>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555555505" FechaTimbrado="2026-06-30T23:01:00" RfcProvCertif="AAA010101AAA" NoCertificadoSAT="30001000000500003456"/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 27,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ecc12:EstadoDeCuentaCombustible/ecc12:Conceptos/ecc12:ConceptoEstadoDeCuentaCombustible[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/EstadoDeCuentaCombustible12}ConceptoEstadoDeCuentaCombustible': Missing child element(s). Expected is ( {http://www.sat.gob.mx/EstadoDeCuentaCombustible12}Traslados )."
+  }
+ ]
+}

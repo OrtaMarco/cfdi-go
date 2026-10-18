@@ -1,0 +1,170 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "P20",
+    "folio": "4",
+    "fecha": "2023-05-23T22:14:05",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "01",
+    "lugar_expedicion": "77516",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XIQB891116QE4",
+      "nombre": "BERENICE XIMO QUEZADA",
+      "domicilio_fiscal_receptor": "86400",
+      "regimen_fiscal_receptor": "616",
+      "uso_cfdi": "CP01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "pagos": {
+      "version": "2.0",
+      "totales": {
+        "total_retenciones_iva": "258.96",
+        "total_retenciones_isr": "242.70",
+        "total_traslados_base_iva16": "14558.61",
+        "total_traslados_impuesto_iva16": "2329.38",
+        "monto_total_pagos": "16386.33"
+      },
+      "pago": [
+        {
+          "fecha_pago": "2023-05-20T22:15:29",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "tipo_cambio_p": "1",
+          "monto": "14072.73",
+          "docto_relacionado": [
+            {
+              "id_documento": "555E3C48-C6C5-5FCC-BAF5-18C9E953FE59",
+              "serie": "V40",
+              "folio": "27",
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "14072.73",
+              "imp_pagado": "14072.73",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "12131.6600",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "1941.0656"
+                  }
+                ]
+              }
+            }
+          ],
+          "impuestos_p": {
+            "traslados_p": [
+              {
+                "base_p": "12131.6600",
+                "impuesto_p": "002",
+                "tipo_factor_p": "Tasa",
+                "tasa_o_cuota_p": "0.160000",
+                "importe_p": "1941.0656"
+              }
+            ]
+          }
+        },
+        {
+          "fecha_pago": "2023-05-22T22:15:59",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "tipo_cambio_p": "1",
+          "monto": "2313.60",
+          "docto_relacionado": [
+            {
+              "id_documento": "AB595AD4-E1A8-5A8B-B1B1-E7EE6D4AB7B0",
+              "serie": "V40",
+              "folio": "26",
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "2313.60",
+              "imp_pagado": "2313.60",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "retenciones_dr": [
+                  {
+                    "base_dr": "2426.9500",
+                    "impuesto_dr": "001",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.100000",
+                    "importe_dr": "242.6950"
+                  },
+                  {
+                    "base_dr": "2426.9500",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.106700",
+                    "importe_dr": "258.9556"
+                  }
+                ],
+                "traslados_dr": [
+                  {
+                    "base_dr": "2426.9500",
+                    "impuesto_dr": "002",
+                    "tipo_factor_dr": "Tasa",
+                    "tasa_o_cuota_dr": "0.160000",
+                    "importe_dr": "388.3120"
+                  }
+                ]
+              }
+            }
+          ],
+          "impuestos_p": {
+            "retenciones_p": [
+              {
+                "impuesto_p": "001",
+                "importe_p": "242.6950"
+              },
+              {
+                "impuesto_p": "002",
+                "importe_p": "258.9556"
+              }
+            ],
+            "traslados_p": [
+              {
+                "base_p": "2426.9500",
+                "impuesto_p": "002",
+                "tipo_factor_p": "Tasa",
+                "tasa_o_cuota_p": "0.160000",
+                "importe_p": "388.3120"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

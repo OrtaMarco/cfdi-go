@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 4,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Conceptos': This element is not expected. Expected is ( {http://www.sat.gob.mx/cfd/4}Receptor )."
+  }
+ ]
+}

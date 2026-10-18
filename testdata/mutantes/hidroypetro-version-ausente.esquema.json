@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 13,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[1]/cfdi:ComplementoConcepto/hyp:HidroYPetro",
+   "mensaje": "Element '{http://www.sat.gob.mx/hidrocarburospetroliferos}HidroYPetro': The attribute 'Version' is required but missing."
+  }
+ ]
+}

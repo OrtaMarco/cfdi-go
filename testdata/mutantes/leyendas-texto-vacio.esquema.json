@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/leyendasFisc:LeyendasFiscales/leyendasFisc:Leyenda",
+   "mensaje": "Element '{http://www.sat.gob.mx/leyendasFiscales}Leyenda', attribute 'textoLeyenda': [facet 'minLength'] The value ' ' has a length of '0'; this underruns the allowed minimum length of '1'."
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "T",
+    "folio": "9",
+    "fecha": "2026-04-20T07:15:00",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "T",
+    "exportacion": "01",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "domicilio_fiscal_receptor": "42501",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "43211500",
+        "no_identificacion": "INV-1",
+        "cantidad": "10",
+        "clave_unidad": "H87",
+        "unidad": "Pieza",
+        "descripcion": "Mercancía de prueba en tránsito",
+        "valor_unitario": "0.00",
+        "importe": "0.00",
+        "objeto_imp": "01",
+        "parte": [
+          {
+            "clave_prod_serv": "43211501",
+            "cantidad": "10",
+            "descripcion": "Componente de prueba",
+            "valor_unitario": "0.00",
+            "importe": "0.00"
+          }
+        ]
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "99999999-AAAA-BBBB-CCCC-DDDDDDDDDDDD",
+      "fecha_timbrado": "2026-04-20T07:16:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    }
+  },
+  "advertencias": []
+}

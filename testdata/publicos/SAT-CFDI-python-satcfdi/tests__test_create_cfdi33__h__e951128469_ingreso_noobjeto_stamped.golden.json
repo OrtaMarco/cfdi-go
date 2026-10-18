@@ -1,0 +1,50 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "A",
+    "folio": "123456",
+    "fecha": "2020-01-01T22:40:38",
+    "no_certificado": "30001000000400002460",
+    "sub_total": "15390.30",
+    "moneda": "MXN",
+    "total": "15390.30",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "56820",
+    "emisor": {
+      "rfc": "H&E951128469",
+      "nombre": "HERRERIA & ELECTRICOS",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "KIJ0906199R1",
+      "nombre": "KIJ, S.A DE C.V.",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "10101702",
+        "cantidad": "1.00",
+        "clave_unidad": "E48",
+        "descripcion": "SERVICIOS DE FACTURACION",
+        "valor_unitario": "15390.30",
+        "importe": "15390.30",
+        "cuenta_predial": [
+          {
+            "numero": "1234567890"
+          }
+        ]
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "6D7434A6-E3F2-47AD-9E4C-08849946AFA0",
+      "uuid_original": "6d7434a6-e3f2-47ad-9e4c-08849946afa0",
+      "fecha_timbrado": "2020-01-11T00:00:00",
+      "rfc_prov_certif": "SAT970701NN3",
+      "no_certificado_sat": "30001000000400002460"
+    }
+  },
+  "advertencias": []
+}

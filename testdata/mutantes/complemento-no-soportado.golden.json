@@ -1,0 +1,126 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "A",
+    "folio": "1001",
+    "fecha": "2026-01-15T10:30:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000500003416",
+    "condiciones_de_pago": "Contado",
+    "sub_total": "1500.00",
+    "moneda": "MXN",
+    "total": "1640.00",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "nombre": "PUBLICO EN GENERAL",
+      "domicilio_fiscal_receptor": "42501",
+      "regimen_fiscal_receptor": "616",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "no_identificacion": "SRV-01",
+        "cantidad": "1",
+        "clave_unidad": "E48",
+        "unidad": "Servicio",
+        "descripcion": "Servicio de prueba con IVA y retención",
+        "valor_unitario": "1000.00",
+        "importe": "1000.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1000.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "160.00"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "1000.00",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.100000",
+              "importe": "100.00"
+            }
+          ]
+        }
+      },
+      {
+        "clave_prod_serv": "43211500",
+        "cantidad": "2.5",
+        "clave_unidad": "H87",
+        "descripcion": "Producto de prueba",
+        "valor_unitario": "200.00",
+        "importe": "500.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "500.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "80.00"
+            }
+          ]
+        },
+        "informacion_aduanera": [
+          {
+            "numero_pedimento": "26  47  3807  6000001"
+          }
+        ]
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "100.00",
+      "total_impuestos_trasladados": "240.00",
+      "retenciones": [
+        {
+          "impuesto": "001",
+          "importe": "100.00"
+        }
+      ],
+      "traslados": [
+        {
+          "base": "1500.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "240.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "ABCDEF01-2345-4678-9ABC-DEF012345678",
+      "uuid_original": "abcdef01-2345-4678-9abc-def012345678",
+      "fecha_timbrado": "2026-01-15T10:31:12",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "complementos_no_soportados": [
+      "{http://example.com/ext}Otro"
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "COMPLEMENTO_NO_SOPORTADO",
+      "ruta": "/Comprobante/Complemento/Otro",
+      "mensaje": "complemento no soportado: {http://example.com/ext}Otro"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 7,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'Descuento': '' is not a valid value of the atomic type '{http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI}t_Importe'."
+  },
+  {
+   "linea": 7,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'Serie': [facet 'minLength'] The value '' has a length of '0'; this underruns the allowed minimum length of '1'."
+  },
+  {
+   "linea": 7,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante', attribute 'Serie': [facet 'pattern'] The value '' is not accepted by the pattern '[^|]{1,25}'."
+  },
+  {
+   "linea": 17,
+   "ruta": "/cfdi:Comprobante/cfd3:Emisor",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/3}Emisor': This element is not expected. Expected is one of ( {http://www.sat.gob.mx/cfd/4}CfdiRelacionados, {http://www.sat.gob.mx/cfd/4}Emisor )."
+  }
+ ]
+}

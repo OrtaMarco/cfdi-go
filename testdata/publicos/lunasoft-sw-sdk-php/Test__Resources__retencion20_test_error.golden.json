@@ -1,0 +1,51 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "2.0",
+    "folio_int": "5a64d3b5038e104ed108",
+    "no_certificado": "30001000000500003416",
+    "fecha_exp": "2024-09-15T15:04:17",
+    "lugar_exp_retenc": "45110",
+    "cve_retenc": "01",
+    "emisor": {
+      "rfc_e": "EKU9003173C9",
+      "nom_den_raz_soc_e": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal_e": "601"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional",
+      "nacional": {
+        "rfc_r": "URE180429TM6",
+        "nom_den_raz_soc_r": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+        "domicilio_fiscal_r": "86991"
+      }
+    },
+    "periodo": {
+      "mes_ini": "01",
+      "mes_fin": "03",
+      "ejercicio": "2023"
+    },
+    "totales": {
+      "monto_tot_operacion": "2000.00",
+      "monto_tot_grav": "2000.00",
+      "monto_tot_exent": "0",
+      "monto_tot_ret": "580.00",
+      "imp_retenidos": [
+        {
+          "base_ret": "2000",
+          "impuesto_ret": "001",
+          "monto_ret": "580.00",
+          "tipo_pago_ret": "03"
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Retenciones/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

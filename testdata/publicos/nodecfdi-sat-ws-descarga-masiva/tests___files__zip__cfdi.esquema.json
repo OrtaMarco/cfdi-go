@@ -1,0 +1,10 @@
+{
+ "veredicto": "incompleto",
+ "errores": [
+  {
+   "linea": 12,
+   "ruta": "/",
+   "mensaje": "CFDI 3.2: fuera del alcance (sin esquema)"
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'Sello' is required but missing."
+  },
+  {
+   "linea": 2,
+   "ruta": "/cfdi:Comprobante",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Comprobante': The attribute 'Certificado' is required but missing."
+  },
+  {
+   "linea": 43,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital': The attribute 'SelloCFD' is required but missing."
+  },
+  {
+   "linea": 43,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital': The attribute 'SelloSAT' is required but missing."
+  }
+ ]
+}

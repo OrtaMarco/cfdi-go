@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/registrofiscal:CFDIRegistroFiscal",
+   "mensaje": "Element '{http://www.sat.gob.mx/registrofiscal}CFDIRegistroFiscal', attribute 'Folio': [facet 'pattern'] The value '000000000000001' is not accepted by the pattern '[0-9]{16}'."
+  }
+ ]
+}

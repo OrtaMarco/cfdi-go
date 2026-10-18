@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 11,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}Pago', attribute 'FormaDePagoP': [facet 'enumeration'] The value '33' is not an element of the set {'01', '02', '03', '04', '05', '06', '08', '12', '13', '14', '15', '17', '23', '24', '25', '26', '27', '28', '29', '30', '31', '99'}."
+  }
+ ]
+}

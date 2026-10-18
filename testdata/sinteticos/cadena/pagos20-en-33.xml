@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 3.3 con Pagos 2.0: la hoja 3.3 del SAT no incluye Pagos20.xslt, así que la cadena no
+     se puede garantizar aunque la librería lea el complemento. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:pago20="http://www.sat.gob.mx/Pagos20"
+    Version="3.3" Fecha="2022-03-01T10:00:00" NoCertificado="30001000000500003416" SubTotal="0" Moneda="XXX"
+    Total="0" TipoDeComprobante="P" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XAXX010101000" UsoCFDI="P01"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="84111506" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago" ValorUnitario="0" Importe="0"/>
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <pago20:Pagos Version="2.0">
+      <pago20:Totales MontoTotalPagos="100.00"/>
+      <pago20:Pago FechaPago="2022-03-01T09:00:00" FormaDePagoP="03" MonedaP="MXN" Monto="100.00"/>
+    </pago20:Pagos>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

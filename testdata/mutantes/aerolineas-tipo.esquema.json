@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/aerolineas:Aerolineas",
+   "mensaje": "Element '{http://www.sat.gob.mx/aerolineas}Aerolineas', attribute 'TUA': 'ciento cincuenta' is not a valid value of the atomic type '{http://www.sat.gob.mx/aerolineas}t_Importe'."
+  }
+ ]
+}

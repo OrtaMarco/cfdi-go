@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 23,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cce:ComercioExterior/cce:Receptor",
+   "mensaje": "Element '{http://www.sat.gob.mx/ComercioExterior}Receptor': The attribute 'NumRegIdTrib' is required but missing."
+  }
+ ]
+}

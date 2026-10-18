@@ -1,0 +1,142 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "folio": "666",
+    "fecha": "2026-07-01T10:00:00-06:00",
+    "moneda": "MXN",
+    "total": "1160.00",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "nombre": "PUBLICO EN GENERAL",
+      "domicilio_fiscal_receptor": "42501",
+      "regimen_fiscal_receptor": "616",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "clave_unidad": "ACT",
+        "descripcion": "Concepto raro",
+        "valor_unitario": "1000.00",
+        "importe": "1000.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1000.00",
+              "impuesto": "002",
+              "tipo_factor": "Exento",
+              "tasa_o_cuota": "0.000000",
+              "importe": "0.00"
+            },
+            {
+              "base": "1000.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000"
+            }
+          ]
+        }
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "NO-ES-UN-UUID",
+      "uuid_original": "no-es-un-uuid",
+      "fecha_timbrado": "ayer",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "pagos": {
+      "version": "2.0"
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "CONTENIDO_TRAS_RAIZ",
+      "mensaje": "38 bytes después del cierre del Comprobante"
+    },
+    {
+      "codigo": "FECHA_FORMATO",
+      "ruta": "/Comprobante/@Fecha",
+      "mensaje": "\"2026-07-01T10:00:00-06:00\" no tiene el formato 2006-01-02T15:04:05",
+      "atributo": "Fecha",
+      "valor": "2026-07-01T10:00:00-06:00"
+    },
+    {
+      "codigo": "DECIMAL_INVALIDO",
+      "ruta": "/Comprobante/@SubTotal",
+      "mensaje": "\"1,000.00\" no es un decimal válido",
+      "atributo": "SubTotal",
+      "valor": "1,000.00"
+    },
+    {
+      "codigo": "NODO_DUPLICADO",
+      "ruta": "/Comprobante/Emisor",
+      "mensaje": "2 nodos Emisor; se usa el primero"
+    },
+    {
+      "codigo": "NAMESPACE_INESPERADO",
+      "ruta": "/Comprobante/Receptor",
+      "mensaje": "se esperaba el namespace \"http://www.sat.gob.mx/cfd/4\" y vino \"http://www.sat.gob.mx/cfd/3\""
+    },
+    {
+      "codigo": "DECIMAL_INVALIDO",
+      "ruta": "/Comprobante/Conceptos/Concepto[1]/@Cantidad",
+      "mensaje": "\"1e3\" no es un decimal válido",
+      "atributo": "Cantidad",
+      "valor": "1e3"
+    },
+    {
+      "codigo": "EXENTO_CON_IMPORTE",
+      "ruta": "/Comprobante/Conceptos/Concepto[1]/Impuestos/Traslados/Traslado[1]",
+      "mensaje": "traslado Exento con TasaOCuota o Importe"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Conceptos/Concepto[1]/Impuestos/Traslados/Traslado[2]/@Importe",
+      "mensaje": "traslado Tasa sin Importe",
+      "atributo": "Importe"
+    },
+    {
+      "codigo": "FECHA_INVALIDA",
+      "ruta": "/Comprobante/Complemento/TimbreFiscalDigital/@FechaTimbrado",
+      "mensaje": "fecha ilegible \"ayer\"",
+      "atributo": "FechaTimbrado",
+      "valor": "ayer"
+    },
+    {
+      "codigo": "UUID_INVALIDO",
+      "ruta": "/Comprobante/Complemento/TimbreFiscalDigital/@UUID",
+      "mensaje": "\"no-es-un-uuid\" no es un UUID",
+      "atributo": "UUID",
+      "valor": "no-es-un-uuid"
+    },
+    {
+      "codigo": "NODO_DUPLICADO",
+      "ruta": "/Comprobante/Complemento/TimbreFiscalDigital",
+      "mensaje": "más de un TimbreFiscalDigital; se usa el primero"
+    },
+    {
+      "codigo": "COMPLEMENTO_VERSION",
+      "ruta": "/Comprobante/Complemento/Pagos/@Version",
+      "mensaje": "versión \"2.0\" no esperada para {http://www.sat.gob.mx/Pagos}Pagos",
+      "atributo": "Version"
+    },
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago",
+      "mensaje": "Pagos sin ningún Pago"
+    }
+  ]
+}

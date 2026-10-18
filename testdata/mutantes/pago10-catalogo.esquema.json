@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 11,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago10:Pagos/pago10:Pago[1]/pago10:DoctoRelacionado",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos}DoctoRelacionado', attribute 'MetodoDePagoDR': [facet 'enumeration'] The value 'PPX' is not an element of the set {'PUE', 'PPD'}."
+  }
+ ]
+}

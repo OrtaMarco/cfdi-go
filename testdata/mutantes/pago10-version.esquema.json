@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 9,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago10:Pagos",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos}Pagos', attribute 'Version': The value '2.0' does not match the fixed value constraint '1.0'."
+  }
+ ]
+}

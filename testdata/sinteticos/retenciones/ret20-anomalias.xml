@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2" xmlns:intereses="http://www.sat.gob.mx/esquemas/retencionpago/1/intereses" xmlns:x="urn:raro" Version="2.0" Sello="" NoCertificado="30001000000500003416" Certificado="" FechaExp="2026-01-15T10:30:00-06:00" LugarExpRetenc="42501" CveRetenc="16">
+  <retenciones:Emisor RfcE="eku9003173c9 " NomDenRazSocE="ESCUELA KEMPER URGATE" RegimenFiscalE="601"/>
+  <retenciones:Receptor NacionalidadR="Nacional"/>
+  <retenciones:Periodo MesIni="01" MesFin="01"/>
+  <retenciones:Totales MontoTotOperacion="1000.00" MontoTotGrav="1,000.00" MontoTotExent="0" MontoTotRet="0">
+    <retenciones:ImpRetenidos ImpuestoRet="001" MontoRet="0"/>
+  </retenciones:Totales>
+  <retenciones:Complemento>
+    <intereses:Intereses Version="1.0" SistFinanciero="SI" RetiroAORESRetInt="NO" OperFinancDerivad="NO" MontIntNominal="10.00" MontIntReal="8.00" Perdida="0.00"/>
+    <intereses:Intereses Version="1.0" SistFinanciero="NO" RetiroAORESRetInt="NO" OperFinancDerivad="NO" MontIntNominal="1" MontIntReal="1" Perdida="0"/>
+    <x:Raro/>
+  </retenciones:Complemento>
+</retenciones:Retenciones>

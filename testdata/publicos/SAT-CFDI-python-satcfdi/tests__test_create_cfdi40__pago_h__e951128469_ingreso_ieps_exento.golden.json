@@ -1,0 +1,94 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "A",
+    "folio": "123456",
+    "fecha": "2020-01-01T22:40:38",
+    "no_certificado": "30001000000400002460",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "01",
+    "lugar_expedicion": "56820",
+    "emisor": {
+      "rfc": "H&E951128469",
+      "nombre": "HERRERIA & ELECTRICOS",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "KIJ0906199R1",
+      "nombre": "KIJ, S.A DE C.V.",
+      "domicilio_fiscal_receptor": "59820",
+      "regimen_fiscal_receptor": "601",
+      "uso_cfdi": "CP01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "pagos": {
+      "version": "2.0",
+      "totales": {
+        "monto_total_pagos": "15390.30"
+      },
+      "pago": [
+        {
+          "fecha_pago": "2020-01-02T22:40:38",
+          "forma_de_pago_p": "03",
+          "moneda_p": "MXN",
+          "tipo_cambio_p": "1",
+          "monto": "15390.30",
+          "docto_relacionado": [
+            {
+              "id_documento": "6D7434A6-E3F2-47AD-9E4C-08849946AFA0",
+              "id_documento_original": "6d7434a6-e3f2-47ad-9e4c-08849946afa0",
+              "serie": "A",
+              "folio": "123456",
+              "moneda_dr": "MXN",
+              "equivalencia_dr": "1",
+              "num_parcialidad": "1",
+              "imp_saldo_ant": "15390.30",
+              "imp_pagado": "15390.30",
+              "imp_saldo_insoluto": "0.00",
+              "objeto_imp_dr": "02",
+              "impuestos_dr": {
+                "traslados_dr": [
+                  {
+                    "base_dr": "15390.30",
+                    "impuesto_dr": "003",
+                    "tipo_factor_dr": "Exento"
+                  }
+                ]
+              }
+            }
+          ],
+          "impuestos_p": {
+            "traslados_p": [
+              {
+                "base_p": "15390.30",
+                "impuesto_p": "003",
+                "tipo_factor_p": "Exento"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

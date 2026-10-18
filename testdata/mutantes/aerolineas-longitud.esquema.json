@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/aerolineas:Aerolineas/aerolineas:OtrosCargos/aerolineas:Cargo",
+   "mensaje": "Element '{http://www.sat.gob.mx/aerolineas}Cargo', attribute 'CodigoCargo': [facet 'maxLength'] The value 'XVXVXVXVX' has a length of '9'; this exceeds the allowed maximum length of '8'."
+  }
+ ]
+}

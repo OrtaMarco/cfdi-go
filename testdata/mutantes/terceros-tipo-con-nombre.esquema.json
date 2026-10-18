@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 14,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[1]/cfdi:ComplementoConcepto/terceros:PorCuentadeTerceros/terceros:InformacionFiscalTercero",
+   "mensaje": "Element '{http://www.sat.gob.mx/terceros}InformacionFiscalTercero': The attribute 'calle' is required but missing."
+  }
+ ]
+}

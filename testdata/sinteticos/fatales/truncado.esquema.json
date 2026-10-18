@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 7,
+   "ruta": "",
+   "mensaje": "XML ilegible: Premature end of data in tag Concepto line 6, line 7, column 1 (truncado.xml, line 7)"
+  }
+ ]
+}

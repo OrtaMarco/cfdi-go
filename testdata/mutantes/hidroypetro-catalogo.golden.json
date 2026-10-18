@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "HP",
+    "folio": "10",
+    "fecha": "2026-07-20T06:30:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "4400.00",
+    "moneda": "MXN",
+    "total": "5104.00",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "domicilio_fiscal_receptor": "76028",
+      "regimen_fiscal_receptor": "605",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "15101514",
+        "cantidad": "100",
+        "clave_unidad": "LTR",
+        "descripcion": "Gasolina de prueba",
+        "valor_unitario": "22.00",
+        "importe": "2200.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "2200.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "352.00"
+            }
+          ]
+        },
+        "hidro_y_petro": {
+          "version": "1.0",
+          "tipo_permiso": "PER01",
+          "numero_permiso": "PL/00000/EXP/ES/2026",
+          "clave_hyp": "15101514",
+          "sub_producto_hyp": "SP16"
+        }
+      },
+      {
+        "clave_prod_serv": "15101505",
+        "cantidad": "100",
+        "clave_unidad": "LTR",
+        "descripcion": "Diésel de prueba",
+        "valor_unitario": "22.00",
+        "importe": "2200.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "2200.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "352.00"
+            }
+          ]
+        },
+        "hidro_y_petro": {
+          "version": "1.0",
+          "tipo_permiso": "PER99",
+          "numero_permiso": "PL/00000/EXP/ES/2026",
+          "clave_hyp": "15101505",
+          "sub_producto_hyp": "SP19"
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "704.00",
+      "traslados": [
+        {
+          "base": "4400.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "704.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555555507",
+      "fecha_timbrado": "2026-07-20T06:31:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    }
+  },
+  "advertencias": []
+}

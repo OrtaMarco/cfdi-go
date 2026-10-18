@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="4.0" Serie="T" Folio="9" Fecha="2026-04-20T07:15:00" Sello="U0VMTE8gREUgUFJVRUJB" NoCertificado="30001000000500003416" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="T" Exportacion="01" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" DomicilioFiscalReceptor="42501" RegimenFiscalReceptor="601" UsoCFDI="S01"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="43211500" NoIdentificacion="INV-1" Cantidad="10" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Mercancía de prueba en tránsito" ValorUnitario="0.00" Importe="0.00" ObjetoImp="01">
+      <cfdi:Parte ClaveProdServ="43211501" Cantidad="10" Descripcion="Componente de prueba" ValorUnitario="0.00" Importe="0.00"/>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="99999999-AAAA-BBBB-CCCC-DDDDDDDDDDDD" FechaTimbrado="2026-04-20T07:16:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000500003456" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

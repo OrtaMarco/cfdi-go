@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 0,
+   "ruta": "",
+   "mensaje": "XML ilegible: Error reading file 'testdata/sinteticos/utf8-miente.xml': Invalid bytes in character encoding"
+  }
+ ]
+}

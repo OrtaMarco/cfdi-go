@@ -1,0 +1,152 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.2",
+    "serie": "C",
+    "folio": "38",
+    "fecha": "2015-02-18T11:49:20",
+    "no_certificado": "20001000000100005867",
+    "sub_total": "35000.00",
+    "descuento": "0",
+    "moneda": "Pesos",
+    "total": "40600.00",
+    "tipo_de_comprobante": "ingreso",
+    "lugar_expedicion": "Monterrey, Nuevo León",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "Empresa de Pruebas SA"
+    },
+    "receptor": {
+      "rfc": "E&Ñ831019M53",
+      "nombre": "Exportadora de Ganado HOLSTEIN S.A."
+    },
+    "conceptos": [
+      {
+        "cantidad": "1",
+        "unidad": "LTE",
+        "descripcion": "Módulo de embarque serie A-6743-Ñ",
+        "valor_unitario": "35000.00",
+        "importe": "35000.00"
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "0.00",
+      "total_impuestos_trasladados": "5600.00",
+      "retenciones": [
+        {
+          "impuesto": "ISR",
+          "importe": "0.00"
+        },
+        {
+          "impuesto": "IVA",
+          "importe": "0.00"
+        }
+      ],
+      "traslados": [
+        {
+          "impuesto": "IVA",
+          "importe": "5600.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "E403F396-6A57-4625-ADB4-BB436B00789F",
+      "uuid_original": "e403f396-6a57-4625-adb4-bb436b00789f",
+      "fecha_timbrado": "2015-02-17T11:49:20",
+      "no_certificado_sat": "20001000000100005761"
+    },
+    "nomina": [
+      {
+        "version": "1.1",
+        "registro_patronal": "A0123456789",
+        "num_empleado": "ABC123",
+        "curp": "XOJI740919MQTDMN02",
+        "tipo_regimen": "2",
+        "num_seguridad_social": "0123456789",
+        "fecha_pago": "2015-01-14",
+        "fecha_inicial_pago": "2015-01-01",
+        "fecha_final_pago": "2015-01-15",
+        "num_dias_pagados": "14",
+        "departamento": "Contabilidad",
+        "banco": "012",
+        "fecha_inicio_rel_laboral": "2012-01-01",
+        "puesto": "Contador",
+        "tipo_contrato": "Indeterminado (Permanente)",
+        "tipo_jornada": "Matutino",
+        "periodicidad_pago": "Quincenal",
+        "riesgo_puesto": "2",
+        "salario_diario_integrado": "100.76",
+        "percepciones": {
+          "total_gravado": "9590.10",
+          "total_exento": "0.00",
+          "percepcion": [
+            {
+              "tipo_percepcion": "001",
+              "clave": "001",
+              "concepto": "Dias de Sueldo",
+              "importe_gravado": "950.46",
+              "importe_exento": "0"
+            },
+            {
+              "tipo_percepcion": "017",
+              "clave": "039",
+              "concepto": "Subsidio al Empleo (sp)",
+              "importe_gravado": "0",
+              "importe_exento": "0"
+            },
+            {
+              "tipo_percepcion": "001",
+              "clave": "133",
+              "concepto": "Dia Festivo Oficial",
+              "importe_gravado": "139.34",
+              "importe_exento": "0"
+            }
+          ]
+        },
+        "deducciones": {
+          "total_gravado": "0.00",
+          "total_exento": "167.66",
+          "deduccion": [
+            {
+              "tipo_deduccion": "002",
+              "clave": "043",
+              "concepto": "I.S.R. Art142",
+              "importe_gravado": "0",
+              "importe_exento": "0"
+            },
+            {
+              "tipo_deduccion": "002",
+              "clave": "049",
+              "concepto": "I.S.R. (sp)",
+              "importe_gravado": "0",
+              "importe_exento": "501.18"
+            },
+            {
+              "tipo_deduccion": "001",
+              "clave": "052",
+              "concepto": "I.M.S.S.",
+              "importe_gravado": "0",
+              "importe_exento": "66.48"
+            },
+            {
+              "tipo_deduccion": "004",
+              "clave": "99",
+              "concepto": "Ajuste al neto",
+              "importe_gravado": "0",
+              "importe_exento": "0"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "VERSION_ANTIGUA",
+      "ruta": "/Comprobante/@Version",
+      "mensaje": "CFDI 3.2: lectura parcial, solo los campos que coinciden con 3.3",
+      "atributo": "Version"
+    }
+  ]
+}

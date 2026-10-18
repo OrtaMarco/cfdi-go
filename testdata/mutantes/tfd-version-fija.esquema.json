@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 34,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital', attribute 'Version': The value '1.0' does not match the fixed value constraint '1.1'."
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 16,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Concepto', attribute 'Cantidad': [facet 'fractionDigits'] The value '2.5000001' has more fractional digits than are allowed ('6')."
+  }
+ ]
+}

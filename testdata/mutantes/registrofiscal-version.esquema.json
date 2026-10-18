@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/registrofiscal:CFDIRegistroFiscal",
+   "mensaje": "Element '{http://www.sat.gob.mx/registrofiscal}CFDIRegistroFiscal', attribute 'Version': The value '1.1' does not match the fixed value constraint '1.0'."
+  }
+ ]
+}

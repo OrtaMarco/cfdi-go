@@ -1,0 +1,184 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "A",
+    "folio": "167ABC",
+    "fecha": "2021-01-13T14:15:16",
+    "forma_pago": "01",
+    "no_certificado": "30001000000400002434",
+    "condiciones_de_pago": "CONDICIONES",
+    "sub_total": "2269400",
+    "descuento": "0.00",
+    "moneda": "MXN",
+    "tipo_cambio": "1",
+    "total": "2382870",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "45079",
+    "cfdi_relacionados": [
+      {
+        "tipo_relacion": "01",
+        "cfdi_relacionado": [
+          {
+            "uuid": "A39DA66B-52CA-49E3-879B-5C05185B0EF7"
+          }
+        ]
+      }
+    ],
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE SA DE CV",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "uso_cfdi": "G01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "no_identificacion": "00001",
+        "cantidad": "1.5",
+        "clave_unidad": "F52",
+        "unidad": "TONELADA",
+        "descripcion": "ACERO",
+        "valor_unitario": "1500000",
+        "importe": "2250000",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "2250000",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "360000"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "2250000",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.110000",
+              "importe": "247500"
+            }
+          ]
+        },
+        "cuenta_predial": [
+          {
+            "numero": "51888"
+          }
+        ]
+      },
+      {
+        "clave_prod_serv": "01010101",
+        "no_identificacion": "00002",
+        "cantidad": "1.6",
+        "clave_unidad": "F52",
+        "unidad": "TONELADA",
+        "descripcion": "ALUMINIO",
+        "valor_unitario": "1500",
+        "importe": "2400",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "2400",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "384"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "2400",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.110000",
+              "importe": "264"
+            }
+          ]
+        },
+        "informacion_aduanera": [
+          {
+            "numero_pedimento": "15  48  4567  6001234"
+          }
+        ]
+      },
+      {
+        "clave_prod_serv": "01010101",
+        "no_identificacion": "00003",
+        "cantidad": "1.7",
+        "clave_unidad": "F52",
+        "unidad": "TONELADA",
+        "descripcion": "ZAMAC",
+        "valor_unitario": "10000",
+        "importe": "17000",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "17000",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "2720"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "17000",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.110000",
+              "importe": "1870"
+            }
+          ]
+        },
+        "parte": [
+          {
+            "clave_prod_serv": "01010101",
+            "no_identificacion": "055155",
+            "cantidad": "1.0",
+            "unidad": "UNIDAD",
+            "descripcion": "PARTE EJEMPLO",
+            "valor_unitario": "1.00",
+            "importe": "1.00",
+            "informacion_aduanera": [
+              {
+                "numero_pedimento": "15  48  4567  6981235"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "249634",
+      "total_impuestos_trasladados": "363104",
+      "retenciones": [
+        {
+          "impuesto": "002",
+          "importe": "249634"
+        }
+      ],
+      "traslados": [
+        {
+          "impuesto": "001",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "363104"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "9FB6ED1A-5F37-4FEF-980A-7F8C83B51894",
+      "fecha_timbrado": "2017-06-05T09:09:37",
+      "rfc_prov_certif": "SAT970701NN3",
+      "no_certificado_sat": "20001000000300022779"
+    }
+  },
+  "advertencias": []
+}

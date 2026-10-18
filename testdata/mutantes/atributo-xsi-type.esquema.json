@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 3,
+   "ruta": "/cfdi:Comprobante/cfdi:Emisor",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Emisor', attribute '{http://www.w3.org/2001/XMLSchema-instance}type': The QName value '{http://www.sat.gob.mx/cfd/4}Otro' of the xsi:type attribute does not resolve to a type definition."
+  }
+ ]
+}

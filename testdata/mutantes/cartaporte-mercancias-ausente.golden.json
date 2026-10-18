@@ -1,0 +1,165 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "CP",
+    "folio": "31",
+    "fecha": "2026-04-06T07:00:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "5000.00",
+    "moneda": "MXN",
+    "total": "5800.00",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "domicilio_fiscal_receptor": "76028",
+      "regimen_fiscal_receptor": "605",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "78101802",
+        "cantidad": "1",
+        "clave_unidad": "E48",
+        "descripcion": "Flete de prueba",
+        "valor_unitario": "5000.00",
+        "importe": "5000.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "5000.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "800.00"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "800.00",
+      "traslados": [
+        {
+          "base": "5000.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "800.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555555503",
+      "fecha_timbrado": "2026-04-06T07:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "carta_porte": {
+      "version": "3.1",
+      "id_ccp": "CCC00001-0000-4000-8000-000000000031",
+      "transp_internac": "Sí",
+      "entrada_salida_merc": "Salida",
+      "pais_origen_destino": "USA",
+      "via_entrada_salida": "01",
+      "total_dist_rec": "230.75",
+      "registro_istmo": "Sí",
+      "ubicacion_polo_origen": "01",
+      "ubicacion_polo_destino": "02",
+      "regimenes_aduaneros": [
+        {
+          "regimen_aduanero": "EXD"
+        },
+        {
+          "regimen_aduanero": "ITR"
+        }
+      ],
+      "ubicaciones": [
+        {
+          "tipo_ubicacion": "Origen",
+          "id_ubicacion": "OR000001",
+          "rfc_remitente_destinatario": "EKU9003173C9",
+          "fecha_hora_salida_llegada": "2026-04-06T08:00:00",
+          "domicilio": {
+            "calle": "Calle de prueba",
+            "numero_exterior": "1",
+            "colonia": "0001",
+            "municipio": "048",
+            "estado": "HID",
+            "pais": "MEX",
+            "codigo_postal": "42501"
+          }
+        },
+        {
+          "tipo_ubicacion": "Destino",
+          "id_ubicacion": "DE000002",
+          "rfc_remitente_destinatario": "XOJI740919U48",
+          "fecha_hora_salida_llegada": "2026-04-06T11:00:00",
+          "distancia_recorrida": "150.50",
+          "domicilio": {
+            "estado": "QUE",
+            "pais": "MEX",
+            "codigo_postal": "76028"
+          }
+        },
+        {
+          "tipo_ubicacion": "Destino",
+          "id_ubicacion": "DE000003",
+          "rfc_remitente_destinatario": "XEXX010101000",
+          "nombre_remitente_destinatario": "DESTINATARIO EXTRANJERO DE PRUEBA",
+          "num_reg_id_trib": "987654321",
+          "residencia_fiscal": "USA",
+          "fecha_hora_salida_llegada": "2026-04-06T13:00:00",
+          "distancia_recorrida": "80.25",
+          "domicilio": {
+            "estado": "TX",
+            "pais": "USA",
+            "codigo_postal": "78040"
+          }
+        }
+      ],
+      "figura_transporte": [
+        {
+          "tipo_figura": "01",
+          "rfc_figura": "CACX7605101P8",
+          "num_licencia": "LIC000031",
+          "nombre_figura": "OPERADOR DE PRUEBA"
+        },
+        {
+          "tipo_figura": "02",
+          "rfc_figura": "XIQB891116QE4",
+          "nombre_figura": "PROPIETARIO DE PRUEBA",
+          "partes_transporte": [
+            {
+              "parte_transporte": "PT01"
+            }
+          ],
+          "domicilio": {
+            "estado": "HID",
+            "pais": "MEX",
+            "codigo_postal": "42501"
+          }
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/CartaPorte/Mercancias",
+      "mensaje": "CartaPorte sin Mercancias"
+    }
+  ]
+}

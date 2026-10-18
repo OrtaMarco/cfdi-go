@@ -1,0 +1,63 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "fecha": "2018-03-01T09:00:00",
+    "forma_pago": "01",
+    "sub_total": "50.00",
+    "moneda": "MXN",
+    "total": "58.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "06000",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Venta",
+        "valor_unitario": "50.00",
+        "importe": "50.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "50.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "8.00"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "8.00",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "8.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "CCCCCCCC-DDDD-EEEE-FFFF-000000000000",
+      "uuid_original": "cccccccc-dddd-eeee-ffff-000000000000",
+      "fecha_timbrado": "2018-03-01T09:01:00",
+      "no_certificado_sat": "00001000000300000000"
+    }
+  },
+  "advertencias": []
+}

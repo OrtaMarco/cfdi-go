@@ -1,0 +1,110 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "A",
+    "folio": "999175",
+    "fecha": "2017-11-24T15:19:24",
+    "forma_pago": "03",
+    "no_certificado": "20001000000300005692",
+    "sub_total": "286.21",
+    "descuento": "0.00",
+    "moneda": "MXN",
+    "total": "300.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "66050",
+    "emisor": {
+      "rfc": "ACO560518KW7",
+      "nombre": "ALLIANCE EMPEÑOS S DE RL DE CV",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "KAHO641101B39",
+      "nombre": "OSCAR KALA HAAK",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "47111603",
+        "no_identificacion": "6950",
+        "cantidad": "1.000",
+        "clave_unidad": "H87",
+        "unidad": "PIEZA",
+        "descripcion": "PRODUCTO TASA EXENTA DE I.V.A.ÑS",
+        "valor_unitario": "100.00",
+        "importe": "100.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "100.00",
+              "impuesto": "002",
+              "tipo_factor": "Exento"
+            }
+          ]
+        }
+      },
+      {
+        "clave_prod_serv": "47111603",
+        "no_identificacion": "6947",
+        "cantidad": "1.000",
+        "clave_unidad": "H87",
+        "unidad": "PIEZA",
+        "descripcion": "PRODUCTO TASA 0% DE I.V.A.ÑS",
+        "valor_unitario": "100.00",
+        "importe": "100.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "100.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.000000",
+              "importe": "0.00"
+            }
+          ]
+        }
+      },
+      {
+        "clave_prod_serv": "47111603",
+        "no_identificacion": "6946",
+        "cantidad": "1.000",
+        "clave_unidad": "H87",
+        "unidad": "PIEZA",
+        "descripcion": "PRODUCTO TASA 16% DE I.V.A.ÑS",
+        "valor_unitario": "86.21",
+        "importe": "86.21",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "86.21",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "13.79"
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "0.00",
+      "total_impuestos_trasladados": "13.79",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "13.79"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "1FBA4626-947B-49AC-BCD4-A4AF266B3DBF",
+      "fecha_timbrado": "2017-11-24T15:27:34",
+      "no_certificado_sat": "20001000000300022323"
+    }
+  },
+  "advertencias": []
+}

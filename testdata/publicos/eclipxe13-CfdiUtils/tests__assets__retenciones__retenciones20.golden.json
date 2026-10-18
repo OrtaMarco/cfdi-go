@@ -1,0 +1,69 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "2.0",
+    "no_certificado": "30001000000500003416",
+    "fecha_exp": "2022-01-13T14:15:16",
+    "lugar_exp_retenc": "91778",
+    "cve_retenc": "14",
+    "cfdi_reten_relacionados": {
+      "tipo_relacion": "01",
+      "uuid": "1474B7D3-61FC-41C4-A8B8-3F22E1161BB4",
+      "uuid_original": "1474b7d3-61fc-41c4-a8b8-3f22e1161bb4"
+    },
+    "emisor": {
+      "rfc_e": "EKU9003173C9",
+      "nom_den_raz_soc_e": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal_e": "601"
+    },
+    "receptor": {
+      "nacionalidad_r": "Extranjero",
+      "extranjero": {
+        "num_reg_id_trib_r": "998877665544332211",
+        "nom_den_raz_soc_r": "WORLD WIDE COMPANY INC"
+      }
+    },
+    "periodo": {
+      "mes_ini": "05",
+      "mes_fin": "05",
+      "ejercicio": "2021"
+    },
+    "totales": {
+      "monto_tot_operacion": "55578643",
+      "monto_tot_grav": "0",
+      "monto_tot_exent": "55578643",
+      "monto_tot_ret": "0",
+      "utilidad_bimestral": "0.1",
+      "isr_correspondiente": "0.1",
+      "imp_retenidos": [
+        {
+          "base_ret": "0",
+          "impuesto_ret": "001",
+          "monto_ret": "200.00",
+          "tipo_pago_ret": "01"
+        }
+      ]
+    },
+    "dividendos": {
+      "version": "1.0",
+      "divid_o_util": {
+        "cve_tip_div_o_util": "06",
+        "mont_isr_acred_ret_mexico": "0",
+        "mont_isr_acred_ret_extranjero": "0",
+        "mont_ret_ext_div_ext": "0",
+        "tipo_soc_distr_div": "Sociedad Nacional",
+        "mont_isr_acred_nal": "0",
+        "mont_div_acum_nal": "0",
+        "mont_div_acum_ext": "0"
+      }
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Retenciones/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

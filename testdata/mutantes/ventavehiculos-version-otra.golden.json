@@ -1,0 +1,156 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "T",
+    "folio": "33",
+    "fecha": "2021-07-01T12:00:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "1300.00",
+    "moneda": "MXN",
+    "total": "1508.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "80141600",
+        "cantidad": "1",
+        "clave_unidad": "E48",
+        "descripcion": "Servicio cobrado por cuenta de tercero",
+        "valor_unitario": "1000.00",
+        "importe": "1000.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1000.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "160.00"
+            }
+          ]
+        },
+        "por_cuentade_terceros": {
+          "version": "1.1",
+          "rfc": "XIQB891116QE4",
+          "nombre": "TERCERO DE PRUEBA",
+          "informacion_fiscal_tercero": {
+            "calle": "Calle de prueba",
+            "no_exterior": "5",
+            "municipio": "Pachuca",
+            "estado": "Hidalgo",
+            "pais": "México",
+            "codigo_postal": "42501"
+          },
+          "parte": [
+            {
+              "cantidad": "2",
+              "unidad": "Pieza",
+              "no_identificacion": "PZA-01",
+              "descripcion": "Parte de prueba",
+              "valor_unitario": "250.000000",
+              "importe": "500.000000",
+              "informacion_aduanera": [
+                {
+                  "numero": "21  47  3807  6000033",
+                  "fecha": "2021-06-15",
+                  "aduana": "PACHUCA"
+                }
+              ]
+            }
+          ],
+          "impuestos": {
+            "retenciones": [
+              {
+                "impuesto": "ISR",
+                "importe": "100.00"
+              }
+            ],
+            "traslados": [
+              {
+                "impuesto": "IVA",
+                "tasa": "16.00",
+                "importe": "160.00"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "clave_prod_serv": "25101503",
+        "cantidad": "1",
+        "clave_unidad": "H87",
+        "descripcion": "Vehículo de prueba",
+        "valor_unitario": "300.00",
+        "importe": "300.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "300.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "48.00"
+            }
+          ]
+        },
+        "venta_vehiculos": {
+          "version": "2.0",
+          "clave_vehicular": "0000001",
+          "niv": "NIV-DE-PRUEBA-0001",
+          "parte": [
+            {
+              "cantidad": "1",
+              "descripcion": "Motor de prueba",
+              "importe": "100.00",
+              "informacion_aduanera": [
+                {
+                  "numero": "21  47  3807  6000034",
+                  "fecha": "2021-05-20"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "208.00",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "208.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-4333-8444-555555555506",
+      "fecha_timbrado": "2021-07-01T12:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "COMPLEMENTO_VERSION",
+      "ruta": "/Comprobante/Conceptos/Concepto[2]/ComplementoConcepto/VentaVehiculos/@Version",
+      "mensaje": "versión \"2.0\" no esperada para {http://www.sat.gob.mx/ventavehiculos}VentaVehiculos",
+      "atributo": "Version"
+    }
+  ]
+}

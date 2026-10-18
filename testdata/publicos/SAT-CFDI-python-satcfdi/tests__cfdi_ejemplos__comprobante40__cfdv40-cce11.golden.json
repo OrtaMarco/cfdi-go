@@ -1,0 +1,159 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "fecha": "2021-12-08T23:59:59",
+    "forma_pago": "02",
+    "no_certificado": "30001000000300023708",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "03",
+    "lugar_expedicion": "99999",
+    "cfdi_relacionados": [
+      {
+        "tipo_relacion": "09",
+        "cfdi_relacionado": [
+          {
+            "uuid": "F4F09AEF-57F2-4BE0-A828-87D1A80ED61C"
+          }
+        ]
+      }
+    ],
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "Esta es una demostración",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "nombre": "Juanito Bananas De la Sierra",
+      "domicilio_fiscal_receptor": "99999",
+      "regimen_fiscal_receptor": "630",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Descripcion",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "comercio_exterior": {
+      "version": "1.1",
+      "motivo_traslado": "99",
+      "tipo_operacion": "2",
+      "clave_de_pedimento": "A1",
+      "certificado_origen": "1",
+      "num_certificado_origen": "DEADBEEF-CAFE-BABE-1234-DECADE012345",
+      "numero_exportador_confiable": "1",
+      "incoterm": "FOB",
+      "subdivision": "1",
+      "observaciones": "obs",
+      "tipo_cambio_usd": "234.5678",
+      "total_usd": "123.45",
+      "emisor": {
+        "curp": "PEPJ800101HDFBCDQ8",
+        "domicilio": {
+          "calle": "c",
+          "numero_exterior": "123X",
+          "numero_interior": "12A",
+          "colonia": "0001",
+          "localidad": "69",
+          "referencia": "r",
+          "municipio": "001",
+          "estado": "AGU",
+          "pais": "ZZZ",
+          "codigo_postal": "99998"
+        }
+      },
+      "propietario": [
+        {
+          "num_reg_id_trib": "1234567",
+          "residencia_fiscal": "ZZZ"
+        }
+      ],
+      "receptor": {
+        "num_reg_id_trib": "234567890",
+        "domicilio": {
+          "calle": "c",
+          "numero_exterior": "2",
+          "numero_interior": "99",
+          "colonia": "0002",
+          "localidad": "01",
+          "referencia": "r1",
+          "municipio": "002",
+          "estado": "ZZZ",
+          "pais": "ZZZ",
+          "codigo_postal": "01010"
+        }
+      },
+      "destinatario": [
+        {
+          "num_reg_id_trib": "654321",
+          "nombre": "Nombre",
+          "domicilio": [
+            {
+              "calle": "c3",
+              "numero_exterior": "3A",
+              "numero_interior": "101",
+              "colonia": "0003",
+              "localidad": "02",
+              "referencia": "rd",
+              "municipio": "003",
+              "estado": "BCN",
+              "pais": "ZZZ",
+              "codigo_postal": "01020"
+            }
+          ]
+        }
+      ],
+      "mercancias": [
+        {
+          "no_identificacion": "n100",
+          "fraccion_arancelaria": "99999999",
+          "cantidad_aduana": "0.001",
+          "unidad_aduana": "99",
+          "valor_unitario_aduana": "234.56",
+          "valor_dolares": "123.45",
+          "descripciones_especificas": [
+            {
+              "marca": "Marca",
+              "modelo": "Modelo",
+              "sub_modelo": "SubModelo",
+              "numero_serie": "NumeroSerie"
+            }
+          ]
+        },
+        {
+          "no_identificacion": "n101",
+          "fraccion_arancelaria": "99999999",
+          "cantidad_aduana": "0.001",
+          "unidad_aduana": "99",
+          "valor_unitario_aduana": "234.56",
+          "valor_dolares": "123.45",
+          "descripciones_especificas": [
+            {
+              "marca": "Marca",
+              "modelo": "Modelo",
+              "sub_modelo": "SubModelo",
+              "numero_serie": "NumeroSerie"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

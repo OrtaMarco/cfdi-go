@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 36,
+   "ruta": "",
+   "mensaje": "XML ilegible: Opening and ending tag mismatch: Conceptos line 5 and Comprobante, line 36, column 20 (xml-mal-formado.xml, line 36)"
+  }
+ ]
+}

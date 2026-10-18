@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 12,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/nomina:Nomina",
+   "mensaje": "Element '{http://www.sat.gob.mx/nomina}Nomina': The attribute 'CURP' is required but missing."
+  }
+ ]
+}

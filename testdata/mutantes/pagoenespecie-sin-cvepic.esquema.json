@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pee:PagoEnEspecie",
+   "mensaje": "Element '{http://www.sat.gob.mx/pagoenespecie}PagoEnEspecie': The attribute 'CvePIC' is required but missing."
+  }
+ ]
+}

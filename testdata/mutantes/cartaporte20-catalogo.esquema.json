@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/cartaporte20:CartaPorte",
+   "mensaje": "Element '{http://www.sat.gob.mx/CartaPorte20}CartaPorte', attribute 'TranspInternac': [facet 'enumeration'] The value 'Quizá' is not an element of the set {'Sí', 'No'}."
+  }
+ ]
+}

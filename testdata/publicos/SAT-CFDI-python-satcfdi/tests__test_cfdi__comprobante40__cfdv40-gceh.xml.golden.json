@@ -1,0 +1,140 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "fecha": "2021-12-08T23:59:59",
+    "forma_pago": "02",
+    "no_certificado": "30001000000300023708",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "exportacion": "03",
+    "lugar_expedicion": "99999",
+    "cfdi_relacionados": [
+      {
+        "tipo_relacion": "09",
+        "cfdi_relacionado": [
+          {
+            "uuid": "F4F09AEF-57F2-4BE0-A828-87D1A80ED61C"
+          }
+        ]
+      }
+    ],
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "Esta es una demostración",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "nombre": "Juanito Bananas De la Sierra",
+      "domicilio_fiscal_receptor": "99999",
+      "regimen_fiscal_receptor": "630",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Descripcion",
+        "valor_unitario": "0",
+        "importe": "0",
+        "objeto_imp": "01"
+      }
+    ],
+    "gastos_hidrocarburos": {
+      "version": "1.0",
+      "numero_contrato": "12345678",
+      "area_contractual": "abcdefg",
+      "erogacion": [
+        {
+          "tipo_erogacion": "Inversión",
+          "montocu_erogacion": "100.999",
+          "porcentaje": "99.999",
+          "documento_relacionado": [
+            {
+              "origen_erogacion": "Extranjero",
+              "folio_fiscal_vinculado": "C892EBD7-83DA-4233-98A4-3e44db9e85a4",
+              "rfc_proveedor": "AAA010101AAA",
+              "monto_total_iva": "99.001",
+              "monto_retencion_isr": "123",
+              "monto_retencion_iva": "0.123",
+              "monto_retencion_otros_impuestos": "9.001",
+              "numero_pedimento_vinculado": "12  34  5678  1234567",
+              "clave_pedimento_vinculado": "CT",
+              "clave_pago_pedimento_vinculado": "22",
+              "monto_iva_pedimento": "90.000001",
+              "otros_impuestos_pagados_pedimento": "1.0",
+              "fecha_folio_fiscal_vinculado": "2018-10-22",
+              "mes": "10",
+              "monto_total_erogaciones": "0.123"
+            }
+          ],
+          "actividades": [
+            {
+              "actividad_relacionada": "05",
+              "sub_actividades": [
+                {
+                  "sub_actividad_relacionada": "039",
+                  "tareas": [
+                    {
+                      "tarea_relacionada": "0155"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "centro_costos": [
+            {
+              "campo": "Campo",
+              "yacimientos": [
+                {
+                  "yacimiento": "Yacimiento",
+                  "pozos": [
+                    {
+                      "pozo": "Pozo"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tipo_erogacion": "Inversión",
+          "montocu_erogacion": "1001.999",
+          "porcentaje": "0.001",
+          "documento_relacionado": [
+            {
+              "origen_erogacion": "Nacional",
+              "folio_fiscal_vinculado": "a83a8330-1511-4b1b-959a-5771D8861206",
+              "rfc_proveedor": "AAA010101AAA",
+              "monto_total_iva": "99.001",
+              "monto_retencion_isr": "123",
+              "monto_retencion_iva": "0.001",
+              "monto_retencion_otros_impuestos": "9.001",
+              "numero_pedimento_vinculado": "12  34  5678  1234890",
+              "clave_pedimento_vinculado": "CT",
+              "clave_pago_pedimento_vinculado": "22",
+              "monto_iva_pedimento": "90.000001",
+              "otros_impuestos_pagados_pedimento": "1.0",
+              "fecha_folio_fiscal_vinculado": "2018-10-22",
+              "mes": "10",
+              "monto_total_erogaciones": "0.001"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

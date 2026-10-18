@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 21,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago20:Pagos/pago20:Pago/pago20:DoctoRelacionado[2]/pago20:ImpuestosDR/pago20:TrasladosDR",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos20}TrasladosDR': Missing child element(s). Expected is ( {http://www.sat.gob.mx/Pagos20}TrasladoDR )."
+  }
+ ]
+}

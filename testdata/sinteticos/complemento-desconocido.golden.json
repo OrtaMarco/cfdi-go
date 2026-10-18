@@ -1,0 +1,85 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "folio": "300",
+    "fecha": "2026-05-05T13:00:00",
+    "forma_pago": "01",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "2000.00",
+    "moneda": "MXN",
+    "total": "2000.00",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "domicilio_fiscal_receptor": "76028",
+      "regimen_fiscal_receptor": "605",
+      "uso_cfdi": "D10"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "86121500",
+        "cantidad": "1",
+        "clave_unidad": "E48",
+        "descripcion": "Colegiatura de prueba",
+        "valor_unitario": "2000.00",
+        "importe": "2000.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "2000.00",
+              "impuesto": "002",
+              "tipo_factor": "Exento"
+            }
+          ]
+        },
+        "complemento_concepto": [
+          "{urn:ejemplo:concepto}DeConcepto"
+        ]
+      }
+    ],
+    "impuestos": {
+      "traslados": [
+        {
+          "base": "2000.00",
+          "impuesto": "002",
+          "tipo_factor": "Exento"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE",
+      "uuid_original": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+      "fecha_timbrado": "2026-05-05T13:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "complementos_no_soportados": [
+      "{urn:ejemplo:concepto}DeConcepto",
+      "{urn:ejemplo:comprobante}DeComprobante"
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "COMPLEMENTO_NO_SOPORTADO",
+      "ruta": "/Comprobante/Conceptos/Concepto[1]/ComplementoConcepto/DeConcepto",
+      "mensaje": "complemento de concepto no soportado: {urn:ejemplo:concepto}DeConcepto"
+    },
+    {
+      "codigo": "COMPLEMENTO_NO_SOPORTADO",
+      "ruta": "/Comprobante/Complemento/DeComprobante",
+      "mensaje": "complemento no soportado: {urn:ejemplo:comprobante}DeComprobante"
+    }
+  ]
+}

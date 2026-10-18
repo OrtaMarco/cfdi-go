@@ -1,0 +1,78 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "B",
+    "folio": "77",
+    "fecha": "2021-06-30T18:05:09",
+    "forma_pago": "99",
+    "no_certificado": "30001000000400002495",
+    "sub_total": "3000.00",
+    "descuento": "300.00",
+    "moneda": "USD",
+    "tipo_cambio": "19.8765",
+    "total": "3132.00",
+    "tipo_de_comprobante": "I",
+    "metodo_pago": "PPD",
+    "lugar_expedicion": "06000",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XEXX010101000",
+      "nombre": "CLIENTE EXTRANJERO DE PRUEBA",
+      "residencia_fiscal": "USA",
+      "num_reg_id_trib": "123456789",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "81112100",
+        "cantidad": "3",
+        "clave_unidad": "E48",
+        "unidad": "Servicio",
+        "descripcion": "Licencia de prueba",
+        "valor_unitario": "1000.00",
+        "importe": "3000.00",
+        "descuento": "300.00",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "2700.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "432.00"
+            }
+          ]
+        },
+        "cuenta_predial": [
+          {
+            "numero": "ABC123"
+          }
+        ]
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_trasladados": "432.00",
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "432.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "11111111-2222-3333-4444-555555555555",
+      "fecha_timbrado": "2021-06-30T18:06:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000400002495"
+    }
+  },
+  "advertencias": []
+}

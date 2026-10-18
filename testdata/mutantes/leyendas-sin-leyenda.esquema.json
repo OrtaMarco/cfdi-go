@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/leyendasFisc:LeyendasFiscales",
+   "mensaje": "Element '{http://www.sat.gob.mx/leyendasFiscales}LeyendasFiscales': Missing child element(s). Expected is ( {http://www.sat.gob.mx/leyendasFiscales}Leyenda )."
+  }
+ ]
+}

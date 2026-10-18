@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 10,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pago10:Pagos/pago10:Pago[1]",
+   "mensaje": "Element '{http://www.sat.gob.mx/Pagos}Pago': The attribute 'Monto' is required but missing."
+  }
+ ]
+}

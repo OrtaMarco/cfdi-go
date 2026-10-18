@@ -1,0 +1,10 @@
+{
+ "veredicto": "incompleto",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "/Comprobante",
+   "mensaje": "Element 'Comprobante': No matching global declaration available for the validation root."
+  }
+ ]
+}

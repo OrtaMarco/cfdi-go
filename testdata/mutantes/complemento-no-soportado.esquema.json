@@ -1,0 +1,10 @@
+{
+ "veredicto": "incompleto",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ext:Otro",
+   "mensaje": "Element '{http://example.com/ext}Otro': No matching global element declaration available, but demanded by the strict wildcard."
+  }
+ ]
+}

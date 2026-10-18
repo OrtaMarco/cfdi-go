@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 34,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital",
+   "mensaje": "Element '{http://www.sat.gob.mx/TimbreFiscalDigital}TimbreFiscalDigital': The attribute 'UUID' is required but missing."
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 3.2 sintético: domicilios (plantilla con parámetro Nodo), ExpedidoEn repetido (cuenta
+     el primero), regímenes repetidos y un TFD 1.0. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" version="3.2" serie="B" folio="7"
+    fecha="2016-05-10T12:00:00" sello="" formaDePago="PAGO EN UNA SOLA EXHIBICION" noCertificado="30001000000500003416"
+    certificado="" subTotal="100.00" Moneda="MXN" total="116.00" tipoDeComprobante="ingreso"
+    metodoDePago="01" LugarExpedicion="PACHUCA, HIDALGO" NumCtaPago="  1234 ">
+  <cfdi:Emisor rfc="EKU9003173C9" nombre="ESCUELA KEMPER URGATE">
+    <cfdi:DomicilioFiscal calle="AV. HIDALGO" noExterior="77" municipio="PACHUCA" estado="HIDALGO" pais="MEXICO" codigoPostal="42000"/>
+    <cfdi:ExpedidoEn calle="PRIMERA" pais="MEXICO"/>
+    <cfdi:ExpedidoEn calle="SEGUNDA" pais="MEXICO" colonia="NO DEBE SALIR"/>
+    <cfdi:RegimenFiscal Regimen="REGIMEN GENERAL"/>
+    <cfdi:RegimenFiscal Regimen="  OTRO   REGIMEN "/>
+  </cfdi:Emisor>
+  <cfdi:Receptor rfc="XAXX010101000">
+    <cfdi:Domicilio pais="MEXICO" estado="HIDALGO"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto cantidad="1" unidad="SERVICIO" descripcion="Servicio de prueba" valorUnitario="100.00" importe="100.00"/>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosTrasladados="16.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado impuesto="IVA" tasa="16.00" importe="16.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" version="1.0" UUID="12345678-1234-4234-8234-123456789012" FechaTimbrado="2016-05-10T12:01:00" selloCFD="" noCertificadoSAT="00001000000300000000" selloSAT=""/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

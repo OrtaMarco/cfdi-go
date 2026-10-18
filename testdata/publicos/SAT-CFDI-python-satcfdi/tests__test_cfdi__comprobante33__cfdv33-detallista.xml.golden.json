@@ -1,0 +1,47 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "fecha": "2017-05-01T01:23:59",
+    "forma_pago": "02",
+    "no_certificado": "40001000000300000337",
+    "sub_total": "1000",
+    "moneda": "MXN",
+    "total": "1500",
+    "tipo_de_comprobante": "I",
+    "lugar_expedicion": "45079",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1.5",
+        "clave_unidad": "C81",
+        "descripcion": "ACERO",
+        "valor_unitario": "1500000",
+        "importe": "2250000"
+      }
+    ],
+    "complementos_no_soportados": [
+      "{http://www.sat.gob.mx/detallista}detallista"
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "COMPLEMENTO_NO_SOPORTADO",
+      "ruta": "/Comprobante/Complemento/detallista",
+      "mensaje": "complemento no soportado: {http://www.sat.gob.mx/detallista}detallista"
+    },
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

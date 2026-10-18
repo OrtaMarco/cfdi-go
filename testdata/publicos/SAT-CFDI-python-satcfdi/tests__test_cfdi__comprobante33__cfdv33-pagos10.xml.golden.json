@@ -1,0 +1,125 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "fecha": "2017-05-01T01:23:59",
+    "forma_pago": "02",
+    "no_certificado": "40001000000300000337",
+    "sub_total": "1000",
+    "moneda": "MXN",
+    "total": "1500",
+    "tipo_de_comprobante": "I",
+    "lugar_expedicion": "45079",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "regimen_fiscal": "622"
+    },
+    "receptor": {
+      "rfc": "BASJ600902KL9",
+      "uso_cfdi": "G03"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "01010101",
+        "cantidad": "1.5",
+        "clave_unidad": "C81",
+        "descripcion": "ACERO",
+        "valor_unitario": "1500000",
+        "importe": "2250000"
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "247500",
+      "total_impuestos_trasladados": "360000",
+      "retenciones": [
+        {
+          "impuesto": "001",
+          "importe": "247500"
+        }
+      ],
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "1.600000",
+          "importe": "360000"
+        }
+      ]
+    },
+    "pagos": {
+      "version": "1.0",
+      "pago": [
+        {
+          "fecha_pago": "2017-05-01T02:01:01",
+          "forma_de_pago_p": "99",
+          "moneda_p": "ZWL",
+          "tipo_cambio_p": "0.001",
+          "monto": "10.123",
+          "num_operacion": "123",
+          "rfc_emisor_cta_ord": "AAA010101AAA",
+          "nom_banco_ord_ext": "NOM123456",
+          "cta_ordenante": "9876543210",
+          "rfc_emisor_cta_ben": "AAA010101AAA",
+          "cta_beneficiario": "1234567890",
+          "tipo_cad_pago": "01",
+          "docto_relacionado": [
+            {
+              "id_documento": "DEADBEEF-CAFE-BABE-1234-123456789012",
+              "serie": "Serie56",
+              "folio": "Folio12",
+              "moneda_dr": "ZWL",
+              "tipo_cambio_dr": "0.000001",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "109",
+              "imp_saldo_ant": "1.789",
+              "imp_pagado": "1.234",
+              "imp_saldo_insoluto": "0.456"
+            }
+          ],
+          "impuestos": [
+            {
+              "total_impuestos_retenidos": "32.00",
+              "total_impuestos_trasladados": "21.00",
+              "retenciones": [
+                {
+                  "impuesto": "001",
+                  "importe": "21.655"
+                },
+                {
+                  "impuesto": "003",
+                  "importe": "10.345"
+                }
+              ],
+              "traslados": [
+                {
+                  "impuesto": "001",
+                  "tipo_factor": "Exento",
+                  "tasa_o_cuota": "0.160000",
+                  "importe": "0.544"
+                },
+                {
+                  "impuesto": "002",
+                  "tipo_factor": "Cuota",
+                  "tasa_o_cuota": "0.298800",
+                  "importe": "20.456"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "EXENTO_CON_IMPORTE",
+      "ruta": "/Comprobante/Complemento/Pagos/Pago[1]/Impuestos[1]/Traslados/Traslado[1]",
+      "mensaje": "traslado Exento con TasaOCuota o Importe"
+    },
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

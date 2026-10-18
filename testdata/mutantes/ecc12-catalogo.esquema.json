@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 27,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/ecc12:EstadoDeCuentaCombustible/ecc12:Conceptos/ecc12:ConceptoEstadoDeCuentaCombustible[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/EstadoDeCuentaCombustible12}ConceptoEstadoDeCuentaCombustible', attribute 'TipoCombustible': [facet 'enumeration'] The value '99' is not an element of the set {'1', '2', '3', '4', '5'}."
+  }
+ ]
+}

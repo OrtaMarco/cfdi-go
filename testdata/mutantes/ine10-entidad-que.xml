@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI 3.3 sintético con INE 1.0 (mismo namespace que 1.1; QTO solo existe en el catálogo de 1.0)
+     y un concepto con acreditamientoIEPS (la hoja de 3.3 no lo lleva a la cadena). RFC de prueba. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:ine="http://www.sat.gob.mx/ine" xmlns:aieps="http://www.sat.gob.mx/acreditamiento" Version="3.3" Serie="IN" Folio="10" Fecha="2017-05-01T10:00:00" Sello="U0VMTE8gREUgUFJVRUJB" FormaPago="03" NoCertificado="30001000000400002495" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="1000.00" Moneda="MXN" Total="1160.00" TipoDeComprobante="I" MetodoPago="PUE" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XOJI740919U48" Nombre="RECEPTOR DE PRUEBA" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="15101514" Cantidad="1" ClaveUnidad="LTR" Descripcion="Combustible de prueba" ValorUnitario="1000.00" Importe="1000.00">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="160.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+      <cfdi:ComplementoConcepto>
+        <aieps:acreditamientoIEPS Version="1.0" TAR="617"/>
+      </cfdi:ComplementoConcepto>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="160.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="160.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <ine:INE Version="1.0" TipoProceso="Campaña">
+      <ine:Entidad ClaveEntidad="QUE" Ambito="Local">
+        <ine:Contabilidad IdContabilidad="123456"/>
+        <ine:Contabilidad IdContabilidad="7"/>
+      </ine:Entidad>
+      <ine:Entidad ClaveEntidad="HID" Ambito="Federal"/>
+    </ine:INE>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555552001" FechaTimbrado="2017-05-01T10:01:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000400002495" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

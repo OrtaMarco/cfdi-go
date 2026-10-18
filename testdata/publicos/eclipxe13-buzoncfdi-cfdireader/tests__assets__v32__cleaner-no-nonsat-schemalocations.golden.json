@@ -1,0 +1,68 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.2",
+    "timbre_fiscal_digital": {
+      "version": "1.0"
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "VERSION_ANTIGUA",
+      "ruta": "/Comprobante/@Version",
+      "mensaje": "CFDI 3.2: lectura parcial, solo los campos que coinciden con 3.3",
+      "atributo": "Version"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/@Fecha",
+      "mensaje": "falta el atributo Fecha",
+      "atributo": "Fecha"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/@SubTotal",
+      "mensaje": "falta el atributo SubTotal",
+      "atributo": "SubTotal"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/@Total",
+      "mensaje": "falta el atributo Total",
+      "atributo": "Total"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/@TipoDeComprobante",
+      "mensaje": "falta el atributo TipoDeComprobante",
+      "atributo": "TipoDeComprobante"
+    },
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Emisor",
+      "mensaje": "falta el nodo Emisor"
+    },
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Receptor",
+      "mensaje": "falta el nodo Receptor"
+    },
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Conceptos",
+      "mensaje": "falta el nodo Conceptos"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/TimbreFiscalDigital/@UUID",
+      "mensaje": "falta el atributo UUID",
+      "atributo": "UUID"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/TimbreFiscalDigital/@FechaTimbrado",
+      "mensaje": "falta el atributo FechaTimbrado",
+      "atributo": "FechaTimbrado"
+    }
+  ]
+}

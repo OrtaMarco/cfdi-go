@@ -1,0 +1,53 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.2",
+    "fecha": "2014-01-01T16:52:45",
+    "no_certificado": "1234567890123456790",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "ACCEM SERVICIOS EMPRESARIALES S.C."
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "VERSION_ANTIGUA",
+      "ruta": "/Comprobante/@Version",
+      "mensaje": "CFDI 3.2: lectura parcial, solo los campos que coinciden con 3.3",
+      "atributo": "Version"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/@SubTotal",
+      "mensaje": "falta el atributo SubTotal",
+      "atributo": "SubTotal"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/@Total",
+      "mensaje": "falta el atributo Total",
+      "atributo": "Total"
+    },
+    {
+      "codigo": "ATRIBUTO_FALTANTE",
+      "ruta": "/Comprobante/@TipoDeComprobante",
+      "mensaje": "falta el atributo TipoDeComprobante",
+      "atributo": "TipoDeComprobante"
+    },
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Receptor",
+      "mensaje": "falta el nodo Receptor"
+    },
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Conceptos",
+      "mensaje": "falta el nodo Conceptos"
+    },
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

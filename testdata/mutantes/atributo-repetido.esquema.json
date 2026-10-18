@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 2,
+   "ruta": "",
+   "mensaje": "XML ilegible: Attribute Serie redefined, line 2, column 571 (atributo-repetido.xml, line 2)"
+  }
+ ]
+}

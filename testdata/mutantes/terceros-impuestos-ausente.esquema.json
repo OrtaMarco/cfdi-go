@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 13,
+   "ruta": "/cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto[1]/cfdi:ComplementoConcepto/terceros:PorCuentadeTerceros",
+   "mensaje": "Element '{http://www.sat.gob.mx/terceros}PorCuentadeTerceros': Missing child element(s). Expected is one of ( {http://www.sat.gob.mx/terceros}Parte, {http://www.sat.gob.mx/terceros}Impuestos )."
+  }
+ ]
+}

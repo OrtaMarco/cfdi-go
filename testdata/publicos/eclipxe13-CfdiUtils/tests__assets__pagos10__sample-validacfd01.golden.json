@@ -1,0 +1,82 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "3.3",
+    "serie": "PA",
+    "folio": "2",
+    "fecha": "2017-07-14T15:46:55",
+    "no_certificado": "30001000000300023701",
+    "sub_total": "0",
+    "moneda": "XXX",
+    "total": "0",
+    "tipo_de_comprobante": "P",
+    "lugar_expedicion": "67100",
+    "emisor": {
+      "rfc": "AAA010101AAA",
+      "nombre": "ACCEM SERVICIOS EMPRESARIALES SC",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XIQB891116QE4",
+      "nombre": "BERENICE XIMO QUEZADA",
+      "uso_cfdi": "P01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago",
+        "valor_unitario": "0",
+        "importe": "0"
+      }
+    ],
+    "pagos": {
+      "version": "1.0",
+      "pago": [
+        {
+          "fecha_pago": "2017-07-14T15:46:55",
+          "forma_de_pago_p": "04",
+          "moneda_p": "MXN",
+          "monto": "201.54",
+          "num_operacion": "4343434",
+          "rfc_emisor_cta_ord": "IIA040805DZ4",
+          "cta_ordenante": "1234567890123456",
+          "rfc_emisor_cta_ben": "URE180429TM6",
+          "cta_beneficiario": "123456789012345678",
+          "docto_relacionado": [
+            {
+              "id_documento": "31FBF471-DCFD-46A5-B235-CADD520A9CC0",
+              "serie": "A",
+              "folio": "23205",
+              "moneda_dr": "MXN",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "2",
+              "imp_saldo_ant": "2499.80",
+              "imp_pagado": "100.77",
+              "imp_saldo_insoluto": "2399.03"
+            },
+            {
+              "id_documento": "31FBF471-DCFD-46A5-B235-CADD520A9CC0",
+              "serie": "A",
+              "folio": "23205",
+              "moneda_dr": "MXN",
+              "metodo_de_pago_dr": "PPD",
+              "num_parcialidad": "2",
+              "imp_saldo_ant": "2499.80",
+              "imp_pagado": "100.77",
+              "imp_saldo_insoluto": "2399.03"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "advertencias": [
+    {
+      "codigo": "SIN_TIMBRE",
+      "ruta": "/Comprobante/Complemento",
+      "mensaje": "no hay TimbreFiscalDigital: el CFDI no está timbrado o se le quitó el timbre"
+    }
+  ]
+}

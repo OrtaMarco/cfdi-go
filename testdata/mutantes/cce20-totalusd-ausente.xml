@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:cce20="http://www.sat.gob.mx/ComercioExterior20" Version="4.0" Serie="EX" Folio="20" Fecha="2026-05-11T10:00:00" Sello="U0VMTE8gREUgUFJVRUJB" FormaPago="03" NoCertificado="30001000000500003416" Certificado="Q0VSVElGSUNBRE8gREUgUFJVRUJB" SubTotal="1250.50" Moneda="USD" TipoCambio="18.5000" Total="1250.50" TipoDeComprobante="I" Exportacion="02" MetodoPago="PUE" LugarExpedicion="42501">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XEXX010101000" Nombre="CLIENTE EXTRANJERO DE PRUEBA" DomicilioFiscalReceptor="42501" ResidenciaFiscal="USA" NumRegIdTrib="121585958" RegimenFiscalReceptor="616" UsoCFDI="S01"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="43211500" NoIdentificacion="EXP-001" Cantidad="2" ClaveUnidad="H87" Descripcion="Equipo de prueba" ValorUnitario="500.00" Importe="1000.00" ObjetoImp="01"/>
+    <cfdi:Concepto ClaveProdServ="56101500" NoIdentificacion="EXP-002" Cantidad="1" ClaveUnidad="H87" Descripcion="Mueble de prueba" ValorUnitario="250.50" Importe="250.50" ObjetoImp="01"/>
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <cce20:ComercioExterior Version="2.0" ClaveDePedimento="A1" CertificadoOrigen="0" Incoterm="FCA" TipoCambioUSD="18.5000" Observaciones="Exportación de prueba">
+      <cce20:Emisor>
+        <cce20:Domicilio Calle="Avenida de prueba" NumeroExterior="10" Colonia="0001" Localidad="01" Municipio="048" Estado="HID" Pais="MEX" CodigoPostal="42501"/>
+      </cce20:Emisor>
+      <cce20:Receptor NumRegIdTrib="121585958">
+        <cce20:Domicilio Calle="Main St" NumeroExterior="500" Estado="TX" Pais="USA" CodigoPostal="78040"/>
+      </cce20:Receptor>
+      <cce20:Destinatario NumRegIdTrib="987654321" Nombre="DESTINATARIO DE PRUEBA">
+        <cce20:Domicilio Calle="Warehouse Rd" Estado="TX" Pais="USA" CodigoPostal="78041"/>
+        <cce20:Domicilio Calle="Second Rd" Estado="CA" Pais="USA" CodigoPostal="90001"/>
+      </cce20:Destinatario>
+      <cce20:Mercancias>
+        <cce20:Mercancia NoIdentificacion="EXP-001" FraccionArancelaria="9403600100" CantidadAduana="2" UnidadAduana="06" ValorUnitarioAduana="500.000000" ValorDolares="1000.0000">
+          <cce20:DescripcionesEspecificas Marca="MARCA" Modelo="MODELO-1" NumeroSerie="SERIE-0001"/>
+        </cce20:Mercancia>
+        <cce20:Mercancia NoIdentificacion="EXP-002" FraccionArancelaria="9403600100" CantidadAduana="1" UnidadAduana="06" ValorUnitarioAduana="250.500000" ValorDolares="250.5000"/>
+      </cce20:Mercancias>
+    </cce20:ComercioExterior>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555555504" FechaTimbrado="2026-05-11T10:01:00" RfcProvCertif="AAA010101AAA" SelloCFD="U0VMTE8gREUgUFJVRUJB" NoCertificadoSAT="30001000000500003456" SelloSAT="U0VMTE8gU0FUIERFIFBSVUVCQQ=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

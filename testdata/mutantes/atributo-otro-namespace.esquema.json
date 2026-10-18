@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 3,
+   "ruta": "/cfdi:Comprobante/cfdi:Emisor",
+   "mensaje": "Element '{http://www.sat.gob.mx/cfd/4}Emisor', attribute '{http://www.w3.org/XML/1998/namespace}lang': The attribute '{http://www.w3.org/XML/1998/namespace}lang' is not allowed."
+  }
+ ]
+}

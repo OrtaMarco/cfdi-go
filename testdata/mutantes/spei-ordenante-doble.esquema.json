@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 24,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/spei:Complemento_SPEI/spei:SPEI_Tercero/spei:Ordenante[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/spei}Ordenante': This element is not expected. Expected is ( {http://www.sat.gob.mx/spei}Beneficiario )."
+  }
+ ]
+}

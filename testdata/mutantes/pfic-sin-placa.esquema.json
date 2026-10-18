@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/pfic:PFintegranteCoordinado",
+   "mensaje": "Element '{http://www.sat.gob.mx/pfic}PFintegranteCoordinado': The attribute 'Placa' is required but missing."
+  }
+ ]
+}

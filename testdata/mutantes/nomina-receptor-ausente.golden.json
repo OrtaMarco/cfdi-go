@@ -1,0 +1,136 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "N",
+    "folio": "2026-01",
+    "fecha": "2026-01-15T08:00:00",
+    "no_certificado": "30001000000500003416",
+    "sub_total": "5610.00",
+    "descuento": "575.50",
+    "moneda": "MXN",
+    "total": "5034.50",
+    "tipo_de_comprobante": "N",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "76000",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XOJI740919U48",
+      "nombre": "RECEPTOR DE PRUEBA",
+      "domicilio_fiscal_receptor": "76028",
+      "regimen_fiscal_receptor": "605",
+      "uso_cfdi": "CN01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111505",
+        "cantidad": "1",
+        "clave_unidad": "ACT",
+        "descripcion": "Pago de nómina",
+        "valor_unitario": "5610.00",
+        "importe": "5610.00",
+        "descuento": "575.50",
+        "objeto_imp": "01"
+      }
+    ],
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "88888888-9999-AAAA-BBBB-CCCCCCCCCCCC",
+      "fecha_timbrado": "2026-01-15T08:01:00",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "nomina": [
+      {
+        "version": "1.2",
+        "tipo_nomina": "O",
+        "fecha_pago": "2026-01-15",
+        "fecha_inicial_pago": "2026-01-01",
+        "fecha_final_pago": "2026-01-15",
+        "num_dias_pagados": "15.000",
+        "total_percepciones": "5600.00",
+        "total_deducciones": "575.50",
+        "total_otros_pagos": "10.00",
+        "emisor": {
+          "registro_patronal": "Z0000001234"
+        },
+        "percepciones": {
+          "total_sueldos": "5600.00",
+          "total_gravado": "5300.00",
+          "total_exento": "300.00",
+          "percepcion": [
+            {
+              "tipo_percepcion": "001",
+              "clave": "P001",
+              "concepto": "Sueldo",
+              "importe_gravado": "5000.00",
+              "importe_exento": "0.00"
+            },
+            {
+              "tipo_percepcion": "019",
+              "clave": "P019",
+              "concepto": "Horas extra",
+              "importe_gravado": "300.00",
+              "importe_exento": "300.00",
+              "horas_extra": [
+                {
+                  "dias": "2",
+                  "tipo_horas": "01",
+                  "horas_extra": "4",
+                  "importe_pagado": "600.00"
+                }
+              ]
+            }
+          ]
+        },
+        "deducciones": {
+          "total_otras_deducciones": "125.50",
+          "total_impuestos_retenidos": "450.00",
+          "deduccion": [
+            {
+              "tipo_deduccion": "002",
+              "clave": "D002",
+              "concepto": "ISR",
+              "importe": "450.00"
+            },
+            {
+              "tipo_deduccion": "001",
+              "clave": "D001",
+              "concepto": "Seguridad social",
+              "importe": "125.50"
+            }
+          ]
+        },
+        "otros_pagos": [
+          {
+            "tipo_otro_pago": "002",
+            "clave": "O002",
+            "concepto": "Subsidio para el empleo",
+            "importe": "10.00",
+            "subsidio_al_empleo": {
+              "subsidio_causado": "10.00"
+            }
+          }
+        ],
+        "incapacidades": [
+          {
+            "dias_incapacidad": "1",
+            "tipo_incapacidad": "02"
+          }
+        ]
+      }
+    ]
+  },
+  "advertencias": [
+    {
+      "codigo": "NODO_FALTANTE",
+      "ruta": "/Comprobante/Complemento/Nomina/Receptor",
+      "mensaje": "Nomina sin Receptor"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/aerolineas:Aerolineas/aerolineas:OtrosCargos",
+   "mensaje": "Element '{http://www.sat.gob.mx/aerolineas}OtrosCargos': Missing child element(s). Expected is ( {http://www.sat.gob.mx/aerolineas}Cargo )."
+  }
+ ]
+}

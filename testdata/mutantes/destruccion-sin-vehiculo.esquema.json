@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/destruccion:certificadodedestruccion",
+   "mensaje": "Element '{http://www.sat.gob.mx/certificadodestruccion}certificadodedestruccion': Missing child element(s). Expected is ( {http://www.sat.gob.mx/certificadodestruccion}VehiculoDestruido )."
+  }
+ ]
+}

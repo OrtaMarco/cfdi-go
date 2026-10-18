@@ -1,0 +1,68 @@
+{
+  "tipo_documento": "retenciones",
+  "schema_version": "1",
+  "retenciones": {
+    "version": "1.0",
+    "folio_int": "TEST00002",
+    "no_certificado": "20001000000100005867",
+    "fecha_exp": "2015-02-24T11:02:42-06:00",
+    "cve_retenc": "17",
+    "desc_retenc": "Arrendamiento en fideicomiso",
+    "emisor": {
+      "rfc_e": "AAA010101AAA",
+      "nom_den_raz_soc_e": "Empresa DEMO para Rentenciones S de TST",
+      "curp_e": "AAAA010101HNLMNLD2"
+    },
+    "receptor": {
+      "nacionalidad_r": "Nacional",
+      "nacional": {
+        "rfc_r": "XAXX010101000",
+        "nom_den_raz_soc_r": "PÚBLICO EN GENERAL S DE TST",
+        "curp_r": "VAHE820926HNLLRD02"
+      }
+    },
+    "periodo": {
+      "mes_ini": "6",
+      "mes_fin": "6",
+      "ejercicio": "2014"
+    },
+    "totales": {
+      "monto_tot_operacion": "14000.00",
+      "monto_tot_grav": "13000.00",
+      "monto_tot_exent": "1000.00",
+      "monto_tot_ret": "3500.00",
+      "imp_retenidos": [
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "01",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago definitivo"
+        },
+        {
+          "base_ret": "1000.00",
+          "impuesto_ret": "02",
+          "monto_ret": "500.00",
+          "tipo_pago_ret": "Pago provisional"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.0",
+      "uuid": "7DA04986-E13B-4873-ACCE-8F06DCD8886A",
+      "uuid_original": "7da04986-e13b-4873-acce-8f06dcd8886a",
+      "fecha_timbrado": "2015-02-24T11:02:42",
+      "no_certificado_sat": "20001000000300003693"
+    },
+    "arrendamientoenfideicomiso": {
+      "version": "1.0",
+      "pag_prov_efec_por_fiduc": "1230.00",
+      "rendim_fideicom": "400.50",
+      "deducc_corresp": "356.00",
+      "mont_tot_ret": "2000.00",
+      "mont_res_fisc_dist_fibras": "400.50",
+      "mont_otros_concept_distr": "132.00",
+      "descr_mont_otros_concept_distr": "Fideicomiso de Inversión y Bienes Raíces"
+    }
+  },
+  "advertencias": []
+}
