@@ -213,6 +213,20 @@ SAT tal cual aunque junte palabras: `TotaldeTraslados` → `totalde_traslados`, 
   `num_ped_im`, `aduana` y `fecha_regul_veh`). El atributo `Año` va en `anio`. Si el CFDI trae dos nodos
   (el ejemplo del SAT trae uno de cada decreto) se lee el primero con `NODO_DUPLICADO`, como con los
   demás complementos.
+- Detallista (sin versión, `detallista` en `Complementos()`) es el único que lleva datos en el texto de los
+  elementos. Cada elemento complejo es un objeto (una lista si se repite) y cada elemento de contenido simple
+  un campo del padre, con el nombre del SAT en snake_case. Los de contenido simple que además llevan
+  atributos (`referenceIdentification`, `invoicedQuantity`, `lotNumber`…) son un objeto con sus atributos y
+  el texto en `valor`. `shipment_detail` es `{}`: el XSD lo declara vacío y solo importa que exista. La
+  cantidad adicional de la línea se llama `aditional_quantity` (sic: así viene en el XSD). `ship_to.name_and_address`
+  es una lista de direcciones: en el XSD es una secuencia repetible (name, streetAddressOne, city,
+  postalCode) y cada vuelta es una dirección; empieza una nueva cuando el campo siguiente no va después del
+  anterior en esa secuencia. El texto libre (`name`, `long_text`, `text`…) va sin recortar, tal cual viene; los
+  valores `xs:NMTOKEN` y de enumeración (`entity_type`, `currency_function`, `tax_type_description`,
+  `tax_category`, `method_of_payment`, `special_services_type`) salen con los espacios colapsados, como los
+  valida el esquema. Con XML inválido el modelo y la cadena pueden discrepar: en un elemento de texto que
+  trae un hijo, el modelo lee su texto directo y la cadena el de todos sus descendientes (`string()` de
+  XPath); `ValidarEsquema` ya marca ese documento.
 - `Comprobante.Complementos()` (y el resumen de `lote`) cuenta también los de concepto.
 
 ## Advertencias
