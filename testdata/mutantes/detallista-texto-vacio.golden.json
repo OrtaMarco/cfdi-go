@@ -1,0 +1,344 @@
+{
+  "schema_version": "1",
+  "cfdi": {
+    "version": "4.0",
+    "serie": "A",
+    "folio": "1001",
+    "fecha": "2026-01-15T10:30:00",
+    "forma_pago": "03",
+    "no_certificado": "30001000000500003416",
+    "condiciones_de_pago": "Contado",
+    "sub_total": "1500.00",
+    "moneda": "MXN",
+    "total": "1640.00",
+    "tipo_de_comprobante": "I",
+    "exportacion": "01",
+    "metodo_pago": "PUE",
+    "lugar_expedicion": "42501",
+    "emisor": {
+      "rfc": "EKU9003173C9",
+      "nombre": "ESCUELA KEMPER URGATE",
+      "regimen_fiscal": "601"
+    },
+    "receptor": {
+      "rfc": "XAXX010101000",
+      "nombre": "PUBLICO EN GENERAL",
+      "domicilio_fiscal_receptor": "42501",
+      "regimen_fiscal_receptor": "616",
+      "uso_cfdi": "S01"
+    },
+    "conceptos": [
+      {
+        "clave_prod_serv": "84111506",
+        "no_identificacion": "SRV-01",
+        "cantidad": "1",
+        "clave_unidad": "E48",
+        "unidad": "Servicio",
+        "descripcion": "Servicio de prueba con IVA y retención",
+        "valor_unitario": "1000.00",
+        "importe": "1000.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "1000.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "160.00"
+            }
+          ],
+          "retenciones": [
+            {
+              "base": "1000.00",
+              "impuesto": "001",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.100000",
+              "importe": "100.00"
+            }
+          ]
+        }
+      },
+      {
+        "clave_prod_serv": "43211500",
+        "cantidad": "2.5",
+        "clave_unidad": "H87",
+        "descripcion": "Producto de prueba",
+        "valor_unitario": "200.00",
+        "importe": "500.00",
+        "objeto_imp": "02",
+        "impuestos": {
+          "traslados": [
+            {
+              "base": "500.00",
+              "impuesto": "002",
+              "tipo_factor": "Tasa",
+              "tasa_o_cuota": "0.160000",
+              "importe": "80.00"
+            }
+          ]
+        },
+        "informacion_aduanera": [
+          {
+            "numero_pedimento": "26  47  3807  6000001"
+          }
+        ]
+      }
+    ],
+    "impuestos": {
+      "total_impuestos_retenidos": "100.00",
+      "total_impuestos_trasladados": "240.00",
+      "retenciones": [
+        {
+          "impuesto": "001",
+          "importe": "100.00"
+        }
+      ],
+      "traslados": [
+        {
+          "base": "1500.00",
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "importe": "240.00"
+        }
+      ]
+    },
+    "timbre_fiscal_digital": {
+      "version": "1.1",
+      "uuid": "ABCDEF01-2345-4678-9ABC-DEF012345678",
+      "uuid_original": "abcdef01-2345-4678-9abc-def012345678",
+      "fecha_timbrado": "2026-01-15T10:31:12",
+      "rfc_prov_certif": "AAA010101AAA",
+      "no_certificado_sat": "30001000000500003456"
+    },
+    "detallista": {
+      "type": "SimpleInvoiceType",
+      "content_version": "1.3.1",
+      "document_structure_version": "AMC8.1",
+      "document_status": "ORIGINAL",
+      "request_for_payment_identification": {
+        "entity_type": "INVOICE"
+      },
+      "special_instruction": [
+        {
+          "code": "ZZZ",
+          "text": [
+            "MIL PESOS 00/100 M.N."
+          ]
+        }
+      ],
+      "order_identification": {
+        "reference_identification": [
+          {
+            "type": "ON",
+            "valor": "OC-0001"
+          }
+        ],
+        "reference_date": "2026-03-01"
+      },
+      "additional_information": {
+        "reference_identification": [
+          {
+            "type": "ATZ",
+            "valor": "REF-0001"
+          }
+        ]
+      },
+      "delivery_note": {
+        "reference_identification": [
+          "REC-0001"
+        ],
+        "reference_date": "2026-03-02"
+      },
+      "buyer": {
+        "gln": "7500000000001",
+        "contact_information": {
+          "person_or_department_name": {
+            "text": "COMPRAS"
+          }
+        }
+      },
+      "seller": {
+        "gln": "7500000000002",
+        "alternate_party_identification": {
+          "type": "SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY",
+          "valor": "PROV-01"
+        }
+      },
+      "ship_to": {
+        "gln": "7500000000003",
+        "name_and_address": [
+          {
+            "city": "CIUDAD DE PRUEBA"
+          },
+          {
+            "name": "ANDEN 2",
+            "postal_code": "42501"
+          }
+        ]
+      },
+      "currency": [
+        {
+          "currency_iso_code": "MXN",
+          "currency_function": [
+            "BILLING_CURRENCY"
+          ],
+          "rate_of_change": "1.00"
+        }
+      ],
+      "payment_terms": {
+        "payment_terms_event": "DATE_OF_INVOICE",
+        "payment_terms_relation_time": "REFERENCE_AFTER",
+        "net_payment": {
+          "net_payment_terms_type": "BASIC_NET",
+          "payment_time_period": {
+            "time_period_due": {
+              "time_period": "DAYS",
+              "value": "30"
+            }
+          }
+        },
+        "discount_payment": {
+          "discount_type": "ALLOWANCE_BY_PAYMENT_ON_TIME",
+          "percentage": "2.00"
+        }
+      },
+      "shipment_detail": {},
+      "allowance_charge": [
+        {
+          "allowance_charge_type": "ALLOWANCE_GLOBAL",
+          "settlement_type": "BILL_BACK",
+          "sequence_number": "1",
+          "special_services_type": "AJ",
+          "monetary_amount_or_percentage": {
+            "rate": {
+              "base": "INVOICE_VALUE",
+              "percentage": "3.00"
+            }
+          }
+        }
+      ],
+      "line_item": [
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "1",
+          "trade_item_identification": {
+            "gtin": "7500000000101"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "ART-0001"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "ARTICULO DE PRUEBA"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "10.00"
+          },
+          "aditional_quantity": [
+            {
+              "quantity_type": "FREE_GOODS",
+              "valor": "1"
+            }
+          ],
+          "gross_price": {
+            "amount": "100.00"
+          },
+          "net_price": {
+            "amount": "97.00"
+          },
+          "additional_information": {
+            "reference_identification": {
+              "type": "ON",
+              "valor": "OC-0001"
+            }
+          },
+          "customs": [
+            {
+              "gln": "7500000000004",
+              "alternate_party_identification": {
+                "type": "TN",
+                "valor": "26  47  3807  6000001"
+              },
+              "reference_date": "2026-02-15",
+              "name_and_address": {
+                "name": "ADUANA DE PRUEBA"
+              }
+            }
+          ],
+          "logistic_units": {
+            "serial_shipping_container_code": {
+              "type": "SRV",
+              "valor": "SSCC-0001"
+            }
+          },
+          "pallet_information": {
+            "pallet_quantity": "2",
+            "description": {
+              "type": "BOX",
+              "valor": "CAJA"
+            },
+            "transport": {
+              "method_of_payment": "PREPAID_BY_SELLER"
+            }
+          },
+          "extended_attributes": {
+            "lot_number": [
+              {
+                "production_date": "2026-01-10",
+                "valor": "LOTE-01"
+              }
+            ]
+          },
+          "allowance_charge": [
+            {
+              "allowance_charge_type": "ALLOWANCE_GLOBAL",
+              "settlement_type": "OFF_INVOICE",
+              "special_services_type": "AA",
+              "monetary_amount_or_percentage": {
+                "percentage_per_unit": "3.00",
+                "rate_per_unit": {
+                  "amount_per_unit": "3.00"
+                }
+              }
+            }
+          ],
+          "trade_item_tax_information": [
+            {
+              "tax_type_description": "VAT",
+              "trade_item_tax_amount": {
+                "tax_percentage": "16.00",
+                "tax_amount": "155.20"
+              },
+              "tax_category": "TRANSFERIDO"
+            }
+          ],
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "1000.00"
+            },
+            "net_amount": {
+              "amount": "970.00"
+            }
+          }
+        }
+      ],
+      "total_amount": {
+        "amount": "970.00"
+      },
+      "total_allowance_charge": [
+        {
+          "allowance_or_charge_type": "ALLOWANCE",
+          "special_services_type": "AJ",
+          "amount": "30.00"
+        }
+      ]
+    }
+  },
+  "advertencias": []
+}

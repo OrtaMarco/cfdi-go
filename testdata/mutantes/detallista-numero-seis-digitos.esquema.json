@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:lineItem",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}lineItem', attribute 'number': [facet 'totalDigits'] The value '123456' has more digits than are allowed ('5')."
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:shipTo/detallista:nameAndAddress/detallista:city",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}city': [facet 'maxLength'] The value has a length of '36'; this exceeds the allowed maximum length of '35'."
+  }
+ ]
+}

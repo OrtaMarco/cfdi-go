@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:lineItem/detallista:Customs/detallista:gln[2]",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}gln': This element is not expected."
+  }
+ ]
+}

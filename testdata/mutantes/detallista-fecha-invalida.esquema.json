@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:orderIdentification/detallista:ReferenceDate",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}ReferenceDate': '2026-02-30' is not a valid value of the atomic type 'xs:date'."
+  }
+ ]
+}

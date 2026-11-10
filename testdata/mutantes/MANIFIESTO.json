@@ -1565,6 +1565,81 @@
    "codigos": [
     "ESQUEMA_TIPO"
    ]
+  },
+  {
+   "id": "detallista-texto-vacio",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "name de shipTo vacío (minLength 1)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_LONGITUD"
+   ]
+  },
+  {
+   "id": "detallista-texto-largo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "city de shipTo de 36 caracteres (maxLength 35)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_LONGITUD"
+   ]
+  },
+  {
+   "id": "detallista-fecha-invalida",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "ReferenceDate de la orden que no es una fecha (30 de febrero)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO"
+   ]
+  },
+  {
+   "id": "detallista-simplecontent-catalogo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "type del alternatePartyIdentification del vendedor fuera del catálogo",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "detallista-aduana-gln-duplicado",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "gln repetido en el Customs de la línea (xs:all: cada hijo una vez)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_EXCEDENTE"
+   ]
+  },
+  {
+   "id": "detallista-numero-seis-digitos",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "number de la línea de 6 dígitos (totalDigits 5)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_DIGITOS"
+   ]
+  },
+  {
+   "id": "detallista-netpayment-vacio",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "netPayment sin paymentTimePeriod (opcional): sigue válido",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "detallista-direccion-city-primero",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "shipTo con city antes de name: la secuencia vuelve a empezar y sigue válido",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "detallista-texto-partido",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "texto de elementos partido por comentario, CDATA y entidades (debe dar la misma cadena que sin partir)",
+   "veredicto": "valido",
+   "codigos": []
   }
  ]
 }

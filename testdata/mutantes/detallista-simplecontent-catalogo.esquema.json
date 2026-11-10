@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:seller/detallista:alternatePartyIdentification",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}alternatePartyIdentification', attribute 'type': [facet 'enumeration'] The value 'XX' is not an element of the set {'SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY', 'IEPS_REFERENCE'}."
+  }
+ ]
+}
