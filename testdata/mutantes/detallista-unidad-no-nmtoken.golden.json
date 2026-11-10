@@ -168,18 +168,16 @@
       },
       "ship_to": {
         "gln": "7500000000003",
-        "name_and_address": {
-          "name": [
-            "BODEGA DE PRUEBA",
-            "ANDEN 2"
-          ],
-          "city": [
-            "CIUDAD DE PRUEBA"
-          ],
-          "postal_code": [
-            "42501"
-          ]
-        }
+        "name_and_address": [
+          {
+            "name": "BODEGA DE PRUEBA",
+            "city": "CIUDAD DE PRUEBA"
+          },
+          {
+            "name": "ANDEN 2",
+            "postal_code": "42501"
+          }
+        ]
       },
       "currency": [
         {

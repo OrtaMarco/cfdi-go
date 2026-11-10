@@ -100,18 +100,13 @@ type DetallistaSeller struct {
 }
 
 type DetallistaShipTo struct {
-	GLN            string                         `json:"gln,omitempty"`
-	NameAndAddress *DetallistaNameAndAddressLista `json:"name_and_address,omitempty"`
-}
-
-// DetallistaNameAndAddressLista es el nameAndAddress de shipTo: en el XSD es
-// una xs:sequence repetible (name, streetAddressOne, city, postalCode, todos
-// opcionales), así que cada campo es una lista en orden de documento.
-type DetallistaNameAndAddressLista struct {
-	Name             []string `json:"name,omitempty"`
-	StreetAddressOne []string `json:"street_address_one,omitempty"`
-	City             []string `json:"city,omitempty"`
-	PostalCode       []string `json:"postal_code,omitempty"`
+	GLN string `json:"gln,omitempty"`
+	// NameAndAddress es el nameAndAddress de shipTo: en el XSD es una
+	// xs:sequence repetible (name, streetAddressOne, city, postalCode, todos
+	// opcionales), así que cada vuelta es una dirección, en orden de documento.
+	// Una dirección nueva empieza cuando el campo siguiente no va después del
+	// anterior en esa secuencia (el mismo agrupamiento que hace el XSD).
+	NameAndAddress []DetallistaNameAndAddress `json:"name_and_address,omitempty"`
 }
 
 type DetallistaInvoiceCreator struct {
@@ -320,6 +315,48 @@ func (l *lector) hijo(n *nodo, ns, local, ruta string, requerido bool) *nodo {
 	return h
 }
 
+// direccionesShipTo agrupa los hijos de shipTo/nameAndAddress en direcciones:
+// la secuencia del XSD es name, streetAddressOne, city, postalCode y cada
+// campo que no va después del anterior (incluido uno repetido) abre otra vuelta.
+func direccionesShipTo(na *nodo, ns string) []DetallistaNameAndAddress {
+	var out []DetallistaNameAndAddress
+	ultimo := -1
+	for _, h := range na.hijos {
+		if h.ns != ns {
+			continue
+		}
+		var campo int
+		switch h.local {
+		case "name":
+			campo = 0
+		case "streetAddressOne":
+			campo = 1
+		case "city":
+			campo = 2
+		case "postalCode":
+			campo = 3
+		default:
+			continue
+		}
+		if campo <= ultimo || out == nil {
+			out = append(out, DetallistaNameAndAddress{})
+		}
+		ultimo = campo
+		d := &out[len(out)-1]
+		switch campo {
+		case 0:
+			d.Name = h.texto
+		case 1:
+			d.StreetAddressOne = h.texto
+		case 2:
+			d.City = h.texto
+		case 3:
+			d.PostalCode = h.texto
+		}
+	}
+	return out
+}
+
 // textoHijo es el texto, tal cual, de un hijo de contenido simple.
 func (l *lector) textoHijo(n *nodo, ns, local, ruta string, requerido bool) string {
 	if h := l.hijo(n, ns, local, ruta, requerido); h != nil {
@@ -486,13 +523,7 @@ func (l *lector) detallista(n *nodo, r string) *Detallista {
 		rs := r + "/shipTo"
 		s := &DetallistaShipTo{GLN: l.textoHijo(h, ns, "gln", rs, false)}
 		if na := l.hijo(h, ns, "nameAndAddress", rs, false); na != nil {
-			rna := rs + "/nameAndAddress"
-			s.NameAndAddress = &DetallistaNameAndAddressLista{
-				Name:             l.textosHijos(na, ns, "name", rna, false),
-				StreetAddressOne: l.textosHijos(na, ns, "streetAddressOne", rna, false),
-				City:             l.textosHijos(na, ns, "city", rna, false),
-				PostalCode:       l.textosHijos(na, ns, "postalCode", rna, false),
-			}
+			s.NameAndAddress = direccionesShipTo(na, ns)
 		}
 		d.ShipTo = s
 	}

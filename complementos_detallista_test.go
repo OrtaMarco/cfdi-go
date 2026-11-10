@@ -2,6 +2,7 @@ package cfdi
 
 import (
 	"encoding/json"
+	"reflect"
 	"runtime"
 	"strings"
 	"testing"
@@ -429,14 +430,15 @@ func TestDetallistaSintetico(t *testing.T) {
 	igual(t, "contacto", x.Buyer.ContactInformation.PersonOrDepartmentName.Text, "COMPRAS")
 	igual(t, "seller type", x.Seller.AlternatePartyIdentification.Type, "IEPS_REFERENCE")
 
-	// shipTo/nameAndAddress: dos vueltas de la secuencia, una lista por campo.
+	// shipTo/nameAndAddress: dos vueltas de la secuencia, una dirección cada una.
 	s := x.ShipTo
 	igual(t, "shipTo gln", s.GLN, "7500000000035")
-	na := s.NameAndAddress
-	igual(t, "names", strings.Join(na.Name, "|"), "BODEGA UNO|BODEGA DOS")
-	igual(t, "calles", strings.Join(na.StreetAddressOne, "|"), "CALLE 1")
-	igual(t, "ciudades", strings.Join(na.City, "|"), "CIUDAD A")
-	igual(t, "cp", strings.Join(na.PostalCode, "|"), "01000|02000")
+	if want := []DetallistaNameAndAddress{
+		{Name: "BODEGA UNO", StreetAddressOne: "CALLE 1", City: "CIUDAD A", PostalCode: "01000"},
+		{Name: "BODEGA DOS", PostalCode: "02000"},
+	}; !reflect.DeepEqual(s.NameAndAddress, want) {
+		t.Errorf("shipTo/nameAndAddress = %+v, quiero %+v", s.NameAndAddress, want)
+	}
 
 	ic := x.InvoiceCreator
 	igual(t, "creator gln", ic.GLN, "7500000000042")
@@ -919,5 +921,42 @@ func TestDetallistaNMTOKENColapsado(t *testing.T) {
 	igual(t, "taxTypeDescription", li.TradeItemTaxInformation[0].TaxTypeDescription, "VAT")
 	if got := li.TradeItemDescriptionInformation.LongText; !strings.HasPrefix(got, "  ") {
 		t.Errorf("longText se recortó: %q", got)
+	}
+}
+
+// TestDetallistaShipToDirecciones: cada dato queda en la dirección a la que
+// pertenece. Una dirección nueva empieza cuando el campo siguiente no va
+// después del anterior en la secuencia name, streetAddressOne, city,
+// postalCode (el agrupamiento voraz del XSD); antes los campos eran listas
+// sueltas y dos documentos distintos daban el mismo modelo.
+func TestDetallistaShipToDirecciones(t *testing.T) {
+	const original = "<detallista:name>BODEGA DE PRUEBA</detallista:name><detallista:city>CIUDAD DE PRUEBA</detallista:city>" +
+		"<detallista:name>ANDEN 2</detallista:name><detallista:postalCode>42501</detallista:postalCode>"
+	campo := func(l, v string) string { return "<detallista:" + l + ">" + v + "</detallista:" + l + ">" }
+	A := DetallistaNameAndAddress{}
+	for _, c := range []struct {
+		nombre, xml string
+		quiero      []DetallistaNameAndAddress
+	}{
+		{"base", original, []DetallistaNameAndAddress{{Name: "BODEGA DE PRUEBA", City: "CIUDAD DE PRUEBA"}, {Name: "ANDEN 2", PostalCode: "42501"}}},
+		{"postal antes del segundo name",
+			campo("name", "A") + campo("postalCode", "1") + campo("name", "B") + campo("city", "X"),
+			[]DetallistaNameAndAddress{{Name: "A", PostalCode: "1"}, {Name: "B", City: "X"}}},
+		{"dos name seguidos",
+			campo("name", "A") + campo("name", "B") + campo("city", "X") + campo("postalCode", "1"),
+			[]DetallistaNameAndAddress{{Name: "A"}, {Name: "B", City: "X", PostalCode: "1"}}},
+		{"city antes de name (vuelta válida)",
+			campo("city", "X") + campo("name", "A") + campo("postalCode", "1"),
+			[]DetallistaNameAndAddress{{City: "X"}, {Name: "A", PostalCode: "1"}}},
+		{"campo repetido vacío", campo("name", "") + campo("name", "B"), []DetallistaNameAndAddress{A, {Name: "B"}}},
+		{"completa", campo("name", "A") + campo("streetAddressOne", "C") + campo("city", "X") + campo("postalCode", "1"),
+			[]DetallistaNameAndAddress{{Name: "A", StreetAddressOne: "C", City: "X", PostalCode: "1"}}},
+	} {
+		t.Run(c.nombre, func(t *testing.T) {
+			m := leerMutado(t, "mutantes/base-detallista.xml", original, c.xml)
+			if got := m.Detallista.ShipTo.NameAndAddress; !reflect.DeepEqual(got, c.quiero) {
+				t.Errorf("shipTo/nameAndAddress = %+v, quiero %+v", got, c.quiero)
+			}
+		})
 	}
 }

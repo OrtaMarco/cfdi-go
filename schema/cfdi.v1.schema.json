@@ -2182,18 +2182,11 @@
       "additionalProperties": false,
       "properties": {
         "gln": { "type": "string" },
-        "name_and_address": { "$ref": "#/$defs/detallista_name_and_address_lista" }
-      }
-    },
-    "detallista_name_and_address_lista": {
-      "type": "object",
-      "additionalProperties": false,
-      "description": "xs:sequence repetible: una lista por campo, cada una en orden de documento.",
-      "properties": {
-        "name": { "type": "array", "items": { "type": "string" } },
-        "street_address_one": { "type": "array", "items": { "type": "string" } },
-        "city": { "type": "array", "items": { "type": "string" } },
-        "postal_code": { "type": "array", "items": { "type": "string" } }
+        "name_and_address": {
+          "type": "array",
+          "description": "nameAndAddress de shipTo: xs:sequence repetible (name, street_address_one, city, postal_code); cada vuelta es una dirección. Una dirección nueva empieza cuando el campo siguiente no va después del anterior en esa secuencia.",
+          "items": { "$ref": "#/$defs/detallista_name_and_address" }
+        }
       }
     },
     "detallista_invoice_creator": {
