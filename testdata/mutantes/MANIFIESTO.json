@@ -1449,6 +1449,122 @@
    "codigos": [
     "ESQUEMA_ATRIBUTO_FALTANTE"
    ]
+  },
+  {
+   "id": "base-detallista",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "base reparada",
+   "veredicto": "valido",
+   "codigos": []
+  },
+  {
+   "id": "detallista-sin-documentstatus",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin documentStatus (atributo requerido)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ATRIBUTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "detallista-entitytype-fuera-de-catalogo",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "entityType (texto) fuera de la enumeración",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO"
+   ]
+  },
+  {
+   "id": "detallista-entrega-fuera-de-orden",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "DeliveryNote antes de AdditionalInformation",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ORDEN"
+   ]
+  },
+  {
+   "id": "detallista-specialinstruction-excedente",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "cinco specialInstruction (maxOccurs 4)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_EXCEDENTE"
+   ]
+  },
+  {
+   "id": "detallista-sin-buyer",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "sin buyer (elemento requerido)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "detallista-gln-longitud",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "gln del comprador de 12 caracteres (length 13)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_LONGITUD"
+   ]
+  },
+  {
+   "id": "detallista-amount-no-decimal",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Amount de TotalAllowanceCharge que no es xs:decimal",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO"
+   ]
+  },
+  {
+   "id": "detallista-referencia-fija",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "referenceIdentification de la orden con type=\"IV\" (fixed y enumeración ON)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CATALOGO",
+    "ESQUEMA_VALOR_FIJO"
+   ]
+  },
+  {
+   "id": "detallista-texto-suelto",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "texto en buyer, que no es mixed",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_CONTENIDO"
+   ]
+  },
+  {
+   "id": "detallista-hijo-en-gln",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "elemento dentro del gln del vendedor (contenido simple)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_NO_PERMITIDO"
+   ]
+  },
+  {
+   "id": "detallista-aduana-sin-fecha",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "Customs de la línea (xs:all) sin ReferenceDate",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_ELEMENTO_FALTANTE"
+   ]
+  },
+  {
+   "id": "detallista-unidad-no-nmtoken",
+   "base": "ingreso40-pue.xml",
+   "mutacion": "unitOfMeasure con un espacio en medio (no es xs:NMTOKEN)",
+   "veredicto": "invalido",
+   "codigos": [
+    "ESQUEMA_TIPO"
+   ]
   }
  ]
 }

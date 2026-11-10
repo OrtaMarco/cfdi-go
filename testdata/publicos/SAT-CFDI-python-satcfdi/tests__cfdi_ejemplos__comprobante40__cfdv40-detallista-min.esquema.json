@@ -1,10 +1,4 @@
 {
- "veredicto": "incompleto",
- "errores": [
-  {
-   "linea": 26,
-   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista",
-   "mensaje": "Element '{http://www.sat.gob.mx/detallista}detallista': No matching global element declaration available, but demanded by the strict wildcard."
-  }
- ]
+ "veredicto": "valido",
+ "errores": []
 }

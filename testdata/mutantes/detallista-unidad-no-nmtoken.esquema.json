@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:lineItem/detallista:invoicedQuantity",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}invoicedQuantity', attribute 'unitOfMeasure': 'P CE' is not a valid value of the atomic type 'xs:NMTOKEN'."
+  }
+ ]
+}

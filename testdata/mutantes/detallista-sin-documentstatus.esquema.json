@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}detallista': The attribute 'documentStatus' is required but missing."
+  }
+ ]
+}

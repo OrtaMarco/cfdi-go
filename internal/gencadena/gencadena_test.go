@@ -56,6 +56,11 @@ func TestGenerarHojasDelSAT(t *testing.T) {
 		}
 	}
 	const ret2 = "http://www.sat.gob.mx/esquemas/retencionpago/2"
+	const det = "http://www.sat.gob.mx/detallista"
+	// Las tres hojas de CFDI incluyen detallista.xslt.
+	if n := strings.Count(string(b), "{\""+det+"\", \"detallista\"}: {"); n != 3 {
+		t.Errorf("detallista en %d hojas, quiero 3", n)
+	}
 	for _, s := range []string{
 		// Retenciones: ./retenciones:Nacional/@RfcR es el atributo del primer
 		// Nacional, como $param/@attr.
@@ -73,6 +78,12 @@ func TestGenerarHojasDelSAT(t *testing.T) {
 		// Nómina 1.1: el xsl:choose por Version es un siIgual por cada when.
 		"siIgual(\"Version\", \"1.0\",\n\t\t\t\treq(\"Version\"),\n\t\t\t\treq(\"RegistroPatronal\"),",
 		"siIgual(\"Version\", \"1.1\",\n\t\t\t\treq(\"Version\"),\n\t\t\t\topc(\"RegistroPatronal\"),",
+		// Detallista: Requerido y Opcional sobre el texto de un elemento, por
+		// ruta o con "." dentro de un for-each.
+		"cada(rel(hijo(\"" + det + "\", \"orderIdentification\"), hijo(\"" + det + "\", \"referenceIdentification\")),\n\t\t\t\treqNodo(rel()),\n\t\t\t),",
+		"opcNodo(rel(hijo(\"" + det + "\", \"orderIdentification\"), hijo(\"" + det + "\", \"ReferenceDate\"))),",
+		"reqNodo(rel(hijo(\"" + det + "\", \"seller\"), hijo(\"" + det + "\", \"alternatePartyIdentification\"))),",
+		"cada(rel(hijo(\"" + det + "\", \"TotalAllowanceCharge\"), hijo(\"" + det + "\", \"Amount\")),\n\t\t\t\topcNodo(rel()),\n\t\t\t),",
 	} {
 		if !strings.Contains(string(b), s) {
 			t.Errorf("falta en lo generado:\n%s", s)
@@ -91,6 +102,7 @@ func TestGenerarRechazaLoDesconocido(t *testing.T) {
 	const ret10 = "../esquemas/retencionpago/1/retenciones.xslt"
 	const ret20 = "../esquemas/retencionpago/2/retenciones.xslt"
 	const nom11 = "cfd/nomina/nomina11.xslt"
+	const det = "cfd/detallista/detallista.xslt"
 	casos := []struct {
 		nombre, archivo, viejo, nuevo, quiero string
 	}{
@@ -121,6 +133,10 @@ func TestGenerarRechazaLoDesconocido(t *testing.T) {
 		// ine10.xslt e ine11.xslt (las dos en la hoja de 3.2) son idénticas: una
 		// plantilla repetida solo se acepta si es igual.
 		{"plantilla repetida distinta", "cfd/ine/ine10.xslt", `select="./@TipoComite"`, `select="./@Otro"`, "repetida y distinta"},
+		// Detallista: el texto de un elemento solo por una ruta simple.
+		{"texto de un elemento con predicado", det, `select="detallista:buyer/detallista:gln"`, `select="detallista:buyer[1]/detallista:gln"`, "se esperaba un atributo"},
+		{"texto de un elemento con función", det, `select="detallista:buyer/detallista:gln"`, `select="concat(detallista:buyer/detallista:gln, 'x')"`, "se esperaba un atributo"},
+		{"texto de un elemento por ruta descendente doble", det, `select="detallista:buyer/detallista:gln"`, `select="detallista:buyer//detallista:gln//"`, "se esperaba un atributo"},
 	}
 	for _, c := range casos {
 		_, err := Generar(copiaSAT(t, c.archivo, c.viejo, c.nuevo))

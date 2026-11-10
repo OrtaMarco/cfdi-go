@@ -56,6 +56,7 @@ const (
 	NSIngresosHidrocarburos       = "http://www.sat.gob.mx/IngresosHidrocarburos10"
 	NSEstadoDeCuentaBancario      = "http://www.sat.gob.mx/ecb"
 	NSEstadoDeCuentaCombustible10 = "http://www.sat.gob.mx/ecc"
+	NSDetallista                  = "http://www.sat.gob.mx/detallista"
 	nsXSI                         = "http://www.w3.org/2001/XMLSchema-instance"
 	nsXMLNSAttrs                  = "xmlns"
 )
@@ -109,12 +110,19 @@ func ParseBytesOpciones(b []byte, o Opciones) (*Comprobante, error) {
 	return c, nil
 }
 
-// nodo es un elemento XML ya resuelto a namespace + nombre local. El texto
-// de los elementos no se guarda: el CFDI lleva todo en atributos.
+// nodo es un elemento XML ya resuelto a namespace + nombre local.
+//
+// El CFDI lleva casi todo en atributos, así que el texto solo se guarda
+// cuando trae algo: texto es la concatenación de los trozos de texto directos
+// del elemento (no de sus hijos) desde el primero que no es puro espacio XML
+// (" \t\r\n"). La indentación no se guarda, para no gastar memoria en CFDI
+// grandes: un elemento con puro espacio queda con texto "". Lo lee el
+// complemento Detallista, que sí lleva datos en el texto.
 type nodo struct {
 	ns, local string
 	attrs     []xml.Attr
 	hijos     []*nodo
+	texto     string
 }
 
 // leerArbol arma el árbol del primer elemento raíz y devuelve los bytes que
@@ -165,6 +173,12 @@ func leerArbol(b []byte, estricto bool) (*nodo, []byte, error) {
 		case xml.CharData:
 			if raiz == nil && len(bytes.TrimSpace(t)) > 0 {
 				return nil, nil, &Error{Clase: ClaseNoEsXML, Err: errors.New("texto antes del elemento raíz")}
+			}
+			if len(pila) > 0 {
+				p := pila[len(pila)-1]
+				if p.texto != "" || len(bytes.Trim(t, " \t\r\n")) > 0 {
+					p.texto += string(t) // t solo vale hasta el siguiente Token
+				}
 			}
 		}
 	}

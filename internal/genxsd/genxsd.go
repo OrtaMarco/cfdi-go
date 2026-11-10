@@ -7,7 +7,9 @@
 // complexType anónimo o con nombre (por type, o por una xs:extension sin
 // contenido propio), una xs:sequence sin anidar que puede llevar un
 // xs:choice de elementos que no se repite, un xs:all de elementos que van
-// a lo más una vez, xs:any estricto, atributos con tipo simple, y tipos
+// a lo más una vez, xs:any estricto, atributos con tipo simple, elementos de
+// contenido simple (de tipo simple, o xs:simpleContent con atributos, como
+// en Detallista), mixed en un contenido de elementos, y tipos
 // simples por restricción de tipos integrados con las facetas pattern,
 // enumeration (también en xs:int, por valor), minInclusive, maxInclusive
 // (también en xs:date y xs:dateTime), fractionDigits, totalDigits, length,
@@ -103,6 +105,7 @@ var Raices = []struct{ Prefijo, Archivo string }{
 	{"IngresosHidro", "cfd/IngresosHidrocarburos10/IngresosHidrocarburos.xsd"},
 	{"ECB", "cfd/ecb/ecb.xsd"},
 	{"ECC10", "cfd/ecc/ecc.xsd"},
+	{"Detallista", "cfd/detallista/detallista.xsd"},
 
 	// Retenciones e información de pagos y sus complementos, en
 	// www.sat.gob.mx/esquemas, al lado de sitio_internet.
@@ -245,7 +248,18 @@ func revisarAnotacion(a *nodo) error {
 		return err
 	}
 	for _, h := range a.hijos {
-		if !h.xs("documentation") {
+		switch {
+		case h.xs("documentation"):
+		case h.xs("appinfo"):
+			// Detallista trae <xs:appinfo source="ON"/>: no valida nada. Con
+			// contenido podría ser otra cosa (Schematron, p. ej.): no se soporta.
+			if err := h.soloAttrs("source"); err != nil {
+				return err
+			}
+			if len(h.hijos) > 0 || h.texto {
+				return h.errorf("xs:appinfo con contenido no soportado")
+			}
+		default:
 			return h.errorf("construcción no soportada dentro de <xs:annotation>")
 		}
 	}
@@ -405,7 +419,9 @@ type elemento struct {
 	ns, local  string
 	attrs      []atributo
 	vacio      bool
-	todos      bool // xs:all: las partículas en cualquier orden
+	texto      string // contenido simple: varGo del tipo del texto ("" si no)
+	mixto      bool   // mixed="true": texto entre los hijos
+	todos      bool   // xs:all: las partículas en cualquier orden
 	seqMin     int
 	seqMax     int // -1 = unbounded
 	particulas []particula
@@ -594,10 +610,16 @@ func Generar(dir string) (reglas, catalogos []byte, err error) {
 	for _, el := range g.elems {
 		fmt.Fprintf(&b, "// %s: {%s}%s\n", el.archivo, el.ns, el.local)
 		fmt.Fprintf(&b, "var %s = &elementoXSD{ns: %q, nombre: %q", el.varGo, el.ns, el.local)
-		if el.vacio {
+		switch {
+		case el.texto != "":
+			fmt.Fprintf(&b, ", texto: %s", el.texto)
+		case el.vacio:
 			b.WriteString(", vacio: true")
-		} else {
+		default:
 			fmt.Fprintf(&b, ", seqMin: %d, seqMax: %d", el.seqMin, el.seqMax)
+		}
+		if el.mixto {
+			b.WriteString(", mixto: true")
 		}
 		if el.todos {
 			b.WriteString(", todos: true")
@@ -818,29 +840,112 @@ func (g *generador) elemento(n *nodo, e *esquema, nombre string, global bool) (*
 	if n.attrs["name"] == "" {
 		return nil, n.errorf("elemento sin nombre (ref no soportado)")
 	}
-	hijos, err := n.hijosXS("complexType")
+	hijos, err := n.hijosXS("complexType", "simpleType")
 	if err != nil {
 		return nil, err
 	}
+	// texto crea un elemento de contenido simple (Detallista): sin hijos,
+	// con el texto del tipo t y los atributos attrs.
+	texto := func(t *tipo, attrs []*nodo) (*elemento, error) {
+		el := &elemento{varGo: g.nombreUnico("e" + nombre), ns: e.tns, local: n.attrs["name"], texto: t.varGo, archivo: e.archivo}
+		vistos := map[string]bool{}
+		for _, p := range attrs {
+			a, err := g.atributo(p, e, nombre)
+			if err != nil {
+				return nil, err
+			}
+			if vistos[a.nombre] {
+				return nil, p.errorf("atributo repetido")
+			}
+			vistos[a.nombre] = true
+			el.attrs = append(el.attrs, a)
+		}
+		g.elems = append(g.elems, el)
+		return el, nil
+	}
 	var ct *nodo
+	mixto := false
 	switch tq, conTipo := n.attrs["type"]; {
 	case conTipo && len(hijos) == 0:
-		// Solo tipos complejos con nombre: un elemento de tipo simple
-		// tendría texto, y eso no se soporta.
+		q, err := n.qname(tq)
+		if err != nil {
+			return nil, err
+		}
+		if q.ns == nsXS || g.tipos[g.alcance(q, n)] != nil {
+			// Tipo simple (integrado o con nombre): el contenido es texto.
+			t, err := g.tipoPorNombre(q, n)
+			if err != nil {
+				return nil, err
+			}
+			return texto(t, nil)
+		}
 		if ct, err = g.complejo(n, tq); err != nil {
 			return nil, err
 		}
-	case !conTipo && len(hijos) == 1:
-		ct = hijos[0]
-		if err := ct.soloAttrs(); err != nil {
+	case !conTipo && len(hijos) == 1 && hijos[0].local == "simpleType":
+		t, err := g.tipoSimple(hijos[0], e, "t"+nombre, elem2nombre(nombre))
+		if err != nil {
 			return nil, err
 		}
+		return texto(t, nil)
+	case !conTipo && len(hijos) == 1:
+		ct = hijos[0]
+		if err := ct.soloAttrs("mixed"); err != nil {
+			return nil, err
+		}
+		switch v, ok := ct.attrs["mixed"]; {
+		case !ok || v == "false":
+		case v == "true":
+			mixto = true
+		default:
+			return nil, ct.errorf("mixed %q no soportado", v)
+		}
 	default:
-		return nil, n.errorf("se esperaba exactamente un complexType anónimo o un type de tipo complejo")
+		return nil, n.errorf("se esperaba exactamente un complexType o simpleType anónimo, o un type")
 	}
-	partes, err := ct.hijosXS("sequence", "choice", "all", "attribute", "complexContent")
+	partes, err := ct.hijosXS("sequence", "choice", "all", "attribute", "complexContent", "simpleContent")
 	if err != nil {
 		return nil, err
+	}
+	if len(partes) == 1 && partes[0].local == "simpleContent" {
+		// <xs:simpleContent><xs:extension base="tipo simple"> con atributos
+		// (Detallista): texto del tipo base más atributos. mixed no cambia
+		// nada con simpleContent (XML Schema 1.0, 3.4.2), y libxml2 lo ignora.
+		sc := partes[0]
+		if err := sc.soloAttrs(); err != nil {
+			return nil, err
+		}
+		ext, err := sc.hijosXS("extension")
+		if err != nil {
+			return nil, err
+		}
+		if len(ext) != 1 {
+			return nil, sc.errorf("se esperaba exactamente una xs:extension (restriction no soportada)")
+		}
+		if err := ext[0].soloAttrs("base"); err != nil {
+			return nil, err
+		}
+		q, err := ext[0].qname(ext[0].attrs["base"])
+		if err != nil {
+			return nil, err
+		}
+		if q.ns != nsXS && g.tipos[g.alcance(q, ext[0])] == nil {
+			return nil, ext[0].errorf("xs:simpleContent sobre %s, que no es un tipo simple, no soportado", q)
+		}
+		t, err := g.tipoPorNombre(q, ext[0])
+		if err != nil {
+			return nil, err
+		}
+		attrs, err := ext[0].hijosXS("attribute")
+		if err != nil {
+			return nil, err
+		}
+		return texto(t, attrs)
+	}
+	for _, p := range partes {
+		if p.local == "simpleContent" {
+			return nil, p.errorf("xs:simpleContent junto con otras partes no soportado")
+		}
 	}
 	if len(partes) == 1 && partes[0].local == "complexContent" {
 		// <xs:complexContent><xs:extension base="T"/></xs:complexContent>
@@ -870,7 +975,7 @@ func (g *generador) elemento(n *nodo, e *esquema, nombre string, global bool) (*
 			return nil, err
 		}
 	}
-	el := &elemento{varGo: g.nombreUnico("e" + nombre), ns: e.tns, local: n.attrs["name"], vacio: true, archivo: e.archivo}
+	el := &elemento{varGo: g.nombreUnico("e" + nombre), ns: e.tns, local: n.attrs["name"], vacio: true, mixto: mixto, archivo: e.archivo}
 	vistosAttr := map[string]bool{}
 	for i, p := range partes {
 		switch p.local {
@@ -1003,8 +1108,31 @@ func (g *generador) elemento(n *nodo, e *esquema, nombre string, global bool) (*
 			el.attrs = append(el.attrs, a)
 		}
 	}
+	if el.mixto && el.vacio {
+		// Sería texto libre sin hijos: no aparece en los XSD del SAT.
+		return nil, ct.errorf("mixed sin elementos hijos no soportado")
+	}
+	if el.seqMin == 0 && !el.vacio && !el.todos {
+		// El validador no cuenta vueltas: una secuencia que puede faltar
+		// entera (netPayment de Detallista) solo se soporta si nada en ella es
+		// requerido, y entonces da lo mismo.
+		for _, p := range el.particulas {
+			if p.min > 0 && (p.opciones == nil || minOpciones(p) > 0) {
+				return nil, ct.errorf("secuencia con minOccurs 0 y elementos requeridos no soportada")
+			}
+		}
+	}
 	g.elems = append(g.elems, el)
 	return el, nil
+}
+
+// minOpciones es lo mínimo que pide un xs:choice: el mínimo de sus opciones.
+func minOpciones(p particula) int {
+	m := p.opciones[0].min
+	for _, o := range p.opciones[1:] {
+		m = min(m, o.min)
+	}
+	return m
 }
 
 // alcance da la clave de un tipo con nombre q visto desde un nodo: la de la
@@ -1096,7 +1224,7 @@ func (g *generador) eleccion(c *nodo, e *esquema, nombre string, vistos map[stri
 }
 
 func (g *generador) atributo(n *nodo, e *esquema, elem string) (atributo, error) {
-	if err := n.soloAttrs("name", "type", "use", "fixed", "id"); err != nil {
+	if err := n.soloAttrs("name", "type", "use", "fixed", "default", "id"); err != nil {
 		return atributo{}, err
 	}
 	a := atributo{nombre: n.attrs["name"]}
@@ -1109,6 +1237,14 @@ func (g *generador) atributo(n *nodo, e *esquema, elem string) (atributo, error)
 	case "optional", "":
 	default:
 		return a, n.errorf("use %q no soportado", n.attrs["use"])
+	}
+	if _, ok := n.attrs["default"]; ok {
+		// default (lineItem/@type de Detallista) solo da el valor del atributo
+		// ausente en el infoset; no cambia lo que es válido. XML Schema no lo
+		// deja junto con fixed ni con use="required".
+		if _, fijo := n.attrs["fixed"]; fijo || a.requerido {
+			return a, n.errorf("default junto con fixed o use=\"required\" no soportado")
+		}
 	}
 	hijos, err := n.hijosXS("simpleType")
 	if err != nil {
@@ -1140,7 +1276,9 @@ func (g *generador) atributo(n *nodo, e *esquema, elem string) (atributo, error)
 	if v, ok := n.attrs["fixed"]; ok {
 		// En los tipos no textuales fixed compara valores ("1.0" = "1"); no
 		// hace falta y no se soporta.
-		if t.prim != "string" && t.prim != "anySimpleType" {
+		// NMTOKEN se compara como texto ya colapsado (referenceIdentification
+		// de Detallista, fixed="ON").
+		if t.prim != "string" && t.prim != "anySimpleType" && t.prim != "NMTOKEN" {
 			return a, n.errorf("fixed en un tipo derivado de xs:%s no soportado", t.prim)
 		}
 		f := normalizar(v, t.ws)
@@ -1160,6 +1298,7 @@ func elem2nombre(s string) string {
 var primitivos = map[string]string{
 	"anySimpleType": "preserve",
 	"string":        "preserve",
+	"NMTOKEN":       "collapse",
 	"decimal":       "collapse",
 	"integer":       "collapse",
 	"int":           "collapse",
@@ -1174,6 +1313,7 @@ var primitivos = map[string]string{
 var facetasPermitidas = map[string][]string{
 	"anySimpleType": {},
 	"string":        {"pattern", "enumeration", "length", "minLength", "maxLength", "whiteSpace"},
+	"NMTOKEN":       {"pattern", "enumeration", "length", "minLength", "maxLength", "whiteSpace"},                              // Detallista
 	"decimal":       {"pattern", "enumeration", "minInclusive", "maxInclusive", "fractionDigits", "totalDigits", "whiteSpace"}, // enumeration: c_TasaCuota de Plataformas
 	"integer":       {"pattern", "minInclusive", "maxInclusive", "totalDigits", "fractionDigits", "whiteSpace"},
 	"int":           {"pattern", "enumeration", "minInclusive", "maxInclusive", "totalDigits", "fractionDigits", "whiteSpace"}, // fractionDigits: solo 0 (INE)

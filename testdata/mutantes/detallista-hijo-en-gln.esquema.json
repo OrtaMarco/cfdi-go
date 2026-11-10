@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:seller/detallista:gln",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}gln': Element content is not allowed, because the type definition is simple."
+  }
+ ]
+}

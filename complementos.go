@@ -139,6 +139,10 @@ func (l *lector) complemento(c *Comprobante, h *nodo, rc string) {
 		if !l.yaLeido(c.EstadoDeCuentaBancario != nil, r, h.local) {
 			c.EstadoDeCuentaBancario = l.estadoDeCuentaBancario(h, r)
 		}
+	case h.ns == NSDetallista && h.local == "detallista":
+		if !l.yaLeido(c.Detallista != nil, r, h.local) {
+			c.Detallista = l.detallista(h, r)
+		}
 	case h.ns == NSEstadoDeCuentaCombustible10 && h.local == "EstadoDeCuentaCombustible":
 		if !l.yaLeido(c.EstadoDeCuentaCombustible != nil, r, h.local) {
 			c.EstadoDeCuentaCombustible = l.estadoDeCuentaCombustible10(h, r)

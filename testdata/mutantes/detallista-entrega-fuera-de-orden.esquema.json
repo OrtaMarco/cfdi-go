@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:DeliveryNote",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}DeliveryNote': This element is not expected. Expected is ( {http://www.sat.gob.mx/detallista}AdditionalInformation )."
+  }
+ ]
+}

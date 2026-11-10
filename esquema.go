@@ -16,6 +16,7 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"unicode"
 	"unicode/utf8"
 
 	"github.com/OrtaMarco/cfdi-go/decimal"
@@ -176,9 +177,11 @@ func (p *particulaXSD) minimo() int {
 
 type elementoXSD struct {
 	ns, nombre     string
-	vacio          bool // sin secuencia: ni texto ni hijos
-	todos          bool // xs:all: las partículas en cualquier orden, cada una a lo más una vez
-	seqMin, seqMax int  // ocurrencias de la secuencia (max -1 = unbounded)
+	vacio          bool     // sin secuencia: ni texto ni hijos
+	texto          *tipoXSD // contenido simple: sin hijos, el texto es de este tipo
+	mixto          bool     // mixed: admite texto entre los hijos
+	todos          bool     // xs:all: las partículas en cualquier orden, cada una a lo más una vez
+	seqMin, seqMax int      // ocurrencias de la secuencia (max -1 = unbounded)
 	attrs          []atributoXSD
 	particulas     []particulaXSD
 }
@@ -245,6 +248,7 @@ type nodoV struct {
 	decl       *elementoXSD // nil si no tiene declaración (su contenido no se leyó)
 	texto      bool         // trae texto (también solo espacios)
 	textoNoEsp bool         // trae texto que no es espacio
+	valor      []byte       // el texto, solo si la declaración es de contenido simple
 }
 
 type validadorXSD struct {
@@ -308,6 +312,21 @@ func attrSinNS(attrs []xml.Attr, nombre string) (string, bool) {
 func (v *validadorXSD) elemento(n *nodoV, ruta string) {
 	v.atributos(n, ruta)
 	d := n.decl
+	if d.texto != nil {
+		// Contenido simple (Detallista): el texto, ya con el whiteSpace del
+		// tipo, contra el tipo; ningún hijo.
+		cuenta := map[string]int{}
+		for _, h := range n.hijos {
+			cuenta[h.nombre.local]++
+			v.error(EsquemaElementoNoPermitido, rutaHijo(ruta, h.nombre.local, cuenta[h.nombre.local], false), "texto",
+				"el elemento "+d.nombre+" es de contenido simple y no admite elementos hijos")
+		}
+		valor := string(n.valor)
+		for _, f := range validarValor(d.texto, valor) {
+			v.hallazgo(f.codigo, NivelError, ruta, "", valor, f.regla, f.msg)
+		}
+		return
+	}
 	if d.vacio {
 		if n.texto {
 			v.error(EsquemaContenido, ruta, "vacio", "el elemento no admite contenido y trae texto")
@@ -320,7 +339,7 @@ func (v *validadorXSD) elemento(n *nodoV, ruta string) {
 		}
 		return
 	}
-	if n.textoNoEsp {
+	if n.textoNoEsp && !d.mixto {
 		v.error(EsquemaContenido, ruta, "solo-elementos", "el elemento solo admite elementos hijos y trae texto")
 	}
 	rutas := v.secuencia(n, ruta)
@@ -604,7 +623,7 @@ func validarValor(t *tipoXSD, crudo string) []fallaValor {
 			// En los numéricos compara el valor (el catálogo trae la forma
 			// canónica); en los demás, el texto.
 			clave := s
-			if t.prim != "string" && lexOK {
+			if numericoXSD[t.prim] && lexOK {
 				clave = num.String()
 			}
 			ok = f.catalogo.contiene(clave)
@@ -676,12 +695,37 @@ var (
 	reFechaHraXSD = regexp.MustCompile(`^(-?)([0-9]{4,})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})?$`)
 	reHoraXSD     = regexp.MustCompile(`^([0-9]{2}):([0-9]{2}):([0-9]{2})(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})?$`)
 	limitesEntero = map[string][2]int64{"int": {-1 << 31, 1<<31 - 1}, "short": {-1 << 15, 1<<15 - 1}}
+	numericoXSD   = map[string]bool{"decimal": true, "integer": true, "int": true, "short": true}
 )
+
+// esNmtoken dice si s es un xs:NMTOKEN: uno o más NameChar de XML 1.0. En
+// ASCII son letras, dígitos, '.', '-', '_' y ':'; fuera de ASCII se aproxima
+// con letras, dígitos y marcas combinantes de Unicode, más el punto medio
+// (U+00B7). Los valores de los XSD del SAT son ASCII.
+func esNmtoken(s string) bool {
+	if s == "" {
+		return false
+	}
+	for _, r := range s {
+		switch {
+		case r < 0x80:
+			if !(r >= 'a' && r <= 'z' || r >= 'A' && r <= 'Z' || r >= '0' && r <= '9' || strings.ContainsRune(".-_:", r)) {
+				return false
+			}
+		case r == 0xB7 || unicode.IsLetter(r) || unicode.IsDigit(r) || unicode.In(r, unicode.Mn, unicode.Mc):
+		default:
+			return false
+		}
+	}
+	return true
+}
 
 // lexicoXSD revisa la forma léxica de s (ya normalizado) en el tipo
 // integrado prim. Para los numéricos devuelve también el valor.
 func lexicoXSD(prim, s string) (decimal.Decimal, bool) {
 	switch prim {
+	case "NMTOKEN":
+		return decimal.Decimal{}, esNmtoken(s)
 	case "decimal":
 		d, err := decimal.Parse(s)
 		return d, err == nil && !strings.ContainsAny(s, " \t\r\n")
@@ -917,6 +961,10 @@ func arbolXSD(b []byte) (*nodoV, error) {
 			p := pila[len(pila)-1]
 			p.texto = p.texto || len(t) > 0
 			p.textoNoEsp = p.textoNoEsp || len(bytes.Trim(t, " \t\r\n")) > 0
+			if p.decl != nil && p.decl.texto != nil {
+				// Los comentarios parten el texto; su valor es todo junto.
+				p.valor = append(p.valor, t...)
+			}
 		}
 	}
 }
@@ -925,7 +973,7 @@ func arbolXSD(b []byte) (*nodoV, error) {
 // la de su partícula por nombre o, en un xs:any, la global (ver declGlobal).
 // nil si no hay.
 func declHijo(p *elementoXSD, n nombreXML, attrs []xml.Attr) *elementoXSD {
-	if p == nil || p.vacio {
+	if p == nil || p.vacio || p.texto != nil {
 		return nil
 	}
 	j := p.particula(n)

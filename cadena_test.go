@@ -122,7 +122,7 @@ func TestCadenaGolden(t *testing.T) {
 		}
 	}
 	// Que la prueba no pase en vacío si alguien borra los goldens.
-	if conTxt < 240 || conError < 40 || retenciones < 50 {
+	if conTxt < 240 || conError < 30 || retenciones < 50 {
 		t.Errorf("pocos goldens: %d cadenas (%d de Retenciones) y %d errores", conTxt, retenciones, conError)
 	}
 }

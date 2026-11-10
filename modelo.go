@@ -80,6 +80,7 @@ type Comprobante struct {
 	GastosHidrocarburos             *GastosHidrocarburos             `json:"gastos_hidrocarburos,omitempty"`
 	IngresosHidrocarburos           *IngresosHidrocarburos           `json:"ingresos_hidrocarburos,omitempty"`
 	EstadoDeCuentaBancario          *EstadoDeCuentaBancario          `json:"estado_de_cuenta_bancario,omitempty"`
+	Detallista                      *Detallista                      `json:"detallista,omitempty"`
 	// ComplementosNoSoportados lista los nodos de Complemento (y de
 	// ComplementoConcepto) que no se leen, como "{namespace}NombreLocal",
 	// sin repetir.

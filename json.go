@@ -213,6 +213,9 @@ func (c *Comprobante) Complementos() []string {
 	if x := c.EstadoDeCuentaBancario; x != nil {
 		out = append(out, "EstadoDeCuentaBancario "+x.Version)
 	}
+	if c.Detallista != nil {
+		out = append(out, "detallista") // sin versión
+	}
 	for _, cp := range c.Conceptos {
 		if t := cp.PorCuentadeTerceros; t != nil {
 			agregarUnico(&out, "PorCuentadeTerceros "+t.Version)

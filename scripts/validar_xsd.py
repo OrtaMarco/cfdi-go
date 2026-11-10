@@ -92,6 +92,7 @@ RAICES = {
     'http://www.sat.gob.mx/IngresosHidrocarburos10': 'cfd/IngresosHidrocarburos10/IngresosHidrocarburos.xsd',
     'http://www.sat.gob.mx/ecb': 'cfd/ecb/ecb.xsd',
     'http://www.sat.gob.mx/ecc': 'cfd/ecc/ecc.xsd',
+    'http://www.sat.gob.mx/detallista': 'cfd/detallista/detallista.xsd',
     'http://www.sat.gob.mx/esquemas/retencionpago/2': RET + '2/retencionpagov2.xsd',
     'http://www.sat.gob.mx/esquemas/retencionpago/1': RET + '1/retencionpagov1.xsd',
     'http://www.sat.gob.mx/esquemas/retencionpago/1/PlataformasTecnologicas10':

@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:lineItem/detallista:Customs",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}Customs': Missing child element(s). Expected is ( {http://www.sat.gob.mx/detallista}ReferenceDate )."
+  }
+ ]
+}

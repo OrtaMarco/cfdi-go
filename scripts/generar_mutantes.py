@@ -601,6 +601,99 @@ MUTANTES += [
 ]
 
 
+# Detallista: el único con datos en el texto de los elementos (tipos simples y xs:simpleContent),
+# mixed (specialInstruction), xs:NMTOKEN, xs:all (Customs, palletInformation y
+# tradeItemTaxInformation de la línea, en otro orden que el del XSD) y una secuencia repetible
+# (shipTo/nameAndAddress, en dos vueltas). Fragmento propio: GLN y GTIN inventados, sin RFC.
+def det(local, contenido='', attrs=''):
+    return f'<detallista:{local}{attrs}>{contenido}</detallista:{local}>'
+
+
+DET_ESPECIAL = det('specialInstruction', 'Nota ' + det('text', 'MIL PESOS 00/100 M.N.'), ' code="ZZZ"')
+DET_ADICIONAL = det('AdditionalInformation', det('referenceIdentification', 'REF-0001', ' type="ATZ"'))
+DET_ENTREGA = det('DeliveryNote', det('referenceIdentification', 'REC-0001') + det('ReferenceDate', '2026-03-02'))
+DET_COMPRADOR = det('buyer', det('gln', '7500000000001') +
+                    det('contactInformation', det('personOrDepartmentName', det('text', 'COMPRAS'))))
+DET_ADUANA_LINEA = det('Customs', det('ReferenceDate', '2026-02-15') +
+                       det('alternatePartyIdentification', '26  47  3807  6000001', ' type="TN"') +
+                       det('nameAndAddress', det('name', 'ADUANA DE PRUEBA')) + det('gln', '7500000000004'))
+DETALLISTA = (
+    '<detallista:detallista xmlns:detallista="http://www.sat.gob.mx/detallista" type="SimpleInvoiceType" '
+    'contentVersion="1.3.1" documentStructureVersion="AMC8.1" documentStatus="ORIGINAL">'
+    + det('requestForPaymentIdentification', det('entityType', 'INVOICE'))
+    + DET_ESPECIAL
+    + det('orderIdentification', det('referenceIdentification', 'OC-0001', ' type="ON"') + det('ReferenceDate', '2026-03-01'))
+    + DET_ADICIONAL + DET_ENTREGA + DET_COMPRADOR
+    + det('seller', det('gln', '7500000000002') +
+          det('alternatePartyIdentification', 'PROV-01', ' type="SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"'))
+    + det('shipTo', det('gln', '7500000000003') + det('nameAndAddress', det('name', 'BODEGA DE PRUEBA') +
+          det('city', 'CIUDAD DE PRUEBA') + det('name', 'ANDEN 2') + det('postalCode', '42501')))
+    + det('currency', det('currencyFunction', 'BILLING_CURRENCY') + det('rateOfChange', '1.00'), ' currencyISOCode="MXN"')
+    + det('paymentTerms',
+          det('netPayment', det('paymentTimePeriod', det('timePeriodDue', det('value', '30'), ' timePeriod="DAYS"')),
+              ' netPaymentTermsType="BASIC_NET"') +
+          det('discountPayment', det('percentage', '2.00'), ' discountType="ALLOWANCE_BY_PAYMENT_ON_TIME"'),
+          ' paymentTermsEvent="DATE_OF_INVOICE" PaymentTermsRelationTime="REFERENCE_AFTER"')
+    + '<detallista:shipmentDetail/>'
+    + det('allowanceCharge', det('specialServicesType', 'AJ') +
+          det('monetaryAmountOrPercentage', det('rate', det('percentage', '3.00'), ' base="INVOICE_VALUE"')),
+          ' allowanceChargeType="ALLOWANCE_GLOBAL" settlementType="BILL_BACK" sequenceNumber="1"')
+    + det('lineItem',
+          det('tradeItemIdentification', det('gtin', '7500000000101'))
+          + det('alternateTradeItemIdentification', 'ART-0001', ' type="SUPPLIER_ASSIGNED"')
+          + det('tradeItemDescriptionInformation', det('longText', 'ARTICULO DE PRUEBA'), ' language="ES"')
+          + det('invoicedQuantity', '10.00', ' unitOfMeasure="PCE"')
+          + det('aditionalQuantity', '1', ' QuantityType="FREE_GOODS"')
+          + det('grossPrice', det('Amount', '100.00')) + det('netPrice', det('Amount', '97.00'))
+          + det('AdditionalInformation', det('referenceIdentification', 'OC-0001', ' type="ON"'))
+          + DET_ADUANA_LINEA
+          + det('LogisticUnits', det('serialShippingContainerCode', 'SSCC-0001', ' type="SRV"'))
+          + det('palletInformation', det('description', 'CAJA', ' type="BOX"') + det('palletQuantity', '2') +
+                det('transport', det('methodOfPayment', 'PREPAID_BY_SELLER')))
+          + det('extendedAttributes', det('lotNumber', 'LOTE-01', ' productionDate="2026-01-10"'))
+          + det('allowanceCharge', det('specialServicesType', 'AA') +
+                det('monetaryAmountOrPercentage', det('percentagePerUnit', '3.00') + det('ratePerUnit', det('amountPerUnit', '3.00'))),
+                ' allowanceChargeType="ALLOWANCE_GLOBAL" settlementType="OFF_INVOICE"')
+          + det('tradeItemTaxInformation', det('taxCategory', 'TRANSFERIDO') + det('taxTypeDescription', 'VAT') +
+                det('tradeItemTaxAmount', det('taxPercentage', '16.00') + det('taxAmount', '155.20')))
+          + det('totalLineAmount', det('grossAmount', det('Amount', '1000.00')) + det('netAmount', det('Amount', '970.00'))),
+          ' type="SimpleInvoiceLineItemType" number="1"')
+    + det('totalAmount', det('Amount', '970.00'))
+    + det('TotalAllowanceCharge', det('specialServicesType', 'AJ') + det('Amount', '30.00'), ' allowanceOrChargeType="ALLOWANCE"')
+    + '</detallista:detallista>')
+BASES.update({
+    'detallista': ('ingreso40-pue.xml', en_complemento(DETALLISTA)),
+})
+MUTANTES += [
+    ('base-detallista', 'detallista', 'base reparada', 'valido', [], []),
+    ('detallista-sin-documentstatus', 'detallista', 'sin documentStatus (atributo requerido)', 'invalido',
+     ['ESQUEMA_ATRIBUTO_FALTANTE'], [(' documentStatus="ORIGINAL"', '')]),
+    ('detallista-entitytype-fuera-de-catalogo', 'detallista', 'entityType (texto) fuera de la enumeración', 'invalido',
+     ['ESQUEMA_CATALOGO'], [('>INVOICE<', '>FACTURA<')]),
+    ('detallista-entrega-fuera-de-orden', 'detallista', 'DeliveryNote antes de AdditionalInformation', 'invalido',
+     ['ESQUEMA_ORDEN'], [(DET_ADICIONAL + DET_ENTREGA, DET_ENTREGA + DET_ADICIONAL)]),
+    ('detallista-specialinstruction-excedente', 'detallista', 'cinco specialInstruction (maxOccurs 4)', 'invalido',
+     ['ESQUEMA_ELEMENTO_EXCEDENTE'], [(DET_ESPECIAL, DET_ESPECIAL * 5)]),
+    ('detallista-sin-buyer', 'detallista', 'sin buyer (elemento requerido)', 'invalido',
+     ['ESQUEMA_ELEMENTO_FALTANTE'], [(DET_COMPRADOR, '')]),
+    ('detallista-gln-longitud', 'detallista', 'gln del comprador de 12 caracteres (length 13)', 'invalido',
+     ['ESQUEMA_LONGITUD'], [('>7500000000001<', '>750000000001<')]),
+    ('detallista-amount-no-decimal', 'detallista', 'Amount de TotalAllowanceCharge que no es xs:decimal', 'invalido',
+     ['ESQUEMA_TIPO'], [('>30.00<', '>30,00<')]),
+    ('detallista-referencia-fija', 'detallista', 'referenceIdentification de la orden con type="IV" (fixed y enumeración ON)',
+     'invalido', ['ESQUEMA_CATALOGO', 'ESQUEMA_VALOR_FIJO'], [('type="ON">OC-0001</detallista:referenceIdentification><detallista:ReferenceDate>',
+                                                              'type="IV">OC-0001</detallista:referenceIdentification><detallista:ReferenceDate>')]),
+    ('detallista-texto-suelto', 'detallista', 'texto en buyer, que no es mixed', 'invalido',
+     ['ESQUEMA_CONTENIDO'], [('<detallista:buyer>', '<detallista:buyer>texto')]),
+    ('detallista-hijo-en-gln', 'detallista', 'elemento dentro del gln del vendedor (contenido simple)', 'invalido',
+     ['ESQUEMA_ELEMENTO_NO_PERMITIDO'], [('>7500000000002<', '>7500000000002<detallista:x/><')]),
+    ('detallista-aduana-sin-fecha', 'detallista', 'Customs de la línea (xs:all) sin ReferenceDate', 'invalido',
+     ['ESQUEMA_ELEMENTO_FALTANTE'], [(det('ReferenceDate', '2026-02-15'), '')]),
+    ('detallista-unidad-no-nmtoken', 'detallista', 'unitOfMeasure con un espacio en medio (no es xs:NMTOKEN)', 'invalido',
+     ['ESQUEMA_TIPO'], [('unitOfMeasure="PCE"', 'unitOfMeasure="P CE"')]),
+]
+
+
 def reemplazar(texto, cambios, donde):
     for viejo, nuevo in cambios:
         n = texto.count(viejo)

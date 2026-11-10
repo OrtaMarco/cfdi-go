@@ -4,8 +4,9 @@
 //
 // Go no tiene XSLT, pero esas hojas usan un subconjunto mínimo: plantillas
 // por nombre de elemento, for-each, apply-templates, if, y las plantillas
-// Requerido / Opcional de utilerias.xslt (normalize-space del atributo con
-// "|" delante). Este paquete entiende exactamente eso y falla con cualquier
+// Requerido / Opcional de utilerias.xslt (normalize-space del atributo, o
+// del texto de un elemento en Detallista, con "|" delante). Este paquete
+// entiende exactamente eso y falla con cualquier
 // otra construcción, para que un XSLT nuevo del SAT no se traduzca mal en
 // silencio.
 //
@@ -97,6 +98,7 @@ var Incluidos = map[string]bool{
 	"cfd/IngresosHidrocarburos10/IngresosHidrocarburos.xslt":                   true,
 	"cfd/ecb/ecb.xslt":                                                         true,
 	"cfd/ecc/ecc.xslt":                                                         true,
+	"cfd/detallista/detallista.xslt":                                           true,
 
 	// Complementos de Retenciones: todos los que incluyen las hojas 1.0 y
 	// 2.0 son chicos y se llevan a la cadena.
@@ -269,7 +271,7 @@ func firma(e *elem) string {
 
 // Paso es una instrucción ya traducida.
 type Paso struct {
-	Op     string // texto, requerido, opcional, cada, aplicar, si, si_igual, conjunto
+	Op     string // texto, requerido, opcional, requerido_nodo, opcional_nodo, cada, aplicar, si, si_igual, conjunto
 	Texto  string // texto literal, o nombre del atributo
 	Valor  string // si_igual
 	Abs    bool
@@ -753,10 +755,20 @@ func (h *hoja) llamada(e *elem, param string) (*Paso, error) {
 		if err == nil {
 			return &Paso{Op: op, Texto: a}, nil
 		}
+		i := strings.LastIndex(sel, "/@")
+		if param == "" && !strings.Contains(sel, "@") {
+			// "." o "a:B/a:C" (Detallista): el valor es el texto de un
+			// elemento. string() de un node-set es el valor de texto del
+			// primero en orden de documento: todo el texto de sus
+			// descendientes.
+			if abs, r, err2 := ruta(arg, sel); err2 == nil {
+				return &Paso{Op: op + "_nodo", Abs: abs, Ruta: r}, nil
+			}
+			return nil, err
+		}
 		// "./a:B/@Attr" (el Receptor de Retenciones): el valor es el conjunto
 		// de esos atributos de los nodos B, y string() toma el primero en
 		// orden de documento, como $param/@attr en una plantilla con nombre.
-		i := strings.LastIndex(sel, "/@")
 		if param != "" || i < 0 {
 			return nil, err
 		}
@@ -850,6 +862,14 @@ func escribirPaso(b *bytes.Buffer, p Paso) {
 		fmt.Fprintf(b, "req(%q)", p.Texto)
 	case "opcional":
 		fmt.Fprintf(b, "opc(%q)", p.Texto)
+	case "requerido_nodo", "opcional_nodo":
+		f := "reqNodo("
+		if p.Op == "opcional_nodo" {
+			f = "opcNodo("
+		}
+		b.WriteString(f)
+		escribirRuta(b, p)
+		b.WriteString(")")
 	case "aplicar":
 		b.WriteString("aplicar(")
 		escribirRuta(b, p)

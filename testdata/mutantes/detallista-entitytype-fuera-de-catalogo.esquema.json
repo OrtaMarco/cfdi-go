@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:requestForPaymentIdentification/detallista:entityType",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}entityType': [facet 'enumeration'] The value 'FACTURA' is not an element of the set {'INVOICE', 'DEBIT_NOTE', 'CREDIT_NOTE', 'LEASE_RECEIPT', 'HONORARY_RECEIPT', 'PARTIAL_INVOICE', 'TRANSPORT_DOCUMENT', 'AUTO_INVOICE'}."
+  }
+ ]
+}

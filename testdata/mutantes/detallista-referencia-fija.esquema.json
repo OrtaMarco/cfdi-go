@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:orderIdentification/detallista:referenceIdentification",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}referenceIdentification', attribute 'type': [facet 'enumeration'] The value 'IV' is not an element of the set {'ON'}."
+  }
+ ]
+}

@@ -80,6 +80,7 @@ COMUNES = {
     (sat('renovacionysustitucionvehiculos'), 'renovacionysustitucionvehiculos'),
     (sat('certificadodestruccion'), 'certificadodedestruccion'),
     (sat('arteantiguedades'), 'obrasarteantiguedades'),
+    (sat('detallista'), 'detallista'),
 }
 HIDROCARBUROS = {
     (sat('GastosHidrocarburos10'), 'GastosHidrocarburos'),

@@ -266308,6 +266308,312 @@ IEPS
 IVA
 `}
 
+// Detallista detallista/requestForPaymentIdentification/entityType: 8 valores.
+var catDetallista_detallista_requestForPaymentIdentification_entityType = &catalogoXSD{nombre: "Detallista detallista/requestForPaymentIdentification/entityType", valores: `
+AUTO_INVOICE
+CREDIT_NOTE
+DEBIT_NOTE
+HONORARY_RECEIPT
+INVOICE
+LEASE_RECEIPT
+PARTIAL_INVOICE
+TRANSPORT_DOCUMENT
+`}
+
+// Detallista detallista/specialInstruction/@code: 4 valores.
+var catDetallista_detallista_specialInstruction_code = &catalogoXSD{nombre: "Detallista detallista/specialInstruction/@code", valores: `
+AAB
+DUT
+PUR
+ZZZ
+`}
+
+// Detallista detallista/orderIdentification/referenceIdentification/@type: 1 valores.
+var catDetallista_detallista_orderIdentification_referenceIdentification_type = &catalogoXSD{nombre: "Detallista detallista/orderIdentification/referenceIdentification/@type", valores: `
+ON
+`}
+
+// Detallista detallista/AdditionalInformation/referenceIdentification/@type: 8 valores.
+var catDetallista_detallista_AdditionalInformation_referenceIdentification_type = &catalogoXSD{nombre: "Detallista detallista/AdditionalInformation/referenceIdentification/@type", valores: `
+AAE
+ACE
+ATZ
+AWR
+CK
+DQ
+IV
+ON
+`}
+
+// Detallista detallista/seller/alternatePartyIdentification/@type: 2 valores.
+var catDetallista_detallista_seller_alternatePartyIdentification_type = &catalogoXSD{nombre: "Detallista detallista/seller/alternatePartyIdentification/@type", valores: `
+IEPS_REFERENCE
+SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY
+`}
+
+// Detallista detallista/InvoiceCreator/alternatePartyIdentification/@type: 2 valores.
+var catDetallista_detallista_InvoiceCreator_alternatePartyIdentification_type = &catalogoXSD{nombre: "Detallista detallista/InvoiceCreator/alternatePartyIdentification/@type", valores: `
+IA
+VA
+`}
+
+// Detallista detallista/currency/currencyFunction: 3 valores.
+var catDetallista_detallista_currency_currencyFunction = &catalogoXSD{nombre: "Detallista detallista/currency/currencyFunction", valores: `
+BILLING_CURRENCY
+PAYMENT_CURRENCY
+PRICE_CURRENCY
+`}
+
+// Detallista detallista/currency/@currencyISOCode: 3 valores.
+var catDetallista_detallista_currency_currencyISOCode = &catalogoXSD{nombre: "Detallista detallista/currency/@currencyISOCode", valores: `
+MXN
+USD
+XEU
+`}
+
+// Detallista detallista/paymentTerms/netPayment/paymentTimePeriod/timePeriodDue/@timePeriod: 1 valores.
+var catDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue_timePeriod = &catalogoXSD{nombre: "Detallista detallista/paymentTerms/netPayment/paymentTimePeriod/timePeriodDue/@timePeriod", valores: `
+DAYS
+`}
+
+// Detallista detallista/paymentTerms/netPayment/@netPaymentTermsType: 3 valores.
+var catDetallista_detallista_paymentTerms_netPayment_netPaymentTermsType = &catalogoXSD{nombre: "Detallista detallista/paymentTerms/netPayment/@netPaymentTermsType", valores: `
+BASIC_DISCOUNT_OFFERED
+BASIC_NET
+END_OF_MONTH
+`}
+
+// Detallista detallista/paymentTerms/discountPayment/@discountType: 2 valores.
+var catDetallista_detallista_paymentTerms_discountPayment_discountType = &catalogoXSD{nombre: "Detallista detallista/paymentTerms/discountPayment/@discountType", valores: `
+ALLOWANCE_BY_PAYMENT_ON_TIME
+SANCTION
+`}
+
+// Detallista detallista/paymentTerms/@paymentTermsEvent: 2 valores.
+var catDetallista_detallista_paymentTerms_paymentTermsEvent = &catalogoXSD{nombre: "Detallista detallista/paymentTerms/@paymentTermsEvent", valores: `
+DATE_OF_INVOICE
+EFFECTIVE_DATE
+`}
+
+// Detallista detallista/paymentTerms/@PaymentTermsRelationTime: 1 valores.
+var catDetallista_detallista_paymentTerms_PaymentTermsRelationTime = &catalogoXSD{nombre: "Detallista detallista/paymentTerms/@PaymentTermsRelationTime", valores: `
+REFERENCE_AFTER
+`}
+
+// Detallista detallista/allowanceCharge/specialServicesType: 30 valores.
+var catDetallista_detallista_allowanceCharge_specialServicesType = &catalogoXSD{nombre: "Detallista detallista/allowanceCharge/specialServicesType", valores: `
+AA
+ABZ
+ADO
+ADS
+ADT
+AJ
+CAC
+COD
+DA
+DI
+EAA
+EAB
+FA
+FC
+FG
+FI
+HD
+PAD
+PI
+QD
+RAA
+SAB
+TAE
+TD
+TS
+TX
+TZ
+UM
+VAB
+ZZZ
+`}
+
+// Detallista detallista/allowanceCharge/monetaryAmountOrPercentage/rate/@base: 1 valores.
+var catDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage_rate_base = &catalogoXSD{nombre: "Detallista detallista/allowanceCharge/monetaryAmountOrPercentage/rate/@base", valores: `
+INVOICE_VALUE
+`}
+
+// Detallista detallista/allowanceCharge/@allowanceChargeType: 2 valores.
+var catDetallista_detallista_allowanceCharge_allowanceChargeType = &catalogoXSD{nombre: "Detallista detallista/allowanceCharge/@allowanceChargeType", valores: `
+ALLOWANCE_GLOBAL
+CHARGE_GLOBAL
+`}
+
+// Detallista detallista/allowanceCharge/@settlementType: 2 valores.
+var catDetallista_detallista_allowanceCharge_settlementType = &catalogoXSD{nombre: "Detallista detallista/allowanceCharge/@settlementType", valores: `
+BILL_BACK
+OFF_INVOICE
+`}
+
+// Detallista detallista/lineItem/alternateTradeItemIdentification/@type: 4 valores.
+var catDetallista_detallista_lineItem_alternateTradeItemIdentification_type = &catalogoXSD{nombre: "Detallista detallista/lineItem/alternateTradeItemIdentification/@type", valores: `
+BUYER_ASSIGNED
+GLOBAL_TRADE_ITEM_IDENTIFICATION
+SERIAL_NUMBER
+SUPPLIER_ASSIGNED
+`}
+
+// Detallista detallista/lineItem/tradeItemDescriptionInformation/@language: 2 valores.
+var catDetallista_detallista_lineItem_tradeItemDescriptionInformation_language = &catalogoXSD{nombre: "Detallista detallista/lineItem/tradeItemDescriptionInformation/@language", valores: `
+EN
+ES
+`}
+
+// Detallista detallista/lineItem/aditionalQuantity/@QuantityType: 2 valores.
+var catDetallista_detallista_lineItem_aditionalQuantity_QuantityType = &catalogoXSD{nombre: "Detallista detallista/lineItem/aditionalQuantity/@QuantityType", valores: `
+FREE_GOODS
+NUM_CONSUMER_UNITS
+`}
+
+// Detallista detallista/lineItem/AdditionalInformation/referenceIdentification/@type: 1 valores.
+var catDetallista_detallista_lineItem_AdditionalInformation_referenceIdentification_type = &catalogoXSD{nombre: "Detallista detallista/lineItem/AdditionalInformation/referenceIdentification/@type", valores: `
+ON
+`}
+
+// Detallista detallista/lineItem/Customs/alternatePartyIdentification/@type: 1 valores.
+var catDetallista_detallista_lineItem_Customs_alternatePartyIdentification_type = &catalogoXSD{nombre: "Detallista detallista/lineItem/Customs/alternatePartyIdentification/@type", valores: `
+TN
+`}
+
+// Detallista detallista/lineItem/LogisticUnits/serialShippingContainerCode/@type: 2 valores.
+var catDetallista_detallista_lineItem_LogisticUnits_serialShippingContainerCode_type = &catalogoXSD{nombre: "Detallista detallista/lineItem/LogisticUnits/serialShippingContainerCode/@type", valores: `
+BJ
+SRV
+`}
+
+// Detallista detallista/lineItem/palletInformation/description/@type: 5 valores.
+var catDetallista_detallista_lineItem_palletInformation_description_type = &catalogoXSD{nombre: "Detallista detallista/lineItem/palletInformation/description/@type", valores: `
+BOX
+CASE
+EXCHANGE_PALLETS
+PALLET_80x100
+RETURN_PALLETS
+`}
+
+// Detallista detallista/lineItem/palletInformation/transport/methodOfPayment: 2 valores.
+var catDetallista_detallista_lineItem_palletInformation_transport_methodOfPayment = &catalogoXSD{nombre: "Detallista detallista/lineItem/palletInformation/transport/methodOfPayment", valores: `
+PAID_BY_BUYER
+PREPAID_BY_SELLER
+`}
+
+// Detallista detallista/lineItem/allowanceCharge/specialServicesType: 29 valores.
+var catDetallista_detallista_lineItem_allowanceCharge_specialServicesType = &catalogoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/specialServicesType", valores: `
+AA
+ABZ
+ADO
+ADS
+ADT
+AJ
+CAC
+COD
+DA
+DI
+EAA
+EAB
+FA
+FC
+FG
+FI
+HD
+PAD
+PI
+QD
+RAA
+SAB
+TAE
+TD
+TS
+TX
+UM
+VAB
+ZZZ
+`}
+
+// Detallista detallista/lineItem/allowanceCharge/@allowanceChargeType: 2 valores.
+var catDetallista_detallista_lineItem_allowanceCharge_allowanceChargeType = &catalogoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/@allowanceChargeType", valores: `
+ALLOWANCE_GLOBAL
+CHARGE_GLOBAL
+`}
+
+// Detallista detallista/lineItem/allowanceCharge/@settlementType: 3 valores.
+var catDetallista_detallista_lineItem_allowanceCharge_settlementType = &catalogoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/@settlementType", valores: `
+CHARGE_TO_BE_PAID_BY_CUSTOMER
+CHARGE_TO_BE_PAID_BY_VENDOR
+OFF_INVOICE
+`}
+
+// Detallista detallista/lineItem/tradeItemTaxInformation/taxTypeDescription: 9 valores.
+var catDetallista_detallista_lineItem_tradeItemTaxInformation_taxTypeDescription = &catalogoXSD{nombre: "Detallista detallista/lineItem/tradeItemTaxInformation/taxTypeDescription", valores: `
+AAA
+ADD
+FRE
+GST
+LAC
+LOC
+OTH
+STT
+VAT
+`}
+
+// Detallista detallista/lineItem/tradeItemTaxInformation/taxCategory: 2 valores.
+var catDetallista_detallista_lineItem_tradeItemTaxInformation_taxCategory = &catalogoXSD{nombre: "Detallista detallista/lineItem/tradeItemTaxInformation/taxCategory", valores: `
+RETENIDO
+TRANSFERIDO
+`}
+
+// Detallista detallista/TotalAllowanceCharge/specialServicesType: 29 valores.
+var catDetallista_detallista_TotalAllowanceCharge_specialServicesType = &catalogoXSD{nombre: "Detallista detallista/TotalAllowanceCharge/specialServicesType", valores: `
+AA
+ABZ
+ADO
+ADS
+ADT
+AJ
+CAC
+COD
+DA
+DI
+EAA
+EAB
+FA
+FC
+FG
+FI
+HD
+PAD
+PI
+QD
+RAA
+SAB
+TAE
+TD
+TS
+TX
+UM
+VAB
+ZZZ
+`}
+
+// Detallista detallista/TotalAllowanceCharge/@allowanceOrChargeType: 2 valores.
+var catDetallista_detallista_TotalAllowanceCharge_allowanceOrChargeType = &catalogoXSD{nombre: "Detallista detallista/TotalAllowanceCharge/@allowanceOrChargeType", valores: `
+ALLOWANCE
+CHARGE
+`}
+
+// Detallista detallista/@documentStatus: 4 valores.
+var catDetallista_detallista_documentStatus = &catalogoXSD{nombre: "Detallista detallista/@documentStatus", valores: `
+COPY
+DELETE
+ORIGINAL
+REEMPLAZA
+`}
+
 // Ret20 Retenciones/Receptor/@NacionalidadR: 2 valores.
 var catRet20_Retenciones_Receptor_NacionalidadR = &catalogoXSD{nombre: "Ret20 Retenciones/Receptor/@NacionalidadR", valores: `
 Extranjero

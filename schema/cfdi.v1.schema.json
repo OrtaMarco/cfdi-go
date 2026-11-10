@@ -196,6 +196,7 @@
         "gastos_hidrocarburos": { "$ref": "#/$defs/gastos_hidrocarburos" },
         "ingresos_hidrocarburos": { "$ref": "#/$defs/ingresos_hidrocarburos" },
         "estado_de_cuenta_bancario": { "$ref": "#/$defs/estado_de_cuenta_bancario" },
+        "detallista": { "$ref": "#/$defs/detallista" },
         "complementos_no_soportados": {
           "type": "array",
           "items": { "type": "string" },
@@ -2060,6 +2061,427 @@
         "moneda": { "type": "string" },
         "saldo_inicial": { "$ref": "#/$defs/decimal" },
         "saldo_al_corte": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "detallista": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Complemento Detallista (namespace .../detallista, XSD sin versión): factura del sector retail. Lleva sus datos en el texto de los elementos; las claves son el nombre del SAT en snake_case.",
+      "properties": {
+        "type": { "type": "string" },
+        "content_version": { "type": "string" },
+        "document_structure_version": { "type": "string" },
+        "document_status": { "type": "string" },
+        "request_for_payment_identification": { "$ref": "#/$defs/detallista_request_for_payment" },
+        "special_instruction": { "type": "array", "items": { "$ref": "#/$defs/detallista_special_instruction" } },
+        "order_identification": { "$ref": "#/$defs/detallista_order_identification" },
+        "additional_information": { "$ref": "#/$defs/detallista_additional_information" },
+        "delivery_note": { "$ref": "#/$defs/detallista_delivery_note" },
+        "buyer": { "$ref": "#/$defs/detallista_buyer" },
+        "seller": { "$ref": "#/$defs/detallista_seller" },
+        "ship_to": { "$ref": "#/$defs/detallista_ship_to" },
+        "invoice_creator": { "$ref": "#/$defs/detallista_invoice_creator" },
+        "customs": { "type": "array", "items": { "$ref": "#/$defs/detallista_customs" } },
+        "currency": { "type": "array", "items": { "$ref": "#/$defs/detallista_currency" } },
+        "payment_terms": { "$ref": "#/$defs/detallista_payment_terms" },
+        "shipment_detail": { "$ref": "#/$defs/detallista_shipment_detail" },
+        "allowance_charge": { "type": "array", "items": { "$ref": "#/$defs/detallista_allowance_charge" } },
+        "line_item": { "type": "array", "items": { "$ref": "#/$defs/detallista_line_item" } },
+        "total_amount": { "$ref": "#/$defs/detallista_monto" },
+        "total_allowance_charge": { "type": "array", "items": { "$ref": "#/$defs/detallista_total_allowance_charge" } }
+      }
+    },
+    "detallista_referencia": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Elemento de texto con atributo type (referenceIdentification, alternatePartyIdentification, serialShippingContainerCode, description…).",
+      "properties": {
+        "type": { "type": "string" },
+        "valor": { "type": "string", "description": "Texto del elemento." }
+      }
+    },
+    "detallista_monto": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Elemento que solo contiene un Amount (grossPrice, netPrice, grossAmount, netAmount, totalAmount).",
+      "properties": {
+        "amount": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "detallista_request_for_payment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entity_type": { "type": "string" }
+      }
+    },
+    "detallista_special_instruction": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "El texto suelto entre sus hijos (es mixed) no se lee.",
+      "properties": {
+        "code": { "type": "string" },
+        "text": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "detallista_order_identification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reference_identification": { "type": "array", "items": { "$ref": "#/$defs/detallista_referencia" } },
+        "reference_date": { "$ref": "#/$defs/fecha" }
+      }
+    },
+    "detallista_additional_information": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reference_identification": { "type": "array", "items": { "$ref": "#/$defs/detallista_referencia" } }
+      }
+    },
+    "detallista_delivery_note": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reference_identification": { "type": "array", "items": { "type": "string" }, "description": "Folios de recibo, un texto por elemento." },
+        "reference_date": { "$ref": "#/$defs/fecha" }
+      }
+    },
+    "detallista_buyer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gln": { "type": "string" },
+        "contact_information": { "$ref": "#/$defs/detallista_contact_information" }
+      }
+    },
+    "detallista_contact_information": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "person_or_department_name": { "$ref": "#/$defs/detallista_person_or_department_name" }
+      }
+    },
+    "detallista_person_or_department_name": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string" }
+      }
+    },
+    "detallista_seller": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gln": { "type": "string" },
+        "alternate_party_identification": { "$ref": "#/$defs/detallista_referencia" }
+      }
+    },
+    "detallista_ship_to": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gln": { "type": "string" },
+        "name_and_address": { "$ref": "#/$defs/detallista_name_and_address_lista" }
+      }
+    },
+    "detallista_name_and_address_lista": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "xs:sequence repetible: una lista por campo, cada una en orden de documento.",
+      "properties": {
+        "name": { "type": "array", "items": { "type": "string" } },
+        "street_address_one": { "type": "array", "items": { "type": "string" } },
+        "city": { "type": "array", "items": { "type": "string" } },
+        "postal_code": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "detallista_invoice_creator": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gln": { "type": "string" },
+        "alternate_party_identification": { "$ref": "#/$defs/detallista_referencia" },
+        "name_and_address": { "$ref": "#/$defs/detallista_name_and_address" }
+      }
+    },
+    "detallista_name_and_address": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "street_address_one": { "type": "string" },
+        "city": { "type": "string" },
+        "postal_code": { "type": "string" }
+      }
+    },
+    "detallista_customs": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Customs global: solo el GLN de la aduana.",
+      "properties": {
+        "gln": { "type": "string" }
+      }
+    },
+    "detallista_currency": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currency_iso_code": { "type": "string" },
+        "currency_function": { "type": "array", "items": { "type": "string" } },
+        "rate_of_change": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "detallista_payment_terms": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "payment_terms_event": { "type": "string" },
+        "payment_terms_relation_time": { "type": "string" },
+        "net_payment": { "$ref": "#/$defs/detallista_net_payment" },
+        "discount_payment": { "$ref": "#/$defs/detallista_discount_payment" }
+      }
+    },
+    "detallista_net_payment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "net_payment_terms_type": { "type": "string" },
+        "payment_time_period": { "$ref": "#/$defs/detallista_payment_time_period" }
+      }
+    },
+    "detallista_payment_time_period": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "time_period_due": { "$ref": "#/$defs/detallista_time_period_due" }
+      }
+    },
+    "detallista_time_period_due": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "time_period": { "type": "string" },
+        "value": { "type": "string", "description": "Número de periodos, como texto." }
+      }
+    },
+    "detallista_discount_payment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "discount_type": { "type": "string" },
+        "percentage": { "type": "string", "description": "Texto del elemento (en el XSD es xs:string)." }
+      }
+    },
+    "detallista_shipment_detail": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "shipmentDetail es un complexType vacío: si viene en el XML, sale {}."
+    },
+    "detallista_allowance_charge": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Cargo o descuento global de la factura.",
+      "properties": {
+        "allowance_charge_type": { "type": "string" },
+        "settlement_type": { "type": "string" },
+        "sequence_number": { "type": "string" },
+        "special_services_type": { "type": "string" },
+        "monetary_amount_or_percentage": { "$ref": "#/$defs/detallista_monetary_amount_or_percentage" }
+      }
+    },
+    "detallista_monetary_amount_or_percentage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rate": { "$ref": "#/$defs/detallista_rate" }
+      }
+    },
+    "detallista_rate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base": { "type": "string" },
+        "percentage": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "detallista_total_allowance_charge": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "allowance_or_charge_type": { "type": "string" },
+        "special_services_type": { "type": "string" },
+        "amount": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "detallista_line_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string" },
+        "number": { "type": "string" },
+        "trade_item_identification": { "$ref": "#/$defs/detallista_trade_item_identification" },
+        "alternate_trade_item_identification": { "type": "array", "items": { "$ref": "#/$defs/detallista_referencia" } },
+        "trade_item_description_information": { "$ref": "#/$defs/detallista_trade_item_description" },
+        "invoiced_quantity": { "$ref": "#/$defs/detallista_invoiced_quantity" },
+        "aditional_quantity": { "type": "array", "items": { "$ref": "#/$defs/detallista_aditional_quantity" }, "description": "Así, con una sola d, se llama el elemento en el XSD del SAT." },
+        "gross_price": { "$ref": "#/$defs/detallista_monto" },
+        "net_price": { "$ref": "#/$defs/detallista_monto" },
+        "additional_information": { "$ref": "#/$defs/detallista_line_additional_information" },
+        "customs": { "type": "array", "items": { "$ref": "#/$defs/detallista_line_customs" } },
+        "logistic_units": { "$ref": "#/$defs/detallista_logistic_units" },
+        "pallet_information": { "$ref": "#/$defs/detallista_pallet_information" },
+        "extended_attributes": { "$ref": "#/$defs/detallista_extended_attributes" },
+        "allowance_charge": { "type": "array", "items": { "$ref": "#/$defs/detallista_line_allowance_charge" } },
+        "trade_item_tax_information": { "type": "array", "items": { "$ref": "#/$defs/detallista_trade_item_tax_information" } },
+        "total_line_amount": { "$ref": "#/$defs/detallista_total_line_amount" }
+      }
+    },
+    "detallista_trade_item_identification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gtin": { "type": "string" }
+      }
+    },
+    "detallista_trade_item_description": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "language": { "type": "string" },
+        "long_text": { "type": "string" }
+      }
+    },
+    "detallista_invoiced_quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "unit_of_measure": { "type": "string" },
+        "valor": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "detallista_aditional_quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "quantity_type": { "type": "string" },
+        "valor": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "detallista_line_additional_information": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reference_identification": { "$ref": "#/$defs/detallista_referencia" }
+      }
+    },
+    "detallista_line_customs": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Customs de una línea: pedimento a nivel detalle.",
+      "properties": {
+        "gln": { "type": "string" },
+        "alternate_party_identification": { "$ref": "#/$defs/detallista_referencia" },
+        "reference_date": { "$ref": "#/$defs/fecha" },
+        "name_and_address": { "$ref": "#/$defs/detallista_customs_name_and_address" }
+      }
+    },
+    "detallista_customs_name_and_address": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" }
+      }
+    },
+    "detallista_logistic_units": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "serial_shipping_container_code": { "$ref": "#/$defs/detallista_referencia" }
+      }
+    },
+    "detallista_pallet_information": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pallet_quantity": { "type": "string" },
+        "description": { "$ref": "#/$defs/detallista_referencia" },
+        "transport": { "$ref": "#/$defs/detallista_transport" }
+      }
+    },
+    "detallista_transport": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "method_of_payment": { "type": "string" }
+      }
+    },
+    "detallista_extended_attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lot_number": { "type": "array", "items": { "$ref": "#/$defs/detallista_lot_number" } }
+      }
+    },
+    "detallista_lot_number": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "production_date": { "$ref": "#/$defs/fecha" },
+        "valor": { "type": "string", "description": "Texto del elemento: el número de lote." }
+      }
+    },
+    "detallista_line_allowance_charge": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Cargo o descuento de una línea. Sus montos son xs:string en el XSD, no decimales.",
+      "properties": {
+        "allowance_charge_type": { "type": "string" },
+        "settlement_type": { "type": "string" },
+        "sequence_number": { "type": "string" },
+        "special_services_type": { "type": "string" },
+        "monetary_amount_or_percentage": { "$ref": "#/$defs/detallista_line_monetary_amount_or_percentage" }
+      }
+    },
+    "detallista_line_monetary_amount_or_percentage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "percentage_per_unit": { "type": "string" },
+        "rate_per_unit": { "$ref": "#/$defs/detallista_rate_per_unit" }
+      }
+    },
+    "detallista_rate_per_unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "amount_per_unit": { "type": "string" }
+      }
+    },
+    "detallista_trade_item_tax_information": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tax_type_description": { "type": "string" },
+        "reference_number": { "type": "string" },
+        "trade_item_tax_amount": { "$ref": "#/$defs/detallista_trade_item_tax_amount" },
+        "tax_category": { "type": "string" }
+      }
+    },
+    "detallista_trade_item_tax_amount": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tax_percentage": { "$ref": "#/$defs/decimal" },
+        "tax_amount": { "$ref": "#/$defs/decimal" }
+      }
+    },
+    "detallista_total_line_amount": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gross_amount": { "$ref": "#/$defs/detallista_monto" },
+        "net_amount": { "$ref": "#/$defs/detallista_monto" }
       }
     }
   }

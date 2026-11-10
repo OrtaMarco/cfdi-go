@@ -158,14 +158,16 @@ func (n nombreXML) String() string { return "{" + n.ns + "}" + n.local }
 type opCadena uint8
 
 const (
-	opTexto     opCadena = iota // texto literal del XSLT ("|", "||")
-	opRequerido                 // plantilla Requerido: "|" + normalize-space(@attr), aunque falte
-	opOpcional                  // plantilla Opcional: lo mismo, solo si el atributo existe (aunque esté vacío)
-	opCada                      // xsl:for-each
-	opAplicar                   // xsl:apply-templates
-	opSi                        // xsl:if con una ruta: si selecciona algo
-	opSiIgual                   // xsl:if test="./@attr='valor'"
-	opConjunto                  // plantilla con nombre y parámetro nodo: su cuerpo (solo Requerido/Opcional) lee $param/@attr
+	opTexto         opCadena = iota // texto literal del XSLT ("|", "||")
+	opRequerido                     // plantilla Requerido: "|" + normalize-space(@attr), aunque falte
+	opOpcional                      // plantilla Opcional: lo mismo, solo si el atributo existe (aunque esté vacío)
+	opCada                          // xsl:for-each
+	opAplicar                       // xsl:apply-templates
+	opSi                            // xsl:if con una ruta: si selecciona algo
+	opSiIgual                       // xsl:if test="./@attr='valor'"
+	opConjunto                      // plantilla con nombre y parámetro nodo: su cuerpo (solo Requerido/Opcional) lee $param/@attr
+	opRequeridoNodo                 // Requerido sobre una ruta de elementos (Detallista): el texto del primero
+	opOpcionalNodo                  // Opcional sobre una ruta de elementos: solo si la ruta selecciona algo
 )
 
 type pasoRuta struct {
@@ -203,6 +205,12 @@ type hojaCadena struct {
 func txt(s string) pasoCadena { return pasoCadena{op: opTexto, texto: s} }
 func req(a string) pasoCadena { return pasoCadena{op: opRequerido, texto: a} }
 func opc(a string) pasoCadena { return pasoCadena{op: opOpcional, texto: a} }
+func reqNodo(r rutaXP) pasoCadena {
+	return pasoCadena{op: opRequeridoNodo, ruta: r}
+}
+func opcNodo(r rutaXP) pasoCadena {
+	return pasoCadena{op: opOpcionalNodo, ruta: r}
+}
 func aplicar(r rutaXP) pasoCadena {
 	return pasoCadena{op: opAplicar, ruta: r}
 }
@@ -344,6 +352,19 @@ func (ev *evaluador) ejecutar(pasos []pasoCadena, ctx *nodoC) error {
 		case opRequerido, opOpcional:
 			v, ok := ctx.attrOk(p.texto)
 			ev.valor(p.op, v, ok)
+		case opRequeridoNodo, opOpcionalNodo:
+			// string() de un node-set: el valor de texto del primer nodo en
+			// orden de documento. Una ruta vacía (".") es el contexto.
+			var v string
+			ns := ev.seleccionar(ctx, p.ruta)
+			if len(ns) > 0 {
+				v = textoDe(ns[0])
+			}
+			op := opRequerido
+			if p.op == opOpcionalNodo {
+				op = opOpcional
+			}
+			ev.valor(op, v, len(ns) > 0)
 		case opSiIgual:
 			if v, ok := ctx.attrOk(p.texto); ok && v == p.valor {
 				if err := ev.ejecutar(p.cuerpo, ctx); err != nil {
@@ -459,6 +480,19 @@ func (ev *evaluador) seleccionar(ctx *nodoC, r rutaXP) []*nodoC {
 		actual = sig
 	}
 	return actual
+}
+
+// textoDe es el valor de texto de XPath de un elemento: todo el texto de
+// sus descendientes, en orden de documento.
+func textoDe(n *nodoC) string {
+	if !n.esElemento() {
+		return n.texto
+	}
+	var b strings.Builder
+	for _, h := range n.hijos {
+		b.WriteString(textoDe(h))
+	}
+	return b.String()
 }
 
 func coincide(n *nodoC, p pasoRuta) bool {

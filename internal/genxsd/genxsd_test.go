@@ -216,7 +216,9 @@ func TestGenerarRechazaLoDesconocido(t *testing.T) {
 		{"enumeration de un int que no es entero", cee, `<xs:enumeration value="0"/>`, `<xs:enumeration value="0.5"/>`, "no es un entero"},
 		{"attributeFormDefault qualified", tfd, `attributeFormDefault="unqualified"`, `attributeFormDefault="qualified"`, "attributeFormDefault"},
 		{"elemento con ref", cfdi40, seqEmisor, `<xs:element ref="cfdi:Emisor"/>` + seqEmisor, "no soportado"},
-		{"elemento con type", cfdi40, seqEmisor, `<xs:element name="X" type="xs:string"/>` + seqEmisor, "no soportado"},
+		{"elemento con type y simpleType", cfdi40, seqEmisor, `<xs:element name="X" type="xs:string"><xs:simpleType><xs:restriction base="xs:string"/></xs:simpleType></xs:element>` + seqEmisor, "se esperaba exactamente"},
+		{"elemento con complexType y simpleType", cfdi40, seqEmisor, `<xs:element name="X"><xs:complexType/><xs:simpleType><xs:restriction base="xs:string"/></xs:simpleType></xs:element>` + seqEmisor, "se esperaba exactamente"},
+		{"elemento de tipo simple desconocido", cfdi40, seqEmisor, `<xs:element name="X" type="xs:long"/>` + seqEmisor, "no soportado"},
 		{"complexType mixed", cfdi40, `<xs:element name="Emisor">
 					<xs:annotation>
 						<xs:documentation>Nodo requerido para expresar la información del contribuyente emisor del comprobante.</xs:documentation>
@@ -225,7 +227,8 @@ func TestGenerarRechazaLoDesconocido(t *testing.T) {
 		{"anyAttribute", tfd, `<xs:attribute name="Version"`, `<xs:anyAttribute/><xs:attribute name="Version"`, "construcción no soportada"},
 		{"any lax", cfdi40, `<xs:any minOccurs="0" maxOccurs="unbounded"/>`, `<xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>`, "processContents"},
 		{"any de otro namespace", cfdi40, `<xs:any minOccurs="0" maxOccurs="unbounded"/>`, `<xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other"/>`, "namespace"},
-		{"atributo con default", tfd, `<xs:attribute name="UUID" use="required" id="UUID">`, `<xs:attribute name="UUID" default="x" id="UUID">`, "no soportado"},
+		{"atributo requerido con default", tfd, `<xs:attribute name="UUID" use="required" id="UUID">`, `<xs:attribute name="UUID" use="required" default="x" id="UUID">`, "default junto"},
+		{"atributo con default y fixed", tfd, `<xs:attribute name="UUID" use="required" id="UUID">`, `<xs:attribute name="UUID" default="x" fixed="x" id="UUID">`, "default junto"},
 		{"use prohibited", tfd, `<xs:attribute name="UUID" use="required" id="UUID">`, `<xs:attribute name="UUID" use="prohibited" id="UUID">`, "no soportado"},
 		{"minExclusive", td, `<xs:minInclusive value="0.000000"/>`, `<xs:minExclusive value="0"/>`, "faceta no soportada"},
 		{"lista", td, `<xs:simpleType name="t_Importe">`, `<xs:simpleType name="t_Lista"><xs:list itemType="xs:string"/></xs:simpleType><xs:simpleType name="t_Importe">`, "construcción no soportada"},
@@ -264,7 +267,10 @@ func TestGenerarRechazaLoDesconocido(t *testing.T) {
 		{"elementFormDefault", tfd, `elementFormDefault="qualified"`, `elementFormDefault="unqualified"`, "elementFormDefault"},
 		{"fixed en un decimal", tfd, `<xs:attribute name="FechaTimbrado" use="required" type="tdCFDI:t_FechaH">`, `<xs:attribute name="FechaTimbrado" use="required" type="xs:decimal" fixed="1">`, "fixed"},
 		{"texto suelto", tfd, `<xs:attribute name="Version"`, `hola<xs:attribute name="Version"`, "texto suelto"},
-		{"appinfo", tfd, `<xs:documentation>Complemento requerido`, `<xs:appinfo/><xs:documentation>Complemento requerido`, "construcción no soportada"},
+		{"appinfo con texto", tfd, `<xs:documentation>Complemento requerido`, `<xs:appinfo>regla</xs:appinfo><xs:documentation>Complemento requerido`, "con contenido"},
+		{"appinfo con elementos", tfd, `<xs:documentation>Complemento requerido`, `<xs:appinfo><xs:pattern value="x"/></xs:appinfo><xs:documentation>Complemento requerido`, "con contenido"},
+		{"appinfo con atributo raro", tfd, `<xs:documentation>Complemento requerido`, `<xs:appinfo id="x"/><xs:documentation>Complemento requerido`, "no soportado"},
+		{"otra cosa en una anotación", tfd, `<xs:documentation>Complemento requerido`, `<xs:element name="x"/><xs:documentation>Complemento requerido`, "dentro de <xs:annotation>"},
 		// La variante TFD 1.0: su atributo selector tiene que ser requerido y
 		// fixed, no estar en la raíz, y el elemento tiene que existir en ella.
 		{"variante sin fixed", tfd10, `use="required" fixed="1.0"`, `use="required"`, "requerido y fixed"},
@@ -281,6 +287,87 @@ func TestGenerarRechazaLoDesconocido(t *testing.T) {
 	}
 	if _, _, err := Generar(t.TempDir()); err == nil {
 		t.Error("un directorio vacío no dio error")
+	}
+}
+
+const detallista = "cfd/detallista/detallista.xsd"
+
+// conDetallista agrega detallista.xsd a las raíces mientras dura la prueba,
+// si no lo está ya.
+func conDetallista(t *testing.T) {
+	t.Helper()
+	for _, r := range Raices {
+		if r.Archivo == detallista {
+			return
+		}
+	}
+	orig := Raices
+	Raices = append(append([]struct{ Prefijo, Archivo string }{}, orig...), struct{ Prefijo, Archivo string }{"Detallista", detallista})
+	t.Cleanup(func() { Raices = orig })
+}
+
+// Detallista trae lo que ningún otro XSD del SAT: elementos de contenido
+// simple (de tipo simple, anónimo o integrado, y xs:simpleContent con
+// atributos), mixed, xs:NMTOKEN, xs:appinfo, default, una secuencia
+// repetible y otra opcional.
+func TestGenerarDetallista(t *testing.T) {
+	conDetallista(t)
+	r, c, err := Generar(dirSAT)
+	if err != nil {
+		t.Fatal(err)
+	}
+	const ns = `ns: "http://www.sat.gob.mx/detallista", `
+	for _, s := range []string{
+		// Tipo simple anónimo, y el tipo del texto con su faceta.
+		"var eDetallista_detallista_buyer_gln = &elementoXSD{" + ns + `nombre: "gln", texto: tDetallista_detallista_buyer_gln}`,
+		`var tDetallista_detallista_buyer_gln = &tipoXSD{nombre: "Detallista detallista/buyer/gln", prim: "string", ws: "preserve", facetas: []facetaXSD{` + "\n\t{tipo: \"length\", n: 13},",
+		// type integrado.
+		"var eDetallista_detallista_orderIdentification_ReferenceDate = &elementoXSD{" + ns + `nombre: "ReferenceDate", texto: xsdate}`,
+		"var eDetallista_detallista_totalAmount_Amount = &elementoXSD{" + ns + `nombre: "Amount", texto: xsdecimal}`,
+		// simpleContent con atributo fixed sobre NMTOKEN.
+		"var eDetallista_detallista_orderIdentification_referenceIdentification = &elementoXSD{" + ns + `nombre: "referenceIdentification", texto: xsstring,` +
+			"\n\tattrs: []atributoXSD{\n\t\t{nombre: \"type\", tipo: tDetallista_detallista_orderIdentification_referenceIdentification_type, requerido: true, fijo: \"ON\", conFijo: true},",
+		// simpleContent de un decimal con mixed (que no cambia nada).
+		"var eDetallista_detallista_lineItem_invoicedQuantity = &elementoXSD{" + ns + `nombre: "invoicedQuantity", texto: xsdecimal,` +
+			"\n\tattrs: []atributoXSD{\n\t\t{nombre: \"unitOfMeasure\", tipo: xsNMTOKEN, requerido: true},",
+		// mixed con una secuencia.
+		"var eDetallista_detallista_specialInstruction = &elementoXSD{" + ns + `nombre: "specialInstruction", seqMin: 1, seqMax: 1, mixto: true,`,
+		// Secuencia repetible y secuencia opcional.
+		"var eDetallista_detallista_shipTo_nameAndAddress = &elementoXSD{" + ns + `nombre: "nameAndAddress", seqMin: 1, seqMax: -1,`,
+		"var eDetallista_detallista_paymentTerms_netPayment = &elementoXSD{" + ns + `nombre: "netPayment", seqMin: 0, seqMax: 1,`,
+		// complexType vacío.
+		"var eDetallista_detallista_shipmentDetail = &elementoXSD{" + ns + `nombre: "shipmentDetail", vacio: true}`,
+		// default: el atributo queda opcional y sin fixed.
+		`{nombre: "type", tipo: tDetallista_detallista_lineItem_type},`,
+		`var xsNMTOKEN = &tipoXSD{nombre: "xs:NMTOKEN", prim: "NMTOKEN", ws: "collapse"}`,
+	} {
+		if !strings.Contains(string(r), s) {
+			t.Errorf("falta en lo generado:\n%s", s)
+		}
+	}
+	// EAB viene dos veces en el catálogo del XSD: va una.
+	if !strings.Contains(string(c), "nombre: \"Detallista detallista/allowanceCharge/specialServicesType\", valores: `\nAA\nABZ\nADO\nADS\nADT\nAJ\nCAC\nCOD\nDA\nDI\nEAA\nEAB\nFA\nFC\nFG\nFI\nHD\nPAD\nPI\nQD\nRAA\nSAB\nTAE\nTD\nTS\nTX\nTZ\nUM\nVAB\nZZZ\n`}") {
+		t.Error("falta el catálogo de specialServicesType sin EAB repetido")
+	}
+
+	casos := []struct{ nombre, viejo, nuevo, quiero string }{
+		{"simpleContent de un tipo que no es simple", `<xs:extension base="xs:string">`, `<xs:extension base="detallista:nada">`, "no es un tipo simple"},
+		{"simpleContent con restriction", `<xs:extension base="xs:string">`, `<xs:restriction base="xs:string"/><xs:extension base="xs:string">`, "construcción no soportada"},
+		{"simpleContent con atributo raro", `<xs:simpleContent>`, `<xs:simpleContent id="x">`, "no soportado"},
+		{"simpleContent junto con atributos", `<xs:simpleContent>`, `<xs:attribute name="x"/><xs:simpleContent>`, "junto con otras partes"},
+		{"extension de simpleContent con elementos", `<xs:extension base="xs:string">`, `<xs:extension base="xs:string"><xs:sequence/>`, "construcción no soportada"},
+		{"mixed raro", `<xs:complexType mixed="true">`, `<xs:complexType mixed="1">`, "mixed"},
+		{"secuencia opcional con requeridos", `<xs:element name="paymentTimePeriod" minOccurs="0">`, `<xs:element name="paymentTimePeriod">`, "minOccurs 0 y elementos requeridos"},
+		{"faceta de rango en un NMTOKEN", `<xs:enumeration value="INVOICE"/>`, `<xs:minInclusive value="1"/>`, "faceta no soportada"},
+		{"whiteSpace preserve en un NMTOKEN", `<xs:enumeration value="INVOICE"/>`, `<xs:whiteSpace value="preserve"/>`, "whiteSpace"},
+		{"fixed en un atributo decimal", `<xs:attribute name="unitOfMeasure" type="xs:NMTOKEN" use="required">`, `<xs:attribute name="unitOfMeasure" type="xs:decimal" fixed="1">`, "fixed"},
+		{"elemento de tipo simple sin definir", `<xs:element name="ReferenceDate" type="xs:date" minOccurs="0">`, `<xs:element name="ReferenceDate" type="detallista:t_Nada" minOccurs="0">`, "no definido"},
+	}
+	for _, c := range casos {
+		_, _, err := Generar(copiaSAT(t, detallista, c.viejo, c.nuevo))
+		if err == nil || !strings.Contains(err.Error(), c.quiero) {
+			t.Errorf("%s: error %v, quiero que diga %q", c.nombre, err, c.quiero)
+		}
 	}
 }
 

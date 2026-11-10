@@ -350,6 +350,16 @@ func TestValidarValor(t *testing.T) {
 		{"fecha antes del mínimo", fechaRango, "2015-12-31", []string{"minInclusive"}},
 		{"fecha con zona lejos del límite", fechaRango, "2016-06-01-06:00", nil},
 		{"fecha con zona junto al límite", fechaRango, "2016-01-01+05:00", []string{"minInclusive"}},
+		// xs:NMTOKEN (Detallista): NameChar, colapsado; el catálogo compara texto.
+		{"nmtoken", &tipoXSD{prim: "NMTOKEN", ws: "collapse"}, " PALLET_80x100 ", nil},
+		{"nmtoken con puntos y dos puntos", &tipoXSD{prim: "NMTOKEN", ws: "collapse"}, "a.b-c:d_1", nil},
+		{"nmtoken no ASCII", &tipoXSD{prim: "NMTOKEN", ws: "collapse"}, "AÑO·1", nil},
+		{"nmtoken vacío", &tipoXSD{prim: "NMTOKEN", ws: "collapse"}, "  ", []string{"tipo"}},
+		{"nmtoken con espacio en medio", &tipoXSD{prim: "NMTOKEN", ws: "collapse"}, "BASIC NET", []string{"tipo"}},
+		{"nmtoken con caracter ajeno", &tipoXSD{prim: "NMTOKEN", ws: "collapse"}, "M&N", []string{"tipo"}},
+		{"catálogo de un nmtoken", &tipoXSD{prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{{tipo: "enumeration", catalogo: catInt}}}, " 1 ", nil},
+		{"catálogo de un nmtoken no canoniza", &tipoXSD{prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{{tipo: "enumeration", catalogo: catInt}}}, "01", []string{"enumeration"}},
+		{"longitud de un nmtoken", &tipoXSD{prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{{tipo: "length", n: 3}}}, " MXN ", nil},
 	}
 	for _, c := range casos {
 		var got []string
@@ -372,12 +382,19 @@ func TestTablasEsquema(t *testing.T) {
 	vistos := map[*tipoXSD]bool{}
 	var revisar func(e *elementoXSD, ruta string)
 	revisar = func(e *elementoXSD, ruta string) {
+		var tipos []*tipoXSD
 		for _, a := range e.attrs {
-			if vistos[a.tipo] {
+			tipos = append(tipos, a.tipo)
+		}
+		if e.texto != nil {
+			tipos = append(tipos, e.texto)
+		}
+		for _, tp := range tipos {
+			if vistos[tp] {
 				continue
 			}
-			vistos[a.tipo] = true
-			for _, f := range a.tipo.facetas {
+			vistos[tp] = true
+			for _, f := range tp.facetas {
 				switch f.tipo {
 				case "enumeration":
 					f.catalogo.contiene("")
@@ -394,9 +411,9 @@ func TestTablasEsquema(t *testing.T) {
 						}
 					}
 				case "minInclusive", "maxInclusive":
-					if a.tipo.prim == "dateTime" || a.tipo.prim == "date" {
-						if _, lexOK := lexicoXSD(a.tipo.prim, f.valor); !lexOK {
-							t.Errorf("%s: %s no es un xs:%s", ruta, f.valor, a.tipo.prim)
+					if tp.prim == "dateTime" || tp.prim == "date" {
+						if _, lexOK := lexicoXSD(tp.prim, f.valor); !lexOK {
+							t.Errorf("%s: %s no es un xs:%s", ruta, f.valor, tp.prim)
 						}
 					} else if _, err := decimal.Parse(f.valor); err != nil {
 						t.Errorf("%s: %v", ruta, err)
@@ -426,6 +443,53 @@ func TestTablasEsquema(t *testing.T) {
 	}{{catCatCFDI_cMoneda, "MXN"}, {catCatCFDI_cMoneda, "XXX"}, {catCatCFDI_cClaveProdServ, "01010101"}, {catCatCFDI_cCodigoPostal, "42501"}} {
 		if !c.cat.contiene(c.v) {
 			t.Errorf("%s no tiene %s", c.cat.nombre, c.v)
+		}
+	}
+}
+
+// Contenido simple y mixed (Detallista), de punta a punta desde los bytes:
+// el texto se junta aunque lo partan comentarios, CDATA o entidades, se
+// valida con el tipo del elemento y no admite hijos; mixed admite texto
+// entre los hijos.
+func TestValidarEsquemaContenidoSimple(t *testing.T) {
+	gln := &elementoXSD{ns: "urn:p", nombre: "gln", texto: &tipoXSD{nombre: "gln", prim: "string", ws: "preserve",
+		facetas: []facetaXSD{{tipo: "length", n: 3}}}}
+	monto := &elementoXSD{ns: "urn:p", nombre: "Amount", texto: &tipoXSD{nombre: "xs:decimal", prim: "decimal", ws: "collapse"},
+		attrs: []atributoXSD{{nombre: "type", tipo: &tipoXSD{nombre: "xs:NMTOKEN", prim: "NMTOKEN", ws: "collapse"}, requerido: true, fijo: "ON", conFijo: true}}}
+	nota := &elementoXSD{ns: "urn:p", nombre: "nota", seqMin: 1, seqMax: 1, mixto: true,
+		particulas: []particulaXSD{{elem: gln, min: 0, max: 1}}}
+	raiz := &elementoXSD{ns: "urn:p", nombre: "R", seqMin: 1, seqMax: 1, particulas: []particulaXSD{
+		{elem: gln, min: 1, max: 1}, {elem: monto, min: 0, max: -1}, {elem: nota, min: 0, max: 1},
+	}}
+	clave := nombreXML{"urn:p", "R"}
+	globalesXSD[clave] = raiz
+	t.Cleanup(func() { delete(globalesXSD, clave) })
+
+	casos := []struct {
+		nombre, cuerpo string
+		quiero         []string // código, ruta y valor de cada hallazgo
+	}{
+		{"válido", `<gln>ABC</gln><Amount type=" ON ">  1.50 </Amount><nota>texto <gln>XYZ</gln> libre</nota>`, nil},
+		{"texto partido", `<gln>A<!-- c -->B<![CDATA[C]]></gln><Amount type="ON">1&#46;5</Amount>`, nil},
+		{"longitud", `<gln>ABCD</gln>`, []string{EsquemaLongitud + " /R/gln ABCD"}},
+		{"preserve cuenta los espacios", `<gln> AB</gln>`, nil},
+		{"preserve con espacio de más", `<gln> ABC </gln>`, []string{EsquemaLongitud + " /R/gln  ABC "}},
+		{"vacío", `<gln/>`, []string{EsquemaLongitud + " /R/gln "}},
+		{"decimal ilegible", `<gln>ABC</gln><Amount type="ON">1,5</Amount>`, []string{EsquemaTipo + " /R/Amount[1] 1,5"}},
+		{"decimal vacío", `<gln>ABC</gln><Amount type="ON"></Amount>`, []string{EsquemaTipo + " /R/Amount[1] "}},
+		{"fixed sobre NMTOKEN", `<gln>ABC</gln><Amount type="OF">1</Amount>`, []string{EsquemaValorFijo + " /R/Amount[1]/@type OF"}},
+		{"atributo requerido", `<gln>ABC</gln><Amount>1</Amount>`, []string{EsquemaAtributoFaltante + " /R/Amount[1]/@type "}},
+		{"hijo en contenido simple", `<gln>AB<x/>C</gln>`, []string{EsquemaElementoNoPermitido + " /R/gln/x "}},
+		{"texto donde no hay mixed", `<gln>ABC</gln>suelto`, []string{EsquemaContenido + " /R "}},
+	}
+	for _, c := range casos {
+		r := ValidarEsquema([]byte(`<R xmlns="urn:p">` + c.cuerpo + `</R>`))
+		var got []string
+		for _, h := range r.Hallazgos {
+			got = append(got, h.Codigo+" "+h.Ruta+" "+h.Valor)
+		}
+		if strings.Join(got, "|") != strings.Join(c.quiero, "|") {
+			t.Errorf("%s: %q, quiero %q", c.nombre, got, c.quiero)
 		}
 	}
 }

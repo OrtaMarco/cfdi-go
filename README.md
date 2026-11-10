@@ -55,13 +55,14 @@ arithmetic/consistency rules. Documentation is in Spanish.
   PFintegranteCoordinado (pfic) 1.0, GastosHidrocarburos 1.0, IngresosHidrocarburos 1.0,
   EstadoDeCuentaBancario (ecb) 1.0 y EstadoDeCuentaCombustible sin versión (ecc, de CFDI 3.2). Lo que no
   se lee sigue como `COMPLEMENTO_NO_SOPORTADO`.
-- Sin leer todavía: Detallista (10 ejemplos públicos en `testdata/publicos`, en 3.3 y 4.0; su XSLT está en
-  las fuentes pero falta su XSD, así que tampoco hay cadena ni esquema: `COMPLEMENTO_SIN_CADENA` y
-  `ESQUEMA_NO_SOPORTADO`) y psgecfd (solo CFDI 3.2, sin XSD ni ejemplos).
+- Detallista (sector retail, AMC8.1, sin versión): el único complemento del SAT que lleva datos en el
+  texto de los elementos y no solo en atributos. Lectura, JSON, cadena y esquema, con sus 10 ejemplos
+  públicos en CFDI 3.3 y 4.0.
+- Sin leer todavía: psgecfd (solo CFDI 3.2, sin XSD ni ejemplos).
 - Montos en decimal exacto (string en JSON).
 - Cadena original (CFDI 3.2, 3.3, 4.0 y TFD 1.0 / 1.1) y verificación del sello del emisor y del
   timbre (ver abajo).
-- Validación contra los XSD del SAT (CFDI 4.0 y 3.3, TFD 1.0 y 1.1 y 45 versiones de complementos, con
+- Validación contra los XSD del SAT (CFDI 4.0 y 3.3, TFD 1.0 y 1.1 y 46 versiones de complementos, con
   sus catálogos; lista en [Esquema](#esquema-validaresquema)) y
   reglas aritméticas y de coherencia, cada una con su fundamento en la matriz de errores, el estándar o
   la guía de llenado del SAT (ver abajo).
@@ -271,14 +272,18 @@ fmt.Println(v.Sello.Estado, v.Sello.Motivo)  // valido | invalido SELLO_NO_COINC
   más uno se cumple y se traduce como un `if` por cada `when`. Acepta además una plantilla repetida si es
   idéntica (la hoja de 3.2 incluye `ine10.xslt` e `ine11.xslt`, que lo son) y el `match="/"` propio de
   `vehiculousado.xslt`, porque el de la hoja raíz va después y XSLT usa el último; una repetida distinta,
-  o un `match="/"` incluido después del de la raíz, siguen deteniendo el generador.
+  o un `match="/"` incluido después del de la raíz, siguen deteniendo el generador. Para Detallista
+  entiende además `Requerido`/`Opcional` sobre el texto de un elemento (`select="."` dentro de un
+  for-each, o una ruta simple como `detallista:buyer/detallista:gln`): como `string()` de XPath 1.0, el
+  texto de todos los descendientes del primer nodo en orden de documento; `Opcional` sale si la ruta
+  selecciona algo, aunque esté vacío, y `Requerido` deja `|` solo si no.
 - La cadena se arma sobre los bytes, no sobre el `Comprobante`: orden de la hoja del SAT, nodos repetidos
   en orden de documento, `normalize-space`, opcionales presentes aunque vacíos.
 - Complementos en la cadena, según lo que incluye la hoja del SAT de cada versión:
 
   | | 3.2 | 3.3 | 4.0 |
   |---|---|---|---|
-  | TFD (no aporta), Nómina 1.2, implocal, Divisas, CFDIRegistroFiscal, LeyendasFiscales, ComercioExterior 1.1, VentaVehiculos 1.0/1.1, Aerolíneas, Donatarias 1.0/1.1, iedu, INE 1.0/1.1, ValesDeDespensa, PagoEnEspecie, NotariosPublicos, servicios parciales de construcción, VehiculoUsado, TuristaPasajeroExtranjero, renovacionysustitucionvehiculos, certificadodedestruccion, obrasarteantiguedades, pfic | sí | sí | sí |
+  | TFD (no aporta), Nómina 1.2, implocal, Divisas, CFDIRegistroFiscal, LeyendasFiscales, ComercioExterior 1.1, VentaVehiculos 1.0/1.1, Aerolíneas, Donatarias 1.0/1.1, iedu, INE 1.0/1.1, ValesDeDespensa, PagoEnEspecie, NotariosPublicos, servicios parciales de construcción, VehiculoUsado, TuristaPasajeroExtranjero, renovacionysustitucionvehiculos, certificadodedestruccion, obrasarteantiguedades, pfic, detallista | sí | sí | sí |
   | PorCuentadeTerceros 1.1 | sí | sí | — |
   | EstadoDeCuentaCombustible 1.1, ConsumoDeCombustibles 1.0 | sí | sí | — |
   | ComercioExterior 1.0, Nómina 1.1, acreditamientoIEPS, SPEI, EstadoDeCuentaBancario, EstadoDeCuentaCombustible sin versión (ecc) | sí | — | — |
@@ -388,6 +393,16 @@ v := cfdi.Validar(xml, c)        // las dos juntas (c puede ser nil): v.Estado, 
   obras de arte en 3.2, 3.3 y 4.0; gastos e ingresos de hidrocarburos en 3.3 y 4.0; ecb y ecc solo en 3.2.
   Como la librería no valida CFDI 3.2 contra XSD, el esquema de ecb y ecc solo aplica si vienen en un 3.3
   o 4.0; sus fixtures (`t10/ecb32.xml`, `t10/ecc32.xml`) prueban la lectura y la cadena.
+- Detallista (`detallista.xsd`, incluido por las hojas de 3.2, 3.3 y 4.0), el único XSD del SAT con
+  elementos de texto. Construcciones nuevas del generador, cada una con su prueba: elementos de tipo
+  simple (anónimo o integrado: `xs:date`, `xs:decimal`) y `xs:simpleContent` con atributos, cuyo texto
+  se junta (aunque lo partan comentarios o CDATA) y se valida con el whiteSpace y las facetas del tipo,
+  sin hijos (`Hallazgo.Valor` trae el texto y `Atributo` va vacío); `mixed` en un contenido de elementos
+  (specialInstruction; con simpleContent no cambia nada, como en libxml2); `xs:NMTOKEN` (uno o más
+  NameChar, colapsado; su catálogo y su fixed comparan texto); `xs:appinfo` vacío; `default` en un
+  atributo opcional, que no cambia lo válido; y una secuencia con `minOccurs="0"` solo si nada en ella es
+  requerido (el validador no cuenta vueltas). La secuencia repetible de `shipTo/nameAndAddress` y los
+  `xs:all` de la línea ya se soportaban.
 - Retenciones 2.0 y 1.0 (`retencionpagov2.xsd`, `retencionpagov1.xsd`, con catRetenciones) y sus trece
   complementos: Plataformas Tecnológicas 1.0, Intereses, Pagos a extranjeros, Dividendos, Enajenación de
   acciones, Arrendamiento en fideicomiso, Operaciones con derivados, Intereses hipotecarios, Fideicomiso

@@ -26,7 +26,9 @@ type Hallazgo struct {
 	Nivel    string `json:"nivel"`
 	Ruta     string `json:"ruta,omitempty"`
 	Atributo string `json:"atributo,omitempty"`
-	// Valor es el texto original del atributo en los hallazgos de valores.
+	// Valor es el texto original del atributo en los hallazgos de valores,
+	// o el del elemento si es de contenido simple (Detallista; Atributo
+	// vacío).
 	Valor string `json:"valor,omitempty"`
 	// Regla es la norma concreta: en el esquema, la faceta o restricción
 	// XSD ("pattern", "enumeration", "minOccurs", "orden"…); en las reglas,

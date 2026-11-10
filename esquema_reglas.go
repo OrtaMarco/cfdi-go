@@ -60,6 +60,7 @@ import "regexp"
 //   - cfd/IngresosHidrocarburos10/IngresosHidrocarburos.xsd 3b0f45a403309e108553bbb1a92b0cdd49d16b48494c9edaccdfa7056535b243
 //   - cfd/ecb/ecb.xsd 07227f751b5a251455901c096434c8f4f6bd31d5f91792e01d9e849be93dafab
 //   - cfd/ecc/ecc.xsd 8e372b142b7ef2388d1847a59c5549303e0822abac15fb1ca87dfab96802196a
+//   - cfd/detallista/detallista.xsd 9227a7d2e117cd6c2912bb448f8878377527e94f02718dc1c4080628e15c77e7
 //   - ../esquemas/retencionpago/2/retencionpagov2.xsd 5cc547890c27d4f8a82bddbfe601c1d214a7914afa8ca65e817eadf2434f3eb7
 //   - ../esquemas/retencionpago/1/catalogos/catRetenciones.xsd 111c438270416dfd10745bdc8aed83478ceb98c313d0f72b6be7b9fcd8aac4b3
 //   - ../esquemas/retencionpago/1/retencionpagov1.xsd 6cac833a992f6e9b9dc0ad99d08b912819640b66f90f29b96b61eae83453b09d
@@ -131,6 +132,7 @@ var globalesXSD = map[nombreXML]*elementoXSD{
 	{"http://www.sat.gob.mx/IngresosHidrocarburos10", "IngresosHidrocarburos"}:                                       eIngresosHidro_IngresosHidrocarburos,
 	{"http://www.sat.gob.mx/ecb", "EstadoDeCuentaBancario"}:                                                          eECB_EstadoDeCuentaBancario,
 	{"http://www.sat.gob.mx/ecc", "EstadoDeCuentaCombustible"}:                                                       eECC10_EstadoDeCuentaCombustible,
+	{"http://www.sat.gob.mx/detallista", "detallista"}:                                                               eDetallista_detallista,
 	{"http://www.sat.gob.mx/esquemas/retencionpago/2", "Retenciones"}:                                                eRet20_Retenciones,
 	{"http://www.sat.gob.mx/esquemas/retencionpago/1", "Retenciones"}:                                                eRet10_Retenciones,
 	{"http://www.sat.gob.mx/esquemas/retencionpago/1/PlataformasTecnologicas10", "ServiciosPlataformasTecnologicas"}: eRetPlataformas10_ServiciosPlataformasTecnologicas,
@@ -4358,6 +4360,270 @@ var tECC10_EstadoDeCuentaCombustible_subTotal = &tipoXSD{nombre: "ECC10 EstadoDe
 }}
 var tECC10_EstadoDeCuentaCombustible_total = &tipoXSD{nombre: "ECC10 EstadoDeCuentaCombustible/@total", prim: "decimal", ws: "collapse", facetas: []facetaXSD{
 	{tipo: "fractionDigits", n: 2},
+}}
+var xsNMTOKEN = &tipoXSD{nombre: "xs:NMTOKEN", prim: "NMTOKEN", ws: "collapse"}
+var tDetallista_detallista_requestForPaymentIdentification_entityType = &tipoXSD{nombre: "Detallista detallista/requestForPaymentIdentification/entityType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "enumeration", catalogo: catDetallista_detallista_requestForPaymentIdentification_entityType},
+}}
+var tDetallista_detallista_specialInstruction_text = &tipoXSD{nombre: "Detallista detallista/specialInstruction/text", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 255},
+}}
+var tDetallista_detallista_specialInstruction_code = &tipoXSD{nombre: "Detallista detallista/specialInstruction/@code", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "maxLength", n: 3},
+	{tipo: "minLength", n: 1},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_specialInstruction_code},
+}}
+var tDetallista_detallista_orderIdentification_referenceIdentification_type = &tipoXSD{nombre: "Detallista detallista/orderIdentification/referenceIdentification/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "enumeration", catalogo: catDetallista_detallista_orderIdentification_referenceIdentification_type},
+}}
+var tDetallista_detallista_AdditionalInformation_referenceIdentification_type = &tipoXSD{nombre: "Detallista detallista/AdditionalInformation/referenceIdentification/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "enumeration", catalogo: catDetallista_detallista_AdditionalInformation_referenceIdentification_type},
+}}
+var tDetallista_detallista_DeliveryNote_referenceIdentification = &tipoXSD{nombre: "Detallista detallista/DeliveryNote/referenceIdentification", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_buyer_gln = &tipoXSD{nombre: "Detallista detallista/buyer/gln", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "length", n: 13},
+}}
+var tDetallista_detallista_buyer_contactInformation_personOrDepartmentName_text = &tipoXSD{nombre: "Detallista detallista/buyer/contactInformation/personOrDepartmentName/text", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_seller_gln = &tipoXSD{nombre: "Detallista detallista/seller/gln", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "length", n: 13},
+}}
+var tDetallista_detallista_seller_alternatePartyIdentification_type = &tipoXSD{nombre: "Detallista detallista/seller/alternatePartyIdentification/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 40},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_seller_alternatePartyIdentification_type},
+}}
+var tDetallista_detallista_shipTo_gln = &tipoXSD{nombre: "Detallista detallista/shipTo/gln", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "length", n: 13},
+}}
+var tDetallista_detallista_shipTo_nameAndAddress_name = &tipoXSD{nombre: "Detallista detallista/shipTo/nameAndAddress/name", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_shipTo_nameAndAddress_streetAddressOne = &tipoXSD{nombre: "Detallista detallista/shipTo/nameAndAddress/streetAddressOne", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_shipTo_nameAndAddress_city = &tipoXSD{nombre: "Detallista detallista/shipTo/nameAndAddress/city", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_shipTo_nameAndAddress_postalCode = &tipoXSD{nombre: "Detallista detallista/shipTo/nameAndAddress/postalCode", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 9},
+}}
+var tDetallista_detallista_InvoiceCreator_gln = &tipoXSD{nombre: "Detallista detallista/InvoiceCreator/gln", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "length", n: 13},
+}}
+var tDetallista_detallista_InvoiceCreator_alternatePartyIdentification_type = &tipoXSD{nombre: "Detallista detallista/InvoiceCreator/alternatePartyIdentification/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "length", n: 2},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_InvoiceCreator_alternatePartyIdentification_type},
+}}
+var tDetallista_detallista_InvoiceCreator_nameAndAddress_name = &tipoXSD{nombre: "Detallista detallista/InvoiceCreator/nameAndAddress/name", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_InvoiceCreator_nameAndAddress_streetAddressOne = &tipoXSD{nombre: "Detallista detallista/InvoiceCreator/nameAndAddress/streetAddressOne", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_InvoiceCreator_nameAndAddress_city = &tipoXSD{nombre: "Detallista detallista/InvoiceCreator/nameAndAddress/city", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_InvoiceCreator_nameAndAddress_postalCode = &tipoXSD{nombre: "Detallista detallista/InvoiceCreator/nameAndAddress/postalCode", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 9},
+}}
+var tDetallista_detallista_Customs_gln = &tipoXSD{nombre: "Detallista detallista/Customs/gln", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "length", n: 13},
+}}
+var tDetallista_detallista_currency_currencyFunction = &tipoXSD{nombre: "Detallista detallista/currency/currencyFunction", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "maxLength", n: 16},
+	{tipo: "minLength", n: 1},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_currency_currencyFunction},
+}}
+var tDetallista_detallista_currency_currencyISOCode = &tipoXSD{nombre: "Detallista detallista/currency/@currencyISOCode", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "length", n: 3},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_currency_currencyISOCode},
+}}
+var tDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue_value = &tipoXSD{nombre: "Detallista detallista/paymentTerms/netPayment/paymentTimePeriod/timePeriodDue/value", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 5},
+}}
+var tDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue_timePeriod = &tipoXSD{nombre: "Detallista detallista/paymentTerms/netPayment/paymentTimePeriod/timePeriodDue/@timePeriod", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 6},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue_timePeriod},
+}}
+var tDetallista_detallista_paymentTerms_netPayment_netPaymentTermsType = &tipoXSD{nombre: "Detallista detallista/paymentTerms/netPayment/@netPaymentTermsType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "maxLength", n: 22},
+	{tipo: "minLength", n: 1},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_paymentTerms_netPayment_netPaymentTermsType},
+}}
+var tDetallista_detallista_paymentTerms_discountPayment_percentage = &tipoXSD{nombre: "Detallista detallista/paymentTerms/discountPayment/percentage", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 5},
+}}
+var tDetallista_detallista_paymentTerms_discountPayment_discountType = &tipoXSD{nombre: "Detallista detallista/paymentTerms/discountPayment/@discountType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "maxLength", n: 28},
+	{tipo: "minLength", n: 1},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_paymentTerms_discountPayment_discountType},
+}}
+var tDetallista_detallista_paymentTerms_paymentTermsEvent = &tipoXSD{nombre: "Detallista detallista/paymentTerms/@paymentTermsEvent", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "maxLength", n: 15},
+	{tipo: "minLength", n: 1},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_paymentTerms_paymentTermsEvent},
+}}
+var tDetallista_detallista_paymentTerms_PaymentTermsRelationTime = &tipoXSD{nombre: "Detallista detallista/paymentTerms/@PaymentTermsRelationTime", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 15},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_paymentTerms_PaymentTermsRelationTime},
+}}
+var tDetallista_detallista_allowanceCharge_specialServicesType = &tipoXSD{nombre: "Detallista detallista/allowanceCharge/specialServicesType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 3},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_allowanceCharge_specialServicesType},
+}}
+var tDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage_rate_base = &tipoXSD{nombre: "Detallista detallista/allowanceCharge/monetaryAmountOrPercentage/rate/@base", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "length", n: 13},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage_rate_base},
+}}
+var tDetallista_detallista_allowanceCharge_allowanceChargeType = &tipoXSD{nombre: "Detallista detallista/allowanceCharge/@allowanceChargeType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 16},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_allowanceCharge_allowanceChargeType},
+}}
+var tDetallista_detallista_allowanceCharge_settlementType = &tipoXSD{nombre: "Detallista detallista/allowanceCharge/@settlementType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 11},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_allowanceCharge_settlementType},
+}}
+var tDetallista_detallista_allowanceCharge_sequenceNumber = &tipoXSD{nombre: "Detallista detallista/allowanceCharge/@sequenceNumber", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 15},
+}}
+var tDetallista_detallista_lineItem_tradeItemIdentification_gtin = &tipoXSD{nombre: "Detallista detallista/lineItem/tradeItemIdentification/gtin", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 14},
+}}
+var tDetallista_detallista_lineItem_alternateTradeItemIdentification_type = &tipoXSD{nombre: "Detallista detallista/lineItem/alternateTradeItemIdentification/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_alternateTradeItemIdentification_type},
+}}
+var tDetallista_detallista_lineItem_tradeItemDescriptionInformation_longText = &tipoXSD{nombre: "Detallista detallista/lineItem/tradeItemDescriptionInformation/longText", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_lineItem_tradeItemDescriptionInformation_language = &tipoXSD{nombre: "Detallista detallista/lineItem/tradeItemDescriptionInformation/@language", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "length", n: 2},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_tradeItemDescriptionInformation_language},
+}}
+var tDetallista_detallista_lineItem_aditionalQuantity_QuantityType = &tipoXSD{nombre: "Detallista detallista/lineItem/aditionalQuantity/@QuantityType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 18},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_aditionalQuantity_QuantityType},
+}}
+var tDetallista_detallista_lineItem_AdditionalInformation_referenceIdentification_type = &tipoXSD{nombre: "Detallista detallista/lineItem/AdditionalInformation/referenceIdentification/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "length", n: 2},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_AdditionalInformation_referenceIdentification_type},
+}}
+var tDetallista_detallista_lineItem_Customs_gln = &tipoXSD{nombre: "Detallista detallista/lineItem/Customs/gln", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "length", n: 13},
+}}
+var tDetallista_detallista_lineItem_Customs_alternatePartyIdentification_type = &tipoXSD{nombre: "Detallista detallista/lineItem/Customs/alternatePartyIdentification/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "length", n: 2},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_Customs_alternatePartyIdentification_type},
+}}
+var tDetallista_detallista_lineItem_Customs_nameAndAddress_name = &tipoXSD{nombre: "Detallista detallista/lineItem/Customs/nameAndAddress/name", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 35},
+}}
+var tDetallista_detallista_lineItem_LogisticUnits_serialShippingContainerCode_type = &tipoXSD{nombre: "Detallista detallista/lineItem/LogisticUnits/serialShippingContainerCode/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 3},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_LogisticUnits_serialShippingContainerCode_type},
+}}
+var tDetallista_detallista_lineItem_palletInformation_palletQuantity = &tipoXSD{nombre: "Detallista detallista/lineItem/palletInformation/palletQuantity", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 15},
+}}
+var tDetallista_detallista_lineItem_palletInformation_description_type = &tipoXSD{nombre: "Detallista detallista/lineItem/palletInformation/description/@type", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "maxLength", n: 35},
+	{tipo: "minLength", n: 1},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_palletInformation_description_type},
+}}
+var tDetallista_detallista_lineItem_palletInformation_transport_methodOfPayment = &tipoXSD{nombre: "Detallista detallista/lineItem/palletInformation/transport/methodOfPayment", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "maxLength", n: 17},
+	{tipo: "minLength", n: 1},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_palletInformation_transport_methodOfPayment},
+}}
+var tDetallista_detallista_lineItem_allowanceCharge_specialServicesType = &tipoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/specialServicesType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "maxLength", n: 3},
+	{tipo: "minLength", n: 1},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_allowanceCharge_specialServicesType},
+}}
+var tDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_percentagePerUnit = &tipoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/monetaryAmountOrPercentage/percentagePerUnit", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 5},
+}}
+var tDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_ratePerUnit_amountPerUnit = &tipoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/monetaryAmountOrPercentage/ratePerUnit/amountPerUnit", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 5},
+}}
+var tDetallista_detallista_lineItem_allowanceCharge_allowanceChargeType = &tipoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/@allowanceChargeType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 16},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_allowanceCharge_allowanceChargeType},
+}}
+var tDetallista_detallista_lineItem_allowanceCharge_settlementType = &tipoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/@settlementType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 29},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_allowanceCharge_settlementType},
+}}
+var tDetallista_detallista_lineItem_allowanceCharge_sequenceNumber = &tipoXSD{nombre: "Detallista detallista/lineItem/allowanceCharge/@sequenceNumber", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 15},
+}}
+var tDetallista_detallista_lineItem_tradeItemTaxInformation_taxTypeDescription = &tipoXSD{nombre: "Detallista detallista/lineItem/tradeItemTaxInformation/taxTypeDescription", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "length", n: 3},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_tradeItemTaxInformation_taxTypeDescription},
+}}
+var tDetallista_detallista_lineItem_tradeItemTaxInformation_referenceNumber = &tipoXSD{nombre: "Detallista detallista/lineItem/tradeItemTaxInformation/referenceNumber", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 20},
+}}
+var tDetallista_detallista_lineItem_tradeItemTaxInformation_taxCategory = &tipoXSD{nombre: "Detallista detallista/lineItem/tradeItemTaxInformation/taxCategory", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 0},
+	{tipo: "maxLength", n: 11},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_lineItem_tradeItemTaxInformation_taxCategory},
+}}
+var tDetallista_detallista_lineItem_type = &tipoXSD{nombre: "Detallista detallista/lineItem/@type", prim: "string", ws: "preserve", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 32},
+}}
+var tDetallista_detallista_lineItem_number = &tipoXSD{nombre: "Detallista detallista/lineItem/@number", prim: "integer", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "totalDigits", n: 5},
+}}
+var tDetallista_detallista_TotalAllowanceCharge_specialServicesType = &tipoXSD{nombre: "Detallista detallista/TotalAllowanceCharge/specialServicesType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 3},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_TotalAllowanceCharge_specialServicesType},
+}}
+var tDetallista_detallista_TotalAllowanceCharge_allowanceOrChargeType = &tipoXSD{nombre: "Detallista detallista/TotalAllowanceCharge/@allowanceOrChargeType", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "minLength", n: 1},
+	{tipo: "maxLength", n: 9},
+	{tipo: "enumeration", catalogo: catDetallista_detallista_TotalAllowanceCharge_allowanceOrChargeType},
+}}
+var tDetallista_detallista_documentStatus = &tipoXSD{nombre: "Detallista detallista/@documentStatus", prim: "NMTOKEN", ws: "collapse", facetas: []facetaXSD{
+	{tipo: "enumeration", catalogo: catDetallista_detallista_documentStatus},
 }}
 var tRet20_Retenciones_CfdiRetenRelacionados_UUID = &tipoXSD{nombre: "Ret20 Retenciones/CfdiRetenRelacionados/@UUID", prim: "string", ws: "collapse", facetas: []facetaXSD{
 	{tipo: "length", n: 36},
@@ -8725,6 +8991,605 @@ var eECC10_EstadoDeCuentaCombustible = &elementoXSD{ns: "http://www.sat.gob.mx/e
 	},
 	particulas: []particulaXSD{
 		{elem: eECC10_EstadoDeCuentaCombustible_Conceptos, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}entityType
+var eDetallista_detallista_requestForPaymentIdentification_entityType = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "entityType", texto: tDetallista_detallista_requestForPaymentIdentification_entityType}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}requestForPaymentIdentification
+var eDetallista_detallista_requestForPaymentIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "requestForPaymentIdentification", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_requestForPaymentIdentification_entityType, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}text
+var eDetallista_detallista_specialInstruction_text = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "text", texto: tDetallista_detallista_specialInstruction_text}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}specialInstruction
+var eDetallista_detallista_specialInstruction = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "specialInstruction", seqMin: 1, seqMax: 1, mixto: true,
+	attrs: []atributoXSD{
+		{nombre: "code", tipo: tDetallista_detallista_specialInstruction_code, requerido: true},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_specialInstruction_text, min: 1, max: 15},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}referenceIdentification
+var eDetallista_detallista_orderIdentification_referenceIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "referenceIdentification", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_orderIdentification_referenceIdentification_type, requerido: true, fijo: "ON", conFijo: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}ReferenceDate
+var eDetallista_detallista_orderIdentification_ReferenceDate = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "ReferenceDate", texto: xsdate}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}orderIdentification
+var eDetallista_detallista_orderIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "orderIdentification", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_orderIdentification_referenceIdentification, min: 1, max: 30},
+		{elem: eDetallista_detallista_orderIdentification_ReferenceDate, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}referenceIdentification
+var eDetallista_detallista_AdditionalInformation_referenceIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "referenceIdentification", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_AdditionalInformation_referenceIdentification_type, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}AdditionalInformation
+var eDetallista_detallista_AdditionalInformation = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "AdditionalInformation", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_AdditionalInformation_referenceIdentification, min: 1, max: 99},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}referenceIdentification
+var eDetallista_detallista_DeliveryNote_referenceIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "referenceIdentification", texto: tDetallista_detallista_DeliveryNote_referenceIdentification}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}ReferenceDate
+var eDetallista_detallista_DeliveryNote_ReferenceDate = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "ReferenceDate", texto: xsdate}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}DeliveryNote
+var eDetallista_detallista_DeliveryNote = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "DeliveryNote", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_DeliveryNote_referenceIdentification, min: 1, max: 30},
+		{elem: eDetallista_detallista_DeliveryNote_ReferenceDate, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}gln
+var eDetallista_detallista_buyer_gln = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "gln", texto: tDetallista_detallista_buyer_gln}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}text
+var eDetallista_detallista_buyer_contactInformation_personOrDepartmentName_text = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "text", texto: tDetallista_detallista_buyer_contactInformation_personOrDepartmentName_text}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}personOrDepartmentName
+var eDetallista_detallista_buyer_contactInformation_personOrDepartmentName = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "personOrDepartmentName", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_buyer_contactInformation_personOrDepartmentName_text, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}contactInformation
+var eDetallista_detallista_buyer_contactInformation = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "contactInformation", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_buyer_contactInformation_personOrDepartmentName, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}buyer
+var eDetallista_detallista_buyer = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "buyer", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_buyer_gln, min: 1, max: 1},
+		{elem: eDetallista_detallista_buyer_contactInformation, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}gln
+var eDetallista_detallista_seller_gln = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "gln", texto: tDetallista_detallista_seller_gln}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}alternatePartyIdentification
+var eDetallista_detallista_seller_alternatePartyIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "alternatePartyIdentification", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_seller_alternatePartyIdentification_type, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}seller
+var eDetallista_detallista_seller = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "seller", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_seller_gln, min: 1, max: 1},
+		{elem: eDetallista_detallista_seller_alternatePartyIdentification, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}gln
+var eDetallista_detallista_shipTo_gln = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "gln", texto: tDetallista_detallista_shipTo_gln}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}name
+var eDetallista_detallista_shipTo_nameAndAddress_name = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "name", texto: tDetallista_detallista_shipTo_nameAndAddress_name}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}streetAddressOne
+var eDetallista_detallista_shipTo_nameAndAddress_streetAddressOne = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "streetAddressOne", texto: tDetallista_detallista_shipTo_nameAndAddress_streetAddressOne}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}city
+var eDetallista_detallista_shipTo_nameAndAddress_city = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "city", texto: tDetallista_detallista_shipTo_nameAndAddress_city}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}postalCode
+var eDetallista_detallista_shipTo_nameAndAddress_postalCode = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "postalCode", texto: tDetallista_detallista_shipTo_nameAndAddress_postalCode}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}nameAndAddress
+var eDetallista_detallista_shipTo_nameAndAddress = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "nameAndAddress", seqMin: 1, seqMax: -1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_shipTo_nameAndAddress_name, min: 0, max: 1},
+		{elem: eDetallista_detallista_shipTo_nameAndAddress_streetAddressOne, min: 0, max: 1},
+		{elem: eDetallista_detallista_shipTo_nameAndAddress_city, min: 0, max: 1},
+		{elem: eDetallista_detallista_shipTo_nameAndAddress_postalCode, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}shipTo
+var eDetallista_detallista_shipTo = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "shipTo", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_shipTo_gln, min: 0, max: 1},
+		{elem: eDetallista_detallista_shipTo_nameAndAddress, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}gln
+var eDetallista_detallista_InvoiceCreator_gln = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "gln", texto: tDetallista_detallista_InvoiceCreator_gln}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}alternatePartyIdentification
+var eDetallista_detallista_InvoiceCreator_alternatePartyIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "alternatePartyIdentification", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_InvoiceCreator_alternatePartyIdentification_type, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}name
+var eDetallista_detallista_InvoiceCreator_nameAndAddress_name = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "name", texto: tDetallista_detallista_InvoiceCreator_nameAndAddress_name}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}streetAddressOne
+var eDetallista_detallista_InvoiceCreator_nameAndAddress_streetAddressOne = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "streetAddressOne", texto: tDetallista_detallista_InvoiceCreator_nameAndAddress_streetAddressOne}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}city
+var eDetallista_detallista_InvoiceCreator_nameAndAddress_city = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "city", texto: tDetallista_detallista_InvoiceCreator_nameAndAddress_city}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}postalCode
+var eDetallista_detallista_InvoiceCreator_nameAndAddress_postalCode = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "postalCode", texto: tDetallista_detallista_InvoiceCreator_nameAndAddress_postalCode}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}nameAndAddress
+var eDetallista_detallista_InvoiceCreator_nameAndAddress = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "nameAndAddress", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_InvoiceCreator_nameAndAddress_name, min: 0, max: 1},
+		{elem: eDetallista_detallista_InvoiceCreator_nameAndAddress_streetAddressOne, min: 0, max: 1},
+		{elem: eDetallista_detallista_InvoiceCreator_nameAndAddress_city, min: 0, max: 1},
+		{elem: eDetallista_detallista_InvoiceCreator_nameAndAddress_postalCode, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}InvoiceCreator
+var eDetallista_detallista_InvoiceCreator = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "InvoiceCreator", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_InvoiceCreator_gln, min: 0, max: 1},
+		{elem: eDetallista_detallista_InvoiceCreator_alternatePartyIdentification, min: 0, max: 1},
+		{elem: eDetallista_detallista_InvoiceCreator_nameAndAddress, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}gln
+var eDetallista_detallista_Customs_gln = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "gln", texto: tDetallista_detallista_Customs_gln}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}Customs
+var eDetallista_detallista_Customs = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "Customs", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_Customs_gln, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}currencyFunction
+var eDetallista_detallista_currency_currencyFunction = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "currencyFunction", texto: tDetallista_detallista_currency_currencyFunction}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}rateOfChange
+var eDetallista_detallista_currency_rateOfChange = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "rateOfChange", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}currency
+var eDetallista_detallista_currency = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "currency", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "currencyISOCode", tipo: tDetallista_detallista_currency_currencyISOCode, requerido: true},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_currency_currencyFunction, min: 1, max: 3},
+		{elem: eDetallista_detallista_currency_rateOfChange, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}value
+var eDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue_value = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "value", texto: tDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue_value}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}timePeriodDue
+var eDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "timePeriodDue", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "timePeriod", tipo: tDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue_timePeriod, requerido: true},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue_value, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}paymentTimePeriod
+var eDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "paymentTimePeriod", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod_timePeriodDue, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}netPayment
+var eDetallista_detallista_paymentTerms_netPayment = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "netPayment", seqMin: 0, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "netPaymentTermsType", tipo: tDetallista_detallista_paymentTerms_netPayment_netPaymentTermsType, requerido: true},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_paymentTerms_netPayment_paymentTimePeriod, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}percentage
+var eDetallista_detallista_paymentTerms_discountPayment_percentage = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "percentage", texto: tDetallista_detallista_paymentTerms_discountPayment_percentage}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}discountPayment
+var eDetallista_detallista_paymentTerms_discountPayment = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "discountPayment", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "discountType", tipo: tDetallista_detallista_paymentTerms_discountPayment_discountType, requerido: true},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_paymentTerms_discountPayment_percentage, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}paymentTerms
+var eDetallista_detallista_paymentTerms = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "paymentTerms", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "paymentTermsEvent", tipo: tDetallista_detallista_paymentTerms_paymentTermsEvent},
+		{nombre: "PaymentTermsRelationTime", tipo: tDetallista_detallista_paymentTerms_PaymentTermsRelationTime},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_paymentTerms_netPayment, min: 0, max: 1},
+		{elem: eDetallista_detallista_paymentTerms_discountPayment, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}shipmentDetail
+var eDetallista_detallista_shipmentDetail = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "shipmentDetail", vacio: true}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}specialServicesType
+var eDetallista_detallista_allowanceCharge_specialServicesType = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "specialServicesType", texto: tDetallista_detallista_allowanceCharge_specialServicesType}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}percentage
+var eDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage_rate_percentage = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "percentage", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}rate
+var eDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage_rate = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "rate", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "base", tipo: tDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage_rate_base, requerido: true},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage_rate_percentage, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}monetaryAmountOrPercentage
+var eDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "monetaryAmountOrPercentage", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage_rate, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}allowanceCharge
+var eDetallista_detallista_allowanceCharge = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "allowanceCharge", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "allowanceChargeType", tipo: tDetallista_detallista_allowanceCharge_allowanceChargeType, requerido: true},
+		{nombre: "settlementType", tipo: tDetallista_detallista_allowanceCharge_settlementType, requerido: true},
+		{nombre: "sequenceNumber", tipo: tDetallista_detallista_allowanceCharge_sequenceNumber},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_allowanceCharge_specialServicesType, min: 0, max: 1},
+		{elem: eDetallista_detallista_allowanceCharge_monetaryAmountOrPercentage, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}gtin
+var eDetallista_detallista_lineItem_tradeItemIdentification_gtin = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "gtin", texto: tDetallista_detallista_lineItem_tradeItemIdentification_gtin}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}tradeItemIdentification
+var eDetallista_detallista_lineItem_tradeItemIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "tradeItemIdentification", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_tradeItemIdentification_gtin, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}alternateTradeItemIdentification
+var eDetallista_detallista_lineItem_alternateTradeItemIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "alternateTradeItemIdentification", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_lineItem_alternateTradeItemIdentification_type, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}longText
+var eDetallista_detallista_lineItem_tradeItemDescriptionInformation_longText = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "longText", texto: tDetallista_detallista_lineItem_tradeItemDescriptionInformation_longText}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}tradeItemDescriptionInformation
+var eDetallista_detallista_lineItem_tradeItemDescriptionInformation = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "tradeItemDescriptionInformation", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "language", tipo: tDetallista_detallista_lineItem_tradeItemDescriptionInformation_language},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_tradeItemDescriptionInformation_longText, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}invoicedQuantity
+var eDetallista_detallista_lineItem_invoicedQuantity = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "invoicedQuantity", texto: xsdecimal,
+	attrs: []atributoXSD{
+		{nombre: "unitOfMeasure", tipo: xsNMTOKEN, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}aditionalQuantity
+var eDetallista_detallista_lineItem_aditionalQuantity = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "aditionalQuantity", texto: xsdecimal,
+	attrs: []atributoXSD{
+		{nombre: "QuantityType", tipo: tDetallista_detallista_lineItem_aditionalQuantity_QuantityType, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}Amount
+var eDetallista_detallista_lineItem_grossPrice_Amount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "Amount", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}grossPrice
+var eDetallista_detallista_lineItem_grossPrice = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "grossPrice", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_grossPrice_Amount, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}Amount
+var eDetallista_detallista_lineItem_netPrice_Amount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "Amount", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}netPrice
+var eDetallista_detallista_lineItem_netPrice = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "netPrice", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_netPrice_Amount, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}referenceIdentification
+var eDetallista_detallista_lineItem_AdditionalInformation_referenceIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "referenceIdentification", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_lineItem_AdditionalInformation_referenceIdentification_type, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}AdditionalInformation
+var eDetallista_detallista_lineItem_AdditionalInformation = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "AdditionalInformation", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_AdditionalInformation_referenceIdentification, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}gln
+var eDetallista_detallista_lineItem_Customs_gln = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "gln", texto: tDetallista_detallista_lineItem_Customs_gln}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}alternatePartyIdentification
+var eDetallista_detallista_lineItem_Customs_alternatePartyIdentification = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "alternatePartyIdentification", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_lineItem_Customs_alternatePartyIdentification_type, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}ReferenceDate
+var eDetallista_detallista_lineItem_Customs_ReferenceDate = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "ReferenceDate", texto: xsdate}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}name
+var eDetallista_detallista_lineItem_Customs_nameAndAddress_name = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "name", texto: tDetallista_detallista_lineItem_Customs_nameAndAddress_name}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}nameAndAddress
+var eDetallista_detallista_lineItem_Customs_nameAndAddress = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "nameAndAddress", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_Customs_nameAndAddress_name, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}Customs
+var eDetallista_detallista_lineItem_Customs = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "Customs", seqMin: 1, seqMax: 1, todos: true,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_Customs_gln, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_Customs_alternatePartyIdentification, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_Customs_ReferenceDate, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_Customs_nameAndAddress, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}serialShippingContainerCode
+var eDetallista_detallista_lineItem_LogisticUnits_serialShippingContainerCode = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "serialShippingContainerCode", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_lineItem_LogisticUnits_serialShippingContainerCode_type, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}LogisticUnits
+var eDetallista_detallista_lineItem_LogisticUnits = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "LogisticUnits", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_LogisticUnits_serialShippingContainerCode, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}palletQuantity
+var eDetallista_detallista_lineItem_palletInformation_palletQuantity = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "palletQuantity", texto: tDetallista_detallista_lineItem_palletInformation_palletQuantity}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}description
+var eDetallista_detallista_lineItem_palletInformation_description = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "description", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_lineItem_palletInformation_description_type, requerido: true},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}methodOfPayment
+var eDetallista_detallista_lineItem_palletInformation_transport_methodOfPayment = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "methodOfPayment", texto: tDetallista_detallista_lineItem_palletInformation_transport_methodOfPayment}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}transport
+var eDetallista_detallista_lineItem_palletInformation_transport = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "transport", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_palletInformation_transport_methodOfPayment, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}palletInformation
+var eDetallista_detallista_lineItem_palletInformation = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "palletInformation", seqMin: 1, seqMax: 1, todos: true,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_palletInformation_palletQuantity, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_palletInformation_description, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_palletInformation_transport, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}lotNumber
+var eDetallista_detallista_lineItem_extendedAttributes_lotNumber = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "lotNumber", texto: xsstring,
+	attrs: []atributoXSD{
+		{nombre: "productionDate", tipo: xsdate},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}extendedAttributes
+var eDetallista_detallista_lineItem_extendedAttributes = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "extendedAttributes", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_extendedAttributes_lotNumber, min: 1, max: 10},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}specialServicesType
+var eDetallista_detallista_lineItem_allowanceCharge_specialServicesType = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "specialServicesType", texto: tDetallista_detallista_lineItem_allowanceCharge_specialServicesType}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}percentagePerUnit
+var eDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_percentagePerUnit = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "percentagePerUnit", texto: tDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_percentagePerUnit}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}amountPerUnit
+var eDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_ratePerUnit_amountPerUnit = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "amountPerUnit", texto: tDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_ratePerUnit_amountPerUnit}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}ratePerUnit
+var eDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_ratePerUnit = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "ratePerUnit", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_ratePerUnit_amountPerUnit, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}monetaryAmountOrPercentage
+var eDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "monetaryAmountOrPercentage", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_percentagePerUnit, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage_ratePerUnit, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}allowanceCharge
+var eDetallista_detallista_lineItem_allowanceCharge = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "allowanceCharge", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "allowanceChargeType", tipo: tDetallista_detallista_lineItem_allowanceCharge_allowanceChargeType, requerido: true},
+		{nombre: "settlementType", tipo: tDetallista_detallista_lineItem_allowanceCharge_settlementType},
+		{nombre: "sequenceNumber", tipo: tDetallista_detallista_lineItem_allowanceCharge_sequenceNumber},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_allowanceCharge_specialServicesType, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_allowanceCharge_monetaryAmountOrPercentage, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}taxTypeDescription
+var eDetallista_detallista_lineItem_tradeItemTaxInformation_taxTypeDescription = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "taxTypeDescription", texto: tDetallista_detallista_lineItem_tradeItemTaxInformation_taxTypeDescription}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}referenceNumber
+var eDetallista_detallista_lineItem_tradeItemTaxInformation_referenceNumber = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "referenceNumber", texto: tDetallista_detallista_lineItem_tradeItemTaxInformation_referenceNumber}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}taxPercentage
+var eDetallista_detallista_lineItem_tradeItemTaxInformation_tradeItemTaxAmount_taxPercentage = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "taxPercentage", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}taxAmount
+var eDetallista_detallista_lineItem_tradeItemTaxInformation_tradeItemTaxAmount_taxAmount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "taxAmount", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}tradeItemTaxAmount
+var eDetallista_detallista_lineItem_tradeItemTaxInformation_tradeItemTaxAmount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "tradeItemTaxAmount", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_tradeItemTaxInformation_tradeItemTaxAmount_taxPercentage, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_tradeItemTaxInformation_tradeItemTaxAmount_taxAmount, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}taxCategory
+var eDetallista_detallista_lineItem_tradeItemTaxInformation_taxCategory = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "taxCategory", texto: tDetallista_detallista_lineItem_tradeItemTaxInformation_taxCategory}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}tradeItemTaxInformation
+var eDetallista_detallista_lineItem_tradeItemTaxInformation = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "tradeItemTaxInformation", seqMin: 1, seqMax: 1, todos: true,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_tradeItemTaxInformation_taxTypeDescription, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_tradeItemTaxInformation_referenceNumber, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_tradeItemTaxInformation_tradeItemTaxAmount, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_tradeItemTaxInformation_taxCategory, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}Amount
+var eDetallista_detallista_lineItem_totalLineAmount_grossAmount_Amount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "Amount", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}grossAmount
+var eDetallista_detallista_lineItem_totalLineAmount_grossAmount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "grossAmount", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_totalLineAmount_grossAmount_Amount, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}Amount
+var eDetallista_detallista_lineItem_totalLineAmount_netAmount_Amount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "Amount", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}netAmount
+var eDetallista_detallista_lineItem_totalLineAmount_netAmount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "netAmount", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_totalLineAmount_netAmount_Amount, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}totalLineAmount
+var eDetallista_detallista_lineItem_totalLineAmount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "totalLineAmount", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_totalLineAmount_grossAmount, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_totalLineAmount_netAmount, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}lineItem
+var eDetallista_detallista_lineItem = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "lineItem", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: tDetallista_detallista_lineItem_type},
+		{nombre: "number", tipo: tDetallista_detallista_lineItem_number},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_lineItem_tradeItemIdentification, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_alternateTradeItemIdentification, min: 0, max: -1},
+		{elem: eDetallista_detallista_lineItem_tradeItemDescriptionInformation, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_invoicedQuantity, min: 1, max: 1},
+		{elem: eDetallista_detallista_lineItem_aditionalQuantity, min: 0, max: -1},
+		{elem: eDetallista_detallista_lineItem_grossPrice, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_netPrice, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_AdditionalInformation, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_Customs, min: 0, max: -1},
+		{elem: eDetallista_detallista_lineItem_LogisticUnits, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_palletInformation, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_extendedAttributes, min: 0, max: 1},
+		{elem: eDetallista_detallista_lineItem_allowanceCharge, min: 0, max: 99},
+		{elem: eDetallista_detallista_lineItem_tradeItemTaxInformation, min: 0, max: 99},
+		{elem: eDetallista_detallista_lineItem_totalLineAmount, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}Amount
+var eDetallista_detallista_totalAmount_Amount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "Amount", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}totalAmount
+var eDetallista_detallista_totalAmount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "totalAmount", seqMin: 1, seqMax: 1,
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_totalAmount_Amount, min: 1, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}specialServicesType
+var eDetallista_detallista_TotalAllowanceCharge_specialServicesType = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "specialServicesType", texto: tDetallista_detallista_TotalAllowanceCharge_specialServicesType}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}Amount
+var eDetallista_detallista_TotalAllowanceCharge_Amount = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "Amount", texto: xsdecimal}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}TotalAllowanceCharge
+var eDetallista_detallista_TotalAllowanceCharge = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "TotalAllowanceCharge", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "allowanceOrChargeType", tipo: tDetallista_detallista_TotalAllowanceCharge_allowanceOrChargeType, requerido: true},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_TotalAllowanceCharge_specialServicesType, min: 0, max: 1},
+		{elem: eDetallista_detallista_TotalAllowanceCharge_Amount, min: 0, max: 1},
+	}}
+
+// cfd/detallista/detallista.xsd: {http://www.sat.gob.mx/detallista}detallista
+var eDetallista_detallista = &elementoXSD{ns: "http://www.sat.gob.mx/detallista", nombre: "detallista", seqMin: 1, seqMax: 1,
+	attrs: []atributoXSD{
+		{nombre: "type", tipo: xsstring, fijo: "SimpleInvoiceType", conFijo: true},
+		{nombre: "contentVersion", tipo: xsstring, fijo: "1.3.1", conFijo: true},
+		{nombre: "documentStructureVersion", tipo: xsstring, requerido: true, fijo: "AMC8.1", conFijo: true},
+		{nombre: "documentStatus", tipo: tDetallista_detallista_documentStatus, requerido: true},
+	},
+	particulas: []particulaXSD{
+		{elem: eDetallista_detallista_requestForPaymentIdentification, min: 1, max: 1},
+		{elem: eDetallista_detallista_specialInstruction, min: 0, max: 4},
+		{elem: eDetallista_detallista_orderIdentification, min: 1, max: 1},
+		{elem: eDetallista_detallista_AdditionalInformation, min: 1, max: 1},
+		{elem: eDetallista_detallista_DeliveryNote, min: 0, max: 1},
+		{elem: eDetallista_detallista_buyer, min: 1, max: 1},
+		{elem: eDetallista_detallista_seller, min: 0, max: 1},
+		{elem: eDetallista_detallista_shipTo, min: 0, max: 1},
+		{elem: eDetallista_detallista_InvoiceCreator, min: 0, max: 1},
+		{elem: eDetallista_detallista_Customs, min: 0, max: -1},
+		{elem: eDetallista_detallista_currency, min: 0, max: 3},
+		{elem: eDetallista_detallista_paymentTerms, min: 0, max: 1},
+		{elem: eDetallista_detallista_shipmentDetail, min: 0, max: 1},
+		{elem: eDetallista_detallista_allowanceCharge, min: 0, max: 99},
+		{elem: eDetallista_detallista_lineItem, min: 0, max: -1},
+		{elem: eDetallista_detallista_totalAmount, min: 0, max: 1},
+		{elem: eDetallista_detallista_TotalAllowanceCharge, min: 0, max: -1},
 	}}
 
 // ../esquemas/retencionpago/2/retencionpagov2.xsd: {http://www.sat.gob.mx/esquemas/retencionpago/2}CfdiRetenRelacionados

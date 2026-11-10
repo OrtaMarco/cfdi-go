@@ -1,0 +1,10 @@
+{
+ "veredicto": "invalido",
+ "errores": [
+  {
+   "linea": 35,
+   "ruta": "/cfdi:Comprobante/cfdi:Complemento/detallista:detallista/detallista:TotalAllowanceCharge/detallista:Amount",
+   "mensaje": "Element '{http://www.sat.gob.mx/detallista}Amount': '30,00' is not a valid value of the atomic type 'xs:decimal'."
+  }
+ ]
+}

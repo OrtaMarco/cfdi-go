@@ -28,16 +28,442 @@
         "importe": "2250000"
       }
     ],
-    "complementos_no_soportados": [
-      "{http://www.sat.gob.mx/detallista}detallista"
-    ]
+    "detallista": {
+      "type": "SimpleInvoiceType",
+      "content_version": "1.3.1",
+      "document_structure_version": "AMC8.1",
+      "document_status": "ORIGINAL",
+      "request_for_payment_identification": {
+        "entity_type": "INVOICE"
+      },
+      "special_instruction": [
+        {
+          "code": "ZZZ",
+          "text": [
+            "TRES MIL TRESCIENTOS NOVENTA Y TRES PESOS 04/100 M.N."
+          ]
+        }
+      ],
+      "order_identification": {
+        "reference_identification": [
+          {
+            "type": "ON",
+            "valor": "15749759"
+          }
+        ],
+        "reference_date": "2017-04-30"
+      },
+      "additional_information": {
+        "reference_identification": [
+          {
+            "type": "IV",
+            "valor": "A"
+          },
+          {
+            "type": "ATZ",
+            "valor": "27534"
+          }
+        ]
+      },
+      "delivery_note": {
+        "reference_identification": [
+          "97276954"
+        ],
+        "reference_date": "2017-05-01"
+      },
+      "buyer": {
+        "gln": "7504000107903",
+        "contact_information": {
+          "person_or_department_name": {
+            "text": "0390   "
+          }
+        }
+      },
+      "seller": {
+        "gln": "7504000107903",
+        "alternate_party_identification": {
+          "type": "SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY",
+          "valor": "109"
+        }
+      },
+      "allowance_charge": [
+        {
+          "allowance_charge_type": "ALLOWANCE_GLOBAL",
+          "settlement_type": "BILL_BACK",
+          "special_services_type": "AJ",
+          "monetary_amount_or_percentage": {
+            "rate": {
+              "base": "INVOICE_VALUE",
+              "percentage": "3.00"
+            }
+          }
+        }
+      ],
+      "line_item": [
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "1",
+          "trade_item_identification": {
+            "gtin": "00636398"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "00636398"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "cacahuate acaramelado"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "10.00"
+          },
+          "gross_price": {
+            "amount": "40.00"
+          },
+          "net_price": {
+            "amount": "34.32"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "400.00"
+            },
+            "net_amount": {
+              "amount": "343.17"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "2",
+          "trade_item_identification": {
+            "gtin": "636428"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "636428"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "cacahuate salado"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "5.00"
+          },
+          "gross_price": {
+            "amount": "43.00"
+          },
+          "net_price": {
+            "amount": "36.89"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "215.00"
+            },
+            "net_amount": {
+              "amount": "184.46"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "3",
+          "trade_item_identification": {
+            "gtin": "636452"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "636452"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "cacahuate enchilado"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "5.00"
+          },
+          "gross_price": {
+            "amount": "43.00"
+          },
+          "net_price": {
+            "amount": "36.89"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "215.00"
+            },
+            "net_amount": {
+              "amount": "184.46"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "4",
+          "trade_item_identification": {
+            "gtin": "636517"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "636517"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "cacahuate japones"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "5.00"
+          },
+          "gross_price": {
+            "amount": "50.00"
+          },
+          "net_price": {
+            "amount": "42.89"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "250.00"
+            },
+            "net_amount": {
+              "amount": "214.48"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "5",
+          "trade_item_identification": {
+            "gtin": "636711"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "636711"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "pistaches"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "5.00"
+          },
+          "gross_price": {
+            "amount": "170.00"
+          },
+          "net_price": {
+            "amount": "145.85"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "850.00"
+            },
+            "net_amount": {
+              "amount": "729.23"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "6",
+          "trade_item_identification": {
+            "gtin": "13656878"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "13656878"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "botana surtida"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "10.00"
+          },
+          "gross_price": {
+            "amount": "51.00"
+          },
+          "net_price": {
+            "amount": "43.76"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "510.00"
+            },
+            "net_amount": {
+              "amount": "437.54"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "7",
+          "trade_item_identification": {
+            "gtin": "15209968"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "15209968"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "botana turca"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "5.00"
+          },
+          "gross_price": {
+            "amount": "48.00"
+          },
+          "net_price": {
+            "amount": "41.18"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "240.00"
+            },
+            "net_amount": {
+              "amount": "205.90"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "8",
+          "trade_item_identification": {
+            "gtin": "15664231"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "15664231"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "botana california mix"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "5.00"
+          },
+          "gross_price": {
+            "amount": "110.00"
+          },
+          "net_price": {
+            "amount": "94.37"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "550.00"
+            },
+            "net_amount": {
+              "amount": "471.86"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "9",
+          "trade_item_identification": {
+            "gtin": "15843942"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "15843942"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "chili nuts"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "5.00"
+          },
+          "gross_price": {
+            "amount": "45.00"
+          },
+          "net_price": {
+            "amount": "38.61"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "225.00"
+            },
+            "net_amount": {
+              "amount": "193.03"
+            }
+          }
+        },
+        {
+          "type": "SimpleInvoiceLineItemType",
+          "number": "10",
+          "trade_item_identification": {
+            "gtin": "37715123"
+          },
+          "alternate_trade_item_identification": [
+            {
+              "type": "SUPPLIER_ASSIGNED",
+              "valor": "37715123"
+            }
+          ],
+          "trade_item_description_information": {
+            "language": "ES",
+            "long_text": "botana hot hawaiian"
+          },
+          "invoiced_quantity": {
+            "unit_of_measure": "PCE",
+            "valor": "5.00"
+          },
+          "gross_price": {
+            "amount": "100.00"
+          },
+          "net_price": {
+            "amount": "85.79"
+          },
+          "total_line_amount": {
+            "gross_amount": {
+              "amount": "500.00"
+            },
+            "net_amount": {
+              "amount": "428.93"
+            }
+          }
+        }
+      ],
+      "total_amount": {
+        "amount": "3955.00"
+      },
+      "total_allowance_charge": [
+        {
+          "allowance_or_charge_type": "ALLOWANCE",
+          "special_services_type": "AJ",
+          "amount": "561.96"
+        }
+      ]
+    }
   },
   "advertencias": [
-    {
-      "codigo": "COMPLEMENTO_NO_SOPORTADO",
-      "ruta": "/Comprobante/Complemento/detallista",
-      "mensaje": "complemento no soportado: {http://www.sat.gob.mx/detallista}detallista"
-    },
     {
       "codigo": "SIN_TIMBRE",
       "ruta": "/Comprobante/Complemento",

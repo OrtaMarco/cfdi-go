@@ -12,6 +12,7 @@ package cfdi
 //   - cfd/donat/donat11.xslt 1c72d07d9945fd7824471caaebaee47dafc3b56785a037549fcbee5e123c6d36
 //   - cfd/divisas/divisas.xslt be7167e1d421b66ba17a6f1788c964c5bb1f207ed7ad9803166d60966a332b1d
 //   - cfd/ecb/ecb.xslt c61979e58b4971d68c7ebf76d77215a7c0fb7149da1763c0fc99cfe7e020e655
+//   - cfd/detallista/detallista.xslt 091b5cfe39682ba3474b94626944ecc426f96cf2e8963edbff8ececd3ce56424
 //   - cfd/implocal/implocal.xslt 3c2ee6c3ecce9b2e74b2a225f3c17250259751a1307f58a96799ff119e2fafe6
 //   - cfd/terceros/terceros11.xslt 62b8986466db9b1032462bfbe0cf3514caa8d5e1b8b5906caeab44179853996a
 //   - cfd/iedu/iedu.xslt 2e9ddb05e5cd222cded57a5306b43f954f15a2ac9f8ddf3e4818156cd703a49d
@@ -42,7 +43,6 @@ package cfdi
 //
 // Includes omitidos (complementos que la librería no lee):
 //   - cfd/psgecfd/psgecfd.xslt
-//   - cfd/detallista/detallista.xslt
 //
 // Plantillas match="/" de hojas incluidas, que la de la raíz sustituye:
 //   - cfd/vehiculousado/vehiculousado.xslt
@@ -116,6 +116,24 @@ var hojaCFDI32 = &hojaCadena{
 				req("fecha"),
 				req("RFCenajenante"),
 				req("Importe"),
+			),
+		},
+		// cfd/detallista/detallista.xslt
+		{"http://www.sat.gob.mx/detallista", "detallista"}: {
+			req("documentStructureVersion"),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "orderIdentification"), hijo("http://www.sat.gob.mx/detallista", "referenceIdentification")),
+				reqNodo(rel()),
+			),
+			opcNodo(rel(hijo("http://www.sat.gob.mx/detallista", "orderIdentification"), hijo("http://www.sat.gob.mx/detallista", "ReferenceDate"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "buyer"), hijo("http://www.sat.gob.mx/detallista", "gln"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "seller"), hijo("http://www.sat.gob.mx/detallista", "gln"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "seller"), hijo("http://www.sat.gob.mx/detallista", "alternatePartyIdentification"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "totalAmount"), hijo("http://www.sat.gob.mx/detallista", "Amount"))),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "TotalAllowanceCharge"), hijo("http://www.sat.gob.mx/detallista", "specialServicesType")),
+				opcNodo(rel()),
+			),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "TotalAllowanceCharge"), hijo("http://www.sat.gob.mx/detallista", "Amount")),
+				opcNodo(rel()),
 			),
 		},
 		// cfd/implocal/implocal.xslt
@@ -1348,15 +1366,13 @@ var hojaCFDI32 = &hojaCadena{
 //   - cfd/ventavehiculos/ventavehiculos11.xslt 95fd6522700a5125dacc363e07fac8ff2f470b2e23aec5bbe3d3f684c8a4152f
 //   - cfd/terceros/terceros11.xslt 62b8986466db9b1032462bfbe0cf3514caa8d5e1b8b5906caeab44179853996a
 //   - cfd/Pagos/Pagos10.xslt 65337d977e4697733b7cf9ddcc1dcececb485a7e43ffcca149b706e5fa60f5ec
+//   - cfd/detallista/detallista.xslt 091b5cfe39682ba3474b94626944ecc426f96cf2e8963edbff8ececd3ce56424
 //   - cfd/EstadoDeCuentaCombustible/ecc12.xslt 9ce3097989da2560e3fcb6e45928cd7d90692832b2d29c0c4127732349f3dba5
 //   - cfd/consumodecombustibles/consumodeCombustibles11.xslt 610de8017f569d6e66669fc1f8b2303c5b4ac970e9b17e44bcd5d1b0e4ef7bf1
 //   - cfd/GastosHidrocarburos10/GastosHidrocarburos10.xslt 1d735ccdd03040a19469795e6703fbd2c56a2c08c708111278af6d885e98621c
 //   - cfd/IngresosHidrocarburos10/IngresosHidrocarburos.xslt 2d17335608f036214129210b06da1a132ec0fc06b315f97dd3e07d09641303d9
 //   - cfd/CartaPorte/CartaPorte.xslt 32fec3089d94c1025a2e7112eda480d2b49167bf9b71335d0434c33c012b4829
 //   - cfd/CartaPorte/CartaPorte20.xslt 0e8548e036920208c8e909acd64f6e7d4de6742e75c28617c7ac8edb97c55766
-//
-// Includes omitidos (complementos que la librería no lee):
-//   - cfd/detallista/detallista.xslt
 //
 // Plantillas match="/" de hojas incluidas, que la de la raíz sustituye:
 //   - cfd/vehiculousado/vehiculousado.xslt
@@ -2275,6 +2291,24 @@ var hojaCFDI33 = &hojaCadena{
 			req("TipoFactor"),
 			req("TasaOCuota"),
 			req("Importe"),
+		},
+		// cfd/detallista/detallista.xslt
+		{"http://www.sat.gob.mx/detallista", "detallista"}: {
+			req("documentStructureVersion"),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "orderIdentification"), hijo("http://www.sat.gob.mx/detallista", "referenceIdentification")),
+				reqNodo(rel()),
+			),
+			opcNodo(rel(hijo("http://www.sat.gob.mx/detallista", "orderIdentification"), hijo("http://www.sat.gob.mx/detallista", "ReferenceDate"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "buyer"), hijo("http://www.sat.gob.mx/detallista", "gln"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "seller"), hijo("http://www.sat.gob.mx/detallista", "gln"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "seller"), hijo("http://www.sat.gob.mx/detallista", "alternatePartyIdentification"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "totalAmount"), hijo("http://www.sat.gob.mx/detallista", "Amount"))),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "TotalAllowanceCharge"), hijo("http://www.sat.gob.mx/detallista", "specialServicesType")),
+				opcNodo(rel()),
+			),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "TotalAllowanceCharge"), hijo("http://www.sat.gob.mx/detallista", "Amount")),
+				opcNodo(rel()),
+			),
 		},
 		// cfd/EstadoDeCuentaCombustible/ecc12.xslt
 		{"http://www.sat.gob.mx/EstadoDeCuentaCombustible12", "EstadoDeCuentaCombustible"}: {
@@ -3242,6 +3276,7 @@ var hojaCFDI33 = &hojaCadena{
 //   - cfd/ine/ine11.xslt 02781b96a0da332693f719f893f7a72117196b073c5d0df48e7fa6a4ed444882
 //   - cfd/iedu/iedu.xslt 2e9ddb05e5cd222cded57a5306b43f954f15a2ac9f8ddf3e4818156cd703a49d
 //   - cfd/ventavehiculos/ventavehiculos11.xslt 95fd6522700a5125dacc363e07fac8ff2f470b2e23aec5bbe3d3f684c8a4152f
+//   - cfd/detallista/detallista.xslt 091b5cfe39682ba3474b94626944ecc426f96cf2e8963edbff8ececd3ce56424
 //   - cfd/EstadoDeCuentaCombustible/ecc12.xslt 9ce3097989da2560e3fcb6e45928cd7d90692832b2d29c0c4127732349f3dba5
 //   - cfd/consumodecombustibles/consumodeCombustibles11.xslt 610de8017f569d6e66669fc1f8b2303c5b4ac970e9b17e44bcd5d1b0e4ef7bf1
 //   - cfd/GastosHidrocarburos10/GastosHidrocarburos10.xslt 1d735ccdd03040a19469795e6703fbd2c56a2c08c708111278af6d885e98621c
@@ -3251,9 +3286,6 @@ var hojaCFDI33 = &hojaCadena{
 //   - cfd/CartaPorte/CartaPorte30.xslt 4817b2640e11ec6f01ed8eaeaaa196d459702e4f71d136d86e1c59e7e76da4ea
 //   - cfd/CartaPorte/CartaPorte31.xslt c5e349ca4a3f443489aa914516998b8f63d2c104687533d6181114efb69f2b02
 //   - cfd/HidrocarburosPetro/hidrocarburospetroliferos.xslt c207c8dcf8ef6336e69ac09dc2484fbe1d81ef86cabcc9d2903a9fa1ddc9ae27
-//
-// Includes omitidos (complementos que la librería no lee):
-//   - cfd/detallista/detallista.xslt
 //
 // Plantillas match="/" de hojas incluidas, que la de la raíz sustituye:
 //   - cfd/vehiculousado/vehiculousado.xslt
@@ -4042,6 +4074,24 @@ var hojaCFDI40 = &hojaCadena{
 			req("numero"),
 			req("fecha"),
 			opc("aduana"),
+		},
+		// cfd/detallista/detallista.xslt
+		{"http://www.sat.gob.mx/detallista", "detallista"}: {
+			req("documentStructureVersion"),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "orderIdentification"), hijo("http://www.sat.gob.mx/detallista", "referenceIdentification")),
+				reqNodo(rel()),
+			),
+			opcNodo(rel(hijo("http://www.sat.gob.mx/detallista", "orderIdentification"), hijo("http://www.sat.gob.mx/detallista", "ReferenceDate"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "buyer"), hijo("http://www.sat.gob.mx/detallista", "gln"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "seller"), hijo("http://www.sat.gob.mx/detallista", "gln"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "seller"), hijo("http://www.sat.gob.mx/detallista", "alternatePartyIdentification"))),
+			reqNodo(rel(hijo("http://www.sat.gob.mx/detallista", "totalAmount"), hijo("http://www.sat.gob.mx/detallista", "Amount"))),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "TotalAllowanceCharge"), hijo("http://www.sat.gob.mx/detallista", "specialServicesType")),
+				opcNodo(rel()),
+			),
+			cada(rel(hijo("http://www.sat.gob.mx/detallista", "TotalAllowanceCharge"), hijo("http://www.sat.gob.mx/detallista", "Amount")),
+				opcNodo(rel()),
+			),
 		},
 		// cfd/EstadoDeCuentaCombustible/ecc12.xslt
 		{"http://www.sat.gob.mx/EstadoDeCuentaCombustible12", "EstadoDeCuentaCombustible"}: {

@@ -81,9 +81,16 @@ func (l *lector) dec(n *nodo, ruta, nombre string) *decimal.Decimal {
 	if !ok {
 		return nil
 	}
+	return l.decValor(v, ruta+"/@"+nombre)
+}
+
+// decValor interpreta un decimal ya extraído (de un atributo o del texto de un
+// elemento); ruta es la del campo, con su "/@Nombre" si es un atributo.
+// decimal.Parse ya recorta los espacios XML.
+func (l *lector) decValor(v, ruta string) *decimal.Decimal {
 	d, err := decimal.Parse(v)
 	if err != nil {
-		l.advertirValor(AdvDecimalInvalido, ruta+"/@"+nombre, fmt.Sprintf("%q no es un decimal válido", v), v)
+		l.advertirValor(AdvDecimalInvalido, ruta, fmt.Sprintf("%q no es un decimal válido", v), v)
 		return nil
 	}
 	return &d
@@ -94,6 +101,12 @@ func (l *lector) fecha(n *nodo, ruta, nombre string, soloFecha bool) Fecha {
 	if !ok {
 		return Fecha{}
 	}
+	return l.fechaValor(v, ruta+"/@"+nombre, soloFecha)
+}
+
+// fechaValor es fecha sobre un valor ya extraído; ruta es la del campo, con su
+// "/@Nombre" si es un atributo.
+func (l *lector) fechaValor(v, ruta string, soloFecha bool) Fecha {
 	f, raro, err := parseFecha(v, soloFecha)
 	esperado := layoutFechaHora
 	if soloFecha {
@@ -101,12 +114,12 @@ func (l *lector) fecha(n *nodo, ruta, nombre string, soloFecha bool) Fecha {
 	}
 	switch {
 	case err != nil:
-		l.advertirValor(AdvFechaInvalida, ruta+"/@"+nombre, err.Error(), v)
+		l.advertirValor(AdvFechaInvalida, ruta, err.Error(), v)
 	case raro && l.op.FechaEstricta:
-		l.advertirValor(AdvFechaInvalida, ruta+"/@"+nombre, fmt.Sprintf("%q no tiene el formato %s (lectura estricta)", v, esperado), v)
+		l.advertirValor(AdvFechaInvalida, ruta, fmt.Sprintf("%q no tiene el formato %s (lectura estricta)", v, esperado), v)
 		return Fecha{Original: v, FueraDeFormato: true}
 	case raro:
-		l.advertirValor(AdvFechaFormato, ruta+"/@"+nombre, fmt.Sprintf("%q no tiene el formato %s", v, esperado), v)
+		l.advertirValor(AdvFechaFormato, ruta, fmt.Sprintf("%q no tiene el formato %s", v, esperado), v)
 	}
 	return f
 }
