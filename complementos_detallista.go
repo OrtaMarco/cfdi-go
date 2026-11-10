@@ -328,6 +328,13 @@ func (l *lector) textoHijo(n *nodo, ns, local, ruta string, requerido bool) stri
 	return ""
 }
 
+// tokenHijo es el texto de un hijo de tipo xs:NMTOKEN o enumeración, con el
+// whiteSpace collapse del tipo ya aplicado (el esquema lo valida así):
+// "\n INVOICE\n" es INVOICE. Los string libres usan textoHijo y quedan tal cual.
+func (l *lector) tokenHijo(n *nodo, ns, local, ruta string, requerido bool) string {
+	return normalizarEspacios(l.textoHijo(n, ns, local, ruta, requerido))
+}
+
 // decHijo lee el texto de un hijo como xs:decimal. Ilegible → nil con
 // DECIMAL_INVALIDO en la ruta del elemento y el texto en Valor.
 func (l *lector) decHijo(n *nodo, ns, local, ruta string, requerido bool) *decimal.Decimal {
@@ -356,6 +363,15 @@ func (l *lector) textosHijos(n *nodo, ns, local, ruta string, requerido bool) []
 	}
 	if len(out) == 0 && requerido {
 		l.advertir(AdvNodoFaltante, ruta+"/"+local, "falta el nodo "+local)
+	}
+	return out
+}
+
+// tokensHijos es textosHijos para hijos repetibles de tipo NMTOKEN o enumeración.
+func (l *lector) tokensHijos(n *nodo, ns, local, ruta string, requerido bool) []string {
+	out := l.textosHijos(n, ns, local, ruta, requerido)
+	for i, v := range out {
+		out[i] = normalizarEspacios(v)
 	}
 	return out
 }
@@ -407,7 +423,7 @@ func (l *lector) detallista(n *nodo, r string) *Detallista {
 
 	if h := l.hijo(n, ns, "requestForPaymentIdentification", r, true); h != nil {
 		d.RequestForPaymentIdentification = &DetallistaRequestForPayment{
-			EntityType: l.textoHijo(h, ns, "entityType", r+"/requestForPaymentIdentification", true),
+			EntityType: l.tokenHijo(h, ns, "entityType", r+"/requestForPaymentIdentification", true),
 		}
 	}
 
@@ -508,7 +524,7 @@ func (l *lector) detallista(n *nodo, r string) *Detallista {
 		l.requerido(h, ri, "currencyISOCode")
 		d.Currency = append(d.Currency, DetallistaCurrency{
 			CurrencyISOCode:  l.str(h, "currencyISOCode"),
-			CurrencyFunction: l.textosHijos(h, ns, "currencyFunction", ri, true),
+			CurrencyFunction: l.tokensHijos(h, ns, "currencyFunction", ri, true),
 			RateOfChange:     l.decHijo(h, ns, "rateOfChange", ri, false),
 		})
 	}
@@ -528,7 +544,7 @@ func (l *lector) detallista(n *nodo, r string) *Detallista {
 			AllowanceChargeType: l.str(h, "allowanceChargeType"),
 			SettlementType:      l.str(h, "settlementType"),
 			SequenceNumber:      l.str(h, "sequenceNumber"),
-			SpecialServicesType: l.textoHijo(h, ns, "specialServicesType", ri, false),
+			SpecialServicesType: l.tokenHijo(h, ns, "specialServicesType", ri, false),
 		}
 		if m := l.hijo(h, ns, "monetaryAmountOrPercentage", ri, false); m != nil {
 			rm := ri + "/monetaryAmountOrPercentage"
@@ -556,7 +572,7 @@ func (l *lector) detallista(n *nodo, r string) *Detallista {
 		l.requerido(h, ri, "allowanceOrChargeType")
 		d.TotalAllowanceCharge = append(d.TotalAllowanceCharge, DetallistaTotalAllowanceCharge{
 			AllowanceOrChargeType: l.str(h, "allowanceOrChargeType"),
-			SpecialServicesType:   l.textoHijo(h, ns, "specialServicesType", ri, false),
+			SpecialServicesType:   l.tokenHijo(h, ns, "specialServicesType", ri, false),
 			Amount:                l.decHijo(h, ns, "Amount", ri, false),
 		})
 	}
@@ -652,7 +668,7 @@ func (l *lector) detallistaLineItem(h *nodo, ns, r string) DetallistaLineItem {
 			Description:    l.referenciaHijo(p, ns, "description", rp, true),
 		}
 		if t := l.hijo(p, ns, "transport", rp, true); t != nil {
-			pi.Transport = &DetallistaTransport{MethodOfPayment: l.textoHijo(t, ns, "methodOfPayment", rp+"/transport", true)}
+			pi.Transport = &DetallistaTransport{MethodOfPayment: l.tokenHijo(t, ns, "methodOfPayment", rp+"/transport", true)}
 		}
 		li.PalletInformation = pi
 	}
@@ -676,7 +692,7 @@ func (l *lector) detallistaLineItem(h *nodo, ns, r string) DetallistaLineItem {
 			AllowanceChargeType: l.str(a, "allowanceChargeType"),
 			SettlementType:      l.str(a, "settlementType"),
 			SequenceNumber:      l.str(a, "sequenceNumber"),
-			SpecialServicesType: l.textoHijo(a, ns, "specialServicesType", ra, false),
+			SpecialServicesType: l.tokenHijo(a, ns, "specialServicesType", ra, false),
 		}
 		if m := l.hijo(a, ns, "monetaryAmountOrPercentage", ra, true); m != nil {
 			rm := ra + "/monetaryAmountOrPercentage"
@@ -694,9 +710,9 @@ func (l *lector) detallistaLineItem(h *nodo, ns, r string) DetallistaLineItem {
 	for i, t := range l.hijos(h, ns, "tradeItemTaxInformation", r) {
 		rt := idx(r, "tradeItemTaxInformation", i)
 		ti := DetallistaTradeItemTaxInformation{
-			TaxTypeDescription: l.textoHijo(t, ns, "taxTypeDescription", rt, true),
+			TaxTypeDescription: l.tokenHijo(t, ns, "taxTypeDescription", rt, true),
 			ReferenceNumber:    l.textoHijo(t, ns, "referenceNumber", rt, false),
-			TaxCategory:        l.textoHijo(t, ns, "taxCategory", rt, false),
+			TaxCategory:        l.tokenHijo(t, ns, "taxCategory", rt, false),
 		}
 		if m := l.hijo(t, ns, "tradeItemTaxAmount", rt, false); m != nil {
 			rm := rt + "/tradeItemTaxAmount"

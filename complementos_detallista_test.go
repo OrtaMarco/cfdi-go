@@ -885,3 +885,39 @@ func TestLeerArbolTextoPartidoEsLineal(t *testing.T) {
 func docTrozos(ns string, n int) []byte {
 	return []byte(`<r xmlns:d="` + ns + `"><d:gln>` + strings.Repeat("a<!---->", n) + `</d:gln></r>`)
 }
+
+// TestDetallistaNMTOKENColapsado: los valores de tipo xs:NMTOKEN o enumeración
+// llevan whiteSpace collapse en el XSD ("\n INVOICE\n" es válido y vale
+// INVOICE), así que salen normalizados; los string libres, sin recortar.
+func TestDetallistaNMTOKENColapsado(t *testing.T) {
+	ws := func(tag, v string) []string {
+		return []string{"<detallista:" + tag + ">" + v + "</detallista:" + tag + ">", "<detallista:" + tag + ">\n\t  " + v + " \r\n  </detallista:" + tag + ">"}
+	}
+	var cambios []string
+	for _, c := range [][2]string{
+		{"entityType", "CREDIT_NOTE"}, {"currencyFunction", "BILLING_CURRENCY"}, {"currencyFunction", "PRICE_CURRENCY"},
+		{"currencyFunction", "PAYMENT_CURRENCY"}, {"methodOfPayment", "PREPAID_BY_SELLER"}, {"taxCategory", "TRANSFERIDO"},
+		{"taxTypeDescription", "VAT"}, {"specialServicesType", "AJ"}, {"specialServicesType", "FC"},
+		{"specialServicesType", "TD"}, {"specialServicesType", "AJ"}, // global, global 2, línea, TotalAllowanceCharge
+	} {
+		cambios = append(cambios, ws(c[0], c[1])...)
+	}
+	// Un string libre con espacios alrededor se queda como viene.
+	cambios = append(cambios, "<detallista:longText>", "<detallista:longText>  ")
+	c := leerDetallista(t, cambios...)
+	x := c.Detallista
+	igual(t, "entityType", x.RequestForPaymentIdentification.EntityType, "CREDIT_NOTE")
+	igual(t, "currencyFunction", strings.Join(x.Currency[0].CurrencyFunction, "|"), "BILLING_CURRENCY|PRICE_CURRENCY")
+	igual(t, "currencyFunction 2", strings.Join(x.Currency[1].CurrencyFunction, "|"), "PAYMENT_CURRENCY")
+	igual(t, "allowanceCharge/specialServicesType", x.AllowanceCharge[0].SpecialServicesType, "AJ")
+	igual(t, "allowanceCharge 2", x.AllowanceCharge[1].SpecialServicesType, "FC")
+	igual(t, "TotalAllowanceCharge", x.TotalAllowanceCharge[0].SpecialServicesType, "AJ")
+	li := x.LineItem[0]
+	igual(t, "línea specialServicesType", li.AllowanceCharge[0].SpecialServicesType, "TD")
+	igual(t, "methodOfPayment", li.PalletInformation.Transport.MethodOfPayment, "PREPAID_BY_SELLER")
+	igual(t, "taxCategory", li.TradeItemTaxInformation[0].TaxCategory, "TRANSFERIDO")
+	igual(t, "taxTypeDescription", li.TradeItemTaxInformation[0].TaxTypeDescription, "VAT")
+	if got := li.TradeItemDescriptionInformation.LongText; !strings.HasPrefix(got, "  ") {
+		t.Errorf("longText se recortó: %q", got)
+	}
+}
