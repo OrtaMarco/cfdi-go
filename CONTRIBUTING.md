@@ -35,3 +35,16 @@ go run ./cmd/cfdi lote carpeta-o-zip/       # JSONL + resumen de fallos
 Los archivos generados (`cadena_reglas.go`, `esquema_*.go`) salen de `go generate .`; los oráculos de
 `testdata/` (cadenas, veredictos de esquema, goldens) se regeneran como dice la sección «Pruebas» del
 README.
+
+## Fuentes del SAT
+
+`docs/fuentes.json` es la foto de las fuentes oficiales: los documentos que citan las reglas, las
+páginas del portal que los listan y el commit de la réplica de la que se copian XSD y XSLT.
+`python3 scripts/vigilar_fuentes.py` la compara con lo publicado hoy y el workflow `Fuentes del SAT` lo
+corre cada lunes: si algo cambió o no se pudo comprobar, deja un issue con el informe. Las páginas del
+portal son las que detectan una matriz o un catálogo nuevos, porque el SAT les pone la fecha en el
+nombre y la URL vieja sigue respondiendo igual.
+
+Que el informe diga «cambió» no arregla nada: hay que leer el documento nuevo, llevar a las reglas lo
+que toque (con su cita) y solo entonces rehacer la foto con `--actualizar`. Al citar un documento nuevo
+en `docs/reglas.md`, se añade también a `docs/fuentes.json`.

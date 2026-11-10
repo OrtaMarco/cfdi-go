@@ -1,0 +1,61 @@
+name: Fuentes del SAT
+
+# Cada lunes compara lo que el SAT tiene publicado (guías, matrices, páginas del portal) y la
+# réplica de XSD/XSLT contra la foto de docs/fuentes.json. Si algo cambió, o si algo no se pudo
+# comprobar, deja un issue abierto con el informe: lo no comprobado nunca cuenta como «sin
+# cambios». Tras revisar a mano, la foto se rehace con
+# `python3 scripts/vigilar_fuentes.py --actualizar` y el issue se cierra.
+
+on:
+  schedule:
+    - cron: '17 14 * * 1' # lunes 08:17 de la Ciudad de México
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: fuentes
+  cancel-in-progress: false
+
+jobs:
+  vigilar:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TITULO: 'Fuentes del SAT: cambios o fuentes sin comprobar'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Comparar contra la foto
+        id: comparar
+        run: |
+          set +e
+          python3 scripts/vigilar_fuentes.py > informe.md
+          echo "codigo=$?" >> "$GITHUB_OUTPUT"
+          cat informe.md >> "$GITHUB_STEP_SUMMARY"
+          cat informe.md
+
+      - name: Abrir o actualizar el issue
+        if: steps.comparar.outputs.codigo == '1' || steps.comparar.outputs.codigo == '2'
+        run: |
+          {
+            cat informe.md
+            echo
+            echo "---"
+            echo "Informe de [esta ejecución]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID). Tras revisar: \`python3 scripts/vigilar_fuentes.py --actualizar\`, commit de \`docs/fuentes.json\` y cerrar."
+          } > cuerpo.md
+          numero="$(gh issue list --state open --search "in:title \"$TITULO\"" --json number,title \
+            --jq "[.[] | select(.title == \"$TITULO\")][0].number // empty")"
+          if [ -n "$numero" ]; then
+            gh issue edit "$numero" --body-file cuerpo.md
+          else
+            gh issue create --title "$TITULO" --body-file cuerpo.md
+          fi
+
+      - name: El script falló sin dar informe
+        if: steps.comparar.outputs.codigo != '0' && steps.comparar.outputs.codigo != '1' && steps.comparar.outputs.codigo != '2'
+        run: |
+          echo "vigilar_fuentes.py salió con ${{ steps.comparar.outputs.codigo }}" >&2
+          exit 1
