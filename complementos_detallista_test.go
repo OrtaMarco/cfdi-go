@@ -2,6 +2,7 @@ package cfdi
 
 import (
 	"encoding/json"
+	"runtime"
 	"strings"
 	"testing"
 )
@@ -818,7 +819,7 @@ func TestDetallistaMutantes(t *testing.T) {
 // TestNodoTexto fija la regla del texto en leerArbol: se guarda lo que trae
 // algo que no es espacio y la indentación no.
 func TestNodoTexto(t *testing.T) {
-	n, _, err := leerArbol([]byte("<a>\n  <b> x </b>\n  <c>  </c>\n  <d>1<!-- c -->2</d>\n  <e/>\n</a>"), true)
+	n, _, err := leerArbol([]byte("<a xmlns=\""+NSDetallista+"\">\n  <b> x </b>\n  <c>  </c>\n  <d>1<!-- c -->2</d>\n  <e/>\n</a>"), true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -827,4 +828,60 @@ func TestNodoTexto(t *testing.T) {
 	igual(t, "c", n.hijos[1].texto, "")
 	igual(t, "d", n.hijos[2].texto, "12")
 	igual(t, "e", n.hijos[3].texto, "")
+
+	// Fuera del namespace de Detallista el texto no se guarda.
+	n, _, err = leerArbol([]byte("<a><b> x </b></a>"), true)
+	if err != nil {
+		t.Fatal(err)
+	}
+	igual(t, "b ajeno", n.hijos[0].texto, "")
+}
+
+// bytesAsignados es lo que reserva f en total (acumulado, no el vivo): mide el
+// crecimiento sin depender del reloj.
+func bytesAsignados(f func()) uint64 {
+	var a, b runtime.MemStats
+	runtime.GC()
+	runtime.ReadMemStats(&a)
+	f()
+	runtime.ReadMemStats(&b)
+	return b.TotalAlloc - a.TotalAlloc
+}
+
+// TestLeerArbolTextoPartidoEsLineal protege la lectura de un texto partido en
+// muchos trozos por comentarios: acumularlo con += recopia todo lo anterior en
+// cada trozo (cuadrático). Compara el coste de N y de 4N trozos: lineal crece
+// ~4 veces, cuadrático ~16. Vale para el texto que se guarda (Detallista) y
+// para el que se descarta (cualquier otro elemento).
+func TestLeerArbolTextoPartidoEsLineal(t *testing.T) {
+	for _, c := range []struct{ nombre, ns string }{{"detallista", NSDetallista}, {"otro", "urn:otro"}} {
+		t.Run(c.nombre, func(t *testing.T) {
+			const n = 20000
+			var chico, grande uint64
+			for range 3 { // el mínimo de varias corridas quita el ruido del recolector
+				a := bytesAsignados(func() { _, _, _ = leerArbol(docTrozos(c.ns, n), true) })
+				b := bytesAsignados(func() { _, _, _ = leerArbol(docTrozos(c.ns, 4*n), true) })
+				if chico == 0 || a < chico {
+					chico = a
+				}
+				if grande == 0 || b < grande {
+					grande = b
+				}
+			}
+			if razon := float64(grande) / float64(chico); razon > 6 {
+				t.Errorf("4x trozos asignó %.1fx más (%d vs %d bytes): crecimiento no lineal", razon, grande, chico)
+			}
+		})
+	}
+	// El texto partido se junta entero.
+	r, _, err := leerArbol(docTrozos(NSDetallista, 1000), true)
+	if err != nil {
+		t.Fatal(err)
+	}
+	igual(t, "texto", r.hijos[0].texto, strings.Repeat("a", 1000))
+}
+
+// docTrozos es un elemento cuyo texto "aaa…" llega partido en n trozos.
+func docTrozos(ns string, n int) []byte {
+	return []byte(`<r xmlns:d="` + ns + `"><d:gln>` + strings.Repeat("a<!---->", n) + `</d:gln></r>`)
 }

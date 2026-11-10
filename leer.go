@@ -116,8 +116,9 @@ func ParseBytesOpciones(b []byte, o Opciones) (*Comprobante, error) {
 // cuando trae algo: texto es la concatenación de los trozos de texto directos
 // del elemento (no de sus hijos) desde el primero que no es puro espacio XML
 // (" \t\r\n"). La indentación no se guarda, para no gastar memoria en CFDI
-// grandes: un elemento con puro espacio queda con texto "". Lo lee el
-// complemento Detallista, que sí lleva datos en el texto.
+// grandes: un elemento con puro espacio queda con texto "". Solo se guarda
+// en los elementos del namespace de Detallista, el único que lo lee y que sí
+// lleva datos en el texto; en los demás texto queda "".
 type nodo struct {
 	ns, local string
 	attrs     []xml.Attr
@@ -133,6 +134,11 @@ func leerArbol(b []byte, estricto bool) (*nodo, []byte, error) {
 	d.Strict = estricto
 	var pila []*nodo
 	var raiz *nodo
+	// buf es el texto acumulado del elemento abierto de cada nivel de la pila
+	// (solo los de Detallista lo guardan): se convierte a string una vez, al
+	// cerrar el elemento. Concatenar string a string recopiaba todo lo anterior
+	// en cada trozo que parte un comentario (cuadrático).
+	var buf []*bytes.Buffer
 	for {
 		tok, err := d.Token()
 		if err != nil {
@@ -165,8 +171,13 @@ func leerArbol(b []byte, estricto bool) (*nodo, []byte, error) {
 				p.hijos = append(p.hijos, n)
 			}
 			pila = append(pila, n)
+			buf = append(buf, nil)
 		case xml.EndElement:
+			if b := buf[len(buf)-1]; b != nil {
+				pila[len(pila)-1].texto = b.String()
+			}
 			pila = pila[:len(pila)-1]
+			buf = buf[:len(buf)-1]
 			if len(pila) == 0 {
 				return raiz, b[d.InputOffset():], nil
 			}
@@ -175,9 +186,13 @@ func leerArbol(b []byte, estricto bool) (*nodo, []byte, error) {
 				return nil, nil, &Error{Clase: ClaseNoEsXML, Err: errors.New("texto antes del elemento raíz")}
 			}
 			if len(pila) > 0 {
-				p := pila[len(pila)-1]
-				if p.texto != "" || len(bytes.Trim(t, " \t\r\n")) > 0 {
-					p.texto += string(t) // t solo vale hasta el siguiente Token
+				i := len(pila) - 1
+				// Solo Detallista lee el texto; en el resto se descarta.
+				if pila[i].ns == NSDetallista && (buf[i] != nil || len(bytes.Trim(t, " \t\r\n")) > 0) {
+					if buf[i] == nil {
+						buf[i] = new(bytes.Buffer)
+					}
+					buf[i].Write(t) // t solo vale hasta el siguiente Token
 				}
 			}
 		}
