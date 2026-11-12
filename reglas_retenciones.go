@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/OrtaMarco/cfdi-go/decimal"
 )
@@ -59,9 +60,10 @@ var reglasRetenciones = []Regla{
 		"advertencia: el estándar 1.0 lo describe («Sumatoria de los montos de retención del nodo ImpRetenidos») pero no tiene matriz de errores ni regla de validación, y los ejemplos públicos 1.0 de 2014-2015 del repo (satcfdi) no lo cumplen"),
 	regla(ReglaRetPeriodo, NivelError, "Retenciones 2.0: MesIni menor o igual que MesFin",
 		citas(cod(DocMatrizRet20, "Reten20122", "Reten20124"), pag(DocEstRet20, 118)), ""),
-	regla(ReglaRetEjercicio, NivelError, "Retenciones 2.0: Ejercicio no posterior al año de FechaExp ni anterior en más de 5 años",
+	conMargen(regla(ReglaRetEjercicio, NivelError, "Retenciones 2.0: Ejercicio igual al año de FechaExp o al inmediato anterior",
 		citas(cod(DocMatrizRet20, "Reten20126"), pag(DocEstRet20, 118)),
-		"el estándar (2022) pide el año de FechaExp o el inmediato anterior; la matriz vigente (2025) admite hasta 5 ejercicios anteriores y se aplica la matriz; «el año en curso» es el de FechaExp, como dice el estándar"),
+		"la letra es del estándar (p. 118): «el año en curso o el año inmediato anterior», con el año de FechaExp; el caso de validación de la matriz solo pide que sea el año de la información, y hasta 5 ejercicios anteriores sale únicamente de la descripción de su error"),
+		"dos niveles: si no cumple pero cae entre 5 y 2 años antes del de FechaExp, advertencia: la descripción del error de Reten20126 admite hasta 5 ejercicios anteriores; fuera de eso (posterior, o anterior en más de 5), error"),
 	regla(ReglaRetTipoPago, NivelError,
 		"Retenciones 2.0: con ImpuestoRet 001 (ISR), TipoPagoRet 03 o 04; con 002 (IVA), 01; con 003 (IEPS), 02",
 		citas(cod(DocMatrizRet20, "Reten20135"), pag(DocEstRet20, 119), cod(DocCatRet20, "c_TipoPagoRet")),
@@ -321,7 +323,11 @@ func (v *validadorRet) periodo() {
 	case ej > anio:
 		v.hallazgo(ReglaRetEjercicio, rp, "Ejercicio", p.Ejercicio, fmt.Sprintf("Ejercicio %d es posterior al año de FechaExp (%d)", ej, anio))
 	case ej < anio-5:
-		v.hallazgo(ReglaRetEjercicio, rp, "Ejercicio", p.Ejercicio, fmt.Sprintf("Ejercicio %d es anterior en más de 5 años al de FechaExp (%d)", ej, anio))
+		v.hallazgo(ReglaRetEjercicio, rp, "Ejercicio", p.Ejercicio, fmt.Sprintf("Ejercicio %d es anterior en más de 5 años al de FechaExp (%d); fuera también del margen de 5 ejercicios", ej, anio))
+	case ej < anio-1:
+		v.hallazgo(ReglaRetEjercicio, rp, "Ejercicio", p.Ejercicio,
+			fmt.Sprintf("Ejercicio %d no es el año de FechaExp (%d) ni el anterior: no cumple la letra del estándar, pero sí el margen de 5 ejercicios de la descripción de Reten20126", ej, anio))
+		v.hs[len(v.hs)-1].Nivel = NivelAdvertencia
 	}
 }
 
@@ -334,7 +340,7 @@ func (v *validadorRet) receptor() {
 	n := rec.Nacional
 	const rn = rutaRet + "/Receptor/Nacional"
 	rfcR := strings.ToUpper(clave(n.RfcR))
-	if n.CurpR != "" && len(rfcR) == 12 {
+	if n.CurpR != "" && utf8.RuneCountInString(rfcR) == 12 {
 		v.hallazgo(ReglaRetReceptor, rn, "CurpR", n.CurpR, "RfcR tiene 12 posiciones (persona moral): no va CurpR")
 	}
 	generico := rfcR == "XAXX010101000"

@@ -97,9 +97,9 @@ func TestReglasRetenciones20(t *testing.T) {
 		// REGLA_RET_EJERCICIO (Reten20126)
 		{"ejercicio del año de FechaExp", func(r *Retenciones) {}, ReglaRetEjercicio, "", ""},
 		{"ejercicio del año anterior", func(r *Retenciones) { r.Periodo.Ejercicio = "2024" }, ReglaRetEjercicio, "", ""},
-		{"ejercicio 5 años antes", func(r *Retenciones) { r.Periodo.Ejercicio = "2020" }, ReglaRetEjercicio, "", ""},
 		{"ejercicio 6 años antes", func(r *Retenciones) { r.Periodo.Ejercicio = "2019" }, ReglaRetEjercicio, "/Retenciones/Periodo", "Ejercicio"},
 		{"ejercicio del año siguiente", func(r *Retenciones) { r.Periodo.Ejercicio = "2026" }, ReglaRetEjercicio, "/Retenciones/Periodo", "Ejercicio"},
+		{"ejercicio con FechaExp ilegible pero no vacía", func(r *Retenciones) { r.FechaExp = Fecha{Original: "ayer"}; r.Periodo.Ejercicio = "2030" }, ReglaRetEjercicio, "", ""},
 		{"ejercicio sin FechaExp legible", func(r *Retenciones) { r.FechaExp = Fecha{}; r.Periodo.Ejercicio = "2030" }, ReglaRetEjercicio, "", ""},
 		{"ejercicio y fin de año: FechaExp el 31 de diciembre", func(r *Retenciones) {
 			r.FechaExp = Fecha{Original: "2025-12-31T23:59:59", Time: time.Date(2025, 12, 31, 23, 59, 59, 0, time.UTC)}
@@ -163,6 +163,9 @@ func TestReglasRetenciones20(t *testing.T) {
 		{"persona moral con CURP", func(r *Retenciones) {
 			r.Receptor.Nacional.RfcR, r.Receptor.Nacional.CurpR = "EKU9003173C9", "XEXX010101HNEXXXA4"
 		}, ReglaRetReceptor, "/Retenciones/Receptor/Nacional", "CurpR"},
+		{"persona moral con Ñ (12 caracteres, 13 bytes) con CURP", func(r *Retenciones) {
+			r.Receptor.Nacional.RfcR, r.Receptor.Nacional.CurpR = "ÑAB010101AB1", "XEXX010101HNEXXXA4"
+		}, ReglaRetReceptor, "/Retenciones/Receptor/Nacional", "CurpR"},
 		{"persona moral sin CURP", func(r *Retenciones) { r.Receptor.Nacional.RfcR = "EKU9003173C9" }, ReglaRetReceptor, "", ""},
 		{"público en general con RFC genérico y su domicilio", func(r *Retenciones) {
 			n := r.Receptor.Nacional
@@ -202,6 +205,45 @@ func TestReglasRetenciones20(t *testing.T) {
 		if h.Nivel != er || h.Nodo() != c.ruta || h.Atributo != c.attr || h.Regla == "" || h.Mensaje == "" || h.Nivel != reglaDe[h.Codigo].Nivel {
 			t.Errorf("%s: %+v, quiero nivel %s, nodo %s, atributo %s", c.nombre, h, er, c.ruta, c.attr)
 		}
+	}
+}
+
+// REGLA_RET_EJERCICIO es de dos niveles: el año de FechaExp y el anterior
+// cumplen la letra del estándar; de 2 a 5 años antes, advertencia (la
+// descripción del error de Reten20126); más allá, o posterior, error.
+func TestReglasRetencionesEjercicioDosNiveles(t *testing.T) {
+	casos := []struct {
+		ejercicio, nivel string
+	}{
+		{"2026", NivelError}, {"2025", ""}, {"2024", ""}, // año +1, 0 y −1
+		{"2023", NivelAdvertencia}, {"2020", NivelAdvertencia}, // −2 y −5
+		{"2019", NivelError}, {"1999", NivelError}, // −6
+	}
+	for _, c := range casos {
+		rt := retBase20()
+		rt.Periodo.Ejercicio = c.ejercicio
+		var hs []Hallazgo
+		for _, h := range ValidarReglasRetenciones(rt) {
+			if h.Codigo == ReglaRetEjercicio {
+				hs = append(hs, h)
+			}
+		}
+		switch {
+		case c.nivel == "" && len(hs) != 0:
+			t.Errorf("Ejercicio %s: %+v, quiero ninguno", c.ejercicio, hs)
+		case c.nivel != "" && (len(hs) != 1 || hs[0].Nivel != c.nivel || hs[0].Atributo != "Ejercicio" || hs[0].Regla == ""):
+			t.Errorf("Ejercicio %s: %+v, quiero nivel %s", c.ejercicio, hs, c.nivel)
+		}
+		if c.nivel == NivelAdvertencia && EstadoDe(hs) != ValidacionValida {
+			t.Errorf("Ejercicio %s: una advertencia no invalida", c.ejercicio)
+		}
+	}
+	// El mismo cálculo con otro año de FechaExp (bordes de enero y diciembre).
+	rt := retBase20()
+	rt.FechaExp = Fecha{Original: "2030-01-01T00:00:00", Time: time.Date(2030, 1, 1, 0, 0, 0, 0, time.UTC)}
+	rt.Periodo.Ejercicio = "2025"
+	if hs := ValidarReglasRetenciones(rt); !TieneHallazgo(hs, ReglaRetEjercicio) || hs[0].Nivel != NivelAdvertencia {
+		t.Errorf("2030 − 5: %+v", hs)
 	}
 }
 
@@ -318,6 +360,8 @@ func TestReglasRetencionesFixtures(t *testing.T) {
 			return sat10
 		case strings.Contains(p, "satcfdi") && strings.Contains(base, "retenciones20-ejemplo"):
 			return satEjemplo
+		case strings.Contains(p, "lunasoft") && (strings.HasSuffix(base, "retencion20_sellado.xml") || strings.HasSuffix(base, "retencion20_test.xml")):
+			return []string{ejercicio27} // Ejercicio 2023 con FechaExp de 2025: advertencia
 		case strings.Contains(p, "satcfdi") && strings.Contains(base, "retenciones20-min"): // min y min-comps
 			return satMin
 		case strings.Contains(p, "eclipxe13") && strings.HasSuffix(base, "retenciones20.xml"):
@@ -384,5 +428,38 @@ func TestReglasRetencionesDocumentadas(t *testing.T) {
 				t.Errorf("%s cita %q", r.Codigo, c.Documento)
 			}
 		}
+	}
+}
+
+// La vía completa, de bytes a Validacion, con varios ImpRetenidos: las
+// rutas llevan el índice del nodo que falla y la suma cuenta todos.
+func TestValidarRetencionesVariosImpRetenidos(t *testing.T) {
+	xml := func(montoTotRet, tipo2 string) []byte {
+		return []byte(`<?xml version="1.0" encoding="UTF-8"?>
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2" Version="2.0" Sello="" NoCertificado="30001000000500003416" Certificado="" FechaExp="2025-06-01T10:00:00" LugarExpRetenc="42501" CveRetenc="03">
+  <retenciones:Emisor RfcE="EKU9003173C9" NomDenRazSocE="ESCUELA KEMPER URGATE" RegimenFiscalE="601"/>
+  <retenciones:Receptor NacionalidadR="Nacional">
+    <retenciones:Nacional RfcR="XAXX010101000" NomDenRazSocR="PUBLICO EN GENERAL" DomicilioFiscalR="42501"/>
+  </retenciones:Receptor>
+  <retenciones:Periodo MesIni="01" MesFin="12" Ejercicio="2025"/>
+  <retenciones:Totales MontoTotOperacion="1000.00" MontoTotGrav="1000.00" MontoTotExent="0.00" MontoTotRet="` + montoTotRet + `">
+    <retenciones:ImpRetenidos BaseRet="1000.00" ImpuestoRet="001" MontoRet="100.10" TipoPagoRet="03"/>
+    <retenciones:ImpRetenidos BaseRet="1000.00" ImpuestoRet="002" MontoRet="160.20" TipoPagoRet="` + tipo2 + `"/>
+    <retenciones:ImpRetenidos BaseRet="1000.00" ImpuestoRet="003" MontoRet="0.30" TipoPagoRet="02"/>
+  </retenciones:Totales>
+</retenciones:Retenciones>`)
+	}
+	v := ValidarRetenciones(xml("260.60", "01"))
+	if v.Reglas == nil || len(v.Reglas.Hallazgos) != 0 || v.Reglas.Estado != ValidacionValida {
+		t.Fatalf("coherente (100.10 + 160.20 + 0.30 = 260.60): %+v", v.Reglas)
+	}
+	v = ValidarRetenciones(xml("260.59", "03"))
+	var got []string
+	for _, h := range v.Reglas.Hallazgos {
+		got = append(got, h.Codigo+" "+h.Ruta)
+	}
+	quiero := []string{"REGLA_RET_MONTO_TOT_RET /Retenciones/Totales/@MontoTotRet", "REGLA_RET_TIPO_PAGO /Retenciones/Totales/ImpRetenidos[2]/@TipoPagoRet"}
+	if !slices.Equal(got, quiero) || v.Reglas.Estado != ValidacionInvalida || v.Estado != ValidacionInvalida {
+		t.Errorf("obtuve %v (%s), quiero %v", got, v.Estado, quiero)
 	}
 }

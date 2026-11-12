@@ -31,10 +31,10 @@ mensaje que termina en «; advertencia: …» con el porqué:
   documentos relacionados se registre algún impuesto», estándar p. 25, 27) y MotivoTraslado solo en T
   (estándar de Comercio Exterior p. 35).
 
-Nueve reglas tienen **dos niveles** (`Regla.Margen`): `REGLA_IMPORTE_IMPUESTO`, `REGLA_TRASLADO_SUMA`,
+Diez reglas tienen **dos niveles** (`Regla.Margen`): `REGLA_IMPORTE_IMPUESTO`, `REGLA_TRASLADO_SUMA`,
 `REGLA_RETENCION_SUMA`, `REGLA_TOTAL_TRASLADOS` y `REGLA_TOTAL_RETENCIONES`; en Pagos 2.0
-`REGLA_PAGO_IMPORTE_DR`, `REGLA_PAGO_IMPUESTOS_P_SUMA` y `REGLA_PAGOS_TOTALES`, y en Comercio Exterior
-`REGLA_CCE_VALOR_DOLARES`. Lo que cumple la letra del
+`REGLA_PAGO_IMPORTE_DR`, `REGLA_PAGO_IMPUESTOS_P_SUMA` y `REGLA_PAGOS_TOTALES`, en Comercio Exterior
+`REGLA_CCE_VALOR_DOLARES` y en Retenciones 2.0 `REGLA_RET_EJERCICIO` (ver su sección, abajo). Lo que cumple la letra del
 SAT no da hallazgo; lo que no la cumple pero cae en el margen de redondeo por concepto da una
 `advertencia` con el mismo código, la misma cita y un mensaje que lo dice («no cumple la letra del SAT,
 pero sí el margen de redondeo por concepto, [lo, hi]»); lo que queda fuera también del margen es
@@ -231,13 +231,20 @@ niveles.
 
 Decisiones donde las fuentes difieren o callan:
 
-- **Ejercicio** (Reten20126). El estándar 2.0 (2022, p. 118) pide «el año en curso o el año inmediato
-  anterior» y define el año en curso con `FechaExp`; la matriz vigente (2025-04) dice «el año en curso o hasta
-  5 ejercicios anteriores». Se aplica la matriz (más reciente, y el único texto que usa un PAC) con el año
-  de `FechaExp` como «año en curso»: error si `Ejercicio` es posterior a ese año o lo precede en más de 5.
+- **Ejercicio** (Reten20126) es una regla de **dos niveles**, y cada límite sale de una columna distinta:
+  - La letra es del estándar 2.0 (p. 118): «igual al año en curso o al año inmediato anterior», con el año
+    de `FechaExp` como «año en curso». El año de `FechaExp` y el anterior no dan hallazgo.
+  - El caso de validación de la matriz (columna «Caso de validación») solo pide que el valor «exprese el
+    año al que corresponde la información»; el «hasta 5 ejercicios anteriores» está únicamente en la columna
+    «Descripción de código de error» («no es igual al año en curso o no contiene un valor de hasta 5
+    ejercicios anteriores»). De 5 a 2 años antes es, por eso, `advertencia` con el mismo código.
+  - Es error un `Ejercicio` posterior al año de `FechaExp` o anterior en más de 5. Con una `FechaExp` que no
+    se pudo leer (también si no está vacía) no se evalúa.
 - **MontoTotRet** (Reten20130, Reten20131). La matriz y el estándar (p. 118) piden la suma solo «si el valor
-  es mayor que cero». Con `MontoTotRet` en cero no se exige nada, aunque haya `ImpRetenidos` con monto; el
-  XSD (p. 97) dice «Sumatoria», sin condición, pero no se hizo error lo que la regla de validación no pide.
+  es mayor que cero». En 2.0, con `MontoTotRet` en cero no se exige nada, aunque haya `ImpRetenidos` con
+  monto; el XSD (p. 97) dice «Sumatoria», sin condición, pero no se hizo error lo que la regla de validación
+  no pide. **La diferencia con 1.0 es deliberada**: la p. 84 del estándar 1.0 describe `montoTotRet` como la
+  sumatoria sin condicionarla, y su regla sí avisa un `montoTotRet` 0 con `montoRet` mayor que cero.
 - **CveRetenc y complemento** (Reten20107). «Cuando el catálogo señale un complemento asociado» remite a la
   columna «Nombre del complemento» de c_CveRetenc, que no viene en el XSD: se tomaron de la hoja del
   catálogo 2.0 las claves cuyo complemento es incondicional (06 y 19 Enajenación de acciones, 14 y 15
@@ -249,8 +256,9 @@ Decisiones donde las fuentes difieren o callan:
   cuando» la entidad actúe como fiduciaria): la condición no está en ningún atributo del documento.
 - **TipoPagoRet** (Reten20135). La columna «Tipo impuesto» de c_TipoPagoRet tampoco viene en el XSD; son
   cuatro filas (01 IVA, 02 IEPS, 03 y 04 ISR) y se codifican tal cual.
-- **Receptor** (Reten20116, Reten20120). Solo están en la matriz; el estándar (p. 117) pide que
-  `NomDenRazSocR` y `DomicilioFiscalR` estén asociados al RFC en la lista del SAT, que necesita red. Se
+- **Receptor** (Reten20116, Reten20120). Solo están en la matriz; el estándar (`NomDenRazSocR`, p. 117, y
+  `DomicilioFiscalR`, p. 118) pide que
+  estén asociados al RFC en la lista del SAT, que necesita red. Se
   revisa la parte que no la necesita: «PÚBLICO EN GENERAL» solo con `XAXX010101000` (sin distinguir
   mayúsculas ni acento) y, con ese RFC, `DomicilioFiscalR` igual a `LugarExpRetenc`.
 - **Clave 28** (Reten20108, Reten20132, Reten20133). Un `UtilidadBimestral` o `ISRCorrespondiente` ausente
@@ -264,7 +272,7 @@ Lo que queda fuera:
 | Reten20103 | patrón de `FechaExp`: esquema |
 | Reten20104, Reten20105, Reten20109, Reten20111, Reten20121, Reten20123, Reten20134 | claves de catálogo (c_CodigoPostal, c_CveRetenc, c_TipoRelacion, c_RegimenFiscal, c_Periodo, c_TipoPagoRet): las revisa `ValidarEsquema` con los catálogos del XSD |
 | Reten20110, Reten20113, Reten20115, Reten20119, Reten20136 | RFC, nombre y domicilio fiscal contra la lista de RFC inscritos: red |
-| Reten20112 | `RegimenFiscalE` según la longitud del RFC: necesita las columnas Física y Moral de c_RegimenFiscal (catCFDI), que no vienen en el XSD |
+| Reten20112 | `RegimenFiscalE` según la longitud del RFC. El XSD 2.0 lo tipa con `catCFDI:c_RegimenFiscal`, el catálogo general de CFDI (`catCFDI.xls`), que no está entre los catálogos de Retenciones (`catCFDI_Retenciones_1.xls` no trae esa hoja, revisado el 2026-11-12), y su XSD solo da las claves, sin las columnas Física y Moral que la regla necesita. Codificarla exigiría traer una tabla de otro documento del SAT que el repo no cita; queda como pendiente |
 | Reten20114 | «no se valida en la lista»: no es una comprobación |
 
 Tampoco se revisan, por no tener sustento: decimales y signo de los importes (los fija el XSD 2.0:

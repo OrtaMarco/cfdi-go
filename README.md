@@ -646,7 +646,7 @@ certificado, como en el CFDI.
 `cfdi validar` y `cfdi lote -validar` las aplican a un documento de Retenciones. Las reglas salen de la
 matriz de errores de Retenciones 2.0 (`Reten20101`…`Reten20136`), del estándar de Retenciones (secciones II
 de los Anexo 20 publicados en el DOF) y de los catálogos de Retenciones 2.0; la lista, con su fundamento, es
-`cfdi.ReglasRetenciones` (también están al final de `cfdi.Reglas`). Sin matriz de errores de 1.0, esa
+`cfdi.ReglasRetenciones`. Ojo si recorres `cfdi.Reglas` (o `cfdi.CodigosReglas`): ahora incluye al final los códigos `REGLA_RET_*`, que ya no son solo de CFDI. Sin matriz de errores de 1.0, esa
 versión solo tiene una regla, en advertencia. Qué se revisó, qué quedó fuera y por qué:
 [docs/reglas.md](docs/reglas.md#retenciones-e-información-de-pagos).
 
@@ -660,7 +660,7 @@ versión solo tiene una regla, en advertencia. Qué se revisó, qué quedó fuer
 | `REGLA_RET_MONTO_TOT_RET` | error | 2.0: con MontoTotRet mayor que cero, al menos un ImpRetenidos y MontoTotRet igual a la suma de sus MontoRet (con cero no se pide nada) | Matriz Retenciones 2.0: Reten20130, Reten20131; Anexo 20 Retenciones 2.0: p. 97, 118 |
 | `REGLA_RET10_MONTO_TOT_RET` | advertencia | 1.0: montoTotRet igual a la suma de los montoRet; advertencia porque el estándar 1.0 solo lo describe, sin matriz ni regla, y los ejemplos públicos 1.0 del repo no lo cumplen | Anexo 20 Retenciones 1.0: p. 84 |
 | `REGLA_RET_PERIODO` | error | 2.0: MesIni menor o igual que MesFin | Matriz Retenciones 2.0: Reten20122, Reten20124; Anexo 20 Retenciones 2.0: p. 118 |
-| `REGLA_RET_EJERCICIO` | error | 2.0: Ejercicio no posterior al año de FechaExp ni anterior en más de 5 años (el estándar dice el año o el anterior; se aplica la matriz) | Matriz Retenciones 2.0: Reten20126; Anexo 20 Retenciones 2.0: p. 118 |
+| `REGLA_RET_EJERCICIO` | error | 2.0: Ejercicio igual al año de FechaExp o al inmediato anterior. **Dos niveles**: de 5 a 2 años antes del de FechaExp, advertencia (la descripción del error de la matriz admite hasta 5 ejercicios anteriores); posterior o anterior en más de 5, error | Matriz Retenciones 2.0: Reten20126; Anexo 20 Retenciones 2.0: p. 118 |
 | `REGLA_RET_TIPO_PAGO` | error | 2.0: con ImpuestoRet 001, TipoPagoRet 03 o 04; con 002, 01; con 003, 02 | Matriz Retenciones 2.0: Reten20135; Anexo 20 Retenciones 2.0: p. 119; Catálogos Retenciones 2.0: c_TipoPagoRet |
 | `REGLA_RET_DESC_RETENC` | error | 2.0: con CveRetenc 25, DescRetenc | Matriz Retenciones 2.0: Reten20106; Anexo 20 Retenciones 2.0: p. 117 |
 | `REGLA_RET_CVE_COMPLEMENTO` | error | 2.0: el complemento que c_CveRetenc asocia a la clave (06, 14-24 y 26; 01, 02, 04, 05 y 27 son condicionales y no se revisan) | Matriz Retenciones 2.0: Reten20107; Anexo 20 Retenciones 2.0: p. 117; Catálogos Retenciones 2.0: c_CveRetenc |

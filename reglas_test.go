@@ -545,8 +545,8 @@ func TestReglasDocumentadas(t *testing.T) {
 			t.Errorf("%s: Vigencia %q, SoloGuia %q y la fila del README no coinciden: %s", r.Codigo, r.Vigencia, r.SoloGuia, fila)
 		}
 	}
-	if dosNiveles != 9 {
-		t.Errorf("%d reglas de dos niveles, quiero 9", dosNiveles)
+	if dosNiveles != 10 {
+		t.Errorf("%d reglas de dos niveles, quiero 10", dosNiveles)
 	}
 	err = filepath.WalkDir("testdata", func(p string, d os.DirEntry, err error) error {
 		if err != nil || d.IsDir() || !strings.HasSuffix(p, ".xml") {
