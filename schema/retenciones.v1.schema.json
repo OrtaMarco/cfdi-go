@@ -207,7 +207,18 @@
             "REGLA_NOMINA_CUENTA_BANCARIA",
             "REGLA_NOMINA_NODOS_PERCEPCION",
             "REGLA_NOMINA_INCAPACIDADES",
-            "REGLA_NOMINA_COMPENSACION_SALDO"
+            "REGLA_NOMINA_COMPENSACION_SALDO",
+            "REGLA_RET_MONTO_OPERACION",
+            "REGLA_RET_MONTO_MAYOR_OPERACION",
+            "REGLA_RET_MONTO_TOT_RET",
+            "REGLA_RET10_MONTO_TOT_RET",
+            "REGLA_RET_PERIODO",
+            "REGLA_RET_EJERCICIO",
+            "REGLA_RET_TIPO_PAGO",
+            "REGLA_RET_DESC_RETENC",
+            "REGLA_RET_CVE_COMPLEMENTO",
+            "REGLA_RET_CVE_RIF",
+            "REGLA_RET_RECEPTOR_NACIONAL"
           ]
         },
         "nivel": {

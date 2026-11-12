@@ -208,11 +208,12 @@ const (
 	margenSumaNodos     = "dos niveles: si no es la suma ni su redondeo pero cae entre la suma de cada Importe truncado y la de cada uno redondeado hacia arriba a los decimales de la moneda (en 3.3 pueden traer 6 decimales), advertencia: el margen de redondeo por sumando, que un PAC timbra"
 )
 
-// Reglas lista las reglas que evalúa ValidarReglas, en el orden de los
+// Reglas lista las reglas que evalúan ValidarReglas y, al final,
+// ValidarReglasRetenciones (también en ReglasRetenciones), en el orden de los
 // códigos. Cada una con su fundamento en los documentos del SAT (T7: se
 // contrastaron todas contra la matriz de errores, el estándar y la guía de
 // llenado de cada versión; lo que no coincidía se corrigió).
-var Reglas = concatenar(reglasCFDI, reglasPagos, reglasPagosImpuestos, reglasComplementos, reglasCCE, reglasNomina)
+var Reglas = concatenar(reglasCFDI, reglasPagos, reglasPagosImpuestos, reglasComplementos, reglasCCE, reglasNomina, reglasRetenciones)
 
 func concatenar(listas ...[]Regla) []Regla {
 	var out []Regla

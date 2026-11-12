@@ -482,6 +482,7 @@ var documentosSAT = map[string]bool{
 	DocMatrizPagos20: true, DocGuiaPagos20: true, DocEstPagos20: true, DocMatrizPagos10: true, DocGuiaPagos10: true, DocImpLocal: true,
 	DocMatrizCCE20: true, DocGuiaCCE20: true, DocEstCCE20: true, DocMatrizNomina12: true, DocGuiaNomina12: true,
 	DocMatrizNomina12B: true, DocMatrizNomina12C: true, DocEstNomina12: true,
+	DocMatrizRet20: true, DocEstRet20: true, DocEstRet10: true, DocCatRet20: true,
 }
 
 // Los códigos de las reglas son únicos, cada uno con referencia y

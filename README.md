@@ -69,13 +69,14 @@ arithmetic/consistency rules. Documentation is in Spanish.
 - CLI: `cfdi parse` (un XML → JSON), `cfdi verificar` (cadena y sellos), `cfdi validar` (esquema y
   reglas) y `cfdi lote` (carpeta o ZIP → JSONL + resumen de fallos).
 - CFDI de Retenciones e información de pagos 1.0 y 2.0, con API aparte: lectura con sus trece
-  complementos, JSON con su propio esquema, cadena original, sellos y XSD (ver [Retenciones](#retenciones)).
+  complementos, JSON con su propio esquema, cadena original, sellos, XSD y reglas aritméticas y de
+  coherencia de la matriz de errores 2.0 (ver [Retenciones](#retenciones)).
 - Chequeos del certificado del emisor sin red: vigencia en la fecha del documento, RFC del titular y
   número de serie (ver [Certificado del emisor](#certificado-del-emisor)).
 
 Fuera de alcance por ahora: reglas que necesitan red o catálogos que no vienen en los XSD (RFC en la
 lista del SAT, c_TasaOCuota, rangos de TipoCambio), cadena de confianza y revocación de los certificados,
-reglas aritméticas de Retenciones, timbrado, cancelación, descarga masiva.
+la aritmética interna de los complementos de Retenciones, timbrado, cancelación, descarga masiva.
 
 ### CFDI 3.2 (y 3.0): lectura parcial
 
@@ -371,6 +372,7 @@ for _, h := range r.Hallazgos {  // Codigo, Nivel, Ruta, Atributo, Valor, Regla,
 }
 hs := cfdi.ValidarReglas(c)      // sobre el *Comprobante de Parse
 v := cfdi.Validar(xml, c)        // las dos juntas (c puede ser nil): v.Estado, v.Esquema, v.Reglas
+// CFDI de Retenciones: cfdi.ValidarRetenciones(xml) (esquema y reglas) y cfdi.ValidarReglasRetenciones(rt)
 ```
 
 ### Esquema (`ValidarEsquema`)
@@ -590,7 +592,8 @@ case cfdi.TipoRetenciones:
     b, _ := rt.JSON()                          // {"tipo_documento":"retenciones","schema_version":"1","retenciones":{…},…}
     cadena, _ := cfdi.CadenaOriginalRetenciones(xml)
     v := cfdi.VerificarRetenciones(xml, certsSAT) // como Verificar
-    val := cfdi.ValidarRetenciones(xml)           // solo XSD
+    val := cfdi.ValidarRetenciones(xml)           // XSD + reglas (val.Esquema, val.Reglas)
+    hs := cfdi.ValidarReglasRetenciones(rt)       // solo las reglas, sobre el *Retenciones leído
 }
 ```
 
@@ -639,10 +642,32 @@ Retenciones de los fixtures coinciden con libxslt, y los dos rechazos son los qu
 SHA-1; se acepta también SHA-256); 2.0 con SHA-256. `NoCertificado` (`NumCert`) tiene que ser el del
 certificado, como en el CFDI.
 
-**Validación.** `ValidarRetenciones` es solo el esquema. No hay reglas aritméticas: el SAT no publica para
-Retenciones matriz de errores ni guía con fórmulas (no están entre los documentos del repo), y la librería
-no inventa reglas sin fuente. Que `MontoTotRet` sea la suma de los `MontoRet` (lo dice la documentación del
-XSD 2.0) o los totales de Plataformas quedan para cuando haya un documento del SAT que citar.
+**Validación.** `ValidarRetenciones` es el esquema (XSD) más las reglas de `ValidarReglasRetenciones`, y
+`cfdi validar` y `cfdi lote -validar` las aplican a un documento de Retenciones. Las reglas salen de la
+matriz de errores de Retenciones 2.0 (`Reten20101`…`Reten20136`), del estándar de Retenciones (secciones II
+de los Anexo 20 publicados en el DOF) y de los catálogos de Retenciones 2.0; la lista, con su fundamento, es
+`cfdi.ReglasRetenciones` (también están al final de `cfdi.Reglas`). Sin matriz de errores de 1.0, esa
+versión solo tiene una regla, en advertencia. Qué se revisó, qué quedó fuera y por qué:
+[docs/reglas.md](docs/reglas.md#retenciones-e-información-de-pagos).
+
+<details>
+<summary>Las reglas de Retenciones, con su fundamento</summary>
+
+| Código | Nivel | Qué revisa | Fundamento (SAT) |
+|---|---|---|---|
+| `REGLA_RET_MONTO_OPERACION` | error | 2.0: MontoTotOperacion igual a MontoTotGrav + MontoTotExent | Matriz Retenciones 2.0: Reten20127; Anexo 20 Retenciones 2.0: p. 118 |
+| `REGLA_RET_MONTO_MAYOR_OPERACION` | error | 2.0: MontoTotGrav y MontoTotExent menores o iguales que MontoTotOperacion | Matriz Retenciones 2.0: Reten20128, Reten20129; Anexo 20 Retenciones 2.0: p. 118 |
+| `REGLA_RET_MONTO_TOT_RET` | error | 2.0: con MontoTotRet mayor que cero, al menos un ImpRetenidos y MontoTotRet igual a la suma de sus MontoRet (con cero no se pide nada) | Matriz Retenciones 2.0: Reten20130, Reten20131; Anexo 20 Retenciones 2.0: p. 97, 118 |
+| `REGLA_RET10_MONTO_TOT_RET` | advertencia | 1.0: montoTotRet igual a la suma de los montoRet; advertencia porque el estándar 1.0 solo lo describe, sin matriz ni regla, y los ejemplos públicos 1.0 del repo no lo cumplen | Anexo 20 Retenciones 1.0: p. 84 |
+| `REGLA_RET_PERIODO` | error | 2.0: MesIni menor o igual que MesFin | Matriz Retenciones 2.0: Reten20122, Reten20124; Anexo 20 Retenciones 2.0: p. 118 |
+| `REGLA_RET_EJERCICIO` | error | 2.0: Ejercicio no posterior al año de FechaExp ni anterior en más de 5 años (el estándar dice el año o el anterior; se aplica la matriz) | Matriz Retenciones 2.0: Reten20126; Anexo 20 Retenciones 2.0: p. 118 |
+| `REGLA_RET_TIPO_PAGO` | error | 2.0: con ImpuestoRet 001, TipoPagoRet 03 o 04; con 002, 01; con 003, 02 | Matriz Retenciones 2.0: Reten20135; Anexo 20 Retenciones 2.0: p. 119; Catálogos Retenciones 2.0: c_TipoPagoRet |
+| `REGLA_RET_DESC_RETENC` | error | 2.0: con CveRetenc 25, DescRetenc | Matriz Retenciones 2.0: Reten20106; Anexo 20 Retenciones 2.0: p. 117 |
+| `REGLA_RET_CVE_COMPLEMENTO` | error | 2.0: el complemento que c_CveRetenc asocia a la clave (06, 14-24 y 26; 01, 02, 04, 05 y 27 son condicionales y no se revisan) | Matriz Retenciones 2.0: Reten20107; Anexo 20 Retenciones 2.0: p. 117; Catálogos Retenciones 2.0: c_CveRetenc |
+| `REGLA_RET_CVE_RIF` | error | 2.0: con CveRetenc 28, MontoTotGrav y MontoTotExent en cero, UtilidadBimestral e ISRCorrespondiente mayores que cero | Matriz Retenciones 2.0: Reten20108, Reten20132, Reten20133; Anexo 20 Retenciones 2.0: p. 118, 119 |
+| `REGLA_RET_RECEPTOR_NACIONAL` | error | 2.0, Receptor/Nacional: sin CurpR con RfcR de 12 posiciones; «PÚBLICO EN GENERAL» solo con XAXX010101000; con XAXX010101000, DomicilioFiscalR igual a LugarExpRetenc | Matriz Retenciones 2.0: Reten20116, Reten20117, Reten20120; Anexo 20 Retenciones 2.0: p. 117, 118 |
+
+</details>
 
 ## Pruebas
 

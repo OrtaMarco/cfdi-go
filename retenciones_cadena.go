@@ -68,12 +68,18 @@ func VerificarRetenciones(xml []byte, certs CertificadosSAT) *Verificacion {
 	return verificar(xml, certs, perfilRetenciones)
 }
 
-// ValidarRetenciones valida un CFDI de Retenciones 1.0 o 2.0 contra los XSD
-// del SAT (retencionpagov1/v2, sus trece complementos y el TFD 1.1): es
-// ValidarEsquema en una Validacion sin Reglas. No hay reglas aritméticas de
-// Retenciones: el SAT no publica para ellas matriz de errores ni guía con las
-// fórmulas, y la librería no inventa reglas sin fuente. Nunca falla.
+// ValidarRetenciones valida un CFDI de Retenciones 1.0 o 2.0: el esquema
+// contra los XSD del SAT (retencionpagov1/v2, sus trece complementos y el TFD
+// 1.1) y las reglas aritméticas y de coherencia de ValidarReglasRetenciones,
+// como Validar el CFDI. Si el documento no se puede leer como Retenciones,
+// Reglas queda nil y el estado es el del esquema. Nunca falla.
 func ValidarRetenciones(xml []byte) *Validacion {
 	e := ValidarEsquema(xml)
-	return &Validacion{Estado: e.Estado, Esquema: e}
+	v := &Validacion{Estado: e.Estado, Esquema: e}
+	if rt, err := ParseRetencionesBytes(xml); err == nil {
+		hs := ValidarReglasRetenciones(rt)
+		v.Reglas = &ResultadoValidacion{Estado: EstadoDe(hs), Hallazgos: hs}
+		v.Estado = peorEstado(v.Estado, v.Reglas.Estado)
+	}
+	return v
 }

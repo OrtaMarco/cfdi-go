@@ -114,6 +114,10 @@ Documentos (las páginas son las impresas en el PDF):
 | Matriz de errores Nómina 1.2 Rev B (2019-12-17) | http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/matriz_erroresnomina_v12B.xls |
 | Estándar Nómina 1.2 Rev D (2025-02-21; páginas del PDF: no las imprime) | enlace del portal del SAT a `Estandar_nomina12_21022025…pdf` |
 | Guía de llenado Nómina 1.2 | http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/Guia_llenado_Nomina.pdf |
+| Matriz de errores Retenciones 2.0 (portal 2025-04-09) | http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/MatrizDeErrores_CFDI_Retenciones_v20.xls |
+| Estándar Retenciones 2.0: sección II del Anexo 20 (DOF 2022-01-13), PDF desde la p. 83 y validaciones en las pp. 116-119 | http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/Anexo20_2022.pdf (el mismo de CFDI 4.0) |
+| Estándar Retenciones 1.0: sección II del Anexo 20 3.3 (DOF 2017-07-28), PDF desde la p. 73 | http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/cfdv33.pdf (el mismo de CFDI 3.3) |
+| Catálogos Retenciones 2.0 (2022-01-01; hojas c_CveRetenc y c_TipoPagoRet) | http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/catCFDI_Retenciones_1.xls |
 
 Las que necesitan red o catálogos externos (lista de RFC, c_TasaOCuota, patrones de c_FormaPago, límites
 de TipoCambio y de Monto publicados por el SAT) quedan fuera; el detalle por complemento, abajo.
@@ -202,3 +206,69 @@ orden, namespaces) y las reglas de valores ya leídos (`Comprobante`); quien ya 
 XML. Pero los hallazgos de ambas tienen la misma forma y la misma `Ruta` que las advertencias, así que se
 juntan en una lista (`Validacion.Hallazgos()`). `Hallazgo` no es `Advertencia`: una advertencia cuenta lo
 que tuvo que hacer la lectura tolerante; un hallazgo, la norma que el documento incumple.
+
+## Retenciones e información de pagos
+
+Fuentes (consultadas el 2026-11-09 en la página del SAT `cfdi_retenciones.htm`, la única que publica
+documentación técnica de Retenciones; no enlaza guía de llenado ni matriz de errores de 1.0): la matriz de
+errores 2.0 (`Reten20101`-`Reten20136`, 34 códigos), el estándar de cada versión (sección II de los Anexo 20) y
+los catálogos de Retenciones 2.0. Los PDF y XLS no se versionan en el repo, como los demás documentos del SAT:
+se citan por URL (tabla de arriba), código de matriz y página del PDF.
+
+`ValidarReglasRetenciones` corre por la `Version` del documento:
+
+- **2.0**: todas las reglas con código `REGLA_RET_*`, error.
+- **1.0**: solo `REGLA_RET10_MONTO_TOT_RET`, en **advertencia**. El estándar 1.0 (p. 84) describe `montoTotRet`
+  como «Sumatoria de los montos de retención del nodo ImpRetenidos», pero no trae ninguna sección de
+  validaciones y el SAT no publica matriz de 1.0; además, los ejemplos públicos 1.0 de 2014-2015 que
+  versiona el repo (de satcfdi) no la cumplen (`montoTotRet` 3500 contra `montoRet` 500 + 500, o 10 sin
+  `ImpRetenidos`). Se deja como advertencia, y las demás reglas de la matriz 2.0 no se trasladan a 1.0.
+- Otra `Version`: aviso `REGLA_VERSION_NO_SOPORTADA`.
+
+Un atributo ausente o ilegible no se evalúa (lo reporta el esquema). Todo es decimal exacto: la letra del
+SAT es «igual a la suma» y no hay tolerancia de redondeo, así que ninguna regla de Retenciones es de dos
+niveles.
+
+Decisiones donde las fuentes difieren o callan:
+
+- **Ejercicio** (Reten20126). El estándar 2.0 (2022, p. 118) pide «el año en curso o el año inmediato
+  anterior» y define el año en curso con `FechaExp`; la matriz vigente (2025-04) dice «el año en curso o hasta
+  5 ejercicios anteriores». Se aplica la matriz (más reciente, y el único texto que usa un PAC) con el año
+  de `FechaExp` como «año en curso»: error si `Ejercicio` es posterior a ese año o lo precede en más de 5.
+- **MontoTotRet** (Reten20130, Reten20131). La matriz y el estándar (p. 118) piden la suma solo «si el valor
+  es mayor que cero». Con `MontoTotRet` en cero no se exige nada, aunque haya `ImpRetenidos` con monto; el
+  XSD (p. 97) dice «Sumatoria», sin condición, pero no se hizo error lo que la regla de validación no pide.
+- **CveRetenc y complemento** (Reten20107). «Cuando el catálogo señale un complemento asociado» remite a la
+  columna «Nombre del complemento» de c_CveRetenc, que no viene en el XSD: se tomaron de la hoja del
+  catálogo 2.0 las claves cuyo complemento es incondicional (06 y 19 Enajenación de acciones, 14 y 15
+  Dividendos, 16 Intereses, 17 Arrendamiento en fideicomiso, 18 Pagos a extranjeros, 20 Premios, 21
+  Fideicomiso no empresarial, 22 Planes de retiro, 23 Intereses hipotecarios, 24 Operaciones con derivados,
+  26 Plataformas tecnológicas). Un complemento de ese nombre que la lectura no modela
+  (`ComplementosNoSoportados`) cuenta como presente. **No se revisan** 01, 02, 04 y 05 («en caso de
+  operaciones realizadas con extranjeros» incorporar Pagos a extranjeros) ni 27 (Sector financiero «sólo
+  cuando» la entidad actúe como fiduciaria): la condición no está en ningún atributo del documento.
+- **TipoPagoRet** (Reten20135). La columna «Tipo impuesto» de c_TipoPagoRet tampoco viene en el XSD; son
+  cuatro filas (01 IVA, 02 IEPS, 03 y 04 ISR) y se codifican tal cual.
+- **Receptor** (Reten20116, Reten20120). Solo están en la matriz; el estándar (p. 117) pide que
+  `NomDenRazSocR` y `DomicilioFiscalR` estén asociados al RFC en la lista del SAT, que necesita red. Se
+  revisa la parte que no la necesita: «PÚBLICO EN GENERAL» solo con `XAXX010101000` (sin distinguir
+  mayúsculas ni acento) y, con ese RFC, `DomicilioFiscalR` igual a `LugarExpRetenc`.
+- **Clave 28** (Reten20108, Reten20132, Reten20133). Un `UtilidadBimestral` o `ISRCorrespondiente` ausente
+  incumple «debe ser mayor que cero», aunque el XSD los dé por condicionales.
+
+Lo que queda fuera:
+
+| Código | Por qué |
+|---|---|
+| Reten20101, Reten20102 | sello y certificado: los revisa `VerificarRetenciones` |
+| Reten20103 | patrón de `FechaExp`: esquema |
+| Reten20104, Reten20105, Reten20109, Reten20111, Reten20121, Reten20123, Reten20134 | claves de catálogo (c_CodigoPostal, c_CveRetenc, c_TipoRelacion, c_RegimenFiscal, c_Periodo, c_TipoPagoRet): las revisa `ValidarEsquema` con los catálogos del XSD |
+| Reten20110, Reten20113, Reten20115, Reten20119, Reten20136 | RFC, nombre y domicilio fiscal contra la lista de RFC inscritos: red |
+| Reten20112 | `RegimenFiscalE` según la longitud del RFC: necesita las columnas Física y Moral de c_RegimenFiscal (catCFDI), que no vienen en el XSD |
+| Reten20114 | «no se valida en la lista»: no es una comprobación |
+
+Tampoco se revisan, por no tener sustento: decimales y signo de los importes (los fija el XSD 2.0:
+`t_ImporteMXN`, dos decimales y no negativo; en 1.0 `t_Importe` admite seis y no dice nada de negativos),
+`CfdiRetenRelacionados` (la matriz solo regula `TipoRelacion`, un catálogo), la aritmética interna de los
+trece complementos (la matriz no tiene códigos de complementos y las descripciones del XSD no las piden) y
+`MontoTotOperacion` o `MontoTotGrav` frente a los complementos (por ejemplo `Premios` o `Dividendos`).
