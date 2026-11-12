@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2" xmlns:planesderetiro="http://www.sat.gob.mx/esquemas/retencionpago/1/planesderetiro" Version="2.0" Sello="" NoCertificado="30001000000500003416" Certificado="" FechaExp="2026-02-01T09:00:00" LugarExpRetenc="42501" CveRetenc="21">
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2" xmlns:planesderetiro="http://www.sat.gob.mx/esquemas/retencionpago/1/planesderetiro" Version="2.0" Sello="" NoCertificado="30001000000500003416" Certificado="" FechaExp="2026-02-01T09:00:00" LugarExpRetenc="42501" CveRetenc="22">
   <retenciones:Emisor RfcE="EKU9003173C9" NomDenRazSocE="ESCUELA KEMPER URGATE" RegimenFiscalE="601"/>
   <retenciones:Receptor NacionalidadR="Nacional">
     <retenciones:Nacional RfcR="XAXX010101000" NomDenRazSocR="PUBLICO EN GENERAL" DomicilioFiscalR="42501"/>

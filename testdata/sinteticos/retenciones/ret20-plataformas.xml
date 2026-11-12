@@ -7,7 +7,7 @@
   </retenciones:Receptor>
   <retenciones:Periodo MesIni="12" MesFin="12" Ejercicio="2025"/>
   <retenciones:Totales MontoTotOperacion="1000.00" MontoTotGrav="1000.00" MontoTotExent="0.00" MontoTotRet="100.00">
-    <retenciones:ImpRetenidos BaseRet="1000.00" ImpuestoRet="001" MontoRet="20.00" TipoPagoRet="01"/>
+    <retenciones:ImpRetenidos BaseRet="1000.00" ImpuestoRet="001" MontoRet="20.00" TipoPagoRet="03"/>
     <retenciones:ImpRetenidos BaseRet="160.00" ImpuestoRet="002" MontoRet="80.00" TipoPagoRet="01"/>
   </retenciones:Totales>
   <retenciones:Complemento>

@@ -42,7 +42,7 @@
           "base_ret": "1000.00",
           "impuesto_ret": "001",
           "monto_ret": "20.00",
-          "tipo_pago_ret": "01"
+          "tipo_pago_ret": "03"
         },
         {
           "base_ret": "160.00",
