@@ -118,12 +118,26 @@ func TestLoteRetenciones(t *testing.T) {
 		json.Unmarshal(l, &m)
 		v, _ := m["verificacion_sello"].(map[string]any)
 		val, _ := m["validacion"].(map[string]any)
-		if v == nil || val == nil || val["reglas"] != nil {
+		if v == nil || val == nil || val["reglas"] == nil {
 			t.Errorf("línea %d: %s", i+1, l)
 		}
 	}
 	// La 1.0 trae TFD 1.0, que se valida con su propio XSD.
 	if r.Sellos == nil || r.Validacion == nil || r.Validacion.PorEstado["valido"] != 2 || r.Validacion.PorEstado["invalido"] != 0 {
 		t.Errorf("resumen: %+v %+v", r.Sellos, r.Validacion)
+	}
+
+	// -validar aplica también las reglas: una 2.0 con totales incoherentes
+	// es inválida y su código sale en el resumen; una 1.0 con montoTotRet
+	// que no es la suma, solo advertencia.
+	incoherente := filepath.Join(dir, "incoherente.xml")
+	os.WriteFile(incoherente, bytes.Replace(ret, []byte(`MontoTotRet="100.00"`), []byte(`MontoTotRet="99.99"`), 1), 0o644)
+	ret10Mal := filepath.Join(dir, "ret10mal.xml")
+	b10 := leerFixture(t, "retenciones/ret10-extranjero.xml")
+	os.WriteFile(ret10Mal, bytes.Replace(b10, []byte(`montoTotRet="6250.000000"`), []byte(`montoTotRet="6250.01"`), 1), 0o644)
+	_, r, _ = correrLote(t, dir, []string{incoherente, ret10Mal}, "-validar")
+	if r.Validacion == nil || r.Validacion.PorEstado["invalido"] != 1 || r.Validacion.PorEstado["valido"] != 1 ||
+		r.Validacion.HallazgosPorCodigo["REGLA_RET_MONTO_TOT_RET"] == nil || r.Validacion.HallazgosPorCodigo["REGLA_RET10_MONTO_TOT_RET"] == nil {
+		t.Errorf("resumen con reglas: %+v", r.Validacion)
 	}
 }

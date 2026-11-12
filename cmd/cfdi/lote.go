@@ -470,7 +470,7 @@ func conError(t trabajo, r resultado) resultado {
 
 // procesarRetenciones es procesar para un CFDI de Retenciones: su línea
 // lleva "tipo_documento":"retenciones" y la clave "retenciones" en vez de
-// "cfdi". -validar es solo el esquema (no hay reglas de Retenciones).
+// "cfdi". -validar es el esquema y las reglas de Retenciones.
 func procesarRetenciones(t trabajo, r resultado, o opcionesLote) resultado {
 	rt, err := cfdi.ParseRetencionesBytes(t.datos)
 	if err != nil {

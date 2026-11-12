@@ -42,7 +42,7 @@ func cmdValidar(args []string, stdout, stderr io.Writer) int {
 	}
 	s := salidaValidar{Archivo: pos[0]}
 	if cfdi.Detectar(b) == cfdi.TipoRetenciones {
-		// Solo el esquema: no hay reglas aritméticas de Retenciones.
+		// Esquema y reglas de Retenciones.
 		s.Validacion = cfdi.ValidarRetenciones(b)
 	} else {
 		c, err := cfdi.ParseBytes(b)

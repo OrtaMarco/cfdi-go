@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
 )
@@ -73,13 +74,33 @@ func TestValidar(t *testing.T) {
 			t.Errorf("%s: reglas %v, quiero %v", c.nombre, got, c.reglas)
 		}
 	}
-	// Retenciones: solo el esquema, sin reglas ni error de lectura.
-	for archivo, quiero := range map[string]string{"ret20-plataformas.xml": "valido", "ret20-anomalias.xml": "invalido"} {
-		code, m, errs := validarJSON(t, filepath.Join(sinteticos, "retenciones", archivo))
+	// Retenciones: esquema y reglas, sin error de lectura. ret20-anomalias
+	// es inválida por el esquema y no da hallazgos de reglas; las 1.0 de
+	// satcfdi solo dan la advertencia de montoTotRet (estado valido, código
+	// 0); la 2.0 de satcfdi da errores de reglas.
+	ret := func(archivo string) string {
+		if strings.Contains(archivo, "/") {
+			return archivo
+		}
+		return filepath.Join(sinteticos, "retenciones", archivo)
+	}
+	satcfdi := "../../testdata/publicos/SAT-CFDI-python-satcfdi/tests__cfdi_ejemplos__"
+	for _, c := range []struct {
+		archivo, estado string
+		reglas          []string
+	}{
+		{"ret20-plataformas.xml", "valido", nil},
+		{"ret20-anomalias.xml", "invalido", nil},
+		{satcfdi + "retenciones10__retenciones10-dividendos.xml", "valido", []string{"REGLA_RET10_MONTO_TOT_RET"}},
+		{satcfdi + "retenciones20__retenciones20-min.xml", "invalido", []string{"REGLA_RET_EJERCICIO", "REGLA_RET_MONTO_OPERACION"}},
+	} {
+		code, m, errs := validarJSON(t, ret(c.archivo))
 		_, hayReglas := m["reglas"]
 		_, hayError := m["error"]
-		if m["estado"] != quiero || (code == 1) != (quiero == "invalido") || hayReglas || hayError || errs != "" {
-			t.Errorf("Retenciones %s: código %d, %v", archivo, code, m)
+		got := codigosHallazgos(m, "reglas")
+		sort.Strings(got)
+		if m["estado"] != c.estado || (code == 1) != (c.estado == "invalido") || !hayReglas || hayError || errs != "" || strings.Join(got, ",") != strings.Join(c.reglas, ",") {
+			t.Errorf("Retenciones %s: código %d, reglas %v, %v", c.archivo, code, got, m)
 		}
 	}
 	if code, _, _ := validarJSON(t, "/no/existe.xml"); code != 1 {
